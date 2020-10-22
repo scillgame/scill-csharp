@@ -1,0 +1,18 @@
+{
+  "name": "de.4players.scillclient",
+  "version": "0.0.1",
+  "displayName": "SCILLClient",
+  "description": "Api wrapper for SCILL-gaas.",
+  "dependencies": {},
+  "keywords": [
+    "4players",
+    "Scill",
+    "Api",
+    "Sdk"
+  ],
+  "author": {
+    "name": "4players",
+    "email": "support@scillgame.com",
+    "url": "https://www.scillgame.com"
+  }
+}
