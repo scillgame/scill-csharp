@@ -60,7 +60,7 @@ SCILL is a fully customizable toolkit that enables you to integrate tailored cha
 to your game, app and website. SCILL connects seamlessly to your user account and payment systems, adding new retention 
 and monetization layers within minutes.
 
-Learn more about SCILL here: [https://www.scillgaming.com](https://www.scillgaming.com).
+Learn more about SCILL here: [https://www.scillgame.com](https://www.scillgame.com).
 
 Developer documentation can be found here: [https://developers.scillgame.com](https://developers.scillgame.com) 
 
