@@ -1,4 +1,5 @@
 # SCILL - the C# library for the SCILL API
+![CI](https://github.com/scillgame/scill-csharp/workflows/CI/badge.svg)
 
 SCILL gives you the tools to activate, retain and grow your user base in your app or game by bringing you features well known in the gaming industry: Gamification. We take care of the services and technology involved so you can focus on your game and content.
 
