@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using SCILL.Api;
 using SCILL.Client;
 using SCILL.Model;
@@ -8,7 +9,6 @@ namespace SCILL
     public class SCILLBackend
     {
         public string ApiKey => Config.ApiKey[this.ToString()];
-        public string UserId { get; private set; }
 
         public AuthApi AuthApi => _AuthApi.Value;
         public EventsApi EventsApi => _EventsApi.Value;
@@ -18,12 +18,11 @@ namespace SCILL
 
         private static Configuration Config;
 
-        public SCILLBackend(string apiKey, string userId)
+        public SCILLBackend(string apiKey)
         {
             _EventsApi = new Lazy<EventsApi>(() => GetApi<EventsApi>(apiKey, "https://ep-dev.scillgame.com"), true);            
             _AuthApi = new Lazy<AuthApi>(() => GetApi<AuthApi>(apiKey, "https://us-dev.scillgame.com"), true);
-            UserId = userId;
-            
+
             Config = Configuration.Default.Clone(string.Empty, Configuration.Default.BasePath);
             Config.ApiKey[this.ToString()] = apiKey;
             
@@ -31,9 +30,14 @@ namespace SCILL
             Config.AddApiKey("auth", "api_key");
         }
 
-        private string GetAccessToken(string userId)
+        public string GetAccessToken(string userId)
         {
             return GetAccessToken(new ForeignUserIdentifier(userId));
+        }
+
+        public Task<string> GetAccessTokenAsync(string userId)
+        {
+            return GetAccessTokenAsync(new ForeignUserIdentifier(userId));
         }
 
         private string GetAccessToken(ForeignUserIdentifier foreignUser)
@@ -42,6 +46,16 @@ namespace SCILL
                 return Config.AccessToken;
 
             AccessToken access = AuthApi.GenerateAccessToken(foreignUser);
+
+            return Config.AccessToken = access.token;
+        }
+        
+        private async Task<string> GetAccessTokenAsync(ForeignUserIdentifier foreignUser)
+        {
+            if (string.IsNullOrEmpty(Config.AccessToken) == false)
+                return Config.AccessToken;
+
+            AccessToken access = await AuthApi.GenerateAccessTokenAsync(foreignUser);
 
             return Config.AccessToken = access.token;
         }
