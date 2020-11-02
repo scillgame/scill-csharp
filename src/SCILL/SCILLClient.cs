@@ -10,9 +10,9 @@ namespace SCILL
 {
     public class SCILLClient
     {
-        public string AccessToken;
-        public string AppId;
-        
+        public string AccessToken { get; private set; }
+        public string AppId { get; private set; }
+
         public EventsApi EventsApi => _EventsApi.Value;
         public ChallengesApi ChallengesApi => _ChallengesApi.Value;
         public BattlePassesApi BattlePassesApi => _BattlePassesApi.Value;
