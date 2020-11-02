@@ -20,8 +20,8 @@ namespace SCILL
 
         public SCILLBackend(string apiKey)
         {
-            _EventsApi = new Lazy<EventsApi>(() => GetApi<EventsApi>(apiKey, "https://ep-dev.scillgame.com"), true);            
-            _AuthApi = new Lazy<AuthApi>(() => GetApi<AuthApi>(apiKey, "https://us-dev.scillgame.com"), true);
+            _EventsApi = new Lazy<EventsApi>(() => GetApi<EventsApi>(apiKey, "https://ep.scillgame.com"), true);            
+            _AuthApi = new Lazy<AuthApi>(() => GetApi<AuthApi>(apiKey, "https://us.scillgame.com"), true);
 
             Config = Configuration.Default.Clone(string.Empty, Configuration.Default.BasePath);
             Config.ApiKey[this.ToString()] = apiKey;
