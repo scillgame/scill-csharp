@@ -32,14 +32,14 @@ namespace SCILL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Challenge" /> class.
         /// </summary>
-        /// <param name="challengeId">The unique id of this challenge. Every challenge is linked to a product. (required).</param>
-        /// <param name="challengeName">The name of the challenge in the language set by the language parameter. (required).</param>
+        /// <param name="challengeId">The unique id of this challenge. Every challenge is linked to a product..</param>
+        /// <param name="challengeName">The name of the challenge in the language set by the language parameter..</param>
         /// <param name="challengeDurationTime">The duration of the challenge in seconds. Challenges auto lock after time-out and need to be unlocked again..</param>
         /// <param name="liveDate">The date this challenge should start. Use that field to create challenges that start in the future..</param>
-        /// <param name="challengeGoal">Indicates how many “tasks” must be completed or done to complete this challenge. (required).</param>
-        /// <param name="userChallengeCurrentScore">Indicates how many tasks the user already has completed. Use this in combination with challenge_goal to render a nice progress bar. (required).</param>
-        /// <param name="challengeIcon">In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database. (required).</param>
-        /// <param name="challengeIconHd">This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank. (required).</param>
+        /// <param name="challengeGoal">Indicates how many “tasks” must be completed or done to complete this challenge..</param>
+        /// <param name="userChallengeCurrentScore">Indicates how many tasks the user already has completed. Use this in combination with challenge_goal to render a nice progress bar..</param>
+        /// <param name="challengeIcon">In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database..</param>
+        /// <param name="challengeIconHd">This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank..</param>
         /// <param name="challengePrice">If you purchase the challenge, you can set a price..</param>
         /// <param name="challengeReward">Set a reward for this challenge. This is a numeric value that you can map to an enum in your code.</param>
         /// <param name="challengeXp">If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded..</param>
@@ -52,62 +52,14 @@ namespace SCILL.Model
         /// <param name="userChallengeStatus">Gives indication in what state the challenge is..</param>
         public Challenge(string challengeId = default(string), string challengeName = default(string), int? challengeDurationTime = default(int?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), int? challengePrice = default(int?), int? challengeReward = default(int?), int? challengeXp = default(int?), bool? repeatable = default(bool?), string type = default(string), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string), bool? userChallengeIsClaimed = default(bool?), int? userChallengeStatus = default(int?))
         {
-            // to ensure "challengeId" is required (not null)
-            if (challengeId == null)
-            {
-                throw new InvalidDataException("challengeId is a required property for Challenge and cannot be null");
-            }
-            else
-            {
-                this.challenge_id = challengeId;
-            }
-            // to ensure "challengeName" is required (not null)
-            if (challengeName == null)
-            {
-                throw new InvalidDataException("challengeName is a required property for Challenge and cannot be null");
-            }
-            else
-            {
-                this.challenge_name = challengeName;
-            }
-            // to ensure "challengeGoal" is required (not null)
-            if (challengeGoal == null)
-            {
-                throw new InvalidDataException("challengeGoal is a required property for Challenge and cannot be null");
-            }
-            else
-            {
-                this.challenge_goal = challengeGoal;
-            }
-            // to ensure "userChallengeCurrentScore" is required (not null)
-            if (userChallengeCurrentScore == null)
-            {
-                throw new InvalidDataException("userChallengeCurrentScore is a required property for Challenge and cannot be null");
-            }
-            else
-            {
-                this.user_challenge_current_score = userChallengeCurrentScore;
-            }
-            // to ensure "challengeIcon" is required (not null)
-            if (challengeIcon == null)
-            {
-                throw new InvalidDataException("challengeIcon is a required property for Challenge and cannot be null");
-            }
-            else
-            {
-                this.challenge_icon = challengeIcon;
-            }
-            // to ensure "challengeIconHd" is required (not null)
-            if (challengeIconHd == null)
-            {
-                throw new InvalidDataException("challengeIconHd is a required property for Challenge and cannot be null");
-            }
-            else
-            {
-                this.challenge_icon_hd = challengeIconHd;
-            }
+            this.challenge_id = challengeId;
+            this.challenge_name = challengeName;
             this.challenge_duration_time = challengeDurationTime;
             this.live_date = liveDate;
+            this.challenge_goal = challengeGoal;
+            this.user_challenge_current_score = userChallengeCurrentScore;
+            this.challenge_icon = challengeIcon;
+            this.challenge_icon_hd = challengeIconHd;
             this.challenge_price = challengePrice;
             this.challenge_reward = challengeReward;
             this.challenge_xp = challengeXp;
