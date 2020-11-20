@@ -130,6 +130,30 @@ namespace SCILL.Test
             // TODO unit test for the property 'challenge_icon_hd'
         }
         /// <summary>
+        /// Test the property 'challenge_price'
+        /// </summary>
+        [Test]
+        public void challenge_priceTest()
+        {
+            // TODO unit test for the property 'challenge_price'
+        }
+        /// <summary>
+        /// Test the property 'challenge_reward'
+        /// </summary>
+        [Test]
+        public void challenge_rewardTest()
+        {
+            // TODO unit test for the property 'challenge_reward'
+        }
+        /// <summary>
+        /// Test the property 'challenge_xp'
+        /// </summary>
+        [Test]
+        public void challenge_xpTest()
+        {
+            // TODO unit test for the property 'challenge_xp'
+        }
+        /// <summary>
         /// Test the property 'repeatable'
         /// </summary>
         [Test]
@@ -168,6 +192,22 @@ namespace SCILL.Test
         public void user_challenge_activated_atTest()
         {
             // TODO unit test for the property 'user_challenge_activated_at'
+        }
+        /// <summary>
+        /// Test the property 'user_challenge_is_claimed'
+        /// </summary>
+        [Test]
+        public void user_challenge_is_claimedTest()
+        {
+            // TODO unit test for the property 'user_challenge_is_claimed'
+        }
+        /// <summary>
+        /// Test the property 'user_challenge_status'
+        /// </summary>
+        [Test]
+        public void user_challenge_statusTest()
+        {
+            // TODO unit test for the property 'user_challenge_status'
         }
 
     }

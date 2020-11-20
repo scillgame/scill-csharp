@@ -70,8 +70,8 @@ namespace SCILL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
-            //string cid = null;
-            //var response = instance.ActivatePersonalChallenge(appId, cid);
+            //string challengeId = null;
+            //var response = instance.ActivatePersonalChallenge(appId, challengeId);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
         /// <summary>
@@ -82,8 +82,8 @@ namespace SCILL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
-            //string cid = null;
-            //var response = instance.CancelPersonalChallenge(appId, cid);
+            //string challengeId = null;
+            //var response = instance.CancelPersonalChallenge(appId, challengeId);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
         /// <summary>
@@ -94,8 +94,8 @@ namespace SCILL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
-            //string cid = null;
-            //var response = instance.ClaimPersonalChallengeReward(appId, cid);
+            //string challengeId = null;
+            //var response = instance.ClaimPersonalChallengeReward(appId, challengeId);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
         /// <summary>
@@ -120,6 +120,18 @@ namespace SCILL.Test
             //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
         }
         /// <summary>
+        /// Test GetPersonalChallengeById
+        /// </summary>
+        [Test]
+        public void GetPersonalChallengeByIdTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //string challengeId = null;
+            //var response = instance.GetPersonalChallengeById(appId, challengeId);
+            //Assert.IsInstanceOf<Challenge> (response, "response is Challenge");
+        }
+        /// <summary>
         /// Test GetPersonalChallenges
         /// </summary>
         [Test]
@@ -138,8 +150,8 @@ namespace SCILL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
-            //string cid = null;
-            //var response = instance.UnlockPersonalChallenge(appId, cid);
+            //string challengeId = null;
+            //var response = instance.UnlockPersonalChallenge(appId, challengeId);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
     }

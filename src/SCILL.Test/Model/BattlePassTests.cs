@@ -74,36 +74,68 @@ namespace SCILL.Test
             // TODO unit test for the property 'battle_pass_id'
         }
         /// <summary>
-        /// Test the property 'package_sku'
+        /// Test the property 'app_id'
         /// </summary>
         [Test]
-        public void package_skuTest()
+        public void app_idTest()
         {
-            // TODO unit test for the property 'package_sku'
+            // TODO unit test for the property 'app_id'
         }
         /// <summary>
-        /// Test the property 'name'
+        /// Test the property 'battle_pass_name'
         /// </summary>
         [Test]
-        public void nameTest()
+        public void battle_pass_nameTest()
         {
-            // TODO unit test for the property 'name'
+            // TODO unit test for the property 'battle_pass_name'
         }
         /// <summary>
-        /// Test the property 'description'
+        /// Test the property 'battle_pass_description'
         /// </summary>
         [Test]
-        public void descriptionTest()
+        public void battle_pass_descriptionTest()
         {
-            // TODO unit test for the property 'description'
+            // TODO unit test for the property 'battle_pass_description'
         }
         /// <summary>
-        /// Test the property 'truncated_description'
+        /// Test the property 'battle_pass_short_description'
         /// </summary>
         [Test]
-        public void truncated_descriptionTest()
+        public void battle_pass_short_descriptionTest()
         {
-            // TODO unit test for the property 'truncated_description'
+            // TODO unit test for the property 'battle_pass_short_description'
+        }
+        /// <summary>
+        /// Test the property 'battle_pass_disclaimer'
+        /// </summary>
+        [Test]
+        public void battle_pass_disclaimerTest()
+        {
+            // TODO unit test for the property 'battle_pass_disclaimer'
+        }
+        /// <summary>
+        /// Test the property 'battle_pass_priority'
+        /// </summary>
+        [Test]
+        public void battle_pass_priorityTest()
+        {
+            // TODO unit test for the property 'battle_pass_priority'
+        }
+        /// <summary>
+        /// Test the property 'package_sku_ios'
+        /// </summary>
+        [Test]
+        public void package_sku_iosTest()
+        {
+            // TODO unit test for the property 'package_sku_ios'
+        }
+        /// <summary>
+        /// Test the property 'package_sku_android'
+        /// </summary>
+        [Test]
+        public void package_sku_androidTest()
+        {
+            // TODO unit test for the property 'package_sku_android'
         }
         /// <summary>
         /// Test the property 'image'
@@ -122,20 +154,20 @@ namespace SCILL.Test
             // TODO unit test for the property 'image_desktop'
         }
         /// <summary>
-        /// Test the property 'battle_pass_start_date'
+        /// Test the property 'start_date'
         /// </summary>
         [Test]
-        public void battle_pass_start_dateTest()
+        public void start_dateTest()
         {
-            // TODO unit test for the property 'battle_pass_start_date'
+            // TODO unit test for the property 'start_date'
         }
         /// <summary>
-        /// Test the property 'battle_pass_end_date'
+        /// Test the property 'end_date'
         /// </summary>
         [Test]
-        public void battle_pass_end_dateTest()
+        public void end_dateTest()
         {
-            // TODO unit test for the property 'battle_pass_end_date'
+            // TODO unit test for the property 'end_date'
         }
         /// <summary>
         /// Test the property 'read_more_link'
@@ -146,28 +178,20 @@ namespace SCILL.Test
             // TODO unit test for the property 'read_more_link'
         }
         /// <summary>
-        /// Test the property 'page_id'
+        /// Test the property 'is_unlocked_incrementally'
         /// </summary>
         [Test]
-        public void page_idTest()
+        public void is_unlocked_incrementallyTest()
         {
-            // TODO unit test for the property 'page_id'
+            // TODO unit test for the property 'is_unlocked_incrementally'
         }
         /// <summary>
-        /// Test the property 'battle_pass_completed'
+        /// Test the property 'is_active'
         /// </summary>
         [Test]
-        public void battle_pass_completedTest()
+        public void is_activeTest()
         {
-            // TODO unit test for the property 'battle_pass_completed'
-        }
-        /// <summary>
-        /// Test the property 'package_value_eur'
-        /// </summary>
-        [Test]
-        public void package_value_eurTest()
-        {
-            // TODO unit test for the property 'package_value_eur'
+            // TODO unit test for the property 'is_active'
         }
         /// <summary>
         /// Test the property 'purchased_at'
@@ -192,14 +216,6 @@ namespace SCILL.Test
         public void can_purchase_with_coinsTest()
         {
             // TODO unit test for the property 'can_purchase_with_coins'
-        }
-        /// <summary>
-        /// Test the property 'levels'
-        /// </summary>
-        [Test]
-        public void levelsTest()
-        {
-            // TODO unit test for the property 'levels'
         }
 
     }

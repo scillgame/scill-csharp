@@ -63,17 +63,50 @@ namespace SCILL.Test
         }
 
         /// <summary>
+        /// Test ActivateBattlePassLevel
+        /// </summary>
+        [Test]
+        public void ActivateBattlePassLevelTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //string levelId = null;
+            //var response = instance.ActivateBattlePassLevel(appId, levelId);
+            //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
+        }
+        /// <summary>
         /// Test ClaimBattlePassLevelReward
         /// </summary>
         [Test]
         public void ClaimBattlePassLevelRewardTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //BattlePassLevelId body = null;
             //string appId = null;
-            //string bpid = null;
-            //var response = instance.ClaimBattlePassLevelReward(body, appId, bpid);
+            //string levelId = null;
+            //var response = instance.ClaimBattlePassLevelReward(appId, levelId);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
+        }
+        /// <summary>
+        /// Test GetActiveBattlePasses
+        /// </summary>
+        [Test]
+        public void GetActiveBattlePassesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //var response = instance.GetActiveBattlePasses(appId);
+            //Assert.IsInstanceOf<List<BattlePass>> (response, "response is List<BattlePass>");
+        }
+        /// <summary>
+        /// Test GetAllBattlePassLevels
+        /// </summary>
+        [Test]
+        public void GetAllBattlePassLevelsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //var response = instance.GetAllBattlePassLevels(appId);
+            //Assert.IsInstanceOf<List<BattlePassLevel>> (response, "response is List<BattlePassLevel>");
         }
         /// <summary>
         /// Test GetBattlePass
@@ -83,9 +116,21 @@ namespace SCILL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
-            //string bpid = null;
-            //var response = instance.GetBattlePass(appId, bpid);
+            //string battlePassId = null;
+            //var response = instance.GetBattlePass(appId, battlePassId);
             //Assert.IsInstanceOf<BattlePass> (response, "response is BattlePass");
+        }
+        /// <summary>
+        /// Test GetBattlePassLevels
+        /// </summary>
+        [Test]
+        public void GetBattlePassLevelsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //string battlePassId = null;
+            //var response = instance.GetBattlePassLevels(appId, battlePassId);
+            //Assert.IsInstanceOf<List<BattlePassLevel>> (response, "response is List<BattlePassLevel>");
         }
         /// <summary>
         /// Test GetBattlePasses
@@ -99,17 +144,28 @@ namespace SCILL.Test
             //Assert.IsInstanceOf<List<BattlePass>> (response, "response is List<BattlePass>");
         }
         /// <summary>
-        /// Test UnlockBattlePassLevel
+        /// Test GetUnlockedBattlePasses
         /// </summary>
         [Test]
-        public void UnlockBattlePassLevelTest()
+        public void GetUnlockedBattlePassesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //BattlePassLevelId body = null;
             //string appId = null;
-            //string bpid = null;
-            //var response = instance.UnlockBattlePassLevel(body, appId, bpid);
-            //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
+            //var response = instance.GetUnlockedBattlePasses(appId);
+            //Assert.IsInstanceOf<List<BattlePass>> (response, "response is List<BattlePass>");
+        }
+        /// <summary>
+        /// Test UnlockBattlePass
+        /// </summary>
+        [Test]
+        public void UnlockBattlePassTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //string battlePassId = null;
+            //BattlePassUnlockPayload body = null;
+            //var response = instance.UnlockBattlePass(appId, battlePassId, body);
+            //Assert.IsInstanceOf<BattlePassUnlockInfo> (response, "response is BattlePassUnlockInfo");
         }
     }
 

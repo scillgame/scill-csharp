@@ -32,99 +32,18 @@ namespace SCILL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BattlePassLevel" /> class.
         /// </summary>
-        /// <param name="battlePassLevelId">Unique id of this BattlePassLevel object. (required).</param>
-        /// <param name="levelPriority">The position of the level inside the stack of levels. Every level in this array will have this value incremented by 1. (required).</param>
-        /// <param name="completed">Indicates if this level is completed, i.e. all challenges have been completed. (required).</param>
-        /// <param name="canClaim">If all challenges in this level have been completed and can be claimed, this flag is true. I.e. show a “Claim Reward” button if this is true. (required).</param>
-        /// <param name="unlocked">Levels need to be unlocked one after the other. You can decide if you already want to show users the challenges waiting behind a locked challenge or if you hide them to make it more exciting for the user to unlock the next level. (required).</param>
-        /// <param name="claimed">Indicates if the reward for this level has already been claimed. Important: Users need to claim the reward to unlock the next level! Of course, you can also do that via REST-API automatically. (required).</param>
-        /// <param name="rewardDescription">The description of the reward in the local language set in the request (see Setting Language). In the admin panel you can either create HTML content or plain text. (required).</param>
-        /// <param name="rewardImage">The mobile sized image name of the reward. For example you can use reward_image and reward_image_desktop to build a srcset in HTML or use and size them manually where you need them. This can be freely set in the Admin Panel. Either indicates a local asset via name or you can also use a URL. (required).</param>
-        /// <param name="rewardImageDesktop">The desktop sized image name of the reward. Either indicates a local asset via name or you can also use a URL. (required).</param>
-        /// <param name="challenges">An array of BattlePassLevelChallenge objects. (required).</param>
-        public BattlePassLevel(string battlePassLevelId = default(string), int? levelPriority = default(int?), bool? completed = default(bool?), bool? canClaim = default(bool?), bool? unlocked = default(bool?), bool? claimed = default(bool?), string rewardDescription = default(string), string rewardImage = default(string), string rewardImageDesktop = default(string), List<BattlePassLevelChallenge> challenges = default(List<BattlePassLevelChallenge>))
+        /// <param name="levelId">Unique id of this BattlePassLevel object..</param>
+        /// <param name="appId">The app id.</param>
+        /// <param name="battlePassId">The id of the battle pass this level belongs to.</param>
+        /// <param name="userId">The user id of the user who has unlocked this battle pass.</param>
+        /// <param name="rewardAmount">In the Admin Panel you can set different types of rewards. You can also set an identifier of an in-game-item or anything you like. Use this to include the reward into your own business logic..</param>
+        /// <param name="rewardTypeName">There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience..</param>
+        /// <param name="levelCompleted">Indicates if this level is completed, i.e. all challenges have been completed..</param>
+        /// <param name="rewardClaimed">Indicates if this level has already be claimed..</param>
+        /// <param name="activatedAt">The date when this level has been activated or null if it&#x27;s not activated..</param>
+        /// <param name="challenges">An array of Challenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges. (required).</param>
+        public BattlePassLevel(string levelId = default(string), string appId = default(string), string battlePassId = default(string), string userId = default(string), string rewardAmount = default(string), string rewardTypeName = default(string), bool? levelCompleted = default(bool?), bool? rewardClaimed = default(bool?), string activatedAt = default(string), List<Challenge> challenges = default(List<Challenge>))
         {
-            // to ensure "battlePassLevelId" is required (not null)
-            if (battlePassLevelId == null)
-            {
-                throw new InvalidDataException("battlePassLevelId is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.battle_pass_level_id = battlePassLevelId;
-            }
-            // to ensure "levelPriority" is required (not null)
-            if (levelPriority == null)
-            {
-                throw new InvalidDataException("levelPriority is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.level_priority = levelPriority;
-            }
-            // to ensure "completed" is required (not null)
-            if (completed == null)
-            {
-                throw new InvalidDataException("completed is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.completed = completed;
-            }
-            // to ensure "canClaim" is required (not null)
-            if (canClaim == null)
-            {
-                throw new InvalidDataException("canClaim is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.can_claim = canClaim;
-            }
-            // to ensure "unlocked" is required (not null)
-            if (unlocked == null)
-            {
-                throw new InvalidDataException("unlocked is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.unlocked = unlocked;
-            }
-            // to ensure "claimed" is required (not null)
-            if (claimed == null)
-            {
-                throw new InvalidDataException("claimed is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.claimed = claimed;
-            }
-            // to ensure "rewardDescription" is required (not null)
-            if (rewardDescription == null)
-            {
-                throw new InvalidDataException("rewardDescription is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.reward_description = rewardDescription;
-            }
-            // to ensure "rewardImage" is required (not null)
-            if (rewardImage == null)
-            {
-                throw new InvalidDataException("rewardImage is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.reward_image = rewardImage;
-            }
-            // to ensure "rewardImageDesktop" is required (not null)
-            if (rewardImageDesktop == null)
-            {
-                throw new InvalidDataException("rewardImageDesktop is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.reward_image_desktop = rewardImageDesktop;
-            }
             // to ensure "challenges" is required (not null)
             if (challenges == null)
             {
@@ -134,77 +53,86 @@ namespace SCILL.Model
             {
                 this.challenges = challenges;
             }
+            this.level_id = levelId;
+            this.app_id = appId;
+            this.battle_pass_id = battlePassId;
+            this.user_id = userId;
+            this.reward_amount = rewardAmount;
+            this.reward_type_name = rewardTypeName;
+            this.level_completed = levelCompleted;
+            this.reward_claimed = rewardClaimed;
+            this.activated_at = activatedAt;
         }
         
         /// <summary>
         /// Unique id of this BattlePassLevel object.
         /// </summary>
         /// <value>Unique id of this BattlePassLevel object.</value>
-        [DataMember(Name="battle_pass_level_id", EmitDefaultValue=false)]
-        public string battle_pass_level_id { get; set; }
+        [DataMember(Name="level_id", EmitDefaultValue=false)]
+        public string level_id { get; set; }
 
         /// <summary>
-        /// The position of the level inside the stack of levels. Every level in this array will have this value incremented by 1.
+        /// The app id
         /// </summary>
-        /// <value>The position of the level inside the stack of levels. Every level in this array will have this value incremented by 1.</value>
-        [DataMember(Name="level_priority", EmitDefaultValue=false)]
-        public int? level_priority { get; set; }
+        /// <value>The app id</value>
+        [DataMember(Name="app_id", EmitDefaultValue=false)]
+        public string app_id { get; set; }
+
+        /// <summary>
+        /// The id of the battle pass this level belongs to
+        /// </summary>
+        /// <value>The id of the battle pass this level belongs to</value>
+        [DataMember(Name="battle_pass_id", EmitDefaultValue=false)]
+        public string battle_pass_id { get; set; }
+
+        /// <summary>
+        /// The user id of the user who has unlocked this battle pass
+        /// </summary>
+        /// <value>The user id of the user who has unlocked this battle pass</value>
+        [DataMember(Name="user_id", EmitDefaultValue=false)]
+        public string user_id { get; set; }
+
+        /// <summary>
+        /// In the Admin Panel you can set different types of rewards. You can also set an identifier of an in-game-item or anything you like. Use this to include the reward into your own business logic.
+        /// </summary>
+        /// <value>In the Admin Panel you can set different types of rewards. You can also set an identifier of an in-game-item or anything you like. Use this to include the reward into your own business logic.</value>
+        [DataMember(Name="reward_amount", EmitDefaultValue=false)]
+        public string reward_amount { get; set; }
+
+        /// <summary>
+        /// There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience.
+        /// </summary>
+        /// <value>There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience.</value>
+        [DataMember(Name="reward_type_name", EmitDefaultValue=false)]
+        public string reward_type_name { get; set; }
 
         /// <summary>
         /// Indicates if this level is completed, i.e. all challenges have been completed.
         /// </summary>
         /// <value>Indicates if this level is completed, i.e. all challenges have been completed.</value>
-        [DataMember(Name="completed", EmitDefaultValue=false)]
-        public bool? completed { get; set; }
+        [DataMember(Name="level_completed", EmitDefaultValue=false)]
+        public bool? level_completed { get; set; }
 
         /// <summary>
-        /// If all challenges in this level have been completed and can be claimed, this flag is true. I.e. show a “Claim Reward” button if this is true.
+        /// Indicates if this level has already be claimed.
         /// </summary>
-        /// <value>If all challenges in this level have been completed and can be claimed, this flag is true. I.e. show a “Claim Reward” button if this is true.</value>
-        [DataMember(Name="can_claim", EmitDefaultValue=false)]
-        public bool? can_claim { get; set; }
+        /// <value>Indicates if this level has already be claimed.</value>
+        [DataMember(Name="reward_claimed", EmitDefaultValue=false)]
+        public bool? reward_claimed { get; set; }
 
         /// <summary>
-        /// Levels need to be unlocked one after the other. You can decide if you already want to show users the challenges waiting behind a locked challenge or if you hide them to make it more exciting for the user to unlock the next level.
+        /// The date when this level has been activated or null if it&#x27;s not activated.
         /// </summary>
-        /// <value>Levels need to be unlocked one after the other. You can decide if you already want to show users the challenges waiting behind a locked challenge or if you hide them to make it more exciting for the user to unlock the next level.</value>
-        [DataMember(Name="unlocked", EmitDefaultValue=false)]
-        public bool? unlocked { get; set; }
+        /// <value>The date when this level has been activated or null if it&#x27;s not activated.</value>
+        [DataMember(Name="activated_at", EmitDefaultValue=false)]
+        public string activated_at { get; set; }
 
         /// <summary>
-        /// Indicates if the reward for this level has already been claimed. Important: Users need to claim the reward to unlock the next level! Of course, you can also do that via REST-API automatically.
+        /// An array of Challenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges.
         /// </summary>
-        /// <value>Indicates if the reward for this level has already been claimed. Important: Users need to claim the reward to unlock the next level! Of course, you can also do that via REST-API automatically.</value>
-        [DataMember(Name="claimed", EmitDefaultValue=false)]
-        public bool? claimed { get; set; }
-
-        /// <summary>
-        /// The description of the reward in the local language set in the request (see Setting Language). In the admin panel you can either create HTML content or plain text.
-        /// </summary>
-        /// <value>The description of the reward in the local language set in the request (see Setting Language). In the admin panel you can either create HTML content or plain text.</value>
-        [DataMember(Name="reward_description", EmitDefaultValue=false)]
-        public string reward_description { get; set; }
-
-        /// <summary>
-        /// The mobile sized image name of the reward. For example you can use reward_image and reward_image_desktop to build a srcset in HTML or use and size them manually where you need them. This can be freely set in the Admin Panel. Either indicates a local asset via name or you can also use a URL.
-        /// </summary>
-        /// <value>The mobile sized image name of the reward. For example you can use reward_image and reward_image_desktop to build a srcset in HTML or use and size them manually where you need them. This can be freely set in the Admin Panel. Either indicates a local asset via name or you can also use a URL.</value>
-        [DataMember(Name="reward_image", EmitDefaultValue=false)]
-        public string reward_image { get; set; }
-
-        /// <summary>
-        /// The desktop sized image name of the reward. Either indicates a local asset via name or you can also use a URL.
-        /// </summary>
-        /// <value>The desktop sized image name of the reward. Either indicates a local asset via name or you can also use a URL.</value>
-        [DataMember(Name="reward_image_desktop", EmitDefaultValue=false)]
-        public string reward_image_desktop { get; set; }
-
-        /// <summary>
-        /// An array of BattlePassLevelChallenge objects.
-        /// </summary>
-        /// <value>An array of BattlePassLevelChallenge objects.</value>
+        /// <value>An array of Challenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges.</value>
         [DataMember(Name="challenges", EmitDefaultValue=false)]
-        public List<BattlePassLevelChallenge> challenges { get; set; }
+        public List<Challenge> challenges { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -214,15 +142,15 @@ namespace SCILL.Model
         {
             var sb = new StringBuilder();
             sb.Append("class BattlePassLevel {\n");
-            sb.Append("  battle_pass_level_id: ").Append(battle_pass_level_id).Append("\n");
-            sb.Append("  level_priority: ").Append(level_priority).Append("\n");
-            sb.Append("  completed: ").Append(completed).Append("\n");
-            sb.Append("  can_claim: ").Append(can_claim).Append("\n");
-            sb.Append("  unlocked: ").Append(unlocked).Append("\n");
-            sb.Append("  claimed: ").Append(claimed).Append("\n");
-            sb.Append("  reward_description: ").Append(reward_description).Append("\n");
-            sb.Append("  reward_image: ").Append(reward_image).Append("\n");
-            sb.Append("  reward_image_desktop: ").Append(reward_image_desktop).Append("\n");
+            sb.Append("  level_id: ").Append(level_id).Append("\n");
+            sb.Append("  app_id: ").Append(app_id).Append("\n");
+            sb.Append("  battle_pass_id: ").Append(battle_pass_id).Append("\n");
+            sb.Append("  user_id: ").Append(user_id).Append("\n");
+            sb.Append("  reward_amount: ").Append(reward_amount).Append("\n");
+            sb.Append("  reward_type_name: ").Append(reward_type_name).Append("\n");
+            sb.Append("  level_completed: ").Append(level_completed).Append("\n");
+            sb.Append("  reward_claimed: ").Append(reward_claimed).Append("\n");
+            sb.Append("  activated_at: ").Append(activated_at).Append("\n");
             sb.Append("  challenges: ").Append(challenges).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -259,49 +187,49 @@ namespace SCILL.Model
 
             return 
                 (
-                    this.battle_pass_level_id == input.battle_pass_level_id ||
-                    (this.battle_pass_level_id != null &&
-                    this.battle_pass_level_id.Equals(input.battle_pass_level_id))
+                    this.level_id == input.level_id ||
+                    (this.level_id != null &&
+                    this.level_id.Equals(input.level_id))
                 ) && 
                 (
-                    this.level_priority == input.level_priority ||
-                    (this.level_priority != null &&
-                    this.level_priority.Equals(input.level_priority))
+                    this.app_id == input.app_id ||
+                    (this.app_id != null &&
+                    this.app_id.Equals(input.app_id))
                 ) && 
                 (
-                    this.completed == input.completed ||
-                    (this.completed != null &&
-                    this.completed.Equals(input.completed))
+                    this.battle_pass_id == input.battle_pass_id ||
+                    (this.battle_pass_id != null &&
+                    this.battle_pass_id.Equals(input.battle_pass_id))
                 ) && 
                 (
-                    this.can_claim == input.can_claim ||
-                    (this.can_claim != null &&
-                    this.can_claim.Equals(input.can_claim))
+                    this.user_id == input.user_id ||
+                    (this.user_id != null &&
+                    this.user_id.Equals(input.user_id))
                 ) && 
                 (
-                    this.unlocked == input.unlocked ||
-                    (this.unlocked != null &&
-                    this.unlocked.Equals(input.unlocked))
+                    this.reward_amount == input.reward_amount ||
+                    (this.reward_amount != null &&
+                    this.reward_amount.Equals(input.reward_amount))
                 ) && 
                 (
-                    this.claimed == input.claimed ||
-                    (this.claimed != null &&
-                    this.claimed.Equals(input.claimed))
+                    this.reward_type_name == input.reward_type_name ||
+                    (this.reward_type_name != null &&
+                    this.reward_type_name.Equals(input.reward_type_name))
                 ) && 
                 (
-                    this.reward_description == input.reward_description ||
-                    (this.reward_description != null &&
-                    this.reward_description.Equals(input.reward_description))
+                    this.level_completed == input.level_completed ||
+                    (this.level_completed != null &&
+                    this.level_completed.Equals(input.level_completed))
                 ) && 
                 (
-                    this.reward_image == input.reward_image ||
-                    (this.reward_image != null &&
-                    this.reward_image.Equals(input.reward_image))
+                    this.reward_claimed == input.reward_claimed ||
+                    (this.reward_claimed != null &&
+                    this.reward_claimed.Equals(input.reward_claimed))
                 ) && 
                 (
-                    this.reward_image_desktop == input.reward_image_desktop ||
-                    (this.reward_image_desktop != null &&
-                    this.reward_image_desktop.Equals(input.reward_image_desktop))
+                    this.activated_at == input.activated_at ||
+                    (this.activated_at != null &&
+                    this.activated_at.Equals(input.activated_at))
                 ) && 
                 (
                     this.challenges == input.challenges ||
@@ -320,24 +248,24 @@ namespace SCILL.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.battle_pass_level_id != null)
-                    hashCode = hashCode * 59 + this.battle_pass_level_id.GetHashCode();
-                if (this.level_priority != null)
-                    hashCode = hashCode * 59 + this.level_priority.GetHashCode();
-                if (this.completed != null)
-                    hashCode = hashCode * 59 + this.completed.GetHashCode();
-                if (this.can_claim != null)
-                    hashCode = hashCode * 59 + this.can_claim.GetHashCode();
-                if (this.unlocked != null)
-                    hashCode = hashCode * 59 + this.unlocked.GetHashCode();
-                if (this.claimed != null)
-                    hashCode = hashCode * 59 + this.claimed.GetHashCode();
-                if (this.reward_description != null)
-                    hashCode = hashCode * 59 + this.reward_description.GetHashCode();
-                if (this.reward_image != null)
-                    hashCode = hashCode * 59 + this.reward_image.GetHashCode();
-                if (this.reward_image_desktop != null)
-                    hashCode = hashCode * 59 + this.reward_image_desktop.GetHashCode();
+                if (this.level_id != null)
+                    hashCode = hashCode * 59 + this.level_id.GetHashCode();
+                if (this.app_id != null)
+                    hashCode = hashCode * 59 + this.app_id.GetHashCode();
+                if (this.battle_pass_id != null)
+                    hashCode = hashCode * 59 + this.battle_pass_id.GetHashCode();
+                if (this.user_id != null)
+                    hashCode = hashCode * 59 + this.user_id.GetHashCode();
+                if (this.reward_amount != null)
+                    hashCode = hashCode * 59 + this.reward_amount.GetHashCode();
+                if (this.reward_type_name != null)
+                    hashCode = hashCode * 59 + this.reward_type_name.GetHashCode();
+                if (this.level_completed != null)
+                    hashCode = hashCode * 59 + this.level_completed.GetHashCode();
+                if (this.reward_claimed != null)
+                    hashCode = hashCode * 59 + this.reward_claimed.GetHashCode();
+                if (this.activated_at != null)
+                    hashCode = hashCode * 59 + this.activated_at.GetHashCode();
                 if (this.challenges != null)
                     hashCode = hashCode * 59 + this.challenges.GetHashCode();
                 return hashCode;

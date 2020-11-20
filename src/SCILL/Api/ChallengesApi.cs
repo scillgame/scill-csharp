@@ -31,9 +31,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse ActivatePersonalChallenge (string appId, string cid);
+        ActionResponse ActivatePersonalChallenge (string appId, string challengeId);
 
         /// <summary>
         /// Activate a personal challenges
@@ -43,9 +43,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> ActivatePersonalChallengeWithHttpInfo (string appId, string cid);
+        ApiResponse<ActionResponse> ActivatePersonalChallengeWithHttpInfo (string appId, string challengeId);
         /// <summary>
         /// Cancel an active personal challenges
         /// </summary>
@@ -54,9 +54,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse CancelPersonalChallenge (string appId, string cid);
+        ActionResponse CancelPersonalChallenge (string appId, string challengeId);
 
         /// <summary>
         /// Cancel an active personal challenges
@@ -66,9 +66,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> CancelPersonalChallengeWithHttpInfo (string appId, string cid);
+        ApiResponse<ActionResponse> CancelPersonalChallengeWithHttpInfo (string appId, string challengeId);
         /// <summary>
         /// Claim the reward of a finished personal challenge
         /// </summary>
@@ -77,9 +77,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse ClaimPersonalChallengeReward (string appId, string cid);
+        ActionResponse ClaimPersonalChallengeReward (string appId, string challengeId);
 
         /// <summary>
         /// Claim the reward of a finished personal challenge
@@ -89,9 +89,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> ClaimPersonalChallengeRewardWithHttpInfo (string appId, string cid);
+        ApiResponse<ActionResponse> ClaimPersonalChallengeRewardWithHttpInfo (string appId, string challengeId);
         /// <summary>
         /// Get an access token for the Websockets server notifying of updates in real time
         /// </summary>
@@ -133,6 +133,29 @@ namespace SCILL.Api
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
         ApiResponse<List<ChallengeCategory>> GetActivePersonalChallengesWithHttpInfo (string appId);
         /// <summary>
+        /// Get personal challenge by id
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <returns>Challenge</returns>
+        Challenge GetPersonalChallengeById (string appId, string challengeId);
+
+        /// <summary>
+        /// Get personal challenge by id
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <returns>ApiResponse of Challenge</returns>
+        ApiResponse<Challenge> GetPersonalChallengeByIdWithHttpInfo (string appId, string challengeId);
+        /// <summary>
         /// Get personal challenges
         /// </summary>
         /// <remarks>
@@ -161,9 +184,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse UnlockPersonalChallenge (string appId, string cid);
+        ActionResponse UnlockPersonalChallenge (string appId, string challengeId);
 
         /// <summary>
         /// Unlock a personal challenges
@@ -173,9 +196,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> UnlockPersonalChallengeWithHttpInfo (string appId, string cid);
+        ApiResponse<ActionResponse> UnlockPersonalChallengeWithHttpInfo (string appId, string challengeId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -186,9 +209,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> ActivatePersonalChallengeAsync (string appId, string cid);
+        System.Threading.Tasks.Task<ActionResponse> ActivatePersonalChallengeAsync (string appId, string challengeId);
 
         /// <summary>
         /// Activate a personal challenges
@@ -198,9 +221,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivatePersonalChallengeAsyncWithHttpInfo (string appId, string cid);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivatePersonalChallengeAsyncWithHttpInfo (string appId, string challengeId);
         /// <summary>
         /// Cancel an active personal challenges
         /// </summary>
@@ -209,9 +232,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> CancelPersonalChallengeAsync (string appId, string cid);
+        System.Threading.Tasks.Task<ActionResponse> CancelPersonalChallengeAsync (string appId, string challengeId);
 
         /// <summary>
         /// Cancel an active personal challenges
@@ -221,9 +244,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> CancelPersonalChallengeAsyncWithHttpInfo (string appId, string cid);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> CancelPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId);
         /// <summary>
         /// Claim the reward of a finished personal challenge
         /// </summary>
@@ -232,9 +255,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> ClaimPersonalChallengeRewardAsync (string appId, string cid);
+        System.Threading.Tasks.Task<ActionResponse> ClaimPersonalChallengeRewardAsync (string appId, string challengeId);
 
         /// <summary>
         /// Claim the reward of a finished personal challenge
@@ -244,9 +267,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimPersonalChallengeRewardAsyncWithHttpInfo (string appId, string cid);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimPersonalChallengeRewardAsyncWithHttpInfo (string appId, string challengeId);
         /// <summary>
         /// Get an access token for the Websockets server notifying of updates in real time
         /// </summary>
@@ -288,6 +311,29 @@ namespace SCILL.Api
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetActivePersonalChallengesAsyncWithHttpInfo (string appId);
         /// <summary>
+        /// Get personal challenge by id
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <returns>Task of Challenge</returns>
+        System.Threading.Tasks.Task<Challenge> GetPersonalChallengeByIdAsync (string appId, string challengeId);
+
+        /// <summary>
+        /// Get personal challenge by id
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <returns>Task of ApiResponse (Challenge)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Challenge>> GetPersonalChallengeByIdAsyncWithHttpInfo (string appId, string challengeId);
+        /// <summary>
         /// Get personal challenges
         /// </summary>
         /// <remarks>
@@ -316,9 +362,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> UnlockPersonalChallengeAsync (string appId, string cid);
+        System.Threading.Tasks.Task<ActionResponse> UnlockPersonalChallengeAsync (string appId, string challengeId);
 
         /// <summary>
         /// Unlock a personal challenges
@@ -328,9 +374,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockPersonalChallengeAsyncWithHttpInfo (string appId, string cid);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId);
         #endregion Asynchronous Operations
     }
 
@@ -447,11 +493,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse ActivatePersonalChallenge (string appId, string cid)
+        public ActionResponse ActivatePersonalChallenge (string appId, string challengeId)
         {
-             ApiResponse<ActionResponse> localVarResponse = ActivatePersonalChallengeWithHttpInfo(appId, cid);
+             ApiResponse<ActionResponse> localVarResponse = ActivatePersonalChallengeWithHttpInfo(appId, challengeId);
              return localVarResponse.Data;
         }
 
@@ -460,18 +506,18 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > ActivatePersonalChallengeWithHttpInfo (string appId, string cid)
+        public ApiResponse< ActionResponse > ActivatePersonalChallengeWithHttpInfo (string appId, string challengeId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->ActivatePersonalChallenge");
-            // verify the required parameter 'cid' is set
-            if (cid == null)
-                throw new ApiException(400, "Missing required parameter 'cid' when calling ChallengesApi->ActivatePersonalChallenge");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->ActivatePersonalChallenge");
 
-            var localVarPath = "/api/v1/challenges/personal/activate/{appId}/{cid}";
+            var localVarPath = "/api/v1/challenges/personal/activate/{appId}/{challengeId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -493,7 +539,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -530,11 +576,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> ActivatePersonalChallengeAsync (string appId, string cid)
+        public async System.Threading.Tasks.Task<ActionResponse> ActivatePersonalChallengeAsync (string appId, string challengeId)
         {
-             ApiResponse<ActionResponse> localVarResponse = await ActivatePersonalChallengeAsyncWithHttpInfo(appId, cid);
+             ApiResponse<ActionResponse> localVarResponse = await ActivatePersonalChallengeAsyncWithHttpInfo(appId, challengeId);
              return localVarResponse.Data;
 
         }
@@ -544,18 +590,18 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivatePersonalChallengeAsyncWithHttpInfo (string appId, string cid)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivatePersonalChallengeAsyncWithHttpInfo (string appId, string challengeId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->ActivatePersonalChallenge");
-            // verify the required parameter 'cid' is set
-            if (cid == null)
-                throw new ApiException(400, "Missing required parameter 'cid' when calling ChallengesApi->ActivatePersonalChallenge");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->ActivatePersonalChallenge");
 
-            var localVarPath = "/api/v1/challenges/personal/activate/{appId}/{cid}";
+            var localVarPath = "/api/v1/challenges/personal/activate/{appId}/{challengeId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -577,7 +623,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -614,11 +660,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse CancelPersonalChallenge (string appId, string cid)
+        public ActionResponse CancelPersonalChallenge (string appId, string challengeId)
         {
-             ApiResponse<ActionResponse> localVarResponse = CancelPersonalChallengeWithHttpInfo(appId, cid);
+             ApiResponse<ActionResponse> localVarResponse = CancelPersonalChallengeWithHttpInfo(appId, challengeId);
              return localVarResponse.Data;
         }
 
@@ -627,18 +673,18 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > CancelPersonalChallengeWithHttpInfo (string appId, string cid)
+        public ApiResponse< ActionResponse > CancelPersonalChallengeWithHttpInfo (string appId, string challengeId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->CancelPersonalChallenge");
-            // verify the required parameter 'cid' is set
-            if (cid == null)
-                throw new ApiException(400, "Missing required parameter 'cid' when calling ChallengesApi->CancelPersonalChallenge");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->CancelPersonalChallenge");
 
-            var localVarPath = "/api/v1/challenges/personal/cancel/{appId}/{cid}";
+            var localVarPath = "/api/v1/challenges/personal/cancel/{appId}/{challengeId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -660,7 +706,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -697,11 +743,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> CancelPersonalChallengeAsync (string appId, string cid)
+        public async System.Threading.Tasks.Task<ActionResponse> CancelPersonalChallengeAsync (string appId, string challengeId)
         {
-             ApiResponse<ActionResponse> localVarResponse = await CancelPersonalChallengeAsyncWithHttpInfo(appId, cid);
+             ApiResponse<ActionResponse> localVarResponse = await CancelPersonalChallengeAsyncWithHttpInfo(appId, challengeId);
              return localVarResponse.Data;
 
         }
@@ -711,18 +757,18 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> CancelPersonalChallengeAsyncWithHttpInfo (string appId, string cid)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> CancelPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->CancelPersonalChallenge");
-            // verify the required parameter 'cid' is set
-            if (cid == null)
-                throw new ApiException(400, "Missing required parameter 'cid' when calling ChallengesApi->CancelPersonalChallenge");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->CancelPersonalChallenge");
 
-            var localVarPath = "/api/v1/challenges/personal/cancel/{appId}/{cid}";
+            var localVarPath = "/api/v1/challenges/personal/cancel/{appId}/{challengeId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -744,7 +790,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -781,11 +827,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse ClaimPersonalChallengeReward (string appId, string cid)
+        public ActionResponse ClaimPersonalChallengeReward (string appId, string challengeId)
         {
-             ApiResponse<ActionResponse> localVarResponse = ClaimPersonalChallengeRewardWithHttpInfo(appId, cid);
+             ApiResponse<ActionResponse> localVarResponse = ClaimPersonalChallengeRewardWithHttpInfo(appId, challengeId);
              return localVarResponse.Data;
         }
 
@@ -794,18 +840,18 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > ClaimPersonalChallengeRewardWithHttpInfo (string appId, string cid)
+        public ApiResponse< ActionResponse > ClaimPersonalChallengeRewardWithHttpInfo (string appId, string challengeId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->ClaimPersonalChallengeReward");
-            // verify the required parameter 'cid' is set
-            if (cid == null)
-                throw new ApiException(400, "Missing required parameter 'cid' when calling ChallengesApi->ClaimPersonalChallengeReward");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->ClaimPersonalChallengeReward");
 
-            var localVarPath = "/api/v1/challenges/personal/claim/{appId}/{cid}";
+            var localVarPath = "/api/v1/challenges/personal/claim/{appId}/{challengeId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -827,7 +873,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -864,11 +910,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> ClaimPersonalChallengeRewardAsync (string appId, string cid)
+        public async System.Threading.Tasks.Task<ActionResponse> ClaimPersonalChallengeRewardAsync (string appId, string challengeId)
         {
-             ApiResponse<ActionResponse> localVarResponse = await ClaimPersonalChallengeRewardAsyncWithHttpInfo(appId, cid);
+             ApiResponse<ActionResponse> localVarResponse = await ClaimPersonalChallengeRewardAsyncWithHttpInfo(appId, challengeId);
              return localVarResponse.Data;
 
         }
@@ -878,18 +924,18 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimPersonalChallengeRewardAsyncWithHttpInfo (string appId, string cid)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimPersonalChallengeRewardAsyncWithHttpInfo (string appId, string challengeId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->ClaimPersonalChallengeReward");
-            // verify the required parameter 'cid' is set
-            if (cid == null)
-                throw new ApiException(400, "Missing required parameter 'cid' when calling ChallengesApi->ClaimPersonalChallengeReward");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->ClaimPersonalChallengeReward");
 
-            var localVarPath = "/api/v1/challenges/personal/claim/{appId}/{cid}";
+            var localVarPath = "/api/v1/challenges/personal/claim/{appId}/{challengeId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -911,7 +957,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1242,6 +1288,173 @@ namespace SCILL.Api
         }
 
         /// <summary>
+        /// Get personal challenge by id Get personal challenges organized in categories
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <returns>Challenge</returns>
+        public Challenge GetPersonalChallengeById (string appId, string challengeId)
+        {
+             ApiResponse<Challenge> localVarResponse = GetPersonalChallengeByIdWithHttpInfo(appId, challengeId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get personal challenge by id Get personal challenges organized in categories
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <returns>ApiResponse of Challenge</returns>
+        public ApiResponse< Challenge > GetPersonalChallengeByIdWithHttpInfo (string appId, string challengeId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->GetPersonalChallengeById");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->GetPersonalChallengeById");
+
+            var localVarPath = "/api/v1/challenges/personal/get/{appId}/{challengeId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetPersonalChallengeById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Challenge>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Challenge) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Challenge)));
+        }
+
+        /// <summary>
+        /// Get personal challenge by id Get personal challenges organized in categories
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <returns>Task of Challenge</returns>
+        public async System.Threading.Tasks.Task<Challenge> GetPersonalChallengeByIdAsync (string appId, string challengeId)
+        {
+             ApiResponse<Challenge> localVarResponse = await GetPersonalChallengeByIdAsyncWithHttpInfo(appId, challengeId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get personal challenge by id Get personal challenges organized in categories
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <returns>Task of ApiResponse (Challenge)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Challenge>> GetPersonalChallengeByIdAsyncWithHttpInfo (string appId, string challengeId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->GetPersonalChallengeById");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->GetPersonalChallengeById");
+
+            var localVarPath = "/api/v1/challenges/personal/get/{appId}/{challengeId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetPersonalChallengeById", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Challenge>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (Challenge) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Challenge)));
+        }
+
+        /// <summary>
         /// Get personal challenges Get personal challenges organized in categories
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1401,11 +1614,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse UnlockPersonalChallenge (string appId, string cid)
+        public ActionResponse UnlockPersonalChallenge (string appId, string challengeId)
         {
-             ApiResponse<ActionResponse> localVarResponse = UnlockPersonalChallengeWithHttpInfo(appId, cid);
+             ApiResponse<ActionResponse> localVarResponse = UnlockPersonalChallengeWithHttpInfo(appId, challengeId);
              return localVarResponse.Data;
         }
 
@@ -1414,18 +1627,18 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > UnlockPersonalChallengeWithHttpInfo (string appId, string cid)
+        public ApiResponse< ActionResponse > UnlockPersonalChallengeWithHttpInfo (string appId, string challengeId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->UnlockPersonalChallenge");
-            // verify the required parameter 'cid' is set
-            if (cid == null)
-                throw new ApiException(400, "Missing required parameter 'cid' when calling ChallengesApi->UnlockPersonalChallenge");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->UnlockPersonalChallenge");
 
-            var localVarPath = "/api/v1/challenges/personal/unlock/{appId}/{cid}";
+            var localVarPath = "/api/v1/challenges/personal/unlock/{appId}/{challengeId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1447,7 +1660,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1484,11 +1697,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> UnlockPersonalChallengeAsync (string appId, string cid)
+        public async System.Threading.Tasks.Task<ActionResponse> UnlockPersonalChallengeAsync (string appId, string challengeId)
         {
-             ApiResponse<ActionResponse> localVarResponse = await UnlockPersonalChallengeAsyncWithHttpInfo(appId, cid);
+             ApiResponse<ActionResponse> localVarResponse = await UnlockPersonalChallengeAsyncWithHttpInfo(appId, challengeId);
              return localVarResponse.Data;
 
         }
@@ -1498,18 +1711,18 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="cid">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockPersonalChallengeAsyncWithHttpInfo (string appId, string cid)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->UnlockPersonalChallenge");
-            // verify the required parameter 'cid' is set
-            if (cid == null)
-                throw new ApiException(400, "Missing required parameter 'cid' when calling ChallengesApi->UnlockPersonalChallenge");
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling ChallengesApi->UnlockPersonalChallenge");
 
-            var localVarPath = "/api/v1/challenges/personal/unlock/{appId}/{cid}";
+            var localVarPath = "/api/v1/challenges/personal/unlock/{appId}/{challengeId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1531,7 +1744,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))

@@ -32,34 +32,92 @@ namespace SCILL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Challenge" /> class.
         /// </summary>
-        /// <param name="challengeId">The unique id of this challenge. Every challenge is linked to a product..</param>
-        /// <param name="challengeName">The name of the challenge in the language set by the language parameter..</param>
+        /// <param name="challengeId">The unique id of this challenge. Every challenge is linked to a product. (required).</param>
+        /// <param name="challengeName">The name of the challenge in the language set by the language parameter. (required).</param>
         /// <param name="challengeDurationTime">The duration of the challenge in seconds. Challenges auto lock after time-out and need to be unlocked again..</param>
         /// <param name="liveDate">The date this challenge should start. Use that field to create challenges that start in the future..</param>
-        /// <param name="challengeGoal">Indicates how many “tasks” must be completed or done to complete this challenge..</param>
-        /// <param name="userChallengeCurrentScore">Indicates how many tasks the user already has completed. Use this in combination with challenge_goal to render a nice progress bar..</param>
-        /// <param name="challengeIcon">In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database..</param>
-        /// <param name="challengeIconHd">This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank..</param>
+        /// <param name="challengeGoal">Indicates how many “tasks” must be completed or done to complete this challenge. (required).</param>
+        /// <param name="userChallengeCurrentScore">Indicates how many tasks the user already has completed. Use this in combination with challenge_goal to render a nice progress bar. (required).</param>
+        /// <param name="challengeIcon">In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database. (required).</param>
+        /// <param name="challengeIconHd">This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank. (required).</param>
+        /// <param name="challengePrice">If you purchase the challenge, you can set a price..</param>
+        /// <param name="challengeReward">Set a reward for this challenge. This is a numeric value that you can map to an enum in your code.</param>
+        /// <param name="challengeXp">If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded..</param>
         /// <param name="repeatable">If this challenge can be only activated once per user this will be false. Otherwise this challenge will always be added to list of available challenges (see personal or alliance challenges)..</param>
         /// <param name="type">Indicates the status of the challenge. This can be one of the following unlock: Challenge does not track anything. in-progress: Challenge is active and tracking. overtime: User did not manage to finish the challenge in time. unclaimed: The challenge has been completed but the reward has not yet been claimed. finished: The challenge has been successfully be completed and the reward has been claimed.</param>
         /// <param name="isClaimed">If the challenge reward has been claimed this is true otherwise its false..</param>
         /// <param name="userChallengeUnlockedAt">This is the timestamp the challenge has been unlocked..</param>
         /// <param name="userChallengeActivatedAt">This is the timestamp the challenge has been activated..</param>
-        public Challenge(string challengeId = default(string), string challengeName = default(string), int? challengeDurationTime = default(int?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), bool? repeatable = default(bool?), string type = default(string), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string))
+        /// <param name="userChallengeIsClaimed">Indicates if this challenge has been claimed..</param>
+        /// <param name="userChallengeStatus">Gives indication in what state the challenge is..</param>
+        public Challenge(string challengeId = default(string), string challengeName = default(string), int? challengeDurationTime = default(int?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), int? challengePrice = default(int?), int? challengeReward = default(int?), int? challengeXp = default(int?), bool? repeatable = default(bool?), string type = default(string), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string), bool? userChallengeIsClaimed = default(bool?), int? userChallengeStatus = default(int?))
         {
-            this.challenge_id = challengeId;
-            this.challenge_name = challengeName;
+            // to ensure "challengeId" is required (not null)
+            if (challengeId == null)
+            {
+                throw new InvalidDataException("challengeId is a required property for Challenge and cannot be null");
+            }
+            else
+            {
+                this.challenge_id = challengeId;
+            }
+            // to ensure "challengeName" is required (not null)
+            if (challengeName == null)
+            {
+                throw new InvalidDataException("challengeName is a required property for Challenge and cannot be null");
+            }
+            else
+            {
+                this.challenge_name = challengeName;
+            }
+            // to ensure "challengeGoal" is required (not null)
+            if (challengeGoal == null)
+            {
+                throw new InvalidDataException("challengeGoal is a required property for Challenge and cannot be null");
+            }
+            else
+            {
+                this.challenge_goal = challengeGoal;
+            }
+            // to ensure "userChallengeCurrentScore" is required (not null)
+            if (userChallengeCurrentScore == null)
+            {
+                throw new InvalidDataException("userChallengeCurrentScore is a required property for Challenge and cannot be null");
+            }
+            else
+            {
+                this.user_challenge_current_score = userChallengeCurrentScore;
+            }
+            // to ensure "challengeIcon" is required (not null)
+            if (challengeIcon == null)
+            {
+                throw new InvalidDataException("challengeIcon is a required property for Challenge and cannot be null");
+            }
+            else
+            {
+                this.challenge_icon = challengeIcon;
+            }
+            // to ensure "challengeIconHd" is required (not null)
+            if (challengeIconHd == null)
+            {
+                throw new InvalidDataException("challengeIconHd is a required property for Challenge and cannot be null");
+            }
+            else
+            {
+                this.challenge_icon_hd = challengeIconHd;
+            }
             this.challenge_duration_time = challengeDurationTime;
             this.live_date = liveDate;
-            this.challenge_goal = challengeGoal;
-            this.user_challenge_current_score = userChallengeCurrentScore;
-            this.challenge_icon = challengeIcon;
-            this.challenge_icon_hd = challengeIconHd;
+            this.challenge_price = challengePrice;
+            this.challenge_reward = challengeReward;
+            this.challenge_xp = challengeXp;
             this.repeatable = repeatable;
             this.type = type;
             this.is_claimed = isClaimed;
             this.user_challenge_unlocked_at = userChallengeUnlockedAt;
             this.user_challenge_activated_at = userChallengeActivatedAt;
+            this.user_challenge_is_claimed = userChallengeIsClaimed;
+            this.user_challenge_status = userChallengeStatus;
         }
         
         /// <summary>
@@ -119,6 +177,27 @@ namespace SCILL.Model
         public string challenge_icon_hd { get; set; }
 
         /// <summary>
+        /// If you purchase the challenge, you can set a price.
+        /// </summary>
+        /// <value>If you purchase the challenge, you can set a price.</value>
+        [DataMember(Name="challenge_price", EmitDefaultValue=false)]
+        public int? challenge_price { get; set; }
+
+        /// <summary>
+        /// Set a reward for this challenge. This is a numeric value that you can map to an enum in your code
+        /// </summary>
+        /// <value>Set a reward for this challenge. This is a numeric value that you can map to an enum in your code</value>
+        [DataMember(Name="challenge_reward", EmitDefaultValue=false)]
+        public int? challenge_reward { get; set; }
+
+        /// <summary>
+        /// If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded.
+        /// </summary>
+        /// <value>If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded.</value>
+        [DataMember(Name="challenge_xp", EmitDefaultValue=false)]
+        public int? challenge_xp { get; set; }
+
+        /// <summary>
         /// If this challenge can be only activated once per user this will be false. Otherwise this challenge will always be added to list of available challenges (see personal or alliance challenges).
         /// </summary>
         /// <value>If this challenge can be only activated once per user this will be false. Otherwise this challenge will always be added to list of available challenges (see personal or alliance challenges).</value>
@@ -154,6 +233,20 @@ namespace SCILL.Model
         public string user_challenge_activated_at { get; set; }
 
         /// <summary>
+        /// Indicates if this challenge has been claimed.
+        /// </summary>
+        /// <value>Indicates if this challenge has been claimed.</value>
+        [DataMember(Name="user_challenge_is_claimed", EmitDefaultValue=false)]
+        public bool? user_challenge_is_claimed { get; set; }
+
+        /// <summary>
+        /// Gives indication in what state the challenge is.
+        /// </summary>
+        /// <value>Gives indication in what state the challenge is.</value>
+        [DataMember(Name="user_challenge_status", EmitDefaultValue=false)]
+        public int? user_challenge_status { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -169,11 +262,16 @@ namespace SCILL.Model
             sb.Append("  user_challenge_current_score: ").Append(user_challenge_current_score).Append("\n");
             sb.Append("  challenge_icon: ").Append(challenge_icon).Append("\n");
             sb.Append("  challenge_icon_hd: ").Append(challenge_icon_hd).Append("\n");
+            sb.Append("  challenge_price: ").Append(challenge_price).Append("\n");
+            sb.Append("  challenge_reward: ").Append(challenge_reward).Append("\n");
+            sb.Append("  challenge_xp: ").Append(challenge_xp).Append("\n");
             sb.Append("  repeatable: ").Append(repeatable).Append("\n");
             sb.Append("  type: ").Append(type).Append("\n");
             sb.Append("  is_claimed: ").Append(is_claimed).Append("\n");
             sb.Append("  user_challenge_unlocked_at: ").Append(user_challenge_unlocked_at).Append("\n");
             sb.Append("  user_challenge_activated_at: ").Append(user_challenge_activated_at).Append("\n");
+            sb.Append("  user_challenge_is_claimed: ").Append(user_challenge_is_claimed).Append("\n");
+            sb.Append("  user_challenge_status: ").Append(user_challenge_status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -249,6 +347,21 @@ namespace SCILL.Model
                     this.challenge_icon_hd.Equals(input.challenge_icon_hd))
                 ) && 
                 (
+                    this.challenge_price == input.challenge_price ||
+                    (this.challenge_price != null &&
+                    this.challenge_price.Equals(input.challenge_price))
+                ) && 
+                (
+                    this.challenge_reward == input.challenge_reward ||
+                    (this.challenge_reward != null &&
+                    this.challenge_reward.Equals(input.challenge_reward))
+                ) && 
+                (
+                    this.challenge_xp == input.challenge_xp ||
+                    (this.challenge_xp != null &&
+                    this.challenge_xp.Equals(input.challenge_xp))
+                ) && 
+                (
                     this.repeatable == input.repeatable ||
                     (this.repeatable != null &&
                     this.repeatable.Equals(input.repeatable))
@@ -272,6 +385,16 @@ namespace SCILL.Model
                     this.user_challenge_activated_at == input.user_challenge_activated_at ||
                     (this.user_challenge_activated_at != null &&
                     this.user_challenge_activated_at.Equals(input.user_challenge_activated_at))
+                ) && 
+                (
+                    this.user_challenge_is_claimed == input.user_challenge_is_claimed ||
+                    (this.user_challenge_is_claimed != null &&
+                    this.user_challenge_is_claimed.Equals(input.user_challenge_is_claimed))
+                ) && 
+                (
+                    this.user_challenge_status == input.user_challenge_status ||
+                    (this.user_challenge_status != null &&
+                    this.user_challenge_status.Equals(input.user_challenge_status))
                 );
         }
 
@@ -300,6 +423,12 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.challenge_icon.GetHashCode();
                 if (this.challenge_icon_hd != null)
                     hashCode = hashCode * 59 + this.challenge_icon_hd.GetHashCode();
+                if (this.challenge_price != null)
+                    hashCode = hashCode * 59 + this.challenge_price.GetHashCode();
+                if (this.challenge_reward != null)
+                    hashCode = hashCode * 59 + this.challenge_reward.GetHashCode();
+                if (this.challenge_xp != null)
+                    hashCode = hashCode * 59 + this.challenge_xp.GetHashCode();
                 if (this.repeatable != null)
                     hashCode = hashCode * 59 + this.repeatable.GetHashCode();
                 if (this.type != null)
@@ -310,6 +439,10 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.user_challenge_unlocked_at.GetHashCode();
                 if (this.user_challenge_activated_at != null)
                     hashCode = hashCode * 59 + this.user_challenge_activated_at.GetHashCode();
+                if (this.user_challenge_is_claimed != null)
+                    hashCode = hashCode * 59 + this.user_challenge_is_claimed.GetHashCode();
+                if (this.user_challenge_status != null)
+                    hashCode = hashCode * 59 + this.user_challenge_status.GetHashCode();
                 return hashCode;
             }
         }

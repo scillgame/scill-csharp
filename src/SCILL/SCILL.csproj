@@ -12,7 +12,7 @@ Contact: support@scillgame.com
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{928D082E-2640-4067-B028-8956AE0B9505}</ProjectGuid>
+    <ProjectGuid>{956875E1-941B-4AFC-81AF-F30ABB8B8536}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SCILL</RootNamespace>
@@ -67,7 +67,8 @@ Contact: support@scillgame.com
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" Exclude="obj\**" />
+    <Compile Include="**\*.cs"
+             Exclude="obj\**" />
   </ItemGroup>
   <ItemGroup>
       <None Include="packages.config" />

@@ -24,53 +24,139 @@ namespace SCILL.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Claim the reward of a finished personal challenge
+        /// Activate a given battle pass level by id
         /// </summary>
         /// <remarks>
-        /// Claim the reward of a battle pass level
+        /// Activate a given battle pass level by id
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload.</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse ClaimBattlePassLevelReward (BattlePassLevelId body, string appId, string bpid);
+        ActionResponse ActivateBattlePassLevel (string appId, string levelId);
 
         /// <summary>
-        /// Claim the reward of a finished personal challenge
+        /// Activate a given battle pass level by id
         /// </summary>
         /// <remarks>
-        /// Claim the reward of a battle pass level
+        /// Activate a given battle pass level by id
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload.</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> ClaimBattlePassLevelRewardWithHttpInfo (BattlePassLevelId body, string appId, string bpid);
+        ApiResponse<ActionResponse> ActivateBattlePassLevelWithHttpInfo (string appId, string levelId);
         /// <summary>
-        /// Get battle passe by id
+        /// Claim the battle pass level reward. This will trigger a Webhook that you can use to unlock the reward on server side. If you don&#x27;t have a server you can also unlock in the client application after receiving a positive response.
         /// </summary>
         /// <remarks>
-        /// Get battle pass for the product with id
+        /// Claim the battle pass level id
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>BattlePass</returns>
-        BattlePass GetBattlePass (string appId, string bpid);
+        /// <param name="levelId">The id of the battle pass level.</param>
+        /// <returns>ActionResponse</returns>
+        ActionResponse ClaimBattlePassLevelReward (string appId, string levelId);
 
         /// <summary>
-        /// Get battle passe by id
+        /// Claim the battle pass level reward. This will trigger a Webhook that you can use to unlock the reward on server side. If you don&#x27;t have a server you can also unlock in the client application after receiving a positive response.
+        /// </summary>
+        /// <remarks>
+        /// Claim the battle pass level id
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
+        /// <returns>ApiResponse of ActionResponse</returns>
+        ApiResponse<ActionResponse> ClaimBattlePassLevelRewardWithHttpInfo (string appId, string levelId);
+        /// <summary>
+        /// Get battle passes
+        /// </summary>
+        /// <remarks>
+        /// Get active battle passes for the app
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>List&lt;BattlePass&gt;</returns>
+        List<BattlePass> GetActiveBattlePasses (string appId);
+
+        /// <summary>
+        /// Get battle passes
+        /// </summary>
+        /// <remarks>
+        /// Get active battle passes for the app
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
+        ApiResponse<List<BattlePass>> GetActiveBattlePassesWithHttpInfo (string appId);
+        /// <summary>
+        /// Get battle pass levels for an app (from all battle passes)
+        /// </summary>
+        /// <remarks>
+        /// Get all battle pass levels for an app
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>List&lt;BattlePassLevel&gt;</returns>
+        List<BattlePassLevel> GetAllBattlePassLevels (string appId);
+
+        /// <summary>
+        /// Get battle pass levels for an app (from all battle passes)
+        /// </summary>
+        /// <remarks>
+        /// Get all battle pass levels for an app
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>ApiResponse of List&lt;BattlePassLevel&gt;</returns>
+        ApiResponse<List<BattlePassLevel>> GetAllBattlePassLevelsWithHttpInfo (string appId);
+        /// <summary>
+        /// Get battle pass by id
         /// </summary>
         /// <remarks>
         /// Get battle pass for the product with id
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>BattlePass</returns>
+        BattlePass GetBattlePass (string appId, string battlePassId);
+
+        /// <summary>
+        /// Get battle pass by id
+        /// </summary>
+        /// <remarks>
+        /// Get battle pass for the product with id
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
         /// <returns>ApiResponse of BattlePass</returns>
-        ApiResponse<BattlePass> GetBattlePassWithHttpInfo (string appId, string bpid);
+        ApiResponse<BattlePass> GetBattlePassWithHttpInfo (string appId, string battlePassId);
+        /// <summary>
+        /// Get battle pass levels for a battle pass
+        /// </summary>
+        /// <remarks>
+        /// Get battle pass levels for a battle pass
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>List&lt;BattlePassLevel&gt;</returns>
+        List<BattlePassLevel> GetBattlePassLevels (string appId, string battlePassId);
+
+        /// <summary>
+        /// Get battle pass levels for a battle pass
+        /// </summary>
+        /// <remarks>
+        /// Get battle pass levels for a battle pass
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>ApiResponse of List&lt;BattlePassLevel&gt;</returns>
+        ApiResponse<List<BattlePassLevel>> GetBattlePassLevelsWithHttpInfo (string appId, string battlePassId);
         /// <summary>
         /// Get battle passes
         /// </summary>
@@ -93,80 +179,187 @@ namespace SCILL.Api
         /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
         ApiResponse<List<BattlePass>> GetBattlePassesWithHttpInfo (string appId);
         /// <summary>
-        /// Unlock the level of a battle pass
+        /// Get battle passes unlocked by the user
         /// </summary>
         /// <remarks>
-        /// Unlock a battle pass level
+        /// Get unlocked battle passes for the user encoded in the access token
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>ActionResponse</returns>
-        ActionResponse UnlockBattlePassLevel (BattlePassLevelId body, string appId, string bpid);
+        /// <returns>List&lt;BattlePass&gt;</returns>
+        List<BattlePass> GetUnlockedBattlePasses (string appId);
 
         /// <summary>
-        /// Unlock the level of a battle pass
+        /// Get battle passes unlocked by the user
         /// </summary>
         /// <remarks>
-        /// Unlock a battle pass level
+        /// Get unlocked battle passes for the user encoded in the access token
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> UnlockBattlePassLevelWithHttpInfo (BattlePassLevelId body, string appId, string bpid);
+        /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
+        ApiResponse<List<BattlePass>> GetUnlockedBattlePassesWithHttpInfo (string appId);
+        /// <summary>
+        /// Unlock the battle pass for the user specified in the access token
+        /// </summary>
+        /// <remarks>
+        /// Unlock the battle pass for a user
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="body">Provide purchase info for the battle pass (optional)</param>
+        /// <returns>BattlePassUnlockInfo</returns>
+        BattlePassUnlockInfo UnlockBattlePass (string appId, string battlePassId, BattlePassUnlockPayload body = null);
+
+        /// <summary>
+        /// Unlock the battle pass for the user specified in the access token
+        /// </summary>
+        /// <remarks>
+        /// Unlock the battle pass for a user
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="body">Provide purchase info for the battle pass (optional)</param>
+        /// <returns>ApiResponse of BattlePassUnlockInfo</returns>
+        ApiResponse<BattlePassUnlockInfo> UnlockBattlePassWithHttpInfo (string appId, string battlePassId, BattlePassUnlockPayload body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Claim the reward of a finished personal challenge
+        /// Activate a given battle pass level by id
         /// </summary>
         /// <remarks>
-        /// Claim the reward of a battle pass level
+        /// Activate a given battle pass level by id
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload.</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> ClaimBattlePassLevelRewardAsync (BattlePassLevelId body, string appId, string bpid);
+        System.Threading.Tasks.Task<ActionResponse> ActivateBattlePassLevelAsync (string appId, string levelId);
 
         /// <summary>
-        /// Claim the reward of a finished personal challenge
+        /// Activate a given battle pass level by id
         /// </summary>
         /// <remarks>
-        /// Claim the reward of a battle pass level
+        /// Activate a given battle pass level by id
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload.</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimBattlePassLevelRewardAsyncWithHttpInfo (BattlePassLevelId body, string appId, string bpid);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivateBattlePassLevelAsyncWithHttpInfo (string appId, string levelId);
         /// <summary>
-        /// Get battle passe by id
+        /// Claim the battle pass level reward. This will trigger a Webhook that you can use to unlock the reward on server side. If you don&#x27;t have a server you can also unlock in the client application after receiving a positive response.
         /// </summary>
         /// <remarks>
-        /// Get battle pass for the product with id
+        /// Claim the battle pass level id
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>Task of BattlePass</returns>
-        System.Threading.Tasks.Task<BattlePass> GetBattlePassAsync (string appId, string bpid);
+        /// <param name="levelId">The id of the battle pass level.</param>
+        /// <returns>Task of ActionResponse</returns>
+        System.Threading.Tasks.Task<ActionResponse> ClaimBattlePassLevelRewardAsync (string appId, string levelId);
 
         /// <summary>
-        /// Get battle passe by id
+        /// Claim the battle pass level reward. This will trigger a Webhook that you can use to unlock the reward on server side. If you don&#x27;t have a server you can also unlock in the client application after receiving a positive response.
+        /// </summary>
+        /// <remarks>
+        /// Claim the battle pass level id
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
+        /// <returns>Task of ApiResponse (ActionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimBattlePassLevelRewardAsyncWithHttpInfo (string appId, string levelId);
+        /// <summary>
+        /// Get battle passes
+        /// </summary>
+        /// <remarks>
+        /// Get active battle passes for the app
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;BattlePass&gt;</returns>
+        System.Threading.Tasks.Task<List<BattlePass>> GetActiveBattlePassesAsync (string appId);
+
+        /// <summary>
+        /// Get battle passes
+        /// </summary>
+        /// <remarks>
+        /// Get active battle passes for the app
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetActiveBattlePassesAsyncWithHttpInfo (string appId);
+        /// <summary>
+        /// Get battle pass levels for an app (from all battle passes)
+        /// </summary>
+        /// <remarks>
+        /// Get all battle pass levels for an app
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;BattlePassLevel&gt;</returns>
+        System.Threading.Tasks.Task<List<BattlePassLevel>> GetAllBattlePassLevelsAsync (string appId);
+
+        /// <summary>
+        /// Get battle pass levels for an app (from all battle passes)
+        /// </summary>
+        /// <remarks>
+        /// Get all battle pass levels for an app
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;BattlePassLevel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<BattlePassLevel>>> GetAllBattlePassLevelsAsyncWithHttpInfo (string appId);
+        /// <summary>
+        /// Get battle pass by id
         /// </summary>
         /// <remarks>
         /// Get battle pass for the product with id
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>Task of BattlePass</returns>
+        System.Threading.Tasks.Task<BattlePass> GetBattlePassAsync (string appId, string battlePassId);
+
+        /// <summary>
+        /// Get battle pass by id
+        /// </summary>
+        /// <remarks>
+        /// Get battle pass for the product with id
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
         /// <returns>Task of ApiResponse (BattlePass)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BattlePass>> GetBattlePassAsyncWithHttpInfo (string appId, string bpid);
+        System.Threading.Tasks.Task<ApiResponse<BattlePass>> GetBattlePassAsyncWithHttpInfo (string appId, string battlePassId);
+        /// <summary>
+        /// Get battle pass levels for a battle pass
+        /// </summary>
+        /// <remarks>
+        /// Get battle pass levels for a battle pass
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>Task of List&lt;BattlePassLevel&gt;</returns>
+        System.Threading.Tasks.Task<List<BattlePassLevel>> GetBattlePassLevelsAsync (string appId, string battlePassId);
+
+        /// <summary>
+        /// Get battle pass levels for a battle pass
+        /// </summary>
+        /// <remarks>
+        /// Get battle pass levels for a battle pass
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>Task of ApiResponse (List&lt;BattlePassLevel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<BattlePassLevel>>> GetBattlePassLevelsAsyncWithHttpInfo (string appId, string battlePassId);
         /// <summary>
         /// Get battle passes
         /// </summary>
@@ -189,30 +382,51 @@ namespace SCILL.Api
         /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetBattlePassesAsyncWithHttpInfo (string appId);
         /// <summary>
-        /// Unlock the level of a battle pass
+        /// Get battle passes unlocked by the user
         /// </summary>
         /// <remarks>
-        /// Unlock a battle pass level
+        /// Get unlocked battle passes for the user encoded in the access token
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> UnlockBattlePassLevelAsync (BattlePassLevelId body, string appId, string bpid);
+        /// <returns>Task of List&lt;BattlePass&gt;</returns>
+        System.Threading.Tasks.Task<List<BattlePass>> GetUnlockedBattlePassesAsync (string appId);
 
         /// <summary>
-        /// Unlock the level of a battle pass
+        /// Get battle passes unlocked by the user
         /// </summary>
         /// <remarks>
-        /// Unlock a battle pass level
+        /// Get unlocked battle passes for the user encoded in the access token
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockBattlePassLevelAsyncWithHttpInfo (BattlePassLevelId body, string appId, string bpid);
+        /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetUnlockedBattlePassesAsyncWithHttpInfo (string appId);
+        /// <summary>
+        /// Unlock the battle pass for the user specified in the access token
+        /// </summary>
+        /// <remarks>
+        /// Unlock the battle pass for a user
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="body">Provide purchase info for the battle pass (optional)</param>
+        /// <returns>Task of BattlePassUnlockInfo</returns>
+        System.Threading.Tasks.Task<BattlePassUnlockInfo> UnlockBattlePassAsync (string appId, string battlePassId, BattlePassUnlockPayload body = null);
+
+        /// <summary>
+        /// Unlock the battle pass for the user specified in the access token
+        /// </summary>
+        /// <remarks>
+        /// Unlock the battle pass for a user
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="body">Provide purchase info for the battle pass (optional)</param>
+        /// <returns>Task of ApiResponse (BattlePassUnlockInfo)</returns>
+        System.Threading.Tasks.Task<ApiResponse<BattlePassUnlockInfo>> UnlockBattlePassAsyncWithHttpInfo (string appId, string battlePassId, BattlePassUnlockPayload body = null);
         #endregion Asynchronous Operations
     }
 
@@ -325,40 +539,35 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Claim the reward of a finished personal challenge Claim the reward of a battle pass level
+        /// Activate a given battle pass level by id Activate a given battle pass level by id
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload.</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse ClaimBattlePassLevelReward (BattlePassLevelId body, string appId, string bpid)
+        public ActionResponse ActivateBattlePassLevel (string appId, string levelId)
         {
-             ApiResponse<ActionResponse> localVarResponse = ClaimBattlePassLevelRewardWithHttpInfo(body, appId, bpid);
+             ApiResponse<ActionResponse> localVarResponse = ActivateBattlePassLevelWithHttpInfo(appId, levelId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Claim the reward of a finished personal challenge Claim the reward of a battle pass level
+        /// Activate a given battle pass level by id Activate a given battle pass level by id
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload.</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > ClaimBattlePassLevelRewardWithHttpInfo (BattlePassLevelId body, string appId, string bpid)
+        public ApiResponse< ActionResponse > ActivateBattlePassLevelWithHttpInfo (string appId, string levelId)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling BattlePassesApi->ClaimBattlePassLevelReward");
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->ClaimBattlePassLevelReward");
-            // verify the required parameter 'bpid' is set
-            if (bpid == null)
-                throw new ApiException(400, "Missing required parameter 'bpid' when calling BattlePassesApi->ClaimBattlePassLevelReward");
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->ActivateBattlePassLevel");
+            // verify the required parameter 'levelId' is set
+            if (levelId == null)
+                throw new ApiException(400, "Missing required parameter 'levelId' when calling BattlePassesApi->ActivateBattlePassLevel");
 
-            var localVarPath = "/api/v1/battle-passes/{appId}/{bpid}/claim-level";
+            var localVarPath = "/api/v1/battle-pass-levels/{appId}/activate/{levelId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -368,7 +577,6 @@ namespace SCILL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -381,15 +589,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (bpid != null) localVarPathParams.Add("bpid", this.Configuration.ApiClient.ParameterToString(bpid)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
+            if (levelId != null) localVarPathParams.Add("levelId", this.Configuration.ApiClient.ParameterToString(levelId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -412,7 +612,7 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ClaimBattlePassLevelReward", localVarResponse);
+                Exception exception = ExceptionFactory("ActivateBattlePassLevel", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -422,41 +622,36 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Claim the reward of a finished personal challenge Claim the reward of a battle pass level
+        /// Activate a given battle pass level by id Activate a given battle pass level by id
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload.</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> ClaimBattlePassLevelRewardAsync (BattlePassLevelId body, string appId, string bpid)
+        public async System.Threading.Tasks.Task<ActionResponse> ActivateBattlePassLevelAsync (string appId, string levelId)
         {
-             ApiResponse<ActionResponse> localVarResponse = await ClaimBattlePassLevelRewardAsyncWithHttpInfo(body, appId, bpid);
+             ApiResponse<ActionResponse> localVarResponse = await ActivateBattlePassLevelAsyncWithHttpInfo(appId, levelId);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Claim the reward of a finished personal challenge Claim the reward of a battle pass level
+        /// Activate a given battle pass level by id Activate a given battle pass level by id
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload.</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimBattlePassLevelRewardAsyncWithHttpInfo (BattlePassLevelId body, string appId, string bpid)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivateBattlePassLevelAsyncWithHttpInfo (string appId, string levelId)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling BattlePassesApi->ClaimBattlePassLevelReward");
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->ClaimBattlePassLevelReward");
-            // verify the required parameter 'bpid' is set
-            if (bpid == null)
-                throw new ApiException(400, "Missing required parameter 'bpid' when calling BattlePassesApi->ClaimBattlePassLevelReward");
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->ActivateBattlePassLevel");
+            // verify the required parameter 'levelId' is set
+            if (levelId == null)
+                throw new ApiException(400, "Missing required parameter 'levelId' when calling BattlePassesApi->ActivateBattlePassLevel");
 
-            var localVarPath = "/api/v1/battle-passes/{appId}/{bpid}/claim-level";
+            var localVarPath = "/api/v1/battle-pass-levels/{appId}/activate/{levelId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -466,7 +661,6 @@ namespace SCILL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -479,15 +673,174 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (bpid != null) localVarPathParams.Add("bpid", this.Configuration.ApiClient.ParameterToString(bpid)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
+            if (levelId != null) localVarPathParams.Add("levelId", this.Configuration.ApiClient.ParameterToString(levelId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
-            else
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarPostBody = body; // byte array
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ActivateBattlePassLevel", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ActionResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ActionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ActionResponse)));
+        }
+
+        /// <summary>
+        /// Claim the battle pass level reward. This will trigger a Webhook that you can use to unlock the reward on server side. If you don&#x27;t have a server you can also unlock in the client application after receiving a positive response. Claim the battle pass level id
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
+        /// <returns>ActionResponse</returns>
+        public ActionResponse ClaimBattlePassLevelReward (string appId, string levelId)
+        {
+             ApiResponse<ActionResponse> localVarResponse = ClaimBattlePassLevelRewardWithHttpInfo(appId, levelId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Claim the battle pass level reward. This will trigger a Webhook that you can use to unlock the reward on server side. If you don&#x27;t have a server you can also unlock in the client application after receiving a positive response. Claim the battle pass level id
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
+        /// <returns>ApiResponse of ActionResponse</returns>
+        public ApiResponse< ActionResponse > ClaimBattlePassLevelRewardWithHttpInfo (string appId, string levelId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->ClaimBattlePassLevelReward");
+            // verify the required parameter 'levelId' is set
+            if (levelId == null)
+                throw new ApiException(400, "Missing required parameter 'levelId' when calling BattlePassesApi->ClaimBattlePassLevelReward");
+
+            var localVarPath = "/api/v1/battle-pass-levels/{appId}/claim/{levelId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (levelId != null) localVarPathParams.Add("levelId", this.Configuration.ApiClient.ParameterToString(levelId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ClaimBattlePassLevelReward", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ActionResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ActionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ActionResponse)));
+        }
+
+        /// <summary>
+        /// Claim the battle pass level reward. This will trigger a Webhook that you can use to unlock the reward on server side. If you don&#x27;t have a server you can also unlock in the client application after receiving a positive response. Claim the battle pass level id
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
+        /// <returns>Task of ActionResponse</returns>
+        public async System.Threading.Tasks.Task<ActionResponse> ClaimBattlePassLevelRewardAsync (string appId, string levelId)
+        {
+             ApiResponse<ActionResponse> localVarResponse = await ClaimBattlePassLevelRewardAsyncWithHttpInfo(appId, levelId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Claim the battle pass level reward. This will trigger a Webhook that you can use to unlock the reward on server side. If you don&#x27;t have a server you can also unlock in the client application after receiving a positive response. Claim the battle pass level id
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="levelId">The id of the battle pass level.</param>
+        /// <returns>Task of ApiResponse (ActionResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimBattlePassLevelRewardAsyncWithHttpInfo (string appId, string levelId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->ClaimBattlePassLevelReward");
+            // verify the required parameter 'levelId' is set
+            if (levelId == null)
+                throw new ApiException(400, "Missing required parameter 'levelId' when calling BattlePassesApi->ClaimBattlePassLevelReward");
+
+            var localVarPath = "/api/v1/battle-pass-levels/{appId}/claim/{levelId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (levelId != null) localVarPathParams.Add("levelId", this.Configuration.ApiClient.ParameterToString(levelId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -520,35 +873,30 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get battle passe by id Get battle pass for the product with id
+        /// Get battle passes Get active battle passes for the app
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>BattlePass</returns>
-        public BattlePass GetBattlePass (string appId, string bpid)
+        /// <returns>List&lt;BattlePass&gt;</returns>
+        public List<BattlePass> GetActiveBattlePasses (string appId)
         {
-             ApiResponse<BattlePass> localVarResponse = GetBattlePassWithHttpInfo(appId, bpid);
+             ApiResponse<List<BattlePass>> localVarResponse = GetActiveBattlePassesWithHttpInfo(appId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get battle passe by id Get battle pass for the product with id
+        /// Get battle passes Get active battle passes for the app
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>ApiResponse of BattlePass</returns>
-        public ApiResponse< BattlePass > GetBattlePassWithHttpInfo (string appId, string bpid)
+        /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
+        public ApiResponse< List<BattlePass> > GetActiveBattlePassesWithHttpInfo (string appId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetBattlePass");
-            // verify the required parameter 'bpid' is set
-            if (bpid == null)
-                throw new ApiException(400, "Missing required parameter 'bpid' when calling BattlePassesApi->GetBattlePass");
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetActiveBattlePasses");
 
-            var localVarPath = "/api/v1/battle-passes/{appId}/{bpid}";
+            var localVarPath = "/api/v1/battle-passes/{appId}/active";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -570,7 +918,322 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (bpid != null) localVarPathParams.Add("bpid", this.Configuration.ApiClient.ParameterToString(bpid)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetActiveBattlePasses", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<BattlePass>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<BattlePass>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BattlePass>)));
+        }
+
+        /// <summary>
+        /// Get battle passes Get active battle passes for the app
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;BattlePass&gt;</returns>
+        public async System.Threading.Tasks.Task<List<BattlePass>> GetActiveBattlePassesAsync (string appId)
+        {
+             ApiResponse<List<BattlePass>> localVarResponse = await GetActiveBattlePassesAsyncWithHttpInfo(appId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get battle passes Get active battle passes for the app
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetActiveBattlePassesAsyncWithHttpInfo (string appId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetActiveBattlePasses");
+
+            var localVarPath = "/api/v1/battle-passes/{appId}/active";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetActiveBattlePasses", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<BattlePass>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<BattlePass>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BattlePass>)));
+        }
+
+        /// <summary>
+        /// Get battle pass levels for an app (from all battle passes) Get all battle pass levels for an app
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>List&lt;BattlePassLevel&gt;</returns>
+        public List<BattlePassLevel> GetAllBattlePassLevels (string appId)
+        {
+             ApiResponse<List<BattlePassLevel>> localVarResponse = GetAllBattlePassLevelsWithHttpInfo(appId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get battle pass levels for an app (from all battle passes) Get all battle pass levels for an app
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>ApiResponse of List&lt;BattlePassLevel&gt;</returns>
+        public ApiResponse< List<BattlePassLevel> > GetAllBattlePassLevelsWithHttpInfo (string appId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetAllBattlePassLevels");
+
+            var localVarPath = "/api/v1/battle-pass-levels/{appId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAllBattlePassLevels", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<BattlePassLevel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<BattlePassLevel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BattlePassLevel>)));
+        }
+
+        /// <summary>
+        /// Get battle pass levels for an app (from all battle passes) Get all battle pass levels for an app
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;BattlePassLevel&gt;</returns>
+        public async System.Threading.Tasks.Task<List<BattlePassLevel>> GetAllBattlePassLevelsAsync (string appId)
+        {
+             ApiResponse<List<BattlePassLevel>> localVarResponse = await GetAllBattlePassLevelsAsyncWithHttpInfo(appId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get battle pass levels for an app (from all battle passes) Get all battle pass levels for an app
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;BattlePassLevel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePassLevel>>> GetAllBattlePassLevelsAsyncWithHttpInfo (string appId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetAllBattlePassLevels");
+
+            var localVarPath = "/api/v1/battle-pass-levels/{appId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAllBattlePassLevels", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<BattlePassLevel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<BattlePassLevel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BattlePassLevel>)));
+        }
+
+        /// <summary>
+        /// Get battle pass by id Get battle pass for the product with id
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>BattlePass</returns>
+        public BattlePass GetBattlePass (string appId, string battlePassId)
+        {
+             ApiResponse<BattlePass> localVarResponse = GetBattlePassWithHttpInfo(appId, battlePassId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get battle pass by id Get battle pass for the product with id
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>ApiResponse of BattlePass</returns>
+        public ApiResponse< BattlePass > GetBattlePassWithHttpInfo (string appId, string battlePassId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetBattlePass");
+            // verify the required parameter 'battlePassId' is set
+            if (battlePassId == null)
+                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling BattlePassesApi->GetBattlePass");
+
+            var localVarPath = "/api/v1/battle-passes/{appId}/single/{battlePassId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (battlePassId != null) localVarPathParams.Add("battlePassId", this.Configuration.ApiClient.ParameterToString(battlePassId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -603,36 +1266,36 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get battle passe by id Get battle pass for the product with id
+        /// Get battle pass by id Get battle pass for the product with id
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
         /// <returns>Task of BattlePass</returns>
-        public async System.Threading.Tasks.Task<BattlePass> GetBattlePassAsync (string appId, string bpid)
+        public async System.Threading.Tasks.Task<BattlePass> GetBattlePassAsync (string appId, string battlePassId)
         {
-             ApiResponse<BattlePass> localVarResponse = await GetBattlePassAsyncWithHttpInfo(appId, bpid);
+             ApiResponse<BattlePass> localVarResponse = await GetBattlePassAsyncWithHttpInfo(appId, battlePassId);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Get battle passe by id Get battle pass for the product with id
+        /// Get battle pass by id Get battle pass for the product with id
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
         /// <returns>Task of ApiResponse (BattlePass)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BattlePass>> GetBattlePassAsyncWithHttpInfo (string appId, string bpid)
+        public async System.Threading.Tasks.Task<ApiResponse<BattlePass>> GetBattlePassAsyncWithHttpInfo (string appId, string battlePassId)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
                 throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetBattlePass");
-            // verify the required parameter 'bpid' is set
-            if (bpid == null)
-                throw new ApiException(400, "Missing required parameter 'bpid' when calling BattlePassesApi->GetBattlePass");
+            // verify the required parameter 'battlePassId' is set
+            if (battlePassId == null)
+                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling BattlePassesApi->GetBattlePass");
 
-            var localVarPath = "/api/v1/battle-passes/{appId}/{bpid}";
+            var localVarPath = "/api/v1/battle-passes/{appId}/single/{battlePassId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -654,7 +1317,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (bpid != null) localVarPathParams.Add("bpid", this.Configuration.ApiClient.ParameterToString(bpid)); // path parameter
+            if (battlePassId != null) localVarPathParams.Add("battlePassId", this.Configuration.ApiClient.ParameterToString(battlePassId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -684,6 +1347,173 @@ namespace SCILL.Api
             return new ApiResponse<BattlePass>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (BattlePass) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BattlePass)));
+        }
+
+        /// <summary>
+        /// Get battle pass levels for a battle pass Get battle pass levels for a battle pass
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>List&lt;BattlePassLevel&gt;</returns>
+        public List<BattlePassLevel> GetBattlePassLevels (string appId, string battlePassId)
+        {
+             ApiResponse<List<BattlePassLevel>> localVarResponse = GetBattlePassLevelsWithHttpInfo(appId, battlePassId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get battle pass levels for a battle pass Get battle pass levels for a battle pass
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>ApiResponse of List&lt;BattlePassLevel&gt;</returns>
+        public ApiResponse< List<BattlePassLevel> > GetBattlePassLevelsWithHttpInfo (string appId, string battlePassId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetBattlePassLevels");
+            // verify the required parameter 'battlePassId' is set
+            if (battlePassId == null)
+                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling BattlePassesApi->GetBattlePassLevels");
+
+            var localVarPath = "/api/v1/battle-pass-levels/{appId}/{battlePassId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (battlePassId != null) localVarPathParams.Add("battlePassId", this.Configuration.ApiClient.ParameterToString(battlePassId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBattlePassLevels", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<BattlePassLevel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<BattlePassLevel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BattlePassLevel>)));
+        }
+
+        /// <summary>
+        /// Get battle pass levels for a battle pass Get battle pass levels for a battle pass
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>Task of List&lt;BattlePassLevel&gt;</returns>
+        public async System.Threading.Tasks.Task<List<BattlePassLevel>> GetBattlePassLevelsAsync (string appId, string battlePassId)
+        {
+             ApiResponse<List<BattlePassLevel>> localVarResponse = await GetBattlePassLevelsAsyncWithHttpInfo(appId, battlePassId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get battle pass levels for a battle pass Get battle pass levels for a battle pass
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <returns>Task of ApiResponse (List&lt;BattlePassLevel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePassLevel>>> GetBattlePassLevelsAsyncWithHttpInfo (string appId, string battlePassId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetBattlePassLevels");
+            // verify the required parameter 'battlePassId' is set
+            if (battlePassId == null)
+                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling BattlePassesApi->GetBattlePassLevels");
+
+            var localVarPath = "/api/v1/battle-pass-levels/{appId}/{battlePassId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (battlePassId != null) localVarPathParams.Add("battlePassId", this.Configuration.ApiClient.ParameterToString(battlePassId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetBattlePassLevels", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<BattlePassLevel>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<BattlePassLevel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BattlePassLevel>)));
         }
 
         /// <summary>
@@ -842,40 +1672,192 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Unlock the level of a battle pass Unlock a battle pass level
+        /// Get battle passes unlocked by the user Get unlocked battle passes for the user encoded in the access token
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>ActionResponse</returns>
-        public ActionResponse UnlockBattlePassLevel (BattlePassLevelId body, string appId, string bpid)
+        /// <returns>List&lt;BattlePass&gt;</returns>
+        public List<BattlePass> GetUnlockedBattlePasses (string appId)
         {
-             ApiResponse<ActionResponse> localVarResponse = UnlockBattlePassLevelWithHttpInfo(body, appId, bpid);
+             ApiResponse<List<BattlePass>> localVarResponse = GetUnlockedBattlePassesWithHttpInfo(appId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Unlock the level of a battle pass Unlock a battle pass level
+        /// Get battle passes unlocked by the user Get unlocked battle passes for the user encoded in the access token
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > UnlockBattlePassLevelWithHttpInfo (BattlePassLevelId body, string appId, string bpid)
+        /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
+        public ApiResponse< List<BattlePass> > GetUnlockedBattlePassesWithHttpInfo (string appId)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling BattlePassesApi->UnlockBattlePassLevel");
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->UnlockBattlePassLevel");
-            // verify the required parameter 'bpid' is set
-            if (bpid == null)
-                throw new ApiException(400, "Missing required parameter 'bpid' when calling BattlePassesApi->UnlockBattlePassLevel");
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetUnlockedBattlePasses");
 
-            var localVarPath = "/api/v1/battle-passes/{appId}/{bpid}/unlock";
+            var localVarPath = "/api/v1/battle-passes/{appId}/unlocked";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUnlockedBattlePasses", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<BattlePass>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<BattlePass>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BattlePass>)));
+        }
+
+        /// <summary>
+        /// Get battle passes unlocked by the user Get unlocked battle passes for the user encoded in the access token
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;BattlePass&gt;</returns>
+        public async System.Threading.Tasks.Task<List<BattlePass>> GetUnlockedBattlePassesAsync (string appId)
+        {
+             ApiResponse<List<BattlePass>> localVarResponse = await GetUnlockedBattlePassesAsyncWithHttpInfo(appId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get battle passes unlocked by the user Get unlocked battle passes for the user encoded in the access token
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetUnlockedBattlePassesAsyncWithHttpInfo (string appId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->GetUnlockedBattlePasses");
+
+            var localVarPath = "/api/v1/battle-passes/{appId}/unlocked";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUnlockedBattlePasses", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<BattlePass>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<BattlePass>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BattlePass>)));
+        }
+
+        /// <summary>
+        /// Unlock the battle pass for the user specified in the access token Unlock the battle pass for a user
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="body">Provide purchase info for the battle pass (optional)</param>
+        /// <returns>BattlePassUnlockInfo</returns>
+        public BattlePassUnlockInfo UnlockBattlePass (string appId, string battlePassId, BattlePassUnlockPayload body = null)
+        {
+             ApiResponse<BattlePassUnlockInfo> localVarResponse = UnlockBattlePassWithHttpInfo(appId, battlePassId, body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Unlock the battle pass for the user specified in the access token Unlock the battle pass for a user
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="body">Provide purchase info for the battle pass (optional)</param>
+        /// <returns>ApiResponse of BattlePassUnlockInfo</returns>
+        public ApiResponse< BattlePassUnlockInfo > UnlockBattlePassWithHttpInfo (string appId, string battlePassId, BattlePassUnlockPayload body = null)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->UnlockBattlePass");
+            // verify the required parameter 'battlePassId' is set
+            if (battlePassId == null)
+                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling BattlePassesApi->UnlockBattlePass");
+
+            var localVarPath = "/api/v1/battle-passes/{appId}/unlock/{battlePassId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -898,7 +1880,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (bpid != null) localVarPathParams.Add("bpid", this.Configuration.ApiClient.ParameterToString(bpid)); // path parameter
+            if (battlePassId != null) localVarPathParams.Add("battlePassId", this.Configuration.ApiClient.ParameterToString(battlePassId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -929,51 +1911,48 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("UnlockBattlePassLevel", localVarResponse);
+                Exception exception = ExceptionFactory("UnlockBattlePass", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ActionResponse>(localVarStatusCode,
+            return new ApiResponse<BattlePassUnlockInfo>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ActionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ActionResponse)));
+                (BattlePassUnlockInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BattlePassUnlockInfo)));
         }
 
         /// <summary>
-        /// Unlock the level of a battle pass Unlock a battle pass level
+        /// Unlock the battle pass for the user specified in the access token Unlock the battle pass for a user
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> UnlockBattlePassLevelAsync (BattlePassLevelId body, string appId, string bpid)
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="body">Provide purchase info for the battle pass (optional)</param>
+        /// <returns>Task of BattlePassUnlockInfo</returns>
+        public async System.Threading.Tasks.Task<BattlePassUnlockInfo> UnlockBattlePassAsync (string appId, string battlePassId, BattlePassUnlockPayload body = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = await UnlockBattlePassLevelAsyncWithHttpInfo(body, appId, bpid);
+             ApiResponse<BattlePassUnlockInfo> localVarResponse = await UnlockBattlePassAsyncWithHttpInfo(appId, battlePassId, body);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Unlock the level of a battle pass Unlock a battle pass level
+        /// Unlock the battle pass for the user specified in the access token Unlock the battle pass for a user
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Provide the battle pass level id in this payload</param>
         /// <param name="appId">The app id</param>
-        /// <param name="bpid">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
-        /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockBattlePassLevelAsyncWithHttpInfo (BattlePassLevelId body, string appId, string bpid)
+        /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="body">Provide purchase info for the battle pass (optional)</param>
+        /// <returns>Task of ApiResponse (BattlePassUnlockInfo)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<BattlePassUnlockInfo>> UnlockBattlePassAsyncWithHttpInfo (string appId, string battlePassId, BattlePassUnlockPayload body = null)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling BattlePassesApi->UnlockBattlePassLevel");
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->UnlockBattlePassLevel");
-            // verify the required parameter 'bpid' is set
-            if (bpid == null)
-                throw new ApiException(400, "Missing required parameter 'bpid' when calling BattlePassesApi->UnlockBattlePassLevel");
+                throw new ApiException(400, "Missing required parameter 'appId' when calling BattlePassesApi->UnlockBattlePass");
+            // verify the required parameter 'battlePassId' is set
+            if (battlePassId == null)
+                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling BattlePassesApi->UnlockBattlePass");
 
-            var localVarPath = "/api/v1/battle-passes/{appId}/{bpid}/unlock";
+            var localVarPath = "/api/v1/battle-passes/{appId}/unlock/{battlePassId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -996,7 +1975,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (bpid != null) localVarPathParams.Add("bpid", this.Configuration.ApiClient.ParameterToString(bpid)); // path parameter
+            if (battlePassId != null) localVarPathParams.Add("battlePassId", this.Configuration.ApiClient.ParameterToString(battlePassId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1027,13 +2006,13 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("UnlockBattlePassLevel", localVarResponse);
+                Exception exception = ExceptionFactory("UnlockBattlePass", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ActionResponse>(localVarStatusCode,
+            return new ApiResponse<BattlePassUnlockInfo>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ActionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ActionResponse)));
+                (BattlePassUnlockInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(BattlePassUnlockInfo)));
         }
 
     }

@@ -32,10 +32,20 @@ namespace SCILL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ActionResponse" /> class.
         /// </summary>
-        /// <param name="status">HTTP status code.</param>
+        /// <param name="status">HTTP status code (required).</param>
         /// <param name="message">message (required).</param>
-        public ActionResponse(int? status = default(int?), string message = default(string))
+        /// <param name="challenge">challenge.</param>
+        public ActionResponse(int? status = default(int?), string message = default(string), Challenge challenge = default(Challenge))
         {
+            // to ensure "status" is required (not null)
+            if (status == null)
+            {
+                throw new InvalidDataException("status is a required property for ActionResponse and cannot be null");
+            }
+            else
+            {
+                this.status = status;
+            }
             // to ensure "message" is required (not null)
             if (message == null)
             {
@@ -45,7 +55,7 @@ namespace SCILL.Model
             {
                 this.message = message;
             }
-            this.status = status;
+            this.challenge = challenge;
         }
         
         /// <summary>
@@ -62,6 +72,12 @@ namespace SCILL.Model
         public string message { get; set; }
 
         /// <summary>
+        /// Gets or Sets challenge
+        /// </summary>
+        [DataMember(Name="challenge", EmitDefaultValue=false)]
+        public Challenge challenge { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -71,6 +87,7 @@ namespace SCILL.Model
             sb.Append("class ActionResponse {\n");
             sb.Append("  status: ").Append(status).Append("\n");
             sb.Append("  message: ").Append(message).Append("\n");
+            sb.Append("  challenge: ").Append(challenge).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -114,6 +131,11 @@ namespace SCILL.Model
                     this.message == input.message ||
                     (this.message != null &&
                     this.message.Equals(input.message))
+                ) && 
+                (
+                    this.challenge == input.challenge ||
+                    (this.challenge != null &&
+                    this.challenge.Equals(input.challenge))
                 );
         }
 
@@ -130,6 +152,8 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.status.GetHashCode();
                 if (this.message != null)
                     hashCode = hashCode * 59 + this.message.GetHashCode();
+                if (this.challenge != null)
+                    hashCode = hashCode * 59 + this.challenge.GetHashCode();
                 return hashCode;
             }
         }
