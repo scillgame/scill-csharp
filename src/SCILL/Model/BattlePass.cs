@@ -32,20 +32,20 @@ namespace SCILL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BattlePass" /> class.
         /// </summary>
-        /// <param name="battlePassId">The unique id of this battle pass. (required).</param>
-        /// <param name="appId">The unique id of the app (required).</param>
+        /// <param name="battlePassId">The unique id of this battle pass..</param>
+        /// <param name="appId">The unique id of the app.</param>
         /// <param name="battlePassName">The name of the battle bass. You can set that in the Admin Panel. The language is set with the query parameter language. See documentation for more info on that..</param>
         /// <param name="battlePassDescription">The description of the battle bass. You can set that in the Admin Panel and it can also be HTML. The language is set with the query parameter language. See documentation for more info on that..</param>
         /// <param name="battlePassShortDescription">A short description of the battle bass. You can set that in the Admin Panel and it can also be HTML. The language is set with the query parameter language. See documentation for more info on that..</param>
         /// <param name="battlePassDisclaimer">Use this to provide some terms and conditions following along this battle passes purchase..</param>
         /// <param name="battlePassPriority">The priority of the battle pass. I.e. if multiple are available you can use this field to sort them..</param>
-        /// <param name="packageSkuIos">If you want to sell Battle Passes you can use this field to trigger in-app purchase products within your mobile app. You can set this value in the Admin Panel. This one is for iOS. (required).</param>
-        /// <param name="packageSkuAndroid">If you want to sell Battle Passes you can use this field to trigger in-app purchase products within your mobile app. You can set this value in the Admin Panel. Use this to set the package string for Android. (required).</param>
+        /// <param name="packageSkuIos">If you want to sell Battle Passes you can use this field to trigger in-app purchase products within your mobile app. You can set this value in the Admin Panel. This one is for iOS..</param>
+        /// <param name="packageSkuAndroid">If you want to sell Battle Passes you can use this field to trigger in-app purchase products within your mobile app. You can set this value in the Admin Panel. Use this to set the package string for Android..</param>
         /// <param name="image">The mobile sized image name. For example you can use image and image_desktop to build a srcset in HTML or use them and size manually where you need them..</param>
         /// <param name="imageDesktop">The desktop sized image name or URL.</param>
-        /// <param name="startDate">The date (in iso format) when the Battle Pass starts. Tracking begins once this date is passed. (required).</param>
-        /// <param name="endDate">The date (in iso format) when the Battle Pass ends. Tracking stops once the end is reached and users will not be able to progress further than what they have achieved up to that point. (required).</param>
-        /// <param name="readMoreLink">If the Battle Pass costs “money” you may want to route the user to a web site/page, where they can learn more about this battle pass. You can also use this field to route the user inside your application by providing a path or whatever works for you. (required).</param>
+        /// <param name="startDate">The date (in iso format) when the Battle Pass starts. Tracking begins once this date is passed..</param>
+        /// <param name="endDate">The date (in iso format) when the Battle Pass ends. Tracking stops once the end is reached and users will not be able to progress further than what they have achieved up to that point..</param>
+        /// <param name="readMoreLink">If the Battle Pass costs “money” you may want to route the user to a web site/page, where they can learn more about this battle pass. You can also use this field to route the user inside your application by providing a path or whatever works for you..</param>
         /// <param name="isUnlockedIncrementally">Indicates if one level after the other must be activated or if users can activate whichever level they want. Typically battle passes are unlocked level by level, but if battle passes are used for other applications (like user referal programs) it can be useful to set this to false..</param>
         /// <param name="isActive">Indicated if this battle pass is active..</param>
         /// <param name="purchasedAt">The date in iso format when the user purchased/unlocked this Battle Pass..</param>
@@ -53,76 +53,20 @@ namespace SCILL.Model
         /// <param name="canPurchaseWithCoins">Indicates that this Battle Pass can be purchased with SCILL Coins. This can be set in the Admin Panel..</param>
         public BattlePass(string battlePassId = default(string), string appId = default(string), string battlePassName = default(string), string battlePassDescription = default(string), string battlePassShortDescription = default(string), string battlePassDisclaimer = default(string), int? battlePassPriority = default(int?), string packageSkuIos = default(string), string packageSkuAndroid = default(string), string image = default(string), string imageDesktop = default(string), string startDate = default(string), string endDate = default(string), string readMoreLink = default(string), bool? isUnlockedIncrementally = default(bool?), bool? isActive = default(bool?), string purchasedAt = default(string), bool? canPurchaseWithMoney = default(bool?), bool? canPurchaseWithCoins = default(bool?))
         {
-            // to ensure "battlePassId" is required (not null)
-            if (battlePassId == null)
-            {
-                throw new InvalidDataException("battlePassId is a required property for BattlePass and cannot be null");
-            }
-            else
-            {
-                this.battle_pass_id = battlePassId;
-            }
-            // to ensure "appId" is required (not null)
-            if (appId == null)
-            {
-                throw new InvalidDataException("appId is a required property for BattlePass and cannot be null");
-            }
-            else
-            {
-                this.app_id = appId;
-            }
-            // to ensure "packageSkuIos" is required (not null)
-            if (packageSkuIos == null)
-            {
-                throw new InvalidDataException("packageSkuIos is a required property for BattlePass and cannot be null");
-            }
-            else
-            {
-                this.package_sku_ios = packageSkuIos;
-            }
-            // to ensure "packageSkuAndroid" is required (not null)
-            if (packageSkuAndroid == null)
-            {
-                throw new InvalidDataException("packageSkuAndroid is a required property for BattlePass and cannot be null");
-            }
-            else
-            {
-                this.package_sku_android = packageSkuAndroid;
-            }
-            // to ensure "startDate" is required (not null)
-            if (startDate == null)
-            {
-                throw new InvalidDataException("startDate is a required property for BattlePass and cannot be null");
-            }
-            else
-            {
-                this.start_date = startDate;
-            }
-            // to ensure "endDate" is required (not null)
-            if (endDate == null)
-            {
-                throw new InvalidDataException("endDate is a required property for BattlePass and cannot be null");
-            }
-            else
-            {
-                this.end_date = endDate;
-            }
-            // to ensure "readMoreLink" is required (not null)
-            if (readMoreLink == null)
-            {
-                throw new InvalidDataException("readMoreLink is a required property for BattlePass and cannot be null");
-            }
-            else
-            {
-                this.read_more_link = readMoreLink;
-            }
+            this.battle_pass_id = battlePassId;
+            this.app_id = appId;
             this.battle_pass_name = battlePassName;
             this.battle_pass_description = battlePassDescription;
             this.battle_pass_short_description = battlePassShortDescription;
             this.battle_pass_disclaimer = battlePassDisclaimer;
             this.battle_pass_priority = battlePassPriority;
+            this.package_sku_ios = packageSkuIos;
+            this.package_sku_android = packageSkuAndroid;
             this.image = image;
             this.image_desktop = imageDesktop;
+            this.start_date = startDate;
+            this.end_date = endDate;
+            this.read_more_link = readMoreLink;
             this.is_unlocked_incrementally = isUnlockedIncrementally;
             this.is_active = isActive;
             this.purchased_at = purchasedAt;

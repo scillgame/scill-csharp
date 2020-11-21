@@ -32,58 +32,18 @@ namespace SCILL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BattlePassLevelChallenge" /> class.
         /// </summary>
-        /// <param name="challengeGoal">The number of things a user needs to achieve until this challenge is completed. (required).</param>
-        /// <param name="name">The name in the local language indicated what to do. (required).</param>
-        /// <param name="currentChallengeAmount">The current number of things the user already has achieved. Use this in combination with challenge_goal to calculate progress and to render a nice progress bar/indicator. (required).</param>
-        /// <param name="completed">Indicates if this challenge is completed. Once all challenges in a BattlePassLevel object are completed, the current level reward can be claimed and the next level is unlocked. (required).</param>
-        /// <param name="active">Indicates if the challenge is active, thus tracking progress. (required).</param>
+        /// <param name="challengeGoal">The number of things a user needs to achieve until this challenge is completed..</param>
+        /// <param name="name">The name in the local language indicated what to do..</param>
+        /// <param name="currentChallengeAmount">The current number of things the user already has achieved. Use this in combination with challenge_goal to calculate progress and to render a nice progress bar/indicator..</param>
+        /// <param name="completed">Indicates if this challenge is completed. Once all challenges in a BattlePassLevel object are completed, the current level reward can be claimed and the next level is unlocked..</param>
+        /// <param name="active">Indicates if the challenge is active, thus tracking progress..</param>
         public BattlePassLevelChallenge(int? challengeGoal = default(int?), string name = default(string), int? currentChallengeAmount = default(int?), bool? completed = default(bool?), bool? active = default(bool?))
         {
-            // to ensure "challengeGoal" is required (not null)
-            if (challengeGoal == null)
-            {
-                throw new InvalidDataException("challengeGoal is a required property for BattlePassLevelChallenge and cannot be null");
-            }
-            else
-            {
-                this.challenge_goal = challengeGoal;
-            }
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new InvalidDataException("name is a required property for BattlePassLevelChallenge and cannot be null");
-            }
-            else
-            {
-                this.name = name;
-            }
-            // to ensure "currentChallengeAmount" is required (not null)
-            if (currentChallengeAmount == null)
-            {
-                throw new InvalidDataException("currentChallengeAmount is a required property for BattlePassLevelChallenge and cannot be null");
-            }
-            else
-            {
-                this.current_challenge_amount = currentChallengeAmount;
-            }
-            // to ensure "completed" is required (not null)
-            if (completed == null)
-            {
-                throw new InvalidDataException("completed is a required property for BattlePassLevelChallenge and cannot be null");
-            }
-            else
-            {
-                this.completed = completed;
-            }
-            // to ensure "active" is required (not null)
-            if (active == null)
-            {
-                throw new InvalidDataException("active is a required property for BattlePassLevelChallenge and cannot be null");
-            }
-            else
-            {
-                this.active = active;
-            }
+            this.challenge_goal = challengeGoal;
+            this.name = name;
+            this.current_challenge_amount = currentChallengeAmount;
+            this.completed = completed;
+            this.active = active;
         }
         
         /// <summary>

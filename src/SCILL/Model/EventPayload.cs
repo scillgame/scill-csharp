@@ -32,40 +32,16 @@ namespace SCILL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EventPayload" /> class.
         /// </summary>
-        /// <param name="userId">This is your user id. You can set this to whatever you like, either your real user id or an obfuscated user id. However you need to be consistent here. Events linked to this user id only track if challenges or battle passes are unlocked with the same user id. (required).</param>
-        /// <param name="sessionId">This is required if event_type is single and identifies a session. This can be anything used to group events together. For example this can be a level or a match id. (required).</param>
-        /// <param name="eventName">This is the event type as a string. These have predefined event names for many games and applications. It’s wise to use those as this allows us to analyse data and help you balancing your application or game. (required).</param>
+        /// <param name="userId">This is your user id. You can set this to whatever you like, either your real user id or an obfuscated user id. However you need to be consistent here. Events linked to this user id only track if challenges or battle passes are unlocked with the same user id..</param>
+        /// <param name="sessionId">This is required if event_type is single and identifies a session. This can be anything used to group events together. For example this can be a level or a match id..</param>
+        /// <param name="eventName">This is the event type as a string. These have predefined event names for many games and applications. It’s wise to use those as this allows us to analyse data and help you balancing your application or game..</param>
         /// <param name="eventType">This is either single or group. You can send multiple events in one request (group) or send events in sequence. Please note, that depending on your tier you might run into rate limits. (default to &quot;single&quot;).</param>
         /// <param name="metaData">metaData.</param>
         public EventPayload(string userId = default(string), string sessionId = default(string), string eventName = default(string), string eventType = "single", EventMetaData metaData = default(EventMetaData))
         {
-            // to ensure "userId" is required (not null)
-            if (userId == null)
-            {
-                throw new InvalidDataException("userId is a required property for EventPayload and cannot be null");
-            }
-            else
-            {
-                this.user_id = userId;
-            }
-            // to ensure "sessionId" is required (not null)
-            if (sessionId == null)
-            {
-                throw new InvalidDataException("sessionId is a required property for EventPayload and cannot be null");
-            }
-            else
-            {
-                this.session_id = sessionId;
-            }
-            // to ensure "eventName" is required (not null)
-            if (eventName == null)
-            {
-                throw new InvalidDataException("eventName is a required property for EventPayload and cannot be null");
-            }
-            else
-            {
-                this.event_name = eventName;
-            }
+            this.user_id = userId;
+            this.session_id = sessionId;
+            this.event_name = eventName;
             // use default value if no "eventType" provided
             if (eventType == null)
             {

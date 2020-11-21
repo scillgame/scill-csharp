@@ -41,18 +41,9 @@ namespace SCILL.Model
         /// <param name="levelCompleted">Indicates if this level is completed, i.e. all challenges have been completed..</param>
         /// <param name="rewardClaimed">Indicates if this level has already be claimed..</param>
         /// <param name="activatedAt">The date when this level has been activated or null if it&#x27;s not activated..</param>
-        /// <param name="challenges">An array of Challenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges. (required).</param>
+        /// <param name="challenges">An array of Challenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges..</param>
         public BattlePassLevel(string levelId = default(string), string appId = default(string), string battlePassId = default(string), string userId = default(string), string rewardAmount = default(string), string rewardTypeName = default(string), bool? levelCompleted = default(bool?), bool? rewardClaimed = default(bool?), string activatedAt = default(string), List<Challenge> challenges = default(List<Challenge>))
         {
-            // to ensure "challenges" is required (not null)
-            if (challenges == null)
-            {
-                throw new InvalidDataException("challenges is a required property for BattlePassLevel and cannot be null");
-            }
-            else
-            {
-                this.challenges = challenges;
-            }
             this.level_id = levelId;
             this.app_id = appId;
             this.battle_pass_id = battlePassId;
@@ -62,6 +53,7 @@ namespace SCILL.Model
             this.level_completed = levelCompleted;
             this.reward_claimed = rewardClaimed;
             this.activated_at = activatedAt;
+            this.challenges = challenges;
         }
         
         /// <summary>
