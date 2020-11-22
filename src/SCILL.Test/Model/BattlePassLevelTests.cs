@@ -122,6 +122,14 @@ namespace SCILL.Test
             // TODO unit test for the property 'level_completed'
         }
         /// <summary>
+        /// Test the property 'level_priority'
+        /// </summary>
+        [Test]
+        public void level_priorityTest()
+        {
+            // TODO unit test for the property 'level_priority'
+        }
+        /// <summary>
         /// Test the property 'reward_claimed'
         /// </summary>
         [Test]
