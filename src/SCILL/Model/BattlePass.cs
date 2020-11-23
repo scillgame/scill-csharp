@@ -48,10 +48,10 @@ namespace SCILL.Model
         /// <param name="readMoreLink">If the Battle Pass costs “money” you may want to route the user to a web site/page, where they can learn more about this battle pass. You can also use this field to route the user inside your application by providing a path or whatever works for you..</param>
         /// <param name="isUnlockedIncrementally">Indicates if one level after the other must be activated or if users can activate whichever level they want. Typically battle passes are unlocked level by level, but if battle passes are used for other applications (like user referal programs) it can be useful to set this to false..</param>
         /// <param name="isActive">Indicated if this battle pass is active..</param>
-        /// <param name="purchasedAt">The date in iso format when the user purchased/unlocked this Battle Pass..</param>
+        /// <param name="unlockedAt">The date in iso format when the user unlocked this Battle Pass..</param>
         /// <param name="canPurchaseWithMoney">Indicates that this Battle Pass can be purchased via in-app purchase. This can be set in the Admin Panel..</param>
         /// <param name="canPurchaseWithCoins">Indicates that this Battle Pass can be purchased with SCILL Coins. This can be set in the Admin Panel..</param>
-        public BattlePass(string battlePassId = default(string), string appId = default(string), string battlePassName = default(string), string battlePassDescription = default(string), string battlePassShortDescription = default(string), string battlePassDisclaimer = default(string), int? battlePassPriority = default(int?), string packageSkuIos = default(string), string packageSkuAndroid = default(string), string image = default(string), string imageDesktop = default(string), string startDate = default(string), string endDate = default(string), string readMoreLink = default(string), bool? isUnlockedIncrementally = default(bool?), bool? isActive = default(bool?), string purchasedAt = default(string), bool? canPurchaseWithMoney = default(bool?), bool? canPurchaseWithCoins = default(bool?))
+        public BattlePass(string battlePassId = default(string), string appId = default(string), string battlePassName = default(string), string battlePassDescription = default(string), string battlePassShortDescription = default(string), string battlePassDisclaimer = default(string), int? battlePassPriority = default(int?), string packageSkuIos = default(string), string packageSkuAndroid = default(string), string image = default(string), string imageDesktop = default(string), string startDate = default(string), string endDate = default(string), string readMoreLink = default(string), bool? isUnlockedIncrementally = default(bool?), bool? isActive = default(bool?), string unlockedAt = default(string), bool? canPurchaseWithMoney = default(bool?), bool? canPurchaseWithCoins = default(bool?))
         {
             this.battle_pass_id = battlePassId;
             this.app_id = appId;
@@ -69,7 +69,7 @@ namespace SCILL.Model
             this.read_more_link = readMoreLink;
             this.is_unlocked_incrementally = isUnlockedIncrementally;
             this.is_active = isActive;
-            this.purchased_at = purchasedAt;
+            this.unlocked_at = unlockedAt;
             this.can_purchase_with_money = canPurchaseWithMoney;
             this.can_purchase_with_coins = canPurchaseWithCoins;
         }
@@ -187,11 +187,11 @@ namespace SCILL.Model
         public bool? is_active { get; set; }
 
         /// <summary>
-        /// The date in iso format when the user purchased/unlocked this Battle Pass.
+        /// The date in iso format when the user unlocked this Battle Pass.
         /// </summary>
-        /// <value>The date in iso format when the user purchased/unlocked this Battle Pass.</value>
-        [DataMember(Name="purchased_at", EmitDefaultValue=false)]
-        public string purchased_at { get; set; }
+        /// <value>The date in iso format when the user unlocked this Battle Pass.</value>
+        [DataMember(Name="unlocked_at", EmitDefaultValue=false)]
+        public string unlocked_at { get; set; }
 
         /// <summary>
         /// Indicates that this Battle Pass can be purchased via in-app purchase. This can be set in the Admin Panel.
@@ -231,7 +231,7 @@ namespace SCILL.Model
             sb.Append("  read_more_link: ").Append(read_more_link).Append("\n");
             sb.Append("  is_unlocked_incrementally: ").Append(is_unlocked_incrementally).Append("\n");
             sb.Append("  is_active: ").Append(is_active).Append("\n");
-            sb.Append("  purchased_at: ").Append(purchased_at).Append("\n");
+            sb.Append("  unlocked_at: ").Append(unlocked_at).Append("\n");
             sb.Append("  can_purchase_with_money: ").Append(can_purchase_with_money).Append("\n");
             sb.Append("  can_purchase_with_coins: ").Append(can_purchase_with_coins).Append("\n");
             sb.Append("}\n");
@@ -349,9 +349,9 @@ namespace SCILL.Model
                     this.is_active.Equals(input.is_active))
                 ) && 
                 (
-                    this.purchased_at == input.purchased_at ||
-                    (this.purchased_at != null &&
-                    this.purchased_at.Equals(input.purchased_at))
+                    this.unlocked_at == input.unlocked_at ||
+                    (this.unlocked_at != null &&
+                    this.unlocked_at.Equals(input.unlocked_at))
                 ) && 
                 (
                     this.can_purchase_with_money == input.can_purchase_with_money ||
@@ -406,8 +406,8 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.is_unlocked_incrementally.GetHashCode();
                 if (this.is_active != null)
                     hashCode = hashCode * 59 + this.is_active.GetHashCode();
-                if (this.purchased_at != null)
-                    hashCode = hashCode * 59 + this.purchased_at.GetHashCode();
+                if (this.unlocked_at != null)
+                    hashCode = hashCode * 59 + this.unlocked_at.GetHashCode();
                 if (this.can_purchase_with_money != null)
                     hashCode = hashCode * 59 + this.can_purchase_with_money.GetHashCode();
                 if (this.can_purchase_with_coins != null)

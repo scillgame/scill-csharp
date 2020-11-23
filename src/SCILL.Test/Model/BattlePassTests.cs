@@ -194,12 +194,12 @@ namespace SCILL.Test
             // TODO unit test for the property 'is_active'
         }
         /// <summary>
-        /// Test the property 'purchased_at'
+        /// Test the property 'unlocked_at'
         /// </summary>
         [Test]
-        public void purchased_atTest()
+        public void unlocked_atTest()
         {
-            // TODO unit test for the property 'purchased_at'
+            // TODO unit test for the property 'unlocked_at'
         }
         /// <summary>
         /// Test the property 'can_purchase_with_money'
