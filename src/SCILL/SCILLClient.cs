@@ -8,6 +8,13 @@ using SCILL.Model;
 
 namespace SCILL
 {
+    public enum Environment
+    {
+        Production,
+        Staging,
+        Development
+    }
+    
     public class SCILLClient
     {
         public string AccessToken { get; private set; }
@@ -23,14 +30,23 @@ namespace SCILL
 
         private static Configuration Config;
 
-        public SCILLClient(string accessToken, string appId)
+        public SCILLClient(string accessToken, string appId, Environment environment = Environment.Production)
         {
             AccessToken = accessToken;
             AppId = appId;
 
-            _EventsApi = new Lazy<EventsApi>(() => GetApi<EventsApi>(AccessToken, "https://ep.scillgame.com"), true);
-            _ChallengesApi = new Lazy<ChallengesApi>(() => GetApi<ChallengesApi>(AccessToken, "https://pcs.scillgame.com"), true);
-            _BattlePassesApi = new Lazy<BattlePassesApi>(() => GetApi<BattlePassesApi>(AccessToken, "https://es.scillgame.com"), true);
+            string hostSuffix = "";
+            if (environment == Environment.Staging)
+            {
+                hostSuffix = "-staging";
+            } else if (environment == Environment.Development)
+            {
+                hostSuffix = "-dev";
+            }
+
+            _EventsApi = new Lazy<EventsApi>(() => GetApi<EventsApi>(AccessToken, "https://ep" + hostSuffix + ".scillgame.com"), true);
+            _ChallengesApi = new Lazy<ChallengesApi>(() => GetApi<ChallengesApi>(AccessToken, "https://pcs" + hostSuffix + ".scillgame.com"), true);
+            _BattlePassesApi = new Lazy<BattlePassesApi>(() => GetApi<BattlePassesApi>(AccessToken, "https://es" + hostSuffix + ".scillgame.com"), true);
 
             Config = Configuration.Default.Clone(string.Empty, Configuration.Default.BasePath);
             Config.ApiKey[this.ToString()] = AccessToken;
@@ -97,6 +113,16 @@ namespace SCILL
         {
             return await ChallengesApi.GetPersonalChallengesAsync(AppId);
         }
+        
+        public Challenge GetPersonalChallengeById(string challengeId)
+        {
+            return ChallengesApi.GetPersonalChallengeById(AppId, challengeId);
+        }
+
+        public async Task<Challenge> GetPersonalChallengeByIdAsync(string challengeId)
+        {
+            return await ChallengesApi.GetPersonalChallengeByIdAsync(AppId, challengeId);
+        }
 
         public List<ChallengeCategory> GetActivePersonalChallenges()
         {
@@ -118,47 +144,101 @@ namespace SCILL
             return await ChallengesApi.UnlockPersonalChallengeAsync(AppId, challengeId);
         }
         #endregion ChallengesApi
-
+        
         #region BattlePassesApi
-        public ActionResponse ClaimBattlePassLevelReward(BattlePassLevelId body, string bpid)
+
+        public ActionResponse ActivateBattlePassLevel(string levelId)
         {
-            return BattlePassesApi.ClaimBattlePassLevelReward(body, AppId, bpid);
+            return BattlePassesApi.ActivateBattlePassLevel(AppId, levelId);
+        }
+        
+        public async Task<ActionResponse> ActivateBattlePassLevelAsync(string levelId)
+        {
+            return await BattlePassesApi.ActivateBattlePassLevelAsync(AppId, levelId);
         }
 
-        public async Task<ActionResponse> ClaimBattlePassLevelRewardAsync(BattlePassLevelId body, string bpid)
+        public ActionResponse ClaimBattlePassLevelReward(string levelId)
         {
-            return await BattlePassesApi.ClaimBattlePassLevelRewardAsync(body, AppId, bpid);
+            return BattlePassesApi.ClaimBattlePassLevelReward(AppId, levelId);
         }
 
-        public BattlePass GetBattlePass(string bpid)
+        public async Task<ActionResponse> ClaimBattlePassLevelRewardAsync(string levelId)
         {
-            return BattlePassesApi.GetBattlePass(AppId, bpid);
+            return await BattlePassesApi.ClaimBattlePassLevelRewardAsync(AppId, levelId);
         }
 
-        public async Task<BattlePass> GetBattlePassAsync(string bpid)
+        public List<BattlePass> GetActiveBattlePasses()
         {
-            return await BattlePassesApi.GetBattlePassAsync(AppId, bpid);
+            return BattlePassesApi.GetActiveBattlePasses(AppId);
         }
 
-        public List<BattlePass> GetBattlePass()
+        public async Task<List<BattlePass>> GetActiveBattlePassesAsync()
+        {
+            return await BattlePassesApi.GetActiveBattlePassesAsync(AppId);
+        }
+
+        public List<BattlePassLevel> GetAllBattlePassLevels()
+        {
+            return BattlePassesApi.GetAllBattlePassLevels(AppId);
+        }
+        
+        public async Task<List<BattlePassLevel>> GetAllBattlePassLevelsAsync()
+        {
+            return await BattlePassesApi.GetAllBattlePassLevelsAsync(AppId);
+        }
+
+        public BattlePass GetBattlePass(string battlePassId)
+        {
+            return BattlePassesApi.GetBattlePass(AppId, battlePassId);
+        }
+
+        public async Task<BattlePass> GetBattlePassAsync(string battlePassId)
+        {
+            return await BattlePassesApi.GetBattlePassAsync(AppId, battlePassId);
+        }
+        
+        public List<BattlePassLevel> GetBattlePassLevels(string battlePassId)
+        {
+            return BattlePassesApi.GetBattlePassLevels(AppId, battlePassId);
+        }
+        
+        public async Task<List<BattlePassLevel>> GetBattlePassLevelsAsync(string battlePassId)
+        {
+            return await BattlePassesApi.GetBattlePassLevelsAsync(AppId, battlePassId);
+        }
+
+        public List<BattlePass> GetBattlePasses()
         {
             return BattlePassesApi.GetBattlePasses(AppId);
         }
-
+        
         public async Task<List<BattlePass>> GetBattlePassesAsync()
         {
             return await BattlePassesApi.GetBattlePassesAsync(AppId);
         }
 
-        public ActionResponse UnlockBattlePassLevel(BattlePassLevelId body, string bpid)
+        public List<BattlePass> GetUnlockedBattlePasses()
         {
-            return BattlePassesApi.UnlockBattlePassLevel(body, AppId, bpid);
+            return BattlePassesApi.GetUnlockedBattlePasses(AppId);
+        }
+        
+        public async Task<List<BattlePass>> GetUnlockedBattlePassesAsync()
+        {
+            return await BattlePassesApi.GetUnlockedBattlePassesAsync(AppId);
         }
 
-        public async Task<ActionResponse> UnlockBattlePassLevelAsync(BattlePassLevelId body, string bpid)
+        public BattlePassUnlockInfo UnlockBattlePass(string battlePassId,
+            BattlePassUnlockPayload body = null)
         {
-            return await BattlePassesApi.UnlockBattlePassLevelAsync(body, AppId, bpid);
+            return BattlePassesApi.UnlockBattlePass(AppId, battlePassId, body);
         }
+        
+        public async Task<BattlePassUnlockInfo> UnlockBattlePassAsync(string battlePassId,
+            BattlePassUnlockPayload body = null)
+        {
+            return await BattlePassesApi.UnlockBattlePassAsync(AppId, battlePassId, body);
+        }
+        
         #endregion BattlePassesApi
     }
 

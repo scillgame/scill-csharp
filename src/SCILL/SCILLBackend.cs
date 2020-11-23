@@ -18,10 +18,19 @@ namespace SCILL
 
         private static Configuration Config;
 
-        public SCILLBackend(string apiKey)
+        public SCILLBackend(string apiKey, Environment environment = Environment.Production)
         {
-            _EventsApi = new Lazy<EventsApi>(() => GetApi<EventsApi>(apiKey, "https://ep.scillgame.com"), true);            
-            _AuthApi = new Lazy<AuthApi>(() => GetApi<AuthApi>(apiKey, "https://us.scillgame.com"), true);
+            string hostSuffix = "";
+            if (environment == Environment.Staging)
+            {
+                hostSuffix = "-staging";
+            } else if (environment == Environment.Development)
+            {
+                hostSuffix = "-dev";
+            }
+            
+            _EventsApi = new Lazy<EventsApi>(() => GetApi<EventsApi>(apiKey, "https://ep" + hostSuffix + ".scillgame.com"), true);            
+            _AuthApi = new Lazy<AuthApi>(() => GetApi<AuthApi>(apiKey, "https://us" + hostSuffix + ".scillgame.com"), true);
 
             Config = Configuration.Default.Clone(string.Empty, Configuration.Default.BasePath);
             Config.ApiKey[this.ToString()] = apiKey;
