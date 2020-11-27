@@ -73,6 +73,28 @@ namespace SCILL.Test
             //var response = instance.GenerateAccessToken(body);
             //Assert.IsInstanceOf<AccessToken> (response, "response is AccessToken");
         }
+        /// <summary>
+        /// Test GetUseBattlePassNotificationTopic
+        /// </summary>
+        [Test]
+        public void GetUseBattlePassNotificationTopicTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string battlePassId = null;
+            //var response = instance.GetUseBattlePassNotificationTopic(battlePassId);
+            //Assert.IsInstanceOf<NotificationTopic> (response, "response is NotificationTopic");
+        }
+        /// <summary>
+        /// Test GetUserChallengeNotificationTopic
+        /// </summary>
+        [Test]
+        public void GetUserChallengeNotificationTopicTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string challengeId = null;
+            //var response = instance.GetUserChallengeNotificationTopic(challengeId);
+            //Assert.IsInstanceOf<NotificationTopic> (response, "response is NotificationTopic");
+        }
     }
 
 }

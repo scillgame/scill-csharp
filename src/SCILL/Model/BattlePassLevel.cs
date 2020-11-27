@@ -35,20 +35,18 @@ namespace SCILL.Model
         /// <param name="levelId">Unique id of this BattlePassLevel object..</param>
         /// <param name="appId">The app id.</param>
         /// <param name="battlePassId">The id of the battle pass this level belongs to.</param>
-        /// <param name="userId">The user id of the user who has unlocked this battle pass.</param>
         /// <param name="rewardAmount">In the Admin Panel you can set different types of rewards. You can also set an identifier of an in-game-item or anything you like. Use this to include the reward into your own business logic..</param>
         /// <param name="rewardTypeName">There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience..</param>
         /// <param name="levelCompleted">Indicates if this level is completed, i.e. all challenges have been completed..</param>
         /// <param name="levelPriority">Indicates the position of the level..</param>
         /// <param name="rewardClaimed">Indicates if this level has already be claimed..</param>
         /// <param name="activatedAt">The date when this level has been activated or null if it&#x27;s not activated..</param>
-        /// <param name="challenges">An array of Challenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges..</param>
-        public BattlePassLevel(string levelId = default(string), string appId = default(string), string battlePassId = default(string), string userId = default(string), string rewardAmount = default(string), string rewardTypeName = default(string), bool? levelCompleted = default(bool?), decimal? levelPriority = default(decimal?), bool? rewardClaimed = default(bool?), string activatedAt = default(string), List<Challenge> challenges = default(List<Challenge>))
+        /// <param name="challenges">An array of BattlePassLevelChallenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges..</param>
+        public BattlePassLevel(string levelId = default(string), string appId = default(string), string battlePassId = default(string), string rewardAmount = default(string), string rewardTypeName = default(string), bool? levelCompleted = default(bool?), decimal? levelPriority = default(decimal?), bool? rewardClaimed = default(bool?), string activatedAt = default(string), List<BattlePassLevelChallenge> challenges = default(List<BattlePassLevelChallenge>))
         {
             this.level_id = levelId;
             this.app_id = appId;
             this.battle_pass_id = battlePassId;
-            this.user_id = userId;
             this.reward_amount = rewardAmount;
             this.reward_type_name = rewardTypeName;
             this.level_completed = levelCompleted;
@@ -78,13 +76,6 @@ namespace SCILL.Model
         /// <value>The id of the battle pass this level belongs to</value>
         [DataMember(Name="battle_pass_id", EmitDefaultValue=false)]
         public string battle_pass_id { get; set; }
-
-        /// <summary>
-        /// The user id of the user who has unlocked this battle pass
-        /// </summary>
-        /// <value>The user id of the user who has unlocked this battle pass</value>
-        [DataMember(Name="user_id", EmitDefaultValue=false)]
-        public string user_id { get; set; }
 
         /// <summary>
         /// In the Admin Panel you can set different types of rewards. You can also set an identifier of an in-game-item or anything you like. Use this to include the reward into your own business logic.
@@ -129,11 +120,11 @@ namespace SCILL.Model
         public string activated_at { get; set; }
 
         /// <summary>
-        /// An array of Challenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges.
+        /// An array of BattlePassLevelChallenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges.
         /// </summary>
-        /// <value>An array of Challenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges.</value>
+        /// <value>An array of BattlePassLevelChallenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges.</value>
         [DataMember(Name="challenges", EmitDefaultValue=false)]
-        public List<Challenge> challenges { get; set; }
+        public List<BattlePassLevelChallenge> challenges { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -146,7 +137,6 @@ namespace SCILL.Model
             sb.Append("  level_id: ").Append(level_id).Append("\n");
             sb.Append("  app_id: ").Append(app_id).Append("\n");
             sb.Append("  battle_pass_id: ").Append(battle_pass_id).Append("\n");
-            sb.Append("  user_id: ").Append(user_id).Append("\n");
             sb.Append("  reward_amount: ").Append(reward_amount).Append("\n");
             sb.Append("  reward_type_name: ").Append(reward_type_name).Append("\n");
             sb.Append("  level_completed: ").Append(level_completed).Append("\n");
@@ -204,11 +194,6 @@ namespace SCILL.Model
                     this.battle_pass_id.Equals(input.battle_pass_id))
                 ) && 
                 (
-                    this.user_id == input.user_id ||
-                    (this.user_id != null &&
-                    this.user_id.Equals(input.user_id))
-                ) && 
-                (
                     this.reward_amount == input.reward_amount ||
                     (this.reward_amount != null &&
                     this.reward_amount.Equals(input.reward_amount))
@@ -261,8 +246,6 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.app_id.GetHashCode();
                 if (this.battle_pass_id != null)
                     hashCode = hashCode * 59 + this.battle_pass_id.GetHashCode();
-                if (this.user_id != null)
-                    hashCode = hashCode * 59 + this.user_id.GetHashCode();
                 if (this.reward_amount != null)
                     hashCode = hashCode * 59 + this.reward_amount.GetHashCode();
                 if (this.reward_type_name != null)

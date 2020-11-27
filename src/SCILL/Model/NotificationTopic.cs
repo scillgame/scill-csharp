@@ -24,34 +24,33 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// Used in previous versions of the battle pass system to provide the level_id via payload. We changed routes in newer versions to have level id in the path.
+    /// NotificationTopic
     /// </summary>
     [DataContract]
-        public partial class BattlePassLevelId :  IEquatable<BattlePassLevelId>, IValidatableObject
+        public partial class NotificationTopic :  IEquatable<NotificationTopic>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BattlePassLevelId" /> class.
+        /// Initializes a new instance of the <see cref="NotificationTopic" /> class.
         /// </summary>
-        /// <param name="battlePassLevelId">The level id, i.e. battle_pass_level_id of the BattlePassLevel object (required).</param>
-        public BattlePassLevelId(string battlePassLevelId = default(string))
+        /// <param name="topic">topic (required).</param>
+        public NotificationTopic(string topic = default(string))
         {
-            // to ensure "battlePassLevelId" is required (not null)
-            if (battlePassLevelId == null)
+            // to ensure "topic" is required (not null)
+            if (topic == null)
             {
-                throw new InvalidDataException("battlePassLevelId is a required property for BattlePassLevelId and cannot be null");
+                throw new InvalidDataException("topic is a required property for NotificationTopic and cannot be null");
             }
             else
             {
-                this.battle_pass_level_id = battlePassLevelId;
+                this.topic = topic;
             }
         }
         
         /// <summary>
-        /// The level id, i.e. battle_pass_level_id of the BattlePassLevel object
+        /// Gets or Sets topic
         /// </summary>
-        /// <value>The level id, i.e. battle_pass_level_id of the BattlePassLevel object</value>
-        [DataMember(Name="battle_pass_level_id", EmitDefaultValue=false)]
-        public string battle_pass_level_id { get; set; }
+        [DataMember(Name="topic", EmitDefaultValue=false)]
+        public string topic { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,8 +59,8 @@ namespace SCILL.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class BattlePassLevelId {\n");
-            sb.Append("  battle_pass_level_id: ").Append(battle_pass_level_id).Append("\n");
+            sb.Append("class NotificationTopic {\n");
+            sb.Append("  topic: ").Append(topic).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -82,24 +81,24 @@ namespace SCILL.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as BattlePassLevelId);
+            return this.Equals(input as NotificationTopic);
         }
 
         /// <summary>
-        /// Returns true if BattlePassLevelId instances are equal
+        /// Returns true if NotificationTopic instances are equal
         /// </summary>
-        /// <param name="input">Instance of BattlePassLevelId to be compared</param>
+        /// <param name="input">Instance of NotificationTopic to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BattlePassLevelId input)
+        public bool Equals(NotificationTopic input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.battle_pass_level_id == input.battle_pass_level_id ||
-                    (this.battle_pass_level_id != null &&
-                    this.battle_pass_level_id.Equals(input.battle_pass_level_id))
+                    this.topic == input.topic ||
+                    (this.topic != null &&
+                    this.topic.Equals(input.topic))
                 );
         }
 
@@ -112,8 +111,8 @@ namespace SCILL.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.battle_pass_level_id != null)
-                    hashCode = hashCode * 59 + this.battle_pass_level_id.GetHashCode();
+                if (this.topic != null)
+                    hashCode = hashCode * 59 + this.topic.GetHashCode();
                 return hashCode;
             }
         }

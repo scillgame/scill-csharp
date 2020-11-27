@@ -24,32 +24,73 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// BattlePassLevelChallenge
+    /// This object stores information about a battle pass challenge state. It is designed to update challenges loaded previously with the getBattlePassLevels API. Indices allow you to quickly update locally stored Challenge objects without iterating or reloading data.
     /// </summary>
     [DataContract]
-        public partial class BattlePassLevelChallenge :  IEquatable<BattlePassLevelChallenge>, IValidatableObject
+        public partial class BattlePassChallengeState :  IEquatable<BattlePassChallengeState>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BattlePassLevelChallenge" /> class.
+        /// Initializes a new instance of the <see cref="BattlePassChallengeState" /> class.
         /// </summary>
+        /// <param name="appId">The unique id of the app.</param>
+        /// <param name="battlePassId">The unique id of this battle pass..</param>
+        /// <param name="levelId">Unique id of this BattlePassLevel object..</param>
+        /// <param name="userId">This is your user id. You can set this to whatever you like, either your real user id or an obfuscated user id. However you need to be consistent here. Events linked to this user id only track if challenges or battle passes are unlocked with the same user id..</param>
+        /// <param name="levelPositionIndex">Typical usage pattern is to load battle pass levels with getBattlePassLevels operation and store them for rendering. Using this value you can quickly identify the index of the level that changed..</param>
         /// <param name="challengeId">The unique id of this challenge. Every challenge is linked to a product..</param>
-        /// <param name="challengeName">The name of the challenge in the language set by the language parameter..</param>
+        /// <param name="challengePositionIndex">Same as level_position_index. Use this index to identify the challenge that changed within the levels challenges array. Typical usage pattern is to update the previously stored score and type..</param>
         /// <param name="challengeGoal">Indicates how many “tasks” must be completed or done to complete this challenge..</param>
         /// <param name="userChallengeCurrentScore">Indicates how many tasks the user already has completed. Use this in combination with challenge_goal to render a nice progress bar..</param>
-        /// <param name="challengeIcon">In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database..</param>
-        /// <param name="challengeIconHd">This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank..</param>
         /// <param name="type">Indicates the status of the challenge. This can be one of the following unlock: Challenge does not track anything. in-progress: Challenge is active and tracking. overtime: User did not manage to finish the challenge in time. unclaimed: The challenge has been completed but the reward has not yet been claimed. finished: The challenge has been successfully be completed and the reward has been claimed.</param>
-        public BattlePassLevelChallenge(string challengeId = default(string), string challengeName = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), string type = default(string))
+        public BattlePassChallengeState(string appId = default(string), string battlePassId = default(string), string levelId = default(string), string userId = default(string), int? levelPositionIndex = default(int?), string challengeId = default(string), int? challengePositionIndex = default(int?), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string type = default(string))
         {
+            this.app_id = appId;
+            this.battle_pass_id = battlePassId;
+            this.level_id = levelId;
+            this.user_id = userId;
+            this.level_position_index = levelPositionIndex;
             this.challenge_id = challengeId;
-            this.challenge_name = challengeName;
+            this.challenge_position_index = challengePositionIndex;
             this.challenge_goal = challengeGoal;
             this.user_challenge_current_score = userChallengeCurrentScore;
-            this.challenge_icon = challengeIcon;
-            this.challenge_icon_hd = challengeIconHd;
             this.type = type;
         }
         
+        /// <summary>
+        /// The unique id of the app
+        /// </summary>
+        /// <value>The unique id of the app</value>
+        [DataMember(Name="app_id", EmitDefaultValue=false)]
+        public string app_id { get; set; }
+
+        /// <summary>
+        /// The unique id of this battle pass.
+        /// </summary>
+        /// <value>The unique id of this battle pass.</value>
+        [DataMember(Name="battle_pass_id", EmitDefaultValue=false)]
+        public string battle_pass_id { get; set; }
+
+        /// <summary>
+        /// Unique id of this BattlePassLevel object.
+        /// </summary>
+        /// <value>Unique id of this BattlePassLevel object.</value>
+        [DataMember(Name="level_id", EmitDefaultValue=false)]
+        public string level_id { get; set; }
+
+        /// <summary>
+        /// This is your user id. You can set this to whatever you like, either your real user id or an obfuscated user id. However you need to be consistent here. Events linked to this user id only track if challenges or battle passes are unlocked with the same user id.
+        /// </summary>
+        /// <value>This is your user id. You can set this to whatever you like, either your real user id or an obfuscated user id. However you need to be consistent here. Events linked to this user id only track if challenges or battle passes are unlocked with the same user id.</value>
+        [DataMember(Name="user_id", EmitDefaultValue=false)]
+        public string user_id { get; set; }
+
+        /// <summary>
+        /// Typical usage pattern is to load battle pass levels with getBattlePassLevels operation and store them for rendering. Using this value you can quickly identify the index of the level that changed.
+        /// </summary>
+        /// <value>Typical usage pattern is to load battle pass levels with getBattlePassLevels operation and store them for rendering. Using this value you can quickly identify the index of the level that changed.</value>
+        [DataMember(Name="level_position_index", EmitDefaultValue=false)]
+        public int? level_position_index { get; set; }
+
         /// <summary>
         /// The unique id of this challenge. Every challenge is linked to a product.
         /// </summary>
@@ -58,11 +99,11 @@ namespace SCILL.Model
         public string challenge_id { get; set; }
 
         /// <summary>
-        /// The name of the challenge in the language set by the language parameter.
+        /// Same as level_position_index. Use this index to identify the challenge that changed within the levels challenges array. Typical usage pattern is to update the previously stored score and type.
         /// </summary>
-        /// <value>The name of the challenge in the language set by the language parameter.</value>
-        [DataMember(Name="challenge_name", EmitDefaultValue=false)]
-        public string challenge_name { get; set; }
+        /// <value>Same as level_position_index. Use this index to identify the challenge that changed within the levels challenges array. Typical usage pattern is to update the previously stored score and type.</value>
+        [DataMember(Name="challenge_position_index", EmitDefaultValue=false)]
+        public int? challenge_position_index { get; set; }
 
         /// <summary>
         /// Indicates how many “tasks” must be completed or done to complete this challenge.
@@ -79,20 +120,6 @@ namespace SCILL.Model
         public int? user_challenge_current_score { get; set; }
 
         /// <summary>
-        /// In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database.
-        /// </summary>
-        /// <value>In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database.</value>
-        [DataMember(Name="challenge_icon", EmitDefaultValue=false)]
-        public string challenge_icon { get; set; }
-
-        /// <summary>
-        /// This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank.
-        /// </summary>
-        /// <value>This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank.</value>
-        [DataMember(Name="challenge_icon_hd", EmitDefaultValue=false)]
-        public string challenge_icon_hd { get; set; }
-
-        /// <summary>
         /// Indicates the status of the challenge. This can be one of the following unlock: Challenge does not track anything. in-progress: Challenge is active and tracking. overtime: User did not manage to finish the challenge in time. unclaimed: The challenge has been completed but the reward has not yet been claimed. finished: The challenge has been successfully be completed and the reward has been claimed
         /// </summary>
         /// <value>Indicates the status of the challenge. This can be one of the following unlock: Challenge does not track anything. in-progress: Challenge is active and tracking. overtime: User did not manage to finish the challenge in time. unclaimed: The challenge has been completed but the reward has not yet been claimed. finished: The challenge has been successfully be completed and the reward has been claimed</value>
@@ -106,13 +133,16 @@ namespace SCILL.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class BattlePassLevelChallenge {\n");
+            sb.Append("class BattlePassChallengeState {\n");
+            sb.Append("  app_id: ").Append(app_id).Append("\n");
+            sb.Append("  battle_pass_id: ").Append(battle_pass_id).Append("\n");
+            sb.Append("  level_id: ").Append(level_id).Append("\n");
+            sb.Append("  user_id: ").Append(user_id).Append("\n");
+            sb.Append("  level_position_index: ").Append(level_position_index).Append("\n");
             sb.Append("  challenge_id: ").Append(challenge_id).Append("\n");
-            sb.Append("  challenge_name: ").Append(challenge_name).Append("\n");
+            sb.Append("  challenge_position_index: ").Append(challenge_position_index).Append("\n");
             sb.Append("  challenge_goal: ").Append(challenge_goal).Append("\n");
             sb.Append("  user_challenge_current_score: ").Append(user_challenge_current_score).Append("\n");
-            sb.Append("  challenge_icon: ").Append(challenge_icon).Append("\n");
-            sb.Append("  challenge_icon_hd: ").Append(challenge_icon_hd).Append("\n");
             sb.Append("  type: ").Append(type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -134,29 +164,54 @@ namespace SCILL.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as BattlePassLevelChallenge);
+            return this.Equals(input as BattlePassChallengeState);
         }
 
         /// <summary>
-        /// Returns true if BattlePassLevelChallenge instances are equal
+        /// Returns true if BattlePassChallengeState instances are equal
         /// </summary>
-        /// <param name="input">Instance of BattlePassLevelChallenge to be compared</param>
+        /// <param name="input">Instance of BattlePassChallengeState to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BattlePassLevelChallenge input)
+        public bool Equals(BattlePassChallengeState input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
+                    this.app_id == input.app_id ||
+                    (this.app_id != null &&
+                    this.app_id.Equals(input.app_id))
+                ) && 
+                (
+                    this.battle_pass_id == input.battle_pass_id ||
+                    (this.battle_pass_id != null &&
+                    this.battle_pass_id.Equals(input.battle_pass_id))
+                ) && 
+                (
+                    this.level_id == input.level_id ||
+                    (this.level_id != null &&
+                    this.level_id.Equals(input.level_id))
+                ) && 
+                (
+                    this.user_id == input.user_id ||
+                    (this.user_id != null &&
+                    this.user_id.Equals(input.user_id))
+                ) && 
+                (
+                    this.level_position_index == input.level_position_index ||
+                    (this.level_position_index != null &&
+                    this.level_position_index.Equals(input.level_position_index))
+                ) && 
+                (
                     this.challenge_id == input.challenge_id ||
                     (this.challenge_id != null &&
                     this.challenge_id.Equals(input.challenge_id))
                 ) && 
                 (
-                    this.challenge_name == input.challenge_name ||
-                    (this.challenge_name != null &&
-                    this.challenge_name.Equals(input.challenge_name))
+                    this.challenge_position_index == input.challenge_position_index ||
+                    (this.challenge_position_index != null &&
+                    this.challenge_position_index.Equals(input.challenge_position_index))
                 ) && 
                 (
                     this.challenge_goal == input.challenge_goal ||
@@ -167,16 +222,6 @@ namespace SCILL.Model
                     this.user_challenge_current_score == input.user_challenge_current_score ||
                     (this.user_challenge_current_score != null &&
                     this.user_challenge_current_score.Equals(input.user_challenge_current_score))
-                ) && 
-                (
-                    this.challenge_icon == input.challenge_icon ||
-                    (this.challenge_icon != null &&
-                    this.challenge_icon.Equals(input.challenge_icon))
-                ) && 
-                (
-                    this.challenge_icon_hd == input.challenge_icon_hd ||
-                    (this.challenge_icon_hd != null &&
-                    this.challenge_icon_hd.Equals(input.challenge_icon_hd))
                 ) && 
                 (
                     this.type == input.type ||
@@ -194,18 +239,24 @@ namespace SCILL.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.app_id != null)
+                    hashCode = hashCode * 59 + this.app_id.GetHashCode();
+                if (this.battle_pass_id != null)
+                    hashCode = hashCode * 59 + this.battle_pass_id.GetHashCode();
+                if (this.level_id != null)
+                    hashCode = hashCode * 59 + this.level_id.GetHashCode();
+                if (this.user_id != null)
+                    hashCode = hashCode * 59 + this.user_id.GetHashCode();
+                if (this.level_position_index != null)
+                    hashCode = hashCode * 59 + this.level_position_index.GetHashCode();
                 if (this.challenge_id != null)
                     hashCode = hashCode * 59 + this.challenge_id.GetHashCode();
-                if (this.challenge_name != null)
-                    hashCode = hashCode * 59 + this.challenge_name.GetHashCode();
+                if (this.challenge_position_index != null)
+                    hashCode = hashCode * 59 + this.challenge_position_index.GetHashCode();
                 if (this.challenge_goal != null)
                     hashCode = hashCode * 59 + this.challenge_goal.GetHashCode();
                 if (this.user_challenge_current_score != null)
                     hashCode = hashCode * 59 + this.user_challenge_current_score.GetHashCode();
-                if (this.challenge_icon != null)
-                    hashCode = hashCode * 59 + this.challenge_icon.GetHashCode();
-                if (this.challenge_icon_hd != null)
-                    hashCode = hashCode * 59 + this.challenge_icon_hd.GetHashCode();
                 if (this.type != null)
                     hashCode = hashCode * 59 + this.type.GetHashCode();
                 return hashCode;
