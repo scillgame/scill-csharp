@@ -12,7 +12,7 @@ Contact: support@scillgame.com
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{56ECBAD4-F0BB-4D55-8F72-5995A7BD6CC4}</ProjectGuid>
+    <ProjectGuid>{95DE2303-B22F-4E79-B359-CD1A30044A21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SCILL</RootNamespace>

@@ -95,6 +95,16 @@ namespace SCILL.Test
             //var response = instance.GetUserChallengeNotificationTopic(challengeId);
             //Assert.IsInstanceOf<NotificationTopic> (response, "response is NotificationTopic");
         }
+        /// <summary>
+        /// Test GetUserChallengesNotificationTopic
+        /// </summary>
+        [Test]
+        public void GetUserChallengesNotificationTopicTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.GetUserChallengesNotificationTopic();
+            //Assert.IsInstanceOf<NotificationTopic> (response, "response is NotificationTopic");
+        }
     }
 
 }

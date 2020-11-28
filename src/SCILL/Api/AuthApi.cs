@@ -66,26 +66,45 @@ namespace SCILL.Api
         /// <returns>ApiResponse of NotificationTopic</returns>
         ApiResponse<NotificationTopic> GetUseBattlePassNotificationTopicWithHttpInfo (string battlePassId);
         /// <summary>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes.
         /// </summary>
         /// <remarks>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the challenge changes.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="challengeId">The challenge id you want to get notified (optional)</param>
+        /// <param name="challengeId">The challenge id you want to get notified</param>
         /// <returns>NotificationTopic</returns>
-        NotificationTopic GetUserChallengeNotificationTopic (string challengeId = null);
+        NotificationTopic GetUserChallengeNotificationTopic (string challengeId);
 
         /// <summary>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes.
         /// </summary>
         /// <remarks>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the challenge changes.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="challengeId">The challenge id you want to get notified (optional)</param>
+        /// <param name="challengeId">The challenge id you want to get notified</param>
         /// <returns>ApiResponse of NotificationTopic</returns>
-        ApiResponse<NotificationTopic> GetUserChallengeNotificationTopicWithHttpInfo (string challengeId = null);
+        ApiResponse<NotificationTopic> GetUserChallengeNotificationTopicWithHttpInfo (string challengeId);
+        /// <summary>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token changes.
+        /// </summary>
+        /// <remarks>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token change.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>NotificationTopic</returns>
+        NotificationTopic GetUserChallengesNotificationTopic ();
+
+        /// <summary>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token changes.
+        /// </summary>
+        /// <remarks>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token change.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of NotificationTopic</returns>
+        ApiResponse<NotificationTopic> GetUserChallengesNotificationTopicWithHttpInfo ();
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -131,26 +150,45 @@ namespace SCILL.Api
         /// <returns>Task of ApiResponse (NotificationTopic)</returns>
         System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUseBattlePassNotificationTopicAsyncWithHttpInfo (string battlePassId);
         /// <summary>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes.
         /// </summary>
         /// <remarks>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the challenge changes.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="challengeId">The challenge id you want to get notified (optional)</param>
+        /// <param name="challengeId">The challenge id you want to get notified</param>
         /// <returns>Task of NotificationTopic</returns>
-        System.Threading.Tasks.Task<NotificationTopic> GetUserChallengeNotificationTopicAsync (string challengeId = null);
+        System.Threading.Tasks.Task<NotificationTopic> GetUserChallengeNotificationTopicAsync (string challengeId);
 
         /// <summary>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes.
         /// </summary>
         /// <remarks>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the challenge changes.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="challengeId">The challenge id you want to get notified (optional)</param>
+        /// <param name="challengeId">The challenge id you want to get notified</param>
         /// <returns>Task of ApiResponse (NotificationTopic)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserChallengeNotificationTopicAsyncWithHttpInfo (string challengeId = null);
+        System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserChallengeNotificationTopicAsyncWithHttpInfo (string challengeId);
+        /// <summary>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token changes.
+        /// </summary>
+        /// <remarks>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token change.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of NotificationTopic</returns>
+        System.Threading.Tasks.Task<NotificationTopic> GetUserChallengesNotificationTopicAsync ();
+
+        /// <summary>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token changes.
+        /// </summary>
+        /// <remarks>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token change.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (NotificationTopic)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserChallengesNotificationTopicAsyncWithHttpInfo ();
         #endregion Asynchronous Operations
     }
 
@@ -589,25 +627,28 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes. Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes. Get a topic to be used with an MQTT client to receive real time updates whenever the challenge changes.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="challengeId">The challenge id you want to get notified (optional)</param>
+        /// <param name="challengeId">The challenge id you want to get notified</param>
         /// <returns>NotificationTopic</returns>
-        public NotificationTopic GetUserChallengeNotificationTopic (string challengeId = null)
+        public NotificationTopic GetUserChallengeNotificationTopic (string challengeId)
         {
              ApiResponse<NotificationTopic> localVarResponse = GetUserChallengeNotificationTopicWithHttpInfo(challengeId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes. Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes. Get a topic to be used with an MQTT client to receive real time updates whenever the challenge changes.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="challengeId">The challenge id you want to get notified (optional)</param>
+        /// <param name="challengeId">The challenge id you want to get notified</param>
         /// <returns>ApiResponse of NotificationTopic</returns>
-        public ApiResponse< NotificationTopic > GetUserChallengeNotificationTopicWithHttpInfo (string challengeId = null)
+        public ApiResponse< NotificationTopic > GetUserChallengeNotificationTopicWithHttpInfo (string challengeId)
         {
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling AuthApi->GetUserChallengeNotificationTopic");
 
             var localVarPath = "/api/v1/auth/user-challenge-topic-link";
             var localVarPathParams = new Dictionary<String, String>();
@@ -663,12 +704,12 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes. Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes. Get a topic to be used with an MQTT client to receive real time updates whenever the challenge changes.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="challengeId">The challenge id you want to get notified (optional)</param>
+        /// <param name="challengeId">The challenge id you want to get notified</param>
         /// <returns>Task of NotificationTopic</returns>
-        public async System.Threading.Tasks.Task<NotificationTopic> GetUserChallengeNotificationTopicAsync (string challengeId = null)
+        public async System.Threading.Tasks.Task<NotificationTopic> GetUserChallengeNotificationTopicAsync (string challengeId)
         {
              ApiResponse<NotificationTopic> localVarResponse = await GetUserChallengeNotificationTopicAsyncWithHttpInfo(challengeId);
              return localVarResponse.Data;
@@ -676,13 +717,16 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes. Get a topic to be used with an MQTT client to receive real time updates whenever a challenge changes.
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes. Get a topic to be used with an MQTT client to receive real time updates whenever the challenge changes.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="challengeId">The challenge id you want to get notified (optional)</param>
+        /// <param name="challengeId">The challenge id you want to get notified</param>
         /// <returns>Task of ApiResponse (NotificationTopic)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserChallengeNotificationTopicAsyncWithHttpInfo (string challengeId = null)
+        public async System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserChallengeNotificationTopicAsyncWithHttpInfo (string challengeId)
         {
+            // verify the required parameter 'challengeId' is set
+            if (challengeId == null)
+                throw new ApiException(400, "Missing required parameter 'challengeId' when calling AuthApi->GetUserChallengeNotificationTopic");
 
             var localVarPath = "/api/v1/auth/user-challenge-topic-link";
             var localVarPathParams = new Dictionary<String, String>();
@@ -729,6 +773,149 @@ namespace SCILL.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("GetUserChallengeNotificationTopic", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NotificationTopic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (NotificationTopic) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NotificationTopic)));
+        }
+
+        /// <summary>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token changes. Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token change.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>NotificationTopic</returns>
+        public NotificationTopic GetUserChallengesNotificationTopic ()
+        {
+             ApiResponse<NotificationTopic> localVarResponse = GetUserChallengesNotificationTopicWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token changes. Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token change.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of NotificationTopic</returns>
+        public ApiResponse< NotificationTopic > GetUserChallengesNotificationTopicWithHttpInfo ()
+        {
+
+            var localVarPath = "/api/v1/auth/user-challenges-topic-link";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUserChallengesNotificationTopic", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NotificationTopic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (NotificationTopic) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NotificationTopic)));
+        }
+
+        /// <summary>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token changes. Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token change.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of NotificationTopic</returns>
+        public async System.Threading.Tasks.Task<NotificationTopic> GetUserChallengesNotificationTopicAsync ()
+        {
+             ApiResponse<NotificationTopic> localVarResponse = await GetUserChallengesNotificationTopicAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token changes. Get a topic to be used with an MQTT client to receive real time updates whenever challenges for the user provided by the access token change.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (NotificationTopic)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserChallengesNotificationTopicAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/api/v1/auth/user-challenges-topic-link";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUserChallengesNotificationTopic", localVarResponse);
                 if (exception != null) throw exception;
             }
 
