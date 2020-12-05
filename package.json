@@ -1,8 +1,8 @@
 {
-  "name": "de.4players.scillclient",
-  "version": "0.0.1",
-  "displayName": "SCILLClient",
-  "description": "Api wrapper for SCILL-gaas.",
+  "name": "com.scillgame.scill-csharp",
+  "version": "1.1.0",
+  "displayName": "SCILL C# SDK",
+  "description": "C# SDK implementing SCILL Gamification as a Service APIs. Empowers developers to quickly implement challenges and battlepasses into their games and apps.",
   "dependencies": {},
   "keywords": [
     "4players",
