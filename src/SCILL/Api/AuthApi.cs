@@ -53,7 +53,7 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="battlePassId">The battle pass you want to get notified</param>
         /// <returns>NotificationTopic</returns>
-        NotificationTopic GetUseBattlePassNotificationTopic (string battlePassId);
+        NotificationTopic GetUserBattlePassNotificationTopic (string battlePassId);
 
         /// <summary>
         /// Get a topic to be used with an MQTT client to receive real time updates whenever a battle pass or challenges and levels within the battle pass change
@@ -64,7 +64,7 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="battlePassId">The battle pass you want to get notified</param>
         /// <returns>ApiResponse of NotificationTopic</returns>
-        ApiResponse<NotificationTopic> GetUseBattlePassNotificationTopicWithHttpInfo (string battlePassId);
+        ApiResponse<NotificationTopic> GetUserBattlePassNotificationTopicWithHttpInfo (string battlePassId);
         /// <summary>
         /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes.
         /// </summary>
@@ -137,7 +137,7 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="battlePassId">The battle pass you want to get notified</param>
         /// <returns>Task of NotificationTopic</returns>
-        System.Threading.Tasks.Task<NotificationTopic> GetUseBattlePassNotificationTopicAsync (string battlePassId);
+        System.Threading.Tasks.Task<NotificationTopic> GetUserBattlePassNotificationTopicAsync (string battlePassId);
 
         /// <summary>
         /// Get a topic to be used with an MQTT client to receive real time updates whenever a battle pass or challenges and levels within the battle pass change
@@ -148,7 +148,7 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="battlePassId">The battle pass you want to get notified</param>
         /// <returns>Task of ApiResponse (NotificationTopic)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUseBattlePassNotificationTopicAsyncWithHttpInfo (string battlePassId);
+        System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserBattlePassNotificationTopicAsyncWithHttpInfo (string battlePassId);
         /// <summary>
         /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified challenge changes.
         /// </summary>
@@ -477,9 +477,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="battlePassId">The battle pass you want to get notified</param>
         /// <returns>NotificationTopic</returns>
-        public NotificationTopic GetUseBattlePassNotificationTopic (string battlePassId)
+        public NotificationTopic GetUserBattlePassNotificationTopic (string battlePassId)
         {
-             ApiResponse<NotificationTopic> localVarResponse = GetUseBattlePassNotificationTopicWithHttpInfo(battlePassId);
+             ApiResponse<NotificationTopic> localVarResponse = GetUserBattlePassNotificationTopicWithHttpInfo(battlePassId);
              return localVarResponse.Data;
         }
 
@@ -489,11 +489,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="battlePassId">The battle pass you want to get notified</param>
         /// <returns>ApiResponse of NotificationTopic</returns>
-        public ApiResponse< NotificationTopic > GetUseBattlePassNotificationTopicWithHttpInfo (string battlePassId)
+        public ApiResponse< NotificationTopic > GetUserBattlePassNotificationTopicWithHttpInfo (string battlePassId)
         {
             // verify the required parameter 'battlePassId' is set
             if (battlePassId == null)
-                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling AuthApi->GetUseBattlePassNotificationTopic");
+                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling AuthApi->GetUserBattlePassNotificationTopic");
 
             var localVarPath = "/api/v1/auth/user-battle-pass-topic-link";
             var localVarPathParams = new Dictionary<String, String>();
@@ -539,7 +539,7 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetUseBattlePassNotificationTopic", localVarResponse);
+                Exception exception = ExceptionFactory("GetUserBattlePassNotificationTopic", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -554,9 +554,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="battlePassId">The battle pass you want to get notified</param>
         /// <returns>Task of NotificationTopic</returns>
-        public async System.Threading.Tasks.Task<NotificationTopic> GetUseBattlePassNotificationTopicAsync (string battlePassId)
+        public async System.Threading.Tasks.Task<NotificationTopic> GetUserBattlePassNotificationTopicAsync (string battlePassId)
         {
-             ApiResponse<NotificationTopic> localVarResponse = await GetUseBattlePassNotificationTopicAsyncWithHttpInfo(battlePassId);
+             ApiResponse<NotificationTopic> localVarResponse = await GetUserBattlePassNotificationTopicAsyncWithHttpInfo(battlePassId);
              return localVarResponse.Data;
 
         }
@@ -567,11 +567,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="battlePassId">The battle pass you want to get notified</param>
         /// <returns>Task of ApiResponse (NotificationTopic)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUseBattlePassNotificationTopicAsyncWithHttpInfo (string battlePassId)
+        public async System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserBattlePassNotificationTopicAsyncWithHttpInfo (string battlePassId)
         {
             // verify the required parameter 'battlePassId' is set
             if (battlePassId == null)
-                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling AuthApi->GetUseBattlePassNotificationTopic");
+                throw new ApiException(400, "Missing required parameter 'battlePassId' when calling AuthApi->GetUserBattlePassNotificationTopic");
 
             var localVarPath = "/api/v1/auth/user-battle-pass-topic-link";
             var localVarPathParams = new Dictionary<String, String>();
@@ -617,7 +617,7 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetUseBattlePassNotificationTopic", localVarResponse);
+                Exception exception = ExceptionFactory("GetUserBattlePassNotificationTopic", localVarResponse);
                 if (exception != null) throw exception;
             }
 
