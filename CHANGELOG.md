@@ -8,11 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2020-12-07
 ### Added
-- Added `challenge_goal_condition` to the Challenge object.
-- Added `challenge_reward_type` to the Challenge object.
+- Added `challenge_goal_condition` to the `Challenge` object.
+- Added `challenge_reward_type` to the `Challenge` object.
+- Added `image_xs`, `image_s`, `image_m`, `image_l` and `image_xl` to `BattlePass` object
 
 ### Changed
-- Changed type of `challenge_reward` in the Challenge object from integer to string
+- Changed type of `challenge_reward` in the `Challenge` object from integer to string
 
 ## [1.1.0] - 2020-12-04
 ### Added
