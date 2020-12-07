@@ -41,8 +41,11 @@ namespace SCILL.Model
         /// <param name="battlePassPriority">The priority of the battle pass. I.e. if multiple are available you can use this field to sort them..</param>
         /// <param name="packageSkuIos">If you want to sell Battle Passes you can use this field to trigger in-app purchase products within your mobile app. You can set this value in the Admin Panel. This one is for iOS..</param>
         /// <param name="packageSkuAndroid">If you want to sell Battle Passes you can use this field to trigger in-app purchase products within your mobile app. You can set this value in the Admin Panel. Use this to set the package string for Android..</param>
-        /// <param name="image">The mobile sized image name. For example you can use image and image_desktop to build a srcset in HTML or use them and size manually where you need them..</param>
-        /// <param name="imageDesktop">The desktop sized image name or URL.</param>
+        /// <param name="imageXs">The xs sized image name or url. You can determine the best size distribution yourself and depends on your application or UI.</param>
+        /// <param name="imageS">The s sized image name or url. You can determine the best size distribution yourself and depends on your application or UI.</param>
+        /// <param name="imageM">The m sized image name or url. You can determine the best size distribution yourself and depends on your application or UI.</param>
+        /// <param name="imageL">The l sized image name or url. You can determine the best size distribution yourself and depends on your application or UI.</param>
+        /// <param name="imageXl">The xl sized image name or url. You can determine the best size distribution yourself and depends on your application or UI.</param>
         /// <param name="startDate">The date (in iso format) when the Battle Pass starts. Tracking begins once this date is passed..</param>
         /// <param name="endDate">The date (in iso format) when the Battle Pass ends. Tracking stops once the end is reached and users will not be able to progress further than what they have achieved up to that point..</param>
         /// <param name="readMoreLink">If the Battle Pass costs “money” you may want to route the user to a web site/page, where they can learn more about this battle pass. You can also use this field to route the user inside your application by providing a path or whatever works for you..</param>
@@ -51,7 +54,7 @@ namespace SCILL.Model
         /// <param name="unlockedAt">The date in iso format when the user unlocked this Battle Pass..</param>
         /// <param name="canPurchaseWithMoney">Indicates that this Battle Pass can be purchased via in-app purchase. This can be set in the Admin Panel..</param>
         /// <param name="canPurchaseWithCoins">Indicates that this Battle Pass can be purchased with SCILL Coins. This can be set in the Admin Panel..</param>
-        public BattlePass(string battlePassId = default(string), string appId = default(string), string battlePassName = default(string), string battlePassDescription = default(string), string battlePassShortDescription = default(string), string battlePassDisclaimer = default(string), int? battlePassPriority = default(int?), string packageSkuIos = default(string), string packageSkuAndroid = default(string), string image = default(string), string imageDesktop = default(string), string startDate = default(string), string endDate = default(string), string readMoreLink = default(string), bool? isUnlockedIncrementally = default(bool?), bool? isActive = default(bool?), string unlockedAt = default(string), bool? canPurchaseWithMoney = default(bool?), bool? canPurchaseWithCoins = default(bool?))
+        public BattlePass(string battlePassId = default(string), string appId = default(string), string battlePassName = default(string), string battlePassDescription = default(string), string battlePassShortDescription = default(string), string battlePassDisclaimer = default(string), int? battlePassPriority = default(int?), string packageSkuIos = default(string), string packageSkuAndroid = default(string), string imageXs = default(string), string imageS = default(string), string imageM = default(string), string imageL = default(string), string imageXl = default(string), string startDate = default(string), string endDate = default(string), string readMoreLink = default(string), bool? isUnlockedIncrementally = default(bool?), bool? isActive = default(bool?), string unlockedAt = default(string), bool? canPurchaseWithMoney = default(bool?), bool? canPurchaseWithCoins = default(bool?))
         {
             this.battle_pass_id = battlePassId;
             this.app_id = appId;
@@ -62,8 +65,11 @@ namespace SCILL.Model
             this.battle_pass_priority = battlePassPriority;
             this.package_sku_ios = packageSkuIos;
             this.package_sku_android = packageSkuAndroid;
-            this.image = image;
-            this.image_desktop = imageDesktop;
+            this.image_xs = imageXs;
+            this.image_s = imageS;
+            this.image_m = imageM;
+            this.image_l = imageL;
+            this.image_xl = imageXl;
             this.start_date = startDate;
             this.end_date = endDate;
             this.read_more_link = readMoreLink;
@@ -138,18 +144,39 @@ namespace SCILL.Model
         public string package_sku_android { get; set; }
 
         /// <summary>
-        /// The mobile sized image name. For example you can use image and image_desktop to build a srcset in HTML or use them and size manually where you need them.
+        /// The xs sized image name or url. You can determine the best size distribution yourself and depends on your application or UI
         /// </summary>
-        /// <value>The mobile sized image name. For example you can use image and image_desktop to build a srcset in HTML or use them and size manually where you need them.</value>
-        [DataMember(Name="image", EmitDefaultValue=false)]
-        public string image { get; set; }
+        /// <value>The xs sized image name or url. You can determine the best size distribution yourself and depends on your application or UI</value>
+        [DataMember(Name="image_xs", EmitDefaultValue=false)]
+        public string image_xs { get; set; }
 
         /// <summary>
-        /// The desktop sized image name or URL
+        /// The s sized image name or url. You can determine the best size distribution yourself and depends on your application or UI
         /// </summary>
-        /// <value>The desktop sized image name or URL</value>
-        [DataMember(Name="image_desktop", EmitDefaultValue=false)]
-        public string image_desktop { get; set; }
+        /// <value>The s sized image name or url. You can determine the best size distribution yourself and depends on your application or UI</value>
+        [DataMember(Name="image_s", EmitDefaultValue=false)]
+        public string image_s { get; set; }
+
+        /// <summary>
+        /// The m sized image name or url. You can determine the best size distribution yourself and depends on your application or UI
+        /// </summary>
+        /// <value>The m sized image name or url. You can determine the best size distribution yourself and depends on your application or UI</value>
+        [DataMember(Name="image_m", EmitDefaultValue=false)]
+        public string image_m { get; set; }
+
+        /// <summary>
+        /// The l sized image name or url. You can determine the best size distribution yourself and depends on your application or UI
+        /// </summary>
+        /// <value>The l sized image name or url. You can determine the best size distribution yourself and depends on your application or UI</value>
+        [DataMember(Name="image_l", EmitDefaultValue=false)]
+        public string image_l { get; set; }
+
+        /// <summary>
+        /// The xl sized image name or url. You can determine the best size distribution yourself and depends on your application or UI
+        /// </summary>
+        /// <value>The xl sized image name or url. You can determine the best size distribution yourself and depends on your application or UI</value>
+        [DataMember(Name="image_xl", EmitDefaultValue=false)]
+        public string image_xl { get; set; }
 
         /// <summary>
         /// The date (in iso format) when the Battle Pass starts. Tracking begins once this date is passed.
@@ -224,8 +251,11 @@ namespace SCILL.Model
             sb.Append("  battle_pass_priority: ").Append(battle_pass_priority).Append("\n");
             sb.Append("  package_sku_ios: ").Append(package_sku_ios).Append("\n");
             sb.Append("  package_sku_android: ").Append(package_sku_android).Append("\n");
-            sb.Append("  image: ").Append(image).Append("\n");
-            sb.Append("  image_desktop: ").Append(image_desktop).Append("\n");
+            sb.Append("  image_xs: ").Append(image_xs).Append("\n");
+            sb.Append("  image_s: ").Append(image_s).Append("\n");
+            sb.Append("  image_m: ").Append(image_m).Append("\n");
+            sb.Append("  image_l: ").Append(image_l).Append("\n");
+            sb.Append("  image_xl: ").Append(image_xl).Append("\n");
             sb.Append("  start_date: ").Append(start_date).Append("\n");
             sb.Append("  end_date: ").Append(end_date).Append("\n");
             sb.Append("  read_more_link: ").Append(read_more_link).Append("\n");
@@ -314,14 +344,29 @@ namespace SCILL.Model
                     this.package_sku_android.Equals(input.package_sku_android))
                 ) && 
                 (
-                    this.image == input.image ||
-                    (this.image != null &&
-                    this.image.Equals(input.image))
+                    this.image_xs == input.image_xs ||
+                    (this.image_xs != null &&
+                    this.image_xs.Equals(input.image_xs))
                 ) && 
                 (
-                    this.image_desktop == input.image_desktop ||
-                    (this.image_desktop != null &&
-                    this.image_desktop.Equals(input.image_desktop))
+                    this.image_s == input.image_s ||
+                    (this.image_s != null &&
+                    this.image_s.Equals(input.image_s))
+                ) && 
+                (
+                    this.image_m == input.image_m ||
+                    (this.image_m != null &&
+                    this.image_m.Equals(input.image_m))
+                ) && 
+                (
+                    this.image_l == input.image_l ||
+                    (this.image_l != null &&
+                    this.image_l.Equals(input.image_l))
+                ) && 
+                (
+                    this.image_xl == input.image_xl ||
+                    (this.image_xl != null &&
+                    this.image_xl.Equals(input.image_xl))
                 ) && 
                 (
                     this.start_date == input.start_date ||
@@ -392,10 +437,16 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.package_sku_ios.GetHashCode();
                 if (this.package_sku_android != null)
                     hashCode = hashCode * 59 + this.package_sku_android.GetHashCode();
-                if (this.image != null)
-                    hashCode = hashCode * 59 + this.image.GetHashCode();
-                if (this.image_desktop != null)
-                    hashCode = hashCode * 59 + this.image_desktop.GetHashCode();
+                if (this.image_xs != null)
+                    hashCode = hashCode * 59 + this.image_xs.GetHashCode();
+                if (this.image_s != null)
+                    hashCode = hashCode * 59 + this.image_s.GetHashCode();
+                if (this.image_m != null)
+                    hashCode = hashCode * 59 + this.image_m.GetHashCode();
+                if (this.image_l != null)
+                    hashCode = hashCode * 59 + this.image_l.GetHashCode();
+                if (this.image_xl != null)
+                    hashCode = hashCode * 59 + this.image_xl.GetHashCode();
                 if (this.start_date != null)
                     hashCode = hashCode * 59 + this.start_date.GetHashCode();
                 if (this.end_date != null)

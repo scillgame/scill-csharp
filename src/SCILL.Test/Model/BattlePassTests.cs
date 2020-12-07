@@ -138,20 +138,44 @@ namespace SCILL.Test
             // TODO unit test for the property 'package_sku_android'
         }
         /// <summary>
-        /// Test the property 'image'
+        /// Test the property 'image_xs'
         /// </summary>
         [Test]
-        public void imageTest()
+        public void image_xsTest()
         {
-            // TODO unit test for the property 'image'
+            // TODO unit test for the property 'image_xs'
         }
         /// <summary>
-        /// Test the property 'image_desktop'
+        /// Test the property 'image_s'
         /// </summary>
         [Test]
-        public void image_desktopTest()
+        public void image_sTest()
         {
-            // TODO unit test for the property 'image_desktop'
+            // TODO unit test for the property 'image_s'
+        }
+        /// <summary>
+        /// Test the property 'image_m'
+        /// </summary>
+        [Test]
+        public void image_mTest()
+        {
+            // TODO unit test for the property 'image_m'
+        }
+        /// <summary>
+        /// Test the property 'image_l'
+        /// </summary>
+        [Test]
+        public void image_lTest()
+        {
+            // TODO unit test for the property 'image_l'
+        }
+        /// <summary>
+        /// Test the property 'image_xl'
+        /// </summary>
+        [Test]
+        public void image_xlTest()
+        {
+            // TODO unit test for the property 'image_xl'
         }
         /// <summary>
         /// Test the property 'start_date'

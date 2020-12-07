@@ -63,6 +63,16 @@ namespace SCILL.Test
         }
 
         /// <summary>
+        /// Test GetAvailableEvents
+        /// </summary>
+        [Test]
+        public void GetAvailableEventsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.GetAvailableEvents();
+            //Assert.IsInstanceOf<List<EventDescription>> (response, "response is List<EventDescription>");
+        }
+        /// <summary>
         /// Test SendEvent
         /// </summary>
         [Test]

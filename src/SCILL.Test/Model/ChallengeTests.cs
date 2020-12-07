@@ -146,6 +146,22 @@ namespace SCILL.Test
             // TODO unit test for the property 'challenge_reward'
         }
         /// <summary>
+        /// Test the property 'challenge_reward_type'
+        /// </summary>
+        [Test]
+        public void challenge_reward_typeTest()
+        {
+            // TODO unit test for the property 'challenge_reward_type'
+        }
+        /// <summary>
+        /// Test the property 'challenge_goal_condition'
+        /// </summary>
+        [Test]
+        public void challenge_goal_conditionTest()
+        {
+            // TODO unit test for the property 'challenge_goal_condition'
+        }
+        /// <summary>
         /// Test the property 'challenge_xp'
         /// </summary>
         [Test]

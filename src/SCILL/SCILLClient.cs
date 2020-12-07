@@ -192,7 +192,7 @@ namespace SCILL
             client.UseConnectedHandler(async e =>
             {
                 // Get the MQTT topic for listening on changes for the challenges
-                var notificationTopic = await AuthApi.GetUseBattlePassNotificationTopicAsync(battlePassId);
+                var notificationTopic = await AuthApi.GetUserBattlePassNotificationTopicAsync(battlePassId);
 
                 // Subscribe to the returned topic
                 await client.SubscribeAsync(new MqttTopicFilterBuilder()

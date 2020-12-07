@@ -41,7 +41,9 @@ namespace SCILL.Model
         /// <param name="challengeIcon">In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database..</param>
         /// <param name="challengeIconHd">This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank..</param>
         /// <param name="challengePrice">If you purchase the challenge, you can set a price..</param>
-        /// <param name="challengeReward">Set a reward for this challenge. This is a numeric value that you can map to an enum in your code.</param>
+        /// <param name="challengeReward">Set a reward for this challenge. This is a string value that you can map to anything in your code. Use in combination with challenge_reward_type..</param>
+        /// <param name="challengeRewardType">The reward type can be set to various different settings. Use it to implement different reward types on your side and use challenge_reward to set the value or amount of this reward..</param>
+        /// <param name="challengeGoalCondition">With this you can set the way how the SCILL system approaches the challenges state. 0 means, that the counter of the challenge must be brought above the goal. If this is 1, then the counter must be kept below the goal. This is often useful for challenges that include times, like: Manage the level in under 50 seconds..</param>
         /// <param name="challengeXp">If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded..</param>
         /// <param name="repeatable">If this challenge can be only activated once per user this will be false. Otherwise this challenge will always be added to list of available challenges (see personal or alliance challenges)..</param>
         /// <param name="type">Indicates the status of the challenge. This can be one of the following unlock: Challenge does not track anything. in-progress: Challenge is active and tracking. overtime: User did not manage to finish the challenge in time. unclaimed: The challenge has been completed but the reward has not yet been claimed. finished: The challenge has been successfully be completed and the reward has been claimed.</param>
@@ -50,7 +52,7 @@ namespace SCILL.Model
         /// <param name="userChallengeActivatedAt">This is the timestamp the challenge has been activated..</param>
         /// <param name="userChallengeIsClaimed">Indicates if this challenge has been claimed..</param>
         /// <param name="userChallengeStatus">Gives indication in what state the challenge is..</param>
-        public Challenge(string challengeId = default(string), string challengeName = default(string), int? challengeDurationTime = default(int?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), int? challengePrice = default(int?), int? challengeReward = default(int?), int? challengeXp = default(int?), bool? repeatable = default(bool?), string type = default(string), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string), bool? userChallengeIsClaimed = default(bool?), int? userChallengeStatus = default(int?))
+        public Challenge(string challengeId = default(string), string challengeName = default(string), int? challengeDurationTime = default(int?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), int? challengePrice = default(int?), string challengeReward = default(string), string challengeRewardType = default(string), int? challengeGoalCondition = default(int?), int? challengeXp = default(int?), bool? repeatable = default(bool?), string type = default(string), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string), bool? userChallengeIsClaimed = default(bool?), int? userChallengeStatus = default(int?))
         {
             this.challenge_id = challengeId;
             this.challenge_name = challengeName;
@@ -62,6 +64,8 @@ namespace SCILL.Model
             this.challenge_icon_hd = challengeIconHd;
             this.challenge_price = challengePrice;
             this.challenge_reward = challengeReward;
+            this.challenge_reward_type = challengeRewardType;
+            this.challenge_goal_condition = challengeGoalCondition;
             this.challenge_xp = challengeXp;
             this.repeatable = repeatable;
             this.type = type;
@@ -136,11 +140,25 @@ namespace SCILL.Model
         public int? challenge_price { get; set; }
 
         /// <summary>
-        /// Set a reward for this challenge. This is a numeric value that you can map to an enum in your code
+        /// Set a reward for this challenge. This is a string value that you can map to anything in your code. Use in combination with challenge_reward_type.
         /// </summary>
-        /// <value>Set a reward for this challenge. This is a numeric value that you can map to an enum in your code</value>
+        /// <value>Set a reward for this challenge. This is a string value that you can map to anything in your code. Use in combination with challenge_reward_type.</value>
         [DataMember(Name="challenge_reward", EmitDefaultValue=false)]
-        public int? challenge_reward { get; set; }
+        public string challenge_reward { get; set; }
+
+        /// <summary>
+        /// The reward type can be set to various different settings. Use it to implement different reward types on your side and use challenge_reward to set the value or amount of this reward.
+        /// </summary>
+        /// <value>The reward type can be set to various different settings. Use it to implement different reward types on your side and use challenge_reward to set the value or amount of this reward.</value>
+        [DataMember(Name="challenge_reward_type", EmitDefaultValue=false)]
+        public string challenge_reward_type { get; set; }
+
+        /// <summary>
+        /// With this you can set the way how the SCILL system approaches the challenges state. 0 means, that the counter of the challenge must be brought above the goal. If this is 1, then the counter must be kept below the goal. This is often useful for challenges that include times, like: Manage the level in under 50 seconds.
+        /// </summary>
+        /// <value>With this you can set the way how the SCILL system approaches the challenges state. 0 means, that the counter of the challenge must be brought above the goal. If this is 1, then the counter must be kept below the goal. This is often useful for challenges that include times, like: Manage the level in under 50 seconds.</value>
+        [DataMember(Name="challenge_goal_condition", EmitDefaultValue=false)]
+        public int? challenge_goal_condition { get; set; }
 
         /// <summary>
         /// If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded.
@@ -216,6 +234,8 @@ namespace SCILL.Model
             sb.Append("  challenge_icon_hd: ").Append(challenge_icon_hd).Append("\n");
             sb.Append("  challenge_price: ").Append(challenge_price).Append("\n");
             sb.Append("  challenge_reward: ").Append(challenge_reward).Append("\n");
+            sb.Append("  challenge_reward_type: ").Append(challenge_reward_type).Append("\n");
+            sb.Append("  challenge_goal_condition: ").Append(challenge_goal_condition).Append("\n");
             sb.Append("  challenge_xp: ").Append(challenge_xp).Append("\n");
             sb.Append("  repeatable: ").Append(repeatable).Append("\n");
             sb.Append("  type: ").Append(type).Append("\n");
@@ -309,6 +329,16 @@ namespace SCILL.Model
                     this.challenge_reward.Equals(input.challenge_reward))
                 ) && 
                 (
+                    this.challenge_reward_type == input.challenge_reward_type ||
+                    (this.challenge_reward_type != null &&
+                    this.challenge_reward_type.Equals(input.challenge_reward_type))
+                ) && 
+                (
+                    this.challenge_goal_condition == input.challenge_goal_condition ||
+                    (this.challenge_goal_condition != null &&
+                    this.challenge_goal_condition.Equals(input.challenge_goal_condition))
+                ) && 
+                (
                     this.challenge_xp == input.challenge_xp ||
                     (this.challenge_xp != null &&
                     this.challenge_xp.Equals(input.challenge_xp))
@@ -379,6 +409,10 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.challenge_price.GetHashCode();
                 if (this.challenge_reward != null)
                     hashCode = hashCode * 59 + this.challenge_reward.GetHashCode();
+                if (this.challenge_reward_type != null)
+                    hashCode = hashCode * 59 + this.challenge_reward_type.GetHashCode();
+                if (this.challenge_goal_condition != null)
+                    hashCode = hashCode * 59 + this.challenge_goal_condition.GetHashCode();
                 if (this.challenge_xp != null)
                     hashCode = hashCode * 59 + this.challenge_xp.GetHashCode();
                 if (this.repeatable != null)
