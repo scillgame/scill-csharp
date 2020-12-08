@@ -90,6 +90,14 @@ namespace SCILL.Test
             // TODO unit test for the property 'challenge_goal'
         }
         /// <summary>
+        /// Test the property 'challenge_goal_condition'
+        /// </summary>
+        [Test]
+        public void challenge_goal_conditionTest()
+        {
+            // TODO unit test for the property 'challenge_goal_condition'
+        }
+        /// <summary>
         /// Test the property 'user_challenge_current_score'
         /// </summary>
         [Test]

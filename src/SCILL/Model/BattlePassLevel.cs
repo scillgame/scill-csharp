@@ -36,19 +36,21 @@ namespace SCILL.Model
         /// <param name="appId">The app id.</param>
         /// <param name="battlePassId">The id of the battle pass this level belongs to.</param>
         /// <param name="rewardAmount">In the Admin Panel you can set different types of rewards. You can also set an identifier of an in-game-item or anything you like. Use this to include the reward into your own business logic..</param>
-        /// <param name="rewardTypeName">There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience..</param>
+        /// <param name="rewardTypeName">There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience. This is deprecated in favor of level_reward_type which uses a slug instead of a human readable expression.</param>
+        /// <param name="levelRewardType">The reward type in a machine readable slug. Available values are nothing, coin, experience, item.</param>
         /// <param name="levelCompleted">Indicates if this level is completed, i.e. all challenges have been completed..</param>
         /// <param name="levelPriority">Indicates the position of the level..</param>
         /// <param name="rewardClaimed">Indicates if this level has already be claimed..</param>
         /// <param name="activatedAt">The date when this level has been activated or null if it&#x27;s not activated..</param>
         /// <param name="challenges">An array of BattlePassLevelChallenge objects. Please note, not all values are available from the challenge object, as battle passes handle the lifecycle of challenges..</param>
-        public BattlePassLevel(string levelId = default(string), string appId = default(string), string battlePassId = default(string), string rewardAmount = default(string), string rewardTypeName = default(string), bool? levelCompleted = default(bool?), decimal? levelPriority = default(decimal?), bool? rewardClaimed = default(bool?), string activatedAt = default(string), List<BattlePassLevelChallenge> challenges = default(List<BattlePassLevelChallenge>))
+        public BattlePassLevel(string levelId = default(string), string appId = default(string), string battlePassId = default(string), string rewardAmount = default(string), string rewardTypeName = default(string), string levelRewardType = default(string), bool? levelCompleted = default(bool?), decimal? levelPriority = default(decimal?), bool? rewardClaimed = default(bool?), string activatedAt = default(string), List<BattlePassLevelChallenge> challenges = default(List<BattlePassLevelChallenge>))
         {
             this.level_id = levelId;
             this.app_id = appId;
             this.battle_pass_id = battlePassId;
             this.reward_amount = rewardAmount;
             this.reward_type_name = rewardTypeName;
+            this.level_reward_type = levelRewardType;
             this.level_completed = levelCompleted;
             this.level_priority = levelPriority;
             this.reward_claimed = rewardClaimed;
@@ -85,11 +87,18 @@ namespace SCILL.Model
         public string reward_amount { get; set; }
 
         /// <summary>
-        /// There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience.
+        /// There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience. This is deprecated in favor of level_reward_type which uses a slug instead of a human readable expression
         /// </summary>
-        /// <value>There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience.</value>
+        /// <value>There are different types of rewards available. Possible values are Coins, Voucher, Money and Experience. This is deprecated in favor of level_reward_type which uses a slug instead of a human readable expression</value>
         [DataMember(Name="reward_type_name", EmitDefaultValue=false)]
         public string reward_type_name { get; set; }
+
+        /// <summary>
+        /// The reward type in a machine readable slug. Available values are nothing, coin, experience, item
+        /// </summary>
+        /// <value>The reward type in a machine readable slug. Available values are nothing, coin, experience, item</value>
+        [DataMember(Name="level_reward_type", EmitDefaultValue=false)]
+        public string level_reward_type { get; set; }
 
         /// <summary>
         /// Indicates if this level is completed, i.e. all challenges have been completed.
@@ -139,6 +148,7 @@ namespace SCILL.Model
             sb.Append("  battle_pass_id: ").Append(battle_pass_id).Append("\n");
             sb.Append("  reward_amount: ").Append(reward_amount).Append("\n");
             sb.Append("  reward_type_name: ").Append(reward_type_name).Append("\n");
+            sb.Append("  level_reward_type: ").Append(level_reward_type).Append("\n");
             sb.Append("  level_completed: ").Append(level_completed).Append("\n");
             sb.Append("  level_priority: ").Append(level_priority).Append("\n");
             sb.Append("  reward_claimed: ").Append(reward_claimed).Append("\n");
@@ -204,6 +214,11 @@ namespace SCILL.Model
                     this.reward_type_name.Equals(input.reward_type_name))
                 ) && 
                 (
+                    this.level_reward_type == input.level_reward_type ||
+                    (this.level_reward_type != null &&
+                    this.level_reward_type.Equals(input.level_reward_type))
+                ) && 
+                (
                     this.level_completed == input.level_completed ||
                     (this.level_completed != null &&
                     this.level_completed.Equals(input.level_completed))
@@ -250,6 +265,8 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.reward_amount.GetHashCode();
                 if (this.reward_type_name != null)
                     hashCode = hashCode * 59 + this.reward_type_name.GetHashCode();
+                if (this.level_reward_type != null)
+                    hashCode = hashCode * 59 + this.level_reward_type.GetHashCode();
                 if (this.level_completed != null)
                     hashCode = hashCode * 59 + this.level_completed.GetHashCode();
                 if (this.level_priority != null)
