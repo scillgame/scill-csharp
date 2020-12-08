@@ -106,6 +106,14 @@ namespace SCILL.Test
             // TODO unit test for the property 'reward_type_name'
         }
         /// <summary>
+        /// Test the property 'level_reward_type'
+        /// </summary>
+        [Test]
+        public void level_reward_typeTest()
+        {
+            // TODO unit test for the property 'level_reward_type'
+        }
+        /// <summary>
         /// Test the property 'level_completed'
         /// </summary>
         [Test]

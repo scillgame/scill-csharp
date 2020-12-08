@@ -35,15 +35,17 @@ namespace SCILL.Model
         /// <param name="challengeId">The unique id of this challenge. Every challenge is linked to a product..</param>
         /// <param name="challengeName">The name of the challenge in the language set by the language parameter..</param>
         /// <param name="challengeGoal">Indicates how many “tasks” must be completed or done to complete this challenge..</param>
+        /// <param name="challengeGoalCondition">With this you can set the way how the SCILL system approaches the challenges state. 0 means, that the counter of the challenge must be brought above the goal. If this is 1, then the counter must be kept below the goal. This is often useful for challenges that include times, like: Manage the level in under 50 seconds..</param>
         /// <param name="userChallengeCurrentScore">Indicates how many tasks the user already has completed. Use this in combination with challenge_goal to render a nice progress bar..</param>
         /// <param name="challengeIcon">In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database..</param>
         /// <param name="challengeIconHd">This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank..</param>
         /// <param name="type">Indicates the status of the challenge. This can be one of the following unlock: Challenge does not track anything. in-progress: Challenge is active and tracking. overtime: User did not manage to finish the challenge in time. unclaimed: The challenge has been completed but the reward has not yet been claimed. finished: The challenge has been successfully be completed and the reward has been claimed.</param>
-        public BattlePassLevelChallenge(string challengeId = default(string), string challengeName = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), string type = default(string))
+        public BattlePassLevelChallenge(string challengeId = default(string), string challengeName = default(string), int? challengeGoal = default(int?), int? challengeGoalCondition = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), string type = default(string))
         {
             this.challenge_id = challengeId;
             this.challenge_name = challengeName;
             this.challenge_goal = challengeGoal;
+            this.challenge_goal_condition = challengeGoalCondition;
             this.user_challenge_current_score = userChallengeCurrentScore;
             this.challenge_icon = challengeIcon;
             this.challenge_icon_hd = challengeIconHd;
@@ -70,6 +72,13 @@ namespace SCILL.Model
         /// <value>Indicates how many “tasks” must be completed or done to complete this challenge.</value>
         [DataMember(Name="challenge_goal", EmitDefaultValue=false)]
         public int? challenge_goal { get; set; }
+
+        /// <summary>
+        /// With this you can set the way how the SCILL system approaches the challenges state. 0 means, that the counter of the challenge must be brought above the goal. If this is 1, then the counter must be kept below the goal. This is often useful for challenges that include times, like: Manage the level in under 50 seconds.
+        /// </summary>
+        /// <value>With this you can set the way how the SCILL system approaches the challenges state. 0 means, that the counter of the challenge must be brought above the goal. If this is 1, then the counter must be kept below the goal. This is often useful for challenges that include times, like: Manage the level in under 50 seconds.</value>
+        [DataMember(Name="challenge_goal_condition", EmitDefaultValue=false)]
+        public int? challenge_goal_condition { get; set; }
 
         /// <summary>
         /// Indicates how many tasks the user already has completed. Use this in combination with challenge_goal to render a nice progress bar.
@@ -110,6 +119,7 @@ namespace SCILL.Model
             sb.Append("  challenge_id: ").Append(challenge_id).Append("\n");
             sb.Append("  challenge_name: ").Append(challenge_name).Append("\n");
             sb.Append("  challenge_goal: ").Append(challenge_goal).Append("\n");
+            sb.Append("  challenge_goal_condition: ").Append(challenge_goal_condition).Append("\n");
             sb.Append("  user_challenge_current_score: ").Append(user_challenge_current_score).Append("\n");
             sb.Append("  challenge_icon: ").Append(challenge_icon).Append("\n");
             sb.Append("  challenge_icon_hd: ").Append(challenge_icon_hd).Append("\n");
@@ -164,6 +174,11 @@ namespace SCILL.Model
                     this.challenge_goal.Equals(input.challenge_goal))
                 ) && 
                 (
+                    this.challenge_goal_condition == input.challenge_goal_condition ||
+                    (this.challenge_goal_condition != null &&
+                    this.challenge_goal_condition.Equals(input.challenge_goal_condition))
+                ) && 
+                (
                     this.user_challenge_current_score == input.user_challenge_current_score ||
                     (this.user_challenge_current_score != null &&
                     this.user_challenge_current_score.Equals(input.user_challenge_current_score))
@@ -200,6 +215,8 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.challenge_name.GetHashCode();
                 if (this.challenge_goal != null)
                     hashCode = hashCode * 59 + this.challenge_goal.GetHashCode();
+                if (this.challenge_goal_condition != null)
+                    hashCode = hashCode * 59 + this.challenge_goal_condition.GetHashCode();
                 if (this.user_challenge_current_score != null)
                     hashCode = hashCode * 59 + this.user_challenge_current_score.GetHashCode();
                 if (this.challenge_icon != null)
