@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1] - 2020-12-08
+### Added
+- Added `challenge_goal_condition` to the `BattlePassLevel` object.
+- Added `level_reward_type` to the `BattlePassLevel` object.
+
+### Deprecated
+- `challenge_reward_type` should not be used anymore as it has been replaced by `level_reward_type` in `BattlePassLevel`
+
 ## [1.2.0] - 2020-12-07
 ### Added
 - Added `challenge_goal_condition` to the Challenge object.
