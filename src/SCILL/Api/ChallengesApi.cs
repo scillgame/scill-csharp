@@ -133,6 +133,27 @@ namespace SCILL.Api
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
         ApiResponse<List<ChallengeCategory>> GetActivePersonalChallengesWithHttpInfo (string appId);
         /// <summary>
+        /// Get all personal challenges available for your app. Also includes completed challenges.
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories that are not yet finished
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>List&lt;ChallengeCategory&gt;</returns>
+        List<ChallengeCategory> GetAllPersonalChallenges (string appId);
+
+        /// <summary>
+        /// Get all personal challenges available for your app. Also includes completed challenges.
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories that are not yet finished
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
+        ApiResponse<List<ChallengeCategory>> GetAllPersonalChallengesWithHttpInfo (string appId);
+        /// <summary>
         /// Get personal challenge by id
         /// </summary>
         /// <remarks>
@@ -156,7 +177,7 @@ namespace SCILL.Api
         /// <returns>ApiResponse of Challenge</returns>
         ApiResponse<Challenge> GetPersonalChallengeByIdWithHttpInfo (string appId, string challengeId);
         /// <summary>
-        /// Get personal challenges
+        /// Get personal challenges that are not yet completed.
         /// </summary>
         /// <remarks>
         /// Get personal challenges organized in categories
@@ -167,7 +188,7 @@ namespace SCILL.Api
         List<ChallengeCategory> GetPersonalChallenges (string appId);
 
         /// <summary>
-        /// Get personal challenges
+        /// Get personal challenges that are not yet completed.
         /// </summary>
         /// <remarks>
         /// Get personal challenges organized in categories
@@ -176,6 +197,27 @@ namespace SCILL.Api
         /// <param name="appId">The app id</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
         ApiResponse<List<ChallengeCategory>> GetPersonalChallengesWithHttpInfo (string appId);
+        /// <summary>
+        /// Get personal challenges that are not yet completed.
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories that are not yet finished
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>List&lt;ChallengeCategory&gt;</returns>
+        List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId);
+
+        /// <summary>
+        /// Get personal challenges that are not yet completed.
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories that are not yet finished
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
+        ApiResponse<List<ChallengeCategory>> GetUnresolvedPersonalChallengesWithHttpInfo (string appId);
         /// <summary>
         /// Unlock a personal challenges
         /// </summary>
@@ -311,6 +353,27 @@ namespace SCILL.Api
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetActivePersonalChallengesAsyncWithHttpInfo (string appId);
         /// <summary>
+        /// Get all personal challenges available for your app. Also includes completed challenges.
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories that are not yet finished
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId);
+
+        /// <summary>
+        /// Get all personal challenges available for your app. Also includes completed challenges.
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories that are not yet finished
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId);
+        /// <summary>
         /// Get personal challenge by id
         /// </summary>
         /// <remarks>
@@ -334,7 +397,7 @@ namespace SCILL.Api
         /// <returns>Task of ApiResponse (Challenge)</returns>
         System.Threading.Tasks.Task<ApiResponse<Challenge>> GetPersonalChallengeByIdAsyncWithHttpInfo (string appId, string challengeId);
         /// <summary>
-        /// Get personal challenges
+        /// Get personal challenges that are not yet completed.
         /// </summary>
         /// <remarks>
         /// Get personal challenges organized in categories
@@ -345,7 +408,7 @@ namespace SCILL.Api
         System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId);
 
         /// <summary>
-        /// Get personal challenges
+        /// Get personal challenges that are not yet completed.
         /// </summary>
         /// <remarks>
         /// Get personal challenges organized in categories
@@ -354,6 +417,27 @@ namespace SCILL.Api
         /// <param name="appId">The app id</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId);
+        /// <summary>
+        /// Get personal challenges that are not yet completed.
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories that are not yet finished
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId);
+
+        /// <summary>
+        /// Get personal challenges that are not yet completed.
+        /// </summary>
+        /// <remarks>
+        /// Get personal challenges organized in categories that are not yet finished
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId);
         /// <summary>
         /// Unlock a personal challenges
         /// </summary>
@@ -1288,6 +1372,161 @@ namespace SCILL.Api
         }
 
         /// <summary>
+        /// Get all personal challenges available for your app. Also includes completed challenges. Get personal challenges organized in categories that are not yet finished
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>List&lt;ChallengeCategory&gt;</returns>
+        public List<ChallengeCategory> GetAllPersonalChallenges (string appId)
+        {
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetAllPersonalChallengesWithHttpInfo(appId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all personal challenges available for your app. Also includes completed challenges. Get personal challenges organized in categories that are not yet finished
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
+        public ApiResponse< List<ChallengeCategory> > GetAllPersonalChallengesWithHttpInfo (string appId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->GetAllPersonalChallenges");
+
+            var localVarPath = "/api/v1/challenges/personal/all/{appId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAllPersonalChallenges", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ChallengeCategory>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<ChallengeCategory>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ChallengeCategory>)));
+        }
+
+        /// <summary>
+        /// Get all personal challenges available for your app. Also includes completed challenges. Get personal challenges organized in categories that are not yet finished
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId)
+        {
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetAllPersonalChallengesAsyncWithHttpInfo(appId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get all personal challenges available for your app. Also includes completed challenges. Get personal challenges organized in categories that are not yet finished
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->GetAllPersonalChallenges");
+
+            var localVarPath = "/api/v1/challenges/personal/all/{appId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAllPersonalChallenges", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ChallengeCategory>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<ChallengeCategory>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ChallengeCategory>)));
+        }
+
+        /// <summary>
         /// Get personal challenge by id Get personal challenges organized in categories
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1455,7 +1694,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get personal challenges Get personal challenges organized in categories
+        /// Get personal challenges that are not yet completed. Get personal challenges organized in categories
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
@@ -1467,7 +1706,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get personal challenges Get personal challenges organized in categories
+        /// Get personal challenges that are not yet completed. Get personal challenges organized in categories
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
@@ -1532,7 +1771,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get personal challenges Get personal challenges organized in categories
+        /// Get personal challenges that are not yet completed. Get personal challenges organized in categories
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
@@ -1545,7 +1784,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Get personal challenges Get personal challenges organized in categories
+        /// Get personal challenges that are not yet completed. Get personal challenges organized in categories
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
@@ -1601,6 +1840,161 @@ namespace SCILL.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("GetPersonalChallenges", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ChallengeCategory>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<ChallengeCategory>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ChallengeCategory>)));
+        }
+
+        /// <summary>
+        /// Get personal challenges that are not yet completed. Get personal challenges organized in categories that are not yet finished
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>List&lt;ChallengeCategory&gt;</returns>
+        public List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId)
+        {
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetUnresolvedPersonalChallengesWithHttpInfo(appId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get personal challenges that are not yet completed. Get personal challenges organized in categories that are not yet finished
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
+        public ApiResponse< List<ChallengeCategory> > GetUnresolvedPersonalChallengesWithHttpInfo (string appId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->GetUnresolvedPersonalChallenges");
+
+            var localVarPath = "/api/v1/challenges/personal/unresolved/{appId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUnresolvedPersonalChallenges", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<ChallengeCategory>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<ChallengeCategory>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ChallengeCategory>)));
+        }
+
+        /// <summary>
+        /// Get personal challenges that are not yet completed. Get personal challenges organized in categories that are not yet finished
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId)
+        {
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetUnresolvedPersonalChallengesAsyncWithHttpInfo(appId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get personal challenges that are not yet completed. Get personal challenges organized in categories that are not yet finished
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->GetUnresolvedPersonalChallenges");
+
+            var localVarPath = "/api/v1/challenges/personal/unresolved/{appId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUnresolvedPersonalChallenges", localVarResponse);
                 if (exception != null) throw exception;
             }
 

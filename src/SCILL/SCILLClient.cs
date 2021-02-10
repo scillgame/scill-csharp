@@ -302,6 +302,27 @@ namespace SCILL
             return await ChallengesApi.GetPersonalChallengesAsync(AppId);
         }
         
+        public List<ChallengeCategory> GetAllPersonalChallenges()
+        {
+            return ChallengesApi.GetAllPersonalChallenges(AppId);
+        }
+
+        public async Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync()
+        {
+            return await ChallengesApi.GetAllPersonalChallengesAsync(AppId);
+        }        
+        
+        
+        public List<ChallengeCategory> GetUnresolvedPersonalChallenges()
+        {
+            return ChallengesApi.GetUnresolvedPersonalChallenges(AppId);
+        }
+
+        public async Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync()
+        {
+            return await ChallengesApi.GetUnresolvedPersonalChallengesAsync(AppId);
+        }               
+        
         public Challenge GetPersonalChallengeById(string challengeId)
         {
             return ChallengesApi.GetPersonalChallengeById(AppId, challengeId);
