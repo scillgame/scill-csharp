@@ -52,7 +52,7 @@ namespace SCILL.Model
         /// <param name="userChallengeActivatedAt">This is the timestamp the challenge has been activated..</param>
         /// <param name="userChallengeIsClaimed">Indicates if this challenge has been claimed..</param>
         /// <param name="userChallengeStatus">Gives indication in what state the challenge is..</param>
-        public Challenge(string challengeId = default(string), string challengeName = default(string), int? challengeDurationTime = default(int?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), int? challengePrice = default(int?), string challengeReward = default(string), string challengeRewardType = default(string), int? challengeGoalCondition = default(int?), int? challengeXp = default(int?), bool? repeatable = default(bool?), string type = default(string), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string), bool? userChallengeIsClaimed = default(bool?), int? userChallengeStatus = default(int?))
+        public Challenge(string challengeId = default(string), string challengeName = default(string), decimal? challengeDurationTime = default(decimal?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), int? challengePrice = default(int?), string challengeReward = default(string), string challengeRewardType = default(string), int? challengeGoalCondition = default(int?), int? challengeXp = default(int?), bool? repeatable = default(bool?), string type = default(string), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string), bool? userChallengeIsClaimed = default(bool?), int? userChallengeStatus = default(int?))
         {
             this.challenge_id = challengeId;
             this.challenge_name = challengeName;
@@ -95,7 +95,7 @@ namespace SCILL.Model
         /// </summary>
         /// <value>The duration of the challenge in seconds. Challenges auto lock after time-out and need to be unlocked again.</value>
         [DataMember(Name="challenge_duration_time", EmitDefaultValue=false)]
-        public int? challenge_duration_time { get; set; }
+        public decimal? challenge_duration_time { get; set; }
 
         /// <summary>
         /// The date this challenge should start. Use that field to create challenges that start in the future.

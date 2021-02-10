@@ -120,6 +120,17 @@ namespace SCILL.Test
             //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
         }
         /// <summary>
+        /// Test GetAllPersonalChallenges
+        /// </summary>
+        [Test]
+        public void GetAllPersonalChallengesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //var response = instance.GetAllPersonalChallenges(appId);
+            //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
+        }
+        /// <summary>
         /// Test GetPersonalChallengeById
         /// </summary>
         [Test]
@@ -140,6 +151,17 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //var response = instance.GetPersonalChallenges(appId);
+            //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
+        }
+        /// <summary>
+        /// Test GetUnresolvedPersonalChallenges
+        /// </summary>
+        [Test]
+        public void GetUnresolvedPersonalChallengesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //var response = instance.GetUnresolvedPersonalChallenges(appId);
             //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
         }
         /// <summary>
