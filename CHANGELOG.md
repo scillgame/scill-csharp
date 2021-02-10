@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2021-02-10
+### Added
+- Added `GetUnresolvedPersonalChallenges` function to the `ChallengesApi` which is a duplicate of getPersonalChallenges right now.
+- Added `GetAllPersonalChallenges` function to the `ChallengesApi` which also returns finished challenges.
+
 ## [1.2.1] - 2020-12-08
 ### Added
 - Added `challenge_goal_condition` to the `BattlePassLevel` object.
