@@ -33,13 +33,15 @@ namespace SCILL.Model
         /// Initializes a new instance of the <see cref="EventPayload" /> class.
         /// </summary>
         /// <param name="userId">This is your user id. You can set this to whatever you like, either your real user id or an obfuscated user id. However you need to be consistent here. Events linked to this user id only track if challenges or battle passes are unlocked with the same user id..</param>
+        /// <param name="teamId">Provide an optional team id that will be used in leaderboards to group results of teams..</param>
         /// <param name="sessionId">This is required if event_type is single and identifies a session. This can be anything used to group events together. For example this can be a level or a match id..</param>
         /// <param name="eventName">This is the event type as a string. These have predefined event names for many games and applications. It’s wise to use those as this allows us to analyse data and help you balancing your application or game..</param>
         /// <param name="eventType">This is either single or group. You can send multiple events in one request (group) or send events in sequence. Please note, that depending on your tier you might run into rate limits. (default to &quot;single&quot;).</param>
         /// <param name="metaData">metaData.</param>
-        public EventPayload(string userId = default(string), string sessionId = default(string), string eventName = default(string), string eventType = "single", EventMetaData metaData = default(EventMetaData))
+        public EventPayload(string userId = default(string), string teamId = default(string), string sessionId = default(string), string eventName = default(string), string eventType = "single", EventMetaData metaData = default(EventMetaData))
         {
             this.user_id = userId;
+            this.team_id = teamId;
             this.session_id = sessionId;
             this.event_name = eventName;
             // use default value if no "eventType" provided
@@ -60,6 +62,13 @@ namespace SCILL.Model
         /// <value>This is your user id. You can set this to whatever you like, either your real user id or an obfuscated user id. However you need to be consistent here. Events linked to this user id only track if challenges or battle passes are unlocked with the same user id.</value>
         [DataMember(Name="user_id", EmitDefaultValue=false)]
         public string user_id { get; set; }
+
+        /// <summary>
+        /// Provide an optional team id that will be used in leaderboards to group results of teams.
+        /// </summary>
+        /// <value>Provide an optional team id that will be used in leaderboards to group results of teams.</value>
+        [DataMember(Name="team_id", EmitDefaultValue=false)]
+        public string team_id { get; set; }
 
         /// <summary>
         /// This is required if event_type is single and identifies a session. This can be anything used to group events together. For example this can be a level or a match id.
@@ -97,6 +106,7 @@ namespace SCILL.Model
             var sb = new StringBuilder();
             sb.Append("class EventPayload {\n");
             sb.Append("  user_id: ").Append(user_id).Append("\n");
+            sb.Append("  team_id: ").Append(team_id).Append("\n");
             sb.Append("  session_id: ").Append(session_id).Append("\n");
             sb.Append("  event_name: ").Append(event_name).Append("\n");
             sb.Append("  event_type: ").Append(event_type).Append("\n");
@@ -141,6 +151,11 @@ namespace SCILL.Model
                     this.user_id.Equals(input.user_id))
                 ) && 
                 (
+                    this.team_id == input.team_id ||
+                    (this.team_id != null &&
+                    this.team_id.Equals(input.team_id))
+                ) && 
+                (
                     this.session_id == input.session_id ||
                     (this.session_id != null &&
                     this.session_id.Equals(input.session_id))
@@ -173,6 +188,8 @@ namespace SCILL.Model
                 int hashCode = 41;
                 if (this.user_id != null)
                     hashCode = hashCode * 59 + this.user_id.GetHashCode();
+                if (this.team_id != null)
+                    hashCode = hashCode * 59 + this.team_id.GetHashCode();
                 if (this.session_id != null)
                     hashCode = hashCode * 59 + this.session_id.GetHashCode();
                 if (this.event_name != null)

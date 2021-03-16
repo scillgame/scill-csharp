@@ -82,6 +82,14 @@ namespace SCILL.Test
             // TODO unit test for the property 'challenge_name'
         }
         /// <summary>
+        /// Test the property 'challenge_description'
+        /// </summary>
+        [Test]
+        public void challenge_descriptionTest()
+        {
+            // TODO unit test for the property 'challenge_description'
+        }
+        /// <summary>
         /// Test the property 'challenge_duration_time'
         /// </summary>
         [Test]
@@ -184,6 +192,14 @@ namespace SCILL.Test
         public void typeTest()
         {
             // TODO unit test for the property 'type'
+        }
+        /// <summary>
+        /// Test the property 'challenge_auto_activated'
+        /// </summary>
+        [Test]
+        public void challenge_auto_activatedTest()
+        {
+            // TODO unit test for the property 'challenge_auto_activated'
         }
         /// <summary>
         /// Test the property 'is_claimed'

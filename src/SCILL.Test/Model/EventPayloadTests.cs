@@ -74,6 +74,14 @@ namespace SCILL.Test
             // TODO unit test for the property 'user_id'
         }
         /// <summary>
+        /// Test the property 'team_id'
+        /// </summary>
+        [Test]
+        public void team_idTest()
+        {
+            // TODO unit test for the property 'team_id'
+        }
+        /// <summary>
         /// Test the property 'session_id'
         /// </summary>
         [Test]

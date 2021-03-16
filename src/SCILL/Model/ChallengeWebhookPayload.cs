@@ -32,14 +32,41 @@ namespace SCILL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ChallengeWebhookPayload" /> class.
         /// </summary>
+        /// <param name="webhookType">The type of the webhook. Depending on the module, there are different webhook types indicating different events. Check the reference documentation to see all types..</param>
+        /// <param name="categoryPosition">The index of the category this challenge is linked to. When you request personal challenges, you get an array of categories which contain an array of challenges in their challenges property. This value indicates in which category this challenge can be found. Speeds up updating UI as you don&#x27;t need to iterate through all catagories and challenges to find the challenge..</param>
+        /// <param name="userToken">The access token for the user of that challenge. You can use that user_token to directly send another event and therefore to chain different SCILL pieces together. For example you can send another event driving another challenge or battle pass whenever a user has completed a challenge..</param>
         /// <param name="newChallenge">newChallenge.</param>
         /// <param name="oldChallenge">oldChallenge.</param>
-        public ChallengeWebhookPayload(Challenge newChallenge = default(Challenge), Challenge oldChallenge = default(Challenge))
+        public ChallengeWebhookPayload(string webhookType = default(string), decimal? categoryPosition = default(decimal?), string userToken = default(string), Challenge newChallenge = default(Challenge), Challenge oldChallenge = default(Challenge))
         {
+            this.webhook_type = webhookType;
+            this.category_position = categoryPosition;
+            this.user_token = userToken;
             this.new_challenge = newChallenge;
             this.old_challenge = oldChallenge;
         }
         
+        /// <summary>
+        /// The type of the webhook. Depending on the module, there are different webhook types indicating different events. Check the reference documentation to see all types.
+        /// </summary>
+        /// <value>The type of the webhook. Depending on the module, there are different webhook types indicating different events. Check the reference documentation to see all types.</value>
+        [DataMember(Name="webhook_type", EmitDefaultValue=false)]
+        public string webhook_type { get; set; }
+
+        /// <summary>
+        /// The index of the category this challenge is linked to. When you request personal challenges, you get an array of categories which contain an array of challenges in their challenges property. This value indicates in which category this challenge can be found. Speeds up updating UI as you don&#x27;t need to iterate through all catagories and challenges to find the challenge.
+        /// </summary>
+        /// <value>The index of the category this challenge is linked to. When you request personal challenges, you get an array of categories which contain an array of challenges in their challenges property. This value indicates in which category this challenge can be found. Speeds up updating UI as you don&#x27;t need to iterate through all catagories and challenges to find the challenge.</value>
+        [DataMember(Name="category_position", EmitDefaultValue=false)]
+        public decimal? category_position { get; set; }
+
+        /// <summary>
+        /// The access token for the user of that challenge. You can use that user_token to directly send another event and therefore to chain different SCILL pieces together. For example you can send another event driving another challenge or battle pass whenever a user has completed a challenge.
+        /// </summary>
+        /// <value>The access token for the user of that challenge. You can use that user_token to directly send another event and therefore to chain different SCILL pieces together. For example you can send another event driving another challenge or battle pass whenever a user has completed a challenge.</value>
+        [DataMember(Name="user_token", EmitDefaultValue=false)]
+        public string user_token { get; set; }
+
         /// <summary>
         /// Gets or Sets new_challenge
         /// </summary>
@@ -60,6 +87,9 @@ namespace SCILL.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ChallengeWebhookPayload {\n");
+            sb.Append("  webhook_type: ").Append(webhook_type).Append("\n");
+            sb.Append("  category_position: ").Append(category_position).Append("\n");
+            sb.Append("  user_token: ").Append(user_token).Append("\n");
             sb.Append("  new_challenge: ").Append(new_challenge).Append("\n");
             sb.Append("  old_challenge: ").Append(old_challenge).Append("\n");
             sb.Append("}\n");
@@ -97,6 +127,21 @@ namespace SCILL.Model
 
             return 
                 (
+                    this.webhook_type == input.webhook_type ||
+                    (this.webhook_type != null &&
+                    this.webhook_type.Equals(input.webhook_type))
+                ) && 
+                (
+                    this.category_position == input.category_position ||
+                    (this.category_position != null &&
+                    this.category_position.Equals(input.category_position))
+                ) && 
+                (
+                    this.user_token == input.user_token ||
+                    (this.user_token != null &&
+                    this.user_token.Equals(input.user_token))
+                ) && 
+                (
                     this.new_challenge == input.new_challenge ||
                     (this.new_challenge != null &&
                     this.new_challenge.Equals(input.new_challenge))
@@ -117,6 +162,12 @@ namespace SCILL.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.webhook_type != null)
+                    hashCode = hashCode * 59 + this.webhook_type.GetHashCode();
+                if (this.category_position != null)
+                    hashCode = hashCode * 59 + this.category_position.GetHashCode();
+                if (this.user_token != null)
+                    hashCode = hashCode * 59 + this.user_token.GetHashCode();
                 if (this.new_challenge != null)
                     hashCode = hashCode * 59 + this.new_challenge.GetHashCode();
                 if (this.old_challenge != null)

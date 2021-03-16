@@ -140,8 +140,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        List<ChallengeCategory> GetAllPersonalChallenges (string appId);
+        List<ChallengeCategory> GetAllPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
 
         /// <summary>
         /// Get all personal challenges available for your app. Also includes completed challenges.
@@ -151,8 +153,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        ApiResponse<List<ChallengeCategory>> GetAllPersonalChallengesWithHttpInfo (string appId);
+        ApiResponse<List<ChallengeCategory>> GetAllPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
         /// <summary>
         /// Get personal challenge by id
         /// </summary>
@@ -184,8 +188,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        List<ChallengeCategory> GetPersonalChallenges (string appId);
+        List<ChallengeCategory> GetPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
 
         /// <summary>
         /// Get personal challenges that are not yet completed.
@@ -195,8 +201,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        ApiResponse<List<ChallengeCategory>> GetPersonalChallengesWithHttpInfo (string appId);
+        ApiResponse<List<ChallengeCategory>> GetPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
         /// <summary>
         /// Get personal challenges that are not yet completed.
         /// </summary>
@@ -205,8 +213,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId);
+        List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
 
         /// <summary>
         /// Get personal challenges that are not yet completed.
@@ -216,8 +226,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        ApiResponse<List<ChallengeCategory>> GetUnresolvedPersonalChallengesWithHttpInfo (string appId);
+        ApiResponse<List<ChallengeCategory>> GetUnresolvedPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
         /// <summary>
         /// Unlock a personal challenges
         /// </summary>
@@ -360,8 +372,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId);
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
 
         /// <summary>
         /// Get all personal challenges available for your app. Also includes completed challenges.
@@ -371,8 +385,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
         /// <summary>
         /// Get personal challenge by id
         /// </summary>
@@ -404,8 +420,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId);
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
 
         /// <summary>
         /// Get personal challenges that are not yet completed.
@@ -415,8 +433,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
         /// <summary>
         /// Get personal challenges that are not yet completed.
         /// </summary>
@@ -425,8 +445,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId);
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
 
         /// <summary>
         /// Get personal challenges that are not yet completed.
@@ -436,8 +458,10 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null);
         /// <summary>
         /// Unlock a personal challenges
         /// </summary>
@@ -1376,10 +1400,12 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        public List<ChallengeCategory> GetAllPersonalChallenges (string appId)
+        public List<ChallengeCategory> GetAllPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = GetAllPersonalChallengesWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetAllPersonalChallengesWithHttpInfo(appId, includeCategories, excludeCategories);
              return localVarResponse.Data;
         }
 
@@ -1388,8 +1414,10 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        public ApiResponse< List<ChallengeCategory> > GetAllPersonalChallengesWithHttpInfo (string appId)
+        public ApiResponse< List<ChallengeCategory> > GetAllPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1417,6 +1445,8 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1453,10 +1483,12 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetAllPersonalChallengesAsyncWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetAllPersonalChallengesAsyncWithHttpInfo(appId, includeCategories, excludeCategories);
              return localVarResponse.Data;
 
         }
@@ -1466,8 +1498,10 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1495,6 +1529,8 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1698,10 +1734,12 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        public List<ChallengeCategory> GetPersonalChallenges (string appId)
+        public List<ChallengeCategory> GetPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = GetPersonalChallengesWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetPersonalChallengesWithHttpInfo(appId, includeCategories, excludeCategories);
              return localVarResponse.Data;
         }
 
@@ -1710,8 +1748,10 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        public ApiResponse< List<ChallengeCategory> > GetPersonalChallengesWithHttpInfo (string appId)
+        public ApiResponse< List<ChallengeCategory> > GetPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1739,6 +1779,8 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1775,10 +1817,12 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetPersonalChallengesAsyncWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetPersonalChallengesAsyncWithHttpInfo(appId, includeCategories, excludeCategories);
              return localVarResponse.Data;
 
         }
@@ -1788,8 +1832,10 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1817,6 +1863,8 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1853,10 +1901,12 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        public List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId)
+        public List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = GetUnresolvedPersonalChallengesWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetUnresolvedPersonalChallengesWithHttpInfo(appId, includeCategories, excludeCategories);
              return localVarResponse.Data;
         }
 
@@ -1865,8 +1915,10 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        public ApiResponse< List<ChallengeCategory> > GetUnresolvedPersonalChallengesWithHttpInfo (string appId)
+        public ApiResponse< List<ChallengeCategory> > GetUnresolvedPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1894,6 +1946,8 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1930,10 +1984,12 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetUnresolvedPersonalChallengesAsyncWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetUnresolvedPersonalChallengesAsyncWithHttpInfo(appId, includeCategories, excludeCategories);
              return localVarResponse.Data;
 
         }
@@ -1943,8 +1999,10 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1972,6 +2030,8 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))

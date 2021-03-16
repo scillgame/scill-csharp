@@ -105,6 +105,46 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of NotificationTopic</returns>
         ApiResponse<NotificationTopic> GetUserChallengesNotificationTopicWithHttpInfo ();
+        /// <summary>
+        /// Get additional info stored per user
+        /// </summary>
+        /// <remarks>
+        /// Returns additional info object with usernames and avatar image for a user which is used in the leaderboard system
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>UserInfo</returns>
+        UserInfo GetUserInfo ();
+
+        /// <summary>
+        /// Get additional info stored per user
+        /// </summary>
+        /// <remarks>
+        /// Returns additional info object with usernames and avatar image for a user which is used in the leaderboard system
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of UserInfo</returns>
+        ApiResponse<UserInfo> GetUserInfoWithHttpInfo ();
+        /// <summary>
+        /// Set additional info stored per user
+        /// </summary>
+        /// <remarks>
+        /// Sets user info like username and avatar image which is returned as part of the user rankings in leaderboards.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">UserInfo object stored in the SCILL database for the user</param>
+        /// <returns>UserInfo</returns>
+        UserInfo SetUserInfo (UserInfo body);
+
+        /// <summary>
+        /// Set additional info stored per user
+        /// </summary>
+        /// <remarks>
+        /// Sets user info like username and avatar image which is returned as part of the user rankings in leaderboards.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">UserInfo object stored in the SCILL database for the user</param>
+        /// <returns>ApiResponse of UserInfo</returns>
+        ApiResponse<UserInfo> SetUserInfoWithHttpInfo (UserInfo body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -189,6 +229,46 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (NotificationTopic)</returns>
         System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetUserChallengesNotificationTopicAsyncWithHttpInfo ();
+        /// <summary>
+        /// Get additional info stored per user
+        /// </summary>
+        /// <remarks>
+        /// Returns additional info object with usernames and avatar image for a user which is used in the leaderboard system
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of UserInfo</returns>
+        System.Threading.Tasks.Task<UserInfo> GetUserInfoAsync ();
+
+        /// <summary>
+        /// Get additional info stored per user
+        /// </summary>
+        /// <remarks>
+        /// Returns additional info object with usernames and avatar image for a user which is used in the leaderboard system
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (UserInfo)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserInfo>> GetUserInfoAsyncWithHttpInfo ();
+        /// <summary>
+        /// Set additional info stored per user
+        /// </summary>
+        /// <remarks>
+        /// Sets user info like username and avatar image which is returned as part of the user rankings in leaderboards.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">UserInfo object stored in the SCILL database for the user</param>
+        /// <returns>Task of UserInfo</returns>
+        System.Threading.Tasks.Task<UserInfo> SetUserInfoAsync (UserInfo body);
+
+        /// <summary>
+        /// Set additional info stored per user
+        /// </summary>
+        /// <remarks>
+        /// Sets user info like username and avatar image which is returned as part of the user rankings in leaderboards.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">UserInfo object stored in the SCILL database for the user</param>
+        /// <returns>Task of ApiResponse (UserInfo)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserInfo>> SetUserInfoAsyncWithHttpInfo (UserInfo body);
         #endregion Asynchronous Operations
     }
 
@@ -922,6 +1002,320 @@ namespace SCILL.Api
             return new ApiResponse<NotificationTopic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (NotificationTopic) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NotificationTopic)));
+        }
+
+        /// <summary>
+        /// Get additional info stored per user Returns additional info object with usernames and avatar image for a user which is used in the leaderboard system
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>UserInfo</returns>
+        public UserInfo GetUserInfo ()
+        {
+             ApiResponse<UserInfo> localVarResponse = GetUserInfoWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get additional info stored per user Returns additional info object with usernames and avatar image for a user which is used in the leaderboard system
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of UserInfo</returns>
+        public ApiResponse< UserInfo > GetUserInfoWithHttpInfo ()
+        {
+
+            var localVarPath = "/api/v1/user-additional-info";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUserInfo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<UserInfo>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UserInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserInfo)));
+        }
+
+        /// <summary>
+        /// Get additional info stored per user Returns additional info object with usernames and avatar image for a user which is used in the leaderboard system
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of UserInfo</returns>
+        public async System.Threading.Tasks.Task<UserInfo> GetUserInfoAsync ()
+        {
+             ApiResponse<UserInfo> localVarResponse = await GetUserInfoAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get additional info stored per user Returns additional info object with usernames and avatar image for a user which is used in the leaderboard system
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (UserInfo)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserInfo>> GetUserInfoAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/api/v1/user-additional-info";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetUserInfo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<UserInfo>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UserInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserInfo)));
+        }
+
+        /// <summary>
+        /// Set additional info stored per user Sets user info like username and avatar image which is returned as part of the user rankings in leaderboards.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">UserInfo object stored in the SCILL database for the user</param>
+        /// <returns>UserInfo</returns>
+        public UserInfo SetUserInfo (UserInfo body)
+        {
+             ApiResponse<UserInfo> localVarResponse = SetUserInfoWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set additional info stored per user Sets user info like username and avatar image which is returned as part of the user rankings in leaderboards.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">UserInfo object stored in the SCILL database for the user</param>
+        /// <returns>ApiResponse of UserInfo</returns>
+        public ApiResponse< UserInfo > SetUserInfoWithHttpInfo (UserInfo body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling AuthApi->SetUserInfo");
+
+            var localVarPath = "/api/v1/user-additional-info";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SetUserInfo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<UserInfo>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UserInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserInfo)));
+        }
+
+        /// <summary>
+        /// Set additional info stored per user Sets user info like username and avatar image which is returned as part of the user rankings in leaderboards.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">UserInfo object stored in the SCILL database for the user</param>
+        /// <returns>Task of UserInfo</returns>
+        public async System.Threading.Tasks.Task<UserInfo> SetUserInfoAsync (UserInfo body)
+        {
+             ApiResponse<UserInfo> localVarResponse = await SetUserInfoAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Set additional info stored per user Sets user info like username and avatar image which is returned as part of the user rankings in leaderboards.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">UserInfo object stored in the SCILL database for the user</param>
+        /// <returns>Task of ApiResponse (UserInfo)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserInfo>> SetUserInfoAsyncWithHttpInfo (UserInfo body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling AuthApi->SetUserInfo");
+
+            var localVarPath = "/api/v1/user-additional-info";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SetUserInfo", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<UserInfo>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (UserInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserInfo)));
         }
 
     }
