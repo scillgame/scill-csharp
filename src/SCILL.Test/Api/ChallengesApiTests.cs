@@ -71,7 +71,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //string challengeId = null;
-            //var response = instance.ActivatePersonalChallenge(appId, challengeId);
+            //string language = null;
+            //var response = instance.ActivatePersonalChallenge(appId, challengeId, language);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
         /// <summary>
@@ -83,7 +84,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //string challengeId = null;
-            //var response = instance.CancelPersonalChallenge(appId, challengeId);
+            //string language = null;
+            //var response = instance.CancelPersonalChallenge(appId, challengeId, language);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
         /// <summary>
@@ -95,7 +97,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //string challengeId = null;
-            //var response = instance.ClaimPersonalChallengeReward(appId, challengeId);
+            //string language = null;
+            //var response = instance.ClaimPersonalChallengeReward(appId, challengeId, language);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
         /// <summary>
@@ -184,7 +187,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //string challengeId = null;
-            //var response = instance.UnlockPersonalChallenge(appId, challengeId);
+            //string language = null;
+            //var response = instance.UnlockPersonalChallenge(appId, challengeId, language);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
     }

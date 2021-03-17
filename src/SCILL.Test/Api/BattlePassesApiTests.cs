@@ -71,7 +71,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //string levelId = null;
-            //var response = instance.ActivateBattlePassLevel(appId, levelId);
+            //string language = null;
+            //var response = instance.ActivateBattlePassLevel(appId, levelId, language);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
         /// <summary>
@@ -83,7 +84,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //string levelId = null;
-            //var response = instance.ClaimBattlePassLevelReward(appId, levelId);
+            //string language = null;
+            //var response = instance.ClaimBattlePassLevelReward(appId, levelId, language);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }
         /// <summary>
@@ -106,7 +108,8 @@ namespace SCILL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
-            //var response = instance.GetAllBattlePassLevels(appId);
+            //string language = null;
+            //var response = instance.GetAllBattlePassLevels(appId, language);
             //Assert.IsInstanceOf<List<BattlePassLevel>> (response, "response is List<BattlePassLevel>");
         }
         /// <summary>
@@ -131,7 +134,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //string battlePassId = null;
-            //var response = instance.GetBattlePassLevels(appId, battlePassId);
+            //string language = null;
+            //var response = instance.GetBattlePassLevels(appId, battlePassId, language);
             //Assert.IsInstanceOf<List<BattlePassLevel>> (response, "response is List<BattlePassLevel>");
         }
         /// <summary>
@@ -168,7 +172,8 @@ namespace SCILL.Test
             //string appId = null;
             //string battlePassId = null;
             //BattlePassUnlockPayload body = null;
-            //var response = instance.UnlockBattlePass(appId, battlePassId, body);
+            //string language = null;
+            //var response = instance.UnlockBattlePass(appId, battlePassId, body, language);
             //Assert.IsInstanceOf<BattlePassUnlockInfo> (response, "response is BattlePassUnlockInfo");
         }
     }
