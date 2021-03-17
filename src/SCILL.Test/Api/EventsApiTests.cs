@@ -79,7 +79,7 @@ namespace SCILL.Test
         public void SendEventTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //Body body = null;
+            //EventPayload body = null;
             //var response = instance.SendEvent(body);
             //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
         }

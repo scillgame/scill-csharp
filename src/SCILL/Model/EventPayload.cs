@@ -37,7 +37,8 @@ namespace SCILL.Model
         /// <param name="eventName">This is the event type as a string. These have predefined event names for many games and applications. It’s wise to use those as this allows us to analyse data and help you balancing your application or game..</param>
         /// <param name="eventType">This is either single or group. You can send multiple events in one request (group) or send events in sequence. Please note, that depending on your tier you might run into rate limits. (default to &quot;single&quot;).</param>
         /// <param name="metaData">metaData.</param>
-        public EventPayload(string userId = default(string), string sessionId = default(string), string eventName = default(string), string eventType = "single", EventMetaData metaData = default(EventMetaData))
+        /// <param name="teamId">Provide an optional team id that will be used in leaderboards to group results of teams..</param>
+        public EventPayload(string userId = default(string), string sessionId = default(string), string eventName = default(string), string eventType = "single", EventMetaData metaData = default(EventMetaData), string teamId = default(string))
         {
             this.user_id = userId;
             this.session_id = sessionId;
@@ -52,6 +53,7 @@ namespace SCILL.Model
                 this.event_type = eventType;
             }
             this.meta_data = metaData;
+            this.team_id = teamId;
         }
         
         /// <summary>
@@ -89,6 +91,13 @@ namespace SCILL.Model
         public EventMetaData meta_data { get; set; }
 
         /// <summary>
+        /// Provide an optional team id that will be used in leaderboards to group results of teams.
+        /// </summary>
+        /// <value>Provide an optional team id that will be used in leaderboards to group results of teams.</value>
+        [DataMember(Name="team_id", EmitDefaultValue=false)]
+        public string team_id { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -101,6 +110,7 @@ namespace SCILL.Model
             sb.Append("  event_name: ").Append(event_name).Append("\n");
             sb.Append("  event_type: ").Append(event_type).Append("\n");
             sb.Append("  meta_data: ").Append(meta_data).Append("\n");
+            sb.Append("  team_id: ").Append(team_id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -159,6 +169,11 @@ namespace SCILL.Model
                     this.meta_data == input.meta_data ||
                     (this.meta_data != null &&
                     this.meta_data.Equals(input.meta_data))
+                ) && 
+                (
+                    this.team_id == input.team_id ||
+                    (this.team_id != null &&
+                    this.team_id.Equals(input.team_id))
                 );
         }
 
@@ -181,6 +196,8 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.event_type.GetHashCode();
                 if (this.meta_data != null)
                     hashCode = hashCode * 59 + this.meta_data.GetHashCode();
+                if (this.team_id != null)
+                    hashCode = hashCode * 59 + this.team_id.GetHashCode();
                 return hashCode;
             }
         }
