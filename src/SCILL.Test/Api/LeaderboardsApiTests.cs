@@ -70,10 +70,51 @@ namespace SCILL.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string leaderboardId = null;
-            //decimal? currentPage = null;
-            //decimal? pageSize = null;
+            //int? currentPage = null;
+            //int? pageSize = null;
             //var response = instance.GetLeaderboard(leaderboardId, currentPage, pageSize);
             //Assert.IsInstanceOf<Leaderboard> (response, "response is Leaderboard");
+        }
+        /// <summary>
+        /// Test GetLeaderboardRanking
+        /// </summary>
+        [Test]
+        public void GetLeaderboardRankingTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string memberType = null;
+            //string memberId = null;
+            //string leaderboardId = null;
+            //int? currentPage = null;
+            //int? pageSize = null;
+            //var response = instance.GetLeaderboardRanking(memberType, memberId, leaderboardId, currentPage, pageSize);
+            //Assert.IsInstanceOf<List<LeaderboardMemberRanking>> (response, "response is List<LeaderboardMemberRanking>");
+        }
+        /// <summary>
+        /// Test GetLeaderboardRankings
+        /// </summary>
+        [Test]
+        public void GetLeaderboardRankingsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string memberType = null;
+            //string memberId = null;
+            //int? currentPage = null;
+            //int? pageSize = null;
+            //var response = instance.GetLeaderboardRankings(memberType, memberId, currentPage, pageSize);
+            //Assert.IsInstanceOf<List<LeaderboardMemberRanking>> (response, "response is List<LeaderboardMemberRanking>");
+        }
+        /// <summary>
+        /// Test GetLeaderboards
+        /// </summary>
+        [Test]
+        public void GetLeaderboardsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? currentPage = null;
+            //int? pageSize = null;
+            //var response = instance.GetLeaderboards(currentPage, pageSize);
+            //Assert.IsInstanceOf<List<Leaderboard>> (response, "response is List<Leaderboard>");
         }
     }
 

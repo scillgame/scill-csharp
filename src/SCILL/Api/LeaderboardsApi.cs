@@ -34,7 +34,7 @@ namespace SCILL.Api
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Leaderboard</returns>
-        Leaderboard GetLeaderboard (string leaderboardId, decimal? currentPage = null, decimal? pageSize = null);
+        Leaderboard GetLeaderboard (string leaderboardId, int? currentPage = null, int? pageSize = null);
 
         /// <summary>
         /// Returns a leaderboard specified by the id
@@ -47,7 +47,86 @@ namespace SCILL.Api
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>ApiResponse of Leaderboard</returns>
-        ApiResponse<Leaderboard> GetLeaderboardWithHttpInfo (string leaderboardId, decimal? currentPage = null, decimal? pageSize = null);
+        ApiResponse<Leaderboard> GetLeaderboardWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null);
+        /// <summary>
+        /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
+        /// </summary>
+        /// <remarks>
+        /// Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
+        List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null);
+
+        /// <summary>
+        /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
+        /// </summary>
+        /// <remarks>
+        /// Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
+        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null);
+        /// <summary>
+        /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
+        /// </summary>
+        /// <remarks>
+        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
+        List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId, int? currentPage = null, int? pageSize = null);
+
+        /// <summary>
+        /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
+        /// </summary>
+        /// <remarks>
+        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
+        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId, int? currentPage = null, int? pageSize = null);
+        /// <summary>
+        /// Returns an array of leaderboards that are setup for the application
+        /// </summary>
+        /// <remarks>
+        /// Returns an array of Leaderboard items defined for the application.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>List&lt;Leaderboard&gt;</returns>
+        List<Leaderboard> GetLeaderboards (int? currentPage = null, int? pageSize = null);
+
+        /// <summary>
+        /// Returns an array of leaderboards that are setup for the application
+        /// </summary>
+        /// <remarks>
+        /// Returns an array of Leaderboard items defined for the application.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>ApiResponse of List&lt;Leaderboard&gt;</returns>
+        ApiResponse<List<Leaderboard>> GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -61,7 +140,7 @@ namespace SCILL.Api
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of Leaderboard</returns>
-        System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, decimal? currentPage = null, decimal? pageSize = null);
+        System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, int? currentPage = null, int? pageSize = null);
 
         /// <summary>
         /// Returns a leaderboard specified by the id
@@ -74,7 +153,86 @@ namespace SCILL.Api
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of ApiResponse (Leaderboard)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, decimal? currentPage = null, decimal? pageSize = null);
+        System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null);
+        /// <summary>
+        /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
+        /// </summary>
+        /// <remarks>
+        /// Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
+        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null);
+
+        /// <summary>
+        /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
+        /// </summary>
+        /// <remarks>
+        /// Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null);
+        /// <summary>
+        /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
+        /// </summary>
+        /// <remarks>
+        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
+        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId, int? currentPage = null, int? pageSize = null);
+
+        /// <summary>
+        /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
+        /// </summary>
+        /// <remarks>
+        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId, int? currentPage = null, int? pageSize = null);
+        /// <summary>
+        /// Returns an array of leaderboards that are setup for the application
+        /// </summary>
+        /// <remarks>
+        /// Returns an array of Leaderboard items defined for the application.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of List&lt;Leaderboard&gt;</returns>
+        System.Threading.Tasks.Task<List<Leaderboard>> GetLeaderboardsAsync (int? currentPage = null, int? pageSize = null);
+
+        /// <summary>
+        /// Returns an array of leaderboards that are setup for the application
+        /// </summary>
+        /// <remarks>
+        /// Returns an array of Leaderboard items defined for the application.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;Leaderboard&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null);
         #endregion Asynchronous Operations
     }
 
@@ -194,7 +352,7 @@ namespace SCILL.Api
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Leaderboard</returns>
-        public Leaderboard GetLeaderboard (string leaderboardId, decimal? currentPage = null, decimal? pageSize = null)
+        public Leaderboard GetLeaderboard (string leaderboardId, int? currentPage = null, int? pageSize = null)
         {
              ApiResponse<Leaderboard> localVarResponse = GetLeaderboardWithHttpInfo(leaderboardId, currentPage, pageSize);
              return localVarResponse.Data;
@@ -208,7 +366,7 @@ namespace SCILL.Api
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>ApiResponse of Leaderboard</returns>
-        public ApiResponse< Leaderboard > GetLeaderboardWithHttpInfo (string leaderboardId, decimal? currentPage = null, decimal? pageSize = null)
+        public ApiResponse< Leaderboard > GetLeaderboardWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null)
         {
             // verify the required parameter 'leaderboardId' is set
             if (leaderboardId == null)
@@ -277,7 +435,7 @@ namespace SCILL.Api
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of Leaderboard</returns>
-        public async System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, decimal? currentPage = null, decimal? pageSize = null)
+        public async System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, int? currentPage = null, int? pageSize = null)
         {
              ApiResponse<Leaderboard> localVarResponse = await GetLeaderboardAsyncWithHttpInfo(leaderboardId, currentPage, pageSize);
              return localVarResponse.Data;
@@ -292,7 +450,7 @@ namespace SCILL.Api
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of ApiResponse (Leaderboard)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, decimal? currentPage = null, decimal? pageSize = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null)
         {
             // verify the required parameter 'leaderboardId' is set
             if (leaderboardId == null)
@@ -351,6 +509,531 @@ namespace SCILL.Api
             return new ApiResponse<Leaderboard>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (Leaderboard) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Leaderboard)));
+        }
+
+        /// <summary>
+        /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
+        public List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null)
+        {
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingWithHttpInfo(memberType, memberId, leaderboardId, currentPage, pageSize);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
+        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null)
+        {
+            // verify the required parameter 'memberType' is set
+            if (memberType == null)
+                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->GetLeaderboardRanking");
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->GetLeaderboardRanking");
+            // verify the required parameter 'leaderboardId' is set
+            if (leaderboardId == null)
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsApi->GetLeaderboardRanking");
+
+            var localVarPath = "/api/v1/leaderboards-members/{memberType}/{memberId}/{leaderboardId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
+            if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
+            if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLeaderboardRanking", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<LeaderboardMemberRanking>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<LeaderboardMemberRanking>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardMemberRanking>)));
+        }
+
+        /// <summary>
+        /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
+        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null)
+        {
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingAsyncWithHttpInfo(memberType, memberId, leaderboardId, currentPage, pageSize);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null)
+        {
+            // verify the required parameter 'memberType' is set
+            if (memberType == null)
+                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->GetLeaderboardRanking");
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->GetLeaderboardRanking");
+            // verify the required parameter 'leaderboardId' is set
+            if (leaderboardId == null)
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsApi->GetLeaderboardRanking");
+
+            var localVarPath = "/api/v1/leaderboards-members/{memberType}/{memberId}/{leaderboardId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
+            if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
+            if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLeaderboardRanking", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<LeaderboardMemberRanking>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<LeaderboardMemberRanking>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardMemberRanking>)));
+        }
+
+        /// <summary>
+        /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
+        public List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId, int? currentPage = null, int? pageSize = null)
+        {
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingsWithHttpInfo(memberType, memberId, currentPage, pageSize);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
+        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId, int? currentPage = null, int? pageSize = null)
+        {
+            // verify the required parameter 'memberType' is set
+            if (memberType == null)
+                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->GetLeaderboardRankings");
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->GetLeaderboardRankings");
+
+            var localVarPath = "/api/v1/leaderboards-members/{memberType}/{memberId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
+            if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLeaderboardRankings", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<LeaderboardMemberRanking>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<LeaderboardMemberRanking>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardMemberRanking>)));
+        }
+
+        /// <summary>
+        /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
+        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId, int? currentPage = null, int? pageSize = null)
+        {
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingsAsyncWithHttpInfo(memberType, memberId, currentPage, pageSize);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
+        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId, int? currentPage = null, int? pageSize = null)
+        {
+            // verify the required parameter 'memberType' is set
+            if (memberType == null)
+                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->GetLeaderboardRankings");
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->GetLeaderboardRankings");
+
+            var localVarPath = "/api/v1/leaderboards-members/{memberType}/{memberId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
+            if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLeaderboardRankings", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<LeaderboardMemberRanking>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<LeaderboardMemberRanking>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardMemberRanking>)));
+        }
+
+        /// <summary>
+        /// Returns an array of leaderboards that are setup for the application Returns an array of Leaderboard items defined for the application.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>List&lt;Leaderboard&gt;</returns>
+        public List<Leaderboard> GetLeaderboards (int? currentPage = null, int? pageSize = null)
+        {
+             ApiResponse<List<Leaderboard>> localVarResponse = GetLeaderboardsWithHttpInfo(currentPage, pageSize);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Returns an array of leaderboards that are setup for the application Returns an array of Leaderboard items defined for the application.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>ApiResponse of List&lt;Leaderboard&gt;</returns>
+        public ApiResponse< List<Leaderboard> > GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null)
+        {
+
+            var localVarPath = "/api/v1/leaderboards";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLeaderboards", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Leaderboard>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<Leaderboard>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Leaderboard>)));
+        }
+
+        /// <summary>
+        /// Returns an array of leaderboards that are setup for the application Returns an array of Leaderboard items defined for the application.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of List&lt;Leaderboard&gt;</returns>
+        public async System.Threading.Tasks.Task<List<Leaderboard>> GetLeaderboardsAsync (int? currentPage = null, int? pageSize = null)
+        {
+             ApiResponse<List<Leaderboard>> localVarResponse = await GetLeaderboardsAsyncWithHttpInfo(currentPage, pageSize);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Returns an array of leaderboards that are setup for the application Returns an array of Leaderboard items defined for the application.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <returns>Task of ApiResponse (List&lt;Leaderboard&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null)
+        {
+
+            var localVarPath = "/api/v1/leaderboards";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLeaderboards", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<Leaderboard>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (List<Leaderboard>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Leaderboard>)));
         }
 
     }
