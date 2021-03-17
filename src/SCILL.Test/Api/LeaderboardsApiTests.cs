@@ -72,7 +72,8 @@ namespace SCILL.Test
             //string leaderboardId = null;
             //int? currentPage = null;
             //int? pageSize = null;
-            //var response = instance.GetLeaderboard(leaderboardId, currentPage, pageSize);
+            //string language = null;
+            //var response = instance.GetLeaderboard(leaderboardId, currentPage, pageSize, language);
             //Assert.IsInstanceOf<Leaderboard> (response, "response is Leaderboard");
         }
         /// <summary>
@@ -85,7 +86,8 @@ namespace SCILL.Test
             //string memberType = null;
             //string memberId = null;
             //string leaderboardId = null;
-            //var response = instance.GetLeaderboardRanking(memberType, memberId, leaderboardId);
+            //string language = null;
+            //var response = instance.GetLeaderboardRanking(memberType, memberId, leaderboardId, language);
             //Assert.IsInstanceOf<List<LeaderboardMemberRanking>> (response, "response is List<LeaderboardMemberRanking>");
         }
         /// <summary>
@@ -97,7 +99,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string memberType = null;
             //string memberId = null;
-            //var response = instance.GetLeaderboardRankings(memberType, memberId);
+            //string language = null;
+            //var response = instance.GetLeaderboardRankings(memberType, memberId, language);
             //Assert.IsInstanceOf<List<LeaderboardMemberRanking>> (response, "response is List<LeaderboardMemberRanking>");
         }
         /// <summary>
@@ -109,7 +112,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? currentPage = null;
             //int? pageSize = null;
-            //var response = instance.GetLeaderboards(currentPage, pageSize);
+            //string language = null;
+            //var response = instance.GetLeaderboards(currentPage, pageSize, language);
             //Assert.IsInstanceOf<List<Leaderboard>> (response, "response is List<Leaderboard>");
         }
     }

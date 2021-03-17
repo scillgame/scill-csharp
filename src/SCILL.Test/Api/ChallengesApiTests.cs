@@ -129,7 +129,8 @@ namespace SCILL.Test
             //string appId = null;
             //List<string> includeCategories = null;
             //List<string> excludeCategories = null;
-            //var response = instance.GetAllPersonalChallenges(appId, includeCategories, excludeCategories);
+            //string language = null;
+            //var response = instance.GetAllPersonalChallenges(appId, includeCategories, excludeCategories, language);
             //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
         }
         /// <summary>
@@ -141,7 +142,8 @@ namespace SCILL.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string appId = null;
             //string challengeId = null;
-            //var response = instance.GetPersonalChallengeById(appId, challengeId);
+            //string language = null;
+            //var response = instance.GetPersonalChallengeById(appId, challengeId, language);
             //Assert.IsInstanceOf<Challenge> (response, "response is Challenge");
         }
         /// <summary>
@@ -154,7 +156,8 @@ namespace SCILL.Test
             //string appId = null;
             //List<string> includeCategories = null;
             //List<string> excludeCategories = null;
-            //var response = instance.GetPersonalChallenges(appId, includeCategories, excludeCategories);
+            //string language = null;
+            //var response = instance.GetPersonalChallenges(appId, includeCategories, excludeCategories, language);
             //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
         }
         /// <summary>
@@ -167,7 +170,8 @@ namespace SCILL.Test
             //string appId = null;
             //List<string> includeCategories = null;
             //List<string> excludeCategories = null;
-            //var response = instance.GetUnresolvedPersonalChallenges(appId, includeCategories, excludeCategories);
+            //string language = null;
+            //var response = instance.GetUnresolvedPersonalChallenges(appId, includeCategories, excludeCategories, language);
             //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
         }
         /// <summary>

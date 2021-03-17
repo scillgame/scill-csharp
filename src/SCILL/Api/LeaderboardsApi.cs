@@ -33,8 +33,9 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Leaderboard</returns>
-        Leaderboard GetLeaderboard (string leaderboardId, int? currentPage = null, int? pageSize = null);
+        Leaderboard GetLeaderboard (string leaderboardId, int? currentPage = null, int? pageSize = null, string language = null);
 
         /// <summary>
         /// Returns a leaderboard specified by the id
@@ -46,8 +47,9 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of Leaderboard</returns>
-        ApiResponse<Leaderboard> GetLeaderboardWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null);
+        ApiResponse<Leaderboard> GetLeaderboardWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null, string language = null);
         /// <summary>
         /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
         /// </summary>
@@ -58,8 +60,9 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId);
+        List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId, string language = null);
 
         /// <summary>
         /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
@@ -71,8 +74,9 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId);
+        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId, string language = null);
         /// <summary>
         /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
         /// </summary>
@@ -82,8 +86,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId);
+        List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId, string language = null);
 
         /// <summary>
         /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
@@ -94,8 +99,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId);
+        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId, string language = null);
         /// <summary>
         /// Returns an array of leaderboards that are setup for the application
         /// </summary>
@@ -105,8 +111,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;Leaderboard&gt;</returns>
-        List<Leaderboard> GetLeaderboards (int? currentPage = null, int? pageSize = null);
+        List<Leaderboard> GetLeaderboards (int? currentPage = null, int? pageSize = null, string language = null);
 
         /// <summary>
         /// Returns an array of leaderboards that are setup for the application
@@ -117,8 +124,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;Leaderboard&gt;</returns>
-        ApiResponse<List<Leaderboard>> GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null);
+        ApiResponse<List<Leaderboard>> GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null, string language = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -131,8 +139,9 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of Leaderboard</returns>
-        System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, int? currentPage = null, int? pageSize = null);
+        System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, int? currentPage = null, int? pageSize = null, string language = null);
 
         /// <summary>
         /// Returns a leaderboard specified by the id
@@ -144,8 +153,9 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (Leaderboard)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null);
+        System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null, string language = null);
         /// <summary>
         /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
         /// </summary>
@@ -156,8 +166,9 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId);
+        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId, string language = null);
 
         /// <summary>
         /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
@@ -169,8 +180,9 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId);
+        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, string language = null);
         /// <summary>
         /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
         /// </summary>
@@ -180,8 +192,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId);
+        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId, string language = null);
 
         /// <summary>
         /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
@@ -192,8 +205,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId);
+        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId, string language = null);
         /// <summary>
         /// Returns an array of leaderboards that are setup for the application
         /// </summary>
@@ -203,8 +217,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;Leaderboard&gt;</returns>
-        System.Threading.Tasks.Task<List<Leaderboard>> GetLeaderboardsAsync (int? currentPage = null, int? pageSize = null);
+        System.Threading.Tasks.Task<List<Leaderboard>> GetLeaderboardsAsync (int? currentPage = null, int? pageSize = null, string language = null);
 
         /// <summary>
         /// Returns an array of leaderboards that are setup for the application
@@ -215,8 +230,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Leaderboard&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null);
+        System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null, string language = null);
         #endregion Asynchronous Operations
     }
 
@@ -335,10 +351,11 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Leaderboard</returns>
-        public Leaderboard GetLeaderboard (string leaderboardId, int? currentPage = null, int? pageSize = null)
+        public Leaderboard GetLeaderboard (string leaderboardId, int? currentPage = null, int? pageSize = null, string language = null)
         {
-             ApiResponse<Leaderboard> localVarResponse = GetLeaderboardWithHttpInfo(leaderboardId, currentPage, pageSize);
+             ApiResponse<Leaderboard> localVarResponse = GetLeaderboardWithHttpInfo(leaderboardId, currentPage, pageSize, language);
              return localVarResponse.Data;
         }
 
@@ -349,8 +366,9 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of Leaderboard</returns>
-        public ApiResponse< Leaderboard > GetLeaderboardWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null)
+        public ApiResponse< Leaderboard > GetLeaderboardWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null, string language = null)
         {
             // verify the required parameter 'leaderboardId' is set
             if (leaderboardId == null)
@@ -380,6 +398,7 @@ namespace SCILL.Api
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
             if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -418,10 +437,11 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of Leaderboard</returns>
-        public async System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, int? currentPage = null, int? pageSize = null)
+        public async System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, int? currentPage = null, int? pageSize = null, string language = null)
         {
-             ApiResponse<Leaderboard> localVarResponse = await GetLeaderboardAsyncWithHttpInfo(leaderboardId, currentPage, pageSize);
+             ApiResponse<Leaderboard> localVarResponse = await GetLeaderboardAsyncWithHttpInfo(leaderboardId, currentPage, pageSize, language);
              return localVarResponse.Data;
 
         }
@@ -433,8 +453,9 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (Leaderboard)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null, string language = null)
         {
             // verify the required parameter 'leaderboardId' is set
             if (leaderboardId == null)
@@ -464,6 +485,7 @@ namespace SCILL.Api
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
             if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -502,10 +524,11 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        public List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId)
+        public List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId, string language = null)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingWithHttpInfo(memberType, memberId, leaderboardId);
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingWithHttpInfo(memberType, memberId, leaderboardId, language);
              return localVarResponse.Data;
         }
 
@@ -516,8 +539,9 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId)
+        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId, string language = null)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
@@ -553,6 +577,7 @@ namespace SCILL.Api
             if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -591,10 +616,11 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId)
+        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId, string language = null)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingAsyncWithHttpInfo(memberType, memberId, leaderboardId);
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingAsyncWithHttpInfo(memberType, memberId, leaderboardId, language);
              return localVarResponse.Data;
 
         }
@@ -606,8 +632,9 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, string language = null)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
@@ -643,6 +670,7 @@ namespace SCILL.Api
             if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -680,10 +708,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        public List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId)
+        public List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId, string language = null)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingsWithHttpInfo(memberType, memberId);
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingsWithHttpInfo(memberType, memberId, language);
              return localVarResponse.Data;
         }
 
@@ -693,8 +722,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId)
+        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId, string language = null)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
@@ -726,6 +756,7 @@ namespace SCILL.Api
 
             if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -763,10 +794,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId)
+        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId, string language = null)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingsAsyncWithHttpInfo(memberType, memberId);
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingsAsyncWithHttpInfo(memberType, memberId, language);
              return localVarResponse.Data;
 
         }
@@ -777,8 +809,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId, string language = null)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
@@ -810,6 +843,7 @@ namespace SCILL.Api
 
             if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -847,10 +881,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;Leaderboard&gt;</returns>
-        public List<Leaderboard> GetLeaderboards (int? currentPage = null, int? pageSize = null)
+        public List<Leaderboard> GetLeaderboards (int? currentPage = null, int? pageSize = null, string language = null)
         {
-             ApiResponse<List<Leaderboard>> localVarResponse = GetLeaderboardsWithHttpInfo(currentPage, pageSize);
+             ApiResponse<List<Leaderboard>> localVarResponse = GetLeaderboardsWithHttpInfo(currentPage, pageSize, language);
              return localVarResponse.Data;
         }
 
@@ -860,8 +895,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;Leaderboard&gt;</returns>
-        public ApiResponse< List<Leaderboard> > GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null)
+        public ApiResponse< List<Leaderboard> > GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null, string language = null)
         {
 
             var localVarPath = "/api/v1/leaderboards";
@@ -887,6 +923,7 @@ namespace SCILL.Api
 
             if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -924,10 +961,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;Leaderboard&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Leaderboard>> GetLeaderboardsAsync (int? currentPage = null, int? pageSize = null)
+        public async System.Threading.Tasks.Task<List<Leaderboard>> GetLeaderboardsAsync (int? currentPage = null, int? pageSize = null, string language = null)
         {
-             ApiResponse<List<Leaderboard>> localVarResponse = await GetLeaderboardsAsyncWithHttpInfo(currentPage, pageSize);
+             ApiResponse<List<Leaderboard>> localVarResponse = await GetLeaderboardsAsyncWithHttpInfo(currentPage, pageSize, language);
              return localVarResponse.Data;
 
         }
@@ -938,8 +976,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;Leaderboard&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null, string language = null)
         {
 
             var localVarPath = "/api/v1/leaderboards";
@@ -965,6 +1004,7 @@ namespace SCILL.Api
 
             if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
             if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))

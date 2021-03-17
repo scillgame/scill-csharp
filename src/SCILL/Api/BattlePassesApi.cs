@@ -77,8 +77,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;BattlePass&gt;</returns>
-        List<BattlePass> GetActiveBattlePasses (string appId);
+        List<BattlePass> GetActiveBattlePasses (string appId, string language = null);
 
         /// <summary>
         /// Get battle passes
@@ -88,8 +89,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
-        ApiResponse<List<BattlePass>> GetActiveBattlePassesWithHttpInfo (string appId);
+        ApiResponse<List<BattlePass>> GetActiveBattlePassesWithHttpInfo (string appId, string language = null);
         /// <summary>
         /// Get battle pass levels for an app (from all battle passes)
         /// </summary>
@@ -120,8 +122,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>BattlePass</returns>
-        BattlePass GetBattlePass (string appId, string battlePassId);
+        BattlePass GetBattlePass (string appId, string battlePassId, string language = null);
 
         /// <summary>
         /// Get battle pass by id
@@ -132,8 +135,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of BattlePass</returns>
-        ApiResponse<BattlePass> GetBattlePassWithHttpInfo (string appId, string battlePassId);
+        ApiResponse<BattlePass> GetBattlePassWithHttpInfo (string appId, string battlePassId, string language = null);
         /// <summary>
         /// Get battle pass levels for a battle pass
         /// </summary>
@@ -165,8 +169,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;BattlePass&gt;</returns>
-        List<BattlePass> GetBattlePasses (string appId);
+        List<BattlePass> GetBattlePasses (string appId, string language = null);
 
         /// <summary>
         /// Get battle passes
@@ -176,8 +181,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
-        ApiResponse<List<BattlePass>> GetBattlePassesWithHttpInfo (string appId);
+        ApiResponse<List<BattlePass>> GetBattlePassesWithHttpInfo (string appId, string language = null);
         /// <summary>
         /// Get battle passes unlocked by the user
         /// </summary>
@@ -186,8 +192,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;BattlePass&gt;</returns>
-        List<BattlePass> GetUnlockedBattlePasses (string appId);
+        List<BattlePass> GetUnlockedBattlePasses (string appId, string language = null);
 
         /// <summary>
         /// Get battle passes unlocked by the user
@@ -197,8 +204,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
-        ApiResponse<List<BattlePass>> GetUnlockedBattlePassesWithHttpInfo (string appId);
+        ApiResponse<List<BattlePass>> GetUnlockedBattlePassesWithHttpInfo (string appId, string language = null);
         /// <summary>
         /// Unlock the battle pass for the user specified in the access token
         /// </summary>
@@ -280,8 +288,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;BattlePass&gt;</returns>
-        System.Threading.Tasks.Task<List<BattlePass>> GetActiveBattlePassesAsync (string appId);
+        System.Threading.Tasks.Task<List<BattlePass>> GetActiveBattlePassesAsync (string appId, string language = null);
 
         /// <summary>
         /// Get battle passes
@@ -291,8 +300,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetActiveBattlePassesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetActiveBattlePassesAsyncWithHttpInfo (string appId, string language = null);
         /// <summary>
         /// Get battle pass levels for an app (from all battle passes)
         /// </summary>
@@ -323,8 +333,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of BattlePass</returns>
-        System.Threading.Tasks.Task<BattlePass> GetBattlePassAsync (string appId, string battlePassId);
+        System.Threading.Tasks.Task<BattlePass> GetBattlePassAsync (string appId, string battlePassId, string language = null);
 
         /// <summary>
         /// Get battle pass by id
@@ -335,8 +346,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (BattlePass)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BattlePass>> GetBattlePassAsyncWithHttpInfo (string appId, string battlePassId);
+        System.Threading.Tasks.Task<ApiResponse<BattlePass>> GetBattlePassAsyncWithHttpInfo (string appId, string battlePassId, string language = null);
         /// <summary>
         /// Get battle pass levels for a battle pass
         /// </summary>
@@ -368,8 +380,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;BattlePass&gt;</returns>
-        System.Threading.Tasks.Task<List<BattlePass>> GetBattlePassesAsync (string appId);
+        System.Threading.Tasks.Task<List<BattlePass>> GetBattlePassesAsync (string appId, string language = null);
 
         /// <summary>
         /// Get battle passes
@@ -379,8 +392,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetBattlePassesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetBattlePassesAsyncWithHttpInfo (string appId, string language = null);
         /// <summary>
         /// Get battle passes unlocked by the user
         /// </summary>
@@ -389,8 +403,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;BattlePass&gt;</returns>
-        System.Threading.Tasks.Task<List<BattlePass>> GetUnlockedBattlePassesAsync (string appId);
+        System.Threading.Tasks.Task<List<BattlePass>> GetUnlockedBattlePassesAsync (string appId, string language = null);
 
         /// <summary>
         /// Get battle passes unlocked by the user
@@ -400,8 +415,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetUnlockedBattlePassesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetUnlockedBattlePassesAsyncWithHttpInfo (string appId, string language = null);
         /// <summary>
         /// Unlock the battle pass for the user specified in the access token
         /// </summary>
@@ -877,10 +893,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;BattlePass&gt;</returns>
-        public List<BattlePass> GetActiveBattlePasses (string appId)
+        public List<BattlePass> GetActiveBattlePasses (string appId, string language = null)
         {
-             ApiResponse<List<BattlePass>> localVarResponse = GetActiveBattlePassesWithHttpInfo(appId);
+             ApiResponse<List<BattlePass>> localVarResponse = GetActiveBattlePassesWithHttpInfo(appId, language);
              return localVarResponse.Data;
         }
 
@@ -889,8 +906,9 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
-        public ApiResponse< List<BattlePass> > GetActiveBattlePassesWithHttpInfo (string appId)
+        public ApiResponse< List<BattlePass> > GetActiveBattlePassesWithHttpInfo (string appId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -918,6 +936,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -954,10 +973,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;BattlePass&gt;</returns>
-        public async System.Threading.Tasks.Task<List<BattlePass>> GetActiveBattlePassesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<BattlePass>> GetActiveBattlePassesAsync (string appId, string language = null)
         {
-             ApiResponse<List<BattlePass>> localVarResponse = await GetActiveBattlePassesAsyncWithHttpInfo(appId);
+             ApiResponse<List<BattlePass>> localVarResponse = await GetActiveBattlePassesAsyncWithHttpInfo(appId, language);
              return localVarResponse.Data;
 
         }
@@ -967,8 +987,9 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetActiveBattlePassesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetActiveBattlePassesAsyncWithHttpInfo (string appId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -996,6 +1017,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1188,10 +1210,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>BattlePass</returns>
-        public BattlePass GetBattlePass (string appId, string battlePassId)
+        public BattlePass GetBattlePass (string appId, string battlePassId, string language = null)
         {
-             ApiResponse<BattlePass> localVarResponse = GetBattlePassWithHttpInfo(appId, battlePassId);
+             ApiResponse<BattlePass> localVarResponse = GetBattlePassWithHttpInfo(appId, battlePassId, language);
              return localVarResponse.Data;
         }
 
@@ -1201,8 +1224,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of BattlePass</returns>
-        public ApiResponse< BattlePass > GetBattlePassWithHttpInfo (string appId, string battlePassId)
+        public ApiResponse< BattlePass > GetBattlePassWithHttpInfo (string appId, string battlePassId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1234,6 +1258,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (battlePassId != null) localVarPathParams.Add("battlePassId", this.Configuration.ApiClient.ParameterToString(battlePassId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1271,10 +1296,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of BattlePass</returns>
-        public async System.Threading.Tasks.Task<BattlePass> GetBattlePassAsync (string appId, string battlePassId)
+        public async System.Threading.Tasks.Task<BattlePass> GetBattlePassAsync (string appId, string battlePassId, string language = null)
         {
-             ApiResponse<BattlePass> localVarResponse = await GetBattlePassAsyncWithHttpInfo(appId, battlePassId);
+             ApiResponse<BattlePass> localVarResponse = await GetBattlePassAsyncWithHttpInfo(appId, battlePassId, language);
              return localVarResponse.Data;
 
         }
@@ -1285,8 +1311,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="battlePassId">The id of the battle pass. It’s the same as in battle_pass_id you received in earlier requests (i.e. getting all active battle passes for a product).</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (BattlePass)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<BattlePass>> GetBattlePassAsyncWithHttpInfo (string appId, string battlePassId)
+        public async System.Threading.Tasks.Task<ApiResponse<BattlePass>> GetBattlePassAsyncWithHttpInfo (string appId, string battlePassId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1318,6 +1345,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (battlePassId != null) localVarPathParams.Add("battlePassId", this.Configuration.ApiClient.ParameterToString(battlePassId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1521,10 +1549,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;BattlePass&gt;</returns>
-        public List<BattlePass> GetBattlePasses (string appId)
+        public List<BattlePass> GetBattlePasses (string appId, string language = null)
         {
-             ApiResponse<List<BattlePass>> localVarResponse = GetBattlePassesWithHttpInfo(appId);
+             ApiResponse<List<BattlePass>> localVarResponse = GetBattlePassesWithHttpInfo(appId, language);
              return localVarResponse.Data;
         }
 
@@ -1533,8 +1562,9 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
-        public ApiResponse< List<BattlePass> > GetBattlePassesWithHttpInfo (string appId)
+        public ApiResponse< List<BattlePass> > GetBattlePassesWithHttpInfo (string appId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1562,6 +1592,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1598,10 +1629,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;BattlePass&gt;</returns>
-        public async System.Threading.Tasks.Task<List<BattlePass>> GetBattlePassesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<BattlePass>> GetBattlePassesAsync (string appId, string language = null)
         {
-             ApiResponse<List<BattlePass>> localVarResponse = await GetBattlePassesAsyncWithHttpInfo(appId);
+             ApiResponse<List<BattlePass>> localVarResponse = await GetBattlePassesAsyncWithHttpInfo(appId, language);
              return localVarResponse.Data;
 
         }
@@ -1611,8 +1643,9 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetBattlePassesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetBattlePassesAsyncWithHttpInfo (string appId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1640,6 +1673,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1676,10 +1710,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;BattlePass&gt;</returns>
-        public List<BattlePass> GetUnlockedBattlePasses (string appId)
+        public List<BattlePass> GetUnlockedBattlePasses (string appId, string language = null)
         {
-             ApiResponse<List<BattlePass>> localVarResponse = GetUnlockedBattlePassesWithHttpInfo(appId);
+             ApiResponse<List<BattlePass>> localVarResponse = GetUnlockedBattlePassesWithHttpInfo(appId, language);
              return localVarResponse.Data;
         }
 
@@ -1688,8 +1723,9 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;BattlePass&gt;</returns>
-        public ApiResponse< List<BattlePass> > GetUnlockedBattlePassesWithHttpInfo (string appId)
+        public ApiResponse< List<BattlePass> > GetUnlockedBattlePassesWithHttpInfo (string appId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1717,6 +1753,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1753,10 +1790,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;BattlePass&gt;</returns>
-        public async System.Threading.Tasks.Task<List<BattlePass>> GetUnlockedBattlePassesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<BattlePass>> GetUnlockedBattlePassesAsync (string appId, string language = null)
         {
-             ApiResponse<List<BattlePass>> localVarResponse = await GetUnlockedBattlePassesAsyncWithHttpInfo(appId);
+             ApiResponse<List<BattlePass>> localVarResponse = await GetUnlockedBattlePassesAsyncWithHttpInfo(appId, language);
              return localVarResponse.Data;
 
         }
@@ -1766,8 +1804,9 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;BattlePass&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetUnlockedBattlePassesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<BattlePass>>> GetUnlockedBattlePassesAsyncWithHttpInfo (string appId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1795,6 +1834,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
