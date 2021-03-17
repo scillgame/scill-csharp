@@ -49,9 +49,9 @@ namespace SCILL.Api
         /// Post an event to the SCILL backend
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse SendEvent (EventPayload body);
+        ActionResponse SendEvent (Body body);
 
         /// <summary>
         /// Post an event
@@ -60,9 +60,9 @@ namespace SCILL.Api
         /// Post an event to the SCILL backend
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> SendEventWithHttpInfo (EventPayload body);
+        ApiResponse<ActionResponse> SendEventWithHttpInfo (Body body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -91,9 +91,9 @@ namespace SCILL.Api
         /// Post an event to the SCILL backend
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> SendEventAsync (EventPayload body);
+        System.Threading.Tasks.Task<ActionResponse> SendEventAsync (Body body);
 
         /// <summary>
         /// Post an event
@@ -102,9 +102,9 @@ namespace SCILL.Api
         /// Post an event to the SCILL backend
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> SendEventAsyncWithHttpInfo (EventPayload body);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> SendEventAsyncWithHttpInfo (Body body);
         #endregion Asynchronous Operations
     }
 
@@ -339,9 +339,9 @@ namespace SCILL.Api
         /// Post an event Post an event to the SCILL backend
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse SendEvent (EventPayload body)
+        public ActionResponse SendEvent (Body body)
         {
              ApiResponse<ActionResponse> localVarResponse = SendEventWithHttpInfo(body);
              return localVarResponse.Data;
@@ -351,9 +351,9 @@ namespace SCILL.Api
         /// Post an event Post an event to the SCILL backend
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > SendEventWithHttpInfo (EventPayload body)
+        public ApiResponse< ActionResponse > SendEventWithHttpInfo (Body body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -429,9 +429,9 @@ namespace SCILL.Api
         /// Post an event Post an event to the SCILL backend
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> SendEventAsync (EventPayload body)
+        public async System.Threading.Tasks.Task<ActionResponse> SendEventAsync (Body body)
         {
              ApiResponse<ActionResponse> localVarResponse = await SendEventAsyncWithHttpInfo(body);
              return localVarResponse.Data;
@@ -442,9 +442,9 @@ namespace SCILL.Api
         /// Post an event Post an event to the SCILL backend
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> SendEventAsyncWithHttpInfo (EventPayload body)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> SendEventAsyncWithHttpInfo (Body body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
