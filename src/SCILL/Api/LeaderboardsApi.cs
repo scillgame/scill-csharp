@@ -58,10 +58,8 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null);
+        List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId);
 
         /// <summary>
         /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
@@ -73,10 +71,8 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null);
+        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId);
         /// <summary>
         /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
         /// </summary>
@@ -86,10 +82,8 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId, int? currentPage = null, int? pageSize = null);
+        List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId);
 
         /// <summary>
         /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
@@ -100,10 +94,8 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId, int? currentPage = null, int? pageSize = null);
+        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId);
         /// <summary>
         /// Returns an array of leaderboards that are setup for the application
         /// </summary>
@@ -164,10 +156,8 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null);
+        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId);
 
         /// <summary>
         /// Returns the LeaderboardMemberRanking item for the specified user or team for the specified leaderboard
@@ -179,10 +169,8 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null);
+        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId);
         /// <summary>
         /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
         /// </summary>
@@ -192,10 +180,8 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId, int? currentPage = null, int? pageSize = null);
+        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId);
 
         /// <summary>
         /// Returns the LeaderboardRanking items for the specified user or team for all leaderboards available in the application
@@ -206,10 +192,8 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId, int? currentPage = null, int? pageSize = null);
+        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId);
         /// <summary>
         /// Returns an array of leaderboards that are setup for the application
         /// </summary>
@@ -518,12 +502,10 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        public List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null)
+        public List<LeaderboardMemberRanking> GetLeaderboardRanking (string memberType, string memberId, string leaderboardId)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingWithHttpInfo(memberType, memberId, leaderboardId, currentPage, pageSize);
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingWithHttpInfo(memberType, memberId, leaderboardId);
              return localVarResponse.Data;
         }
 
@@ -534,10 +516,8 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null)
+        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
@@ -573,8 +553,6 @@ namespace SCILL.Api
             if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
-            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
-            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -613,12 +591,10 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null)
+        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingAsyncWithHttpInfo(memberType, memberId, leaderboardId, currentPage, pageSize);
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingAsyncWithHttpInfo(memberType, memberId, leaderboardId);
              return localVarResponse.Data;
 
         }
@@ -630,10 +606,8 @@ namespace SCILL.Api
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, int? currentPage = null, int? pageSize = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
@@ -669,8 +643,6 @@ namespace SCILL.Api
             if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
-            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
-            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -708,12 +680,10 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        public List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId, int? currentPage = null, int? pageSize = null)
+        public List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingsWithHttpInfo(memberType, memberId, currentPage, pageSize);
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingsWithHttpInfo(memberType, memberId);
              return localVarResponse.Data;
         }
 
@@ -723,10 +693,8 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId, int? currentPage = null, int? pageSize = null)
+        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
@@ -758,8 +726,6 @@ namespace SCILL.Api
 
             if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
-            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
-            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -797,12 +763,10 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId, int? currentPage = null, int? pageSize = null)
+        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingsAsyncWithHttpInfo(memberType, memberId, currentPage, pageSize);
+             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingsAsyncWithHttpInfo(memberType, memberId);
              return localVarResponse.Data;
 
         }
@@ -813,10 +777,8 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId, int? currentPage = null, int? pageSize = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
@@ -848,8 +810,6 @@ namespace SCILL.Api
 
             if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
-            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
-            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
