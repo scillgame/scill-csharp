@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// The ranking for the user or team in this leaderboard
+    /// The ranking for the user or team in the leaderboard
     /// </summary>
     [DataContract]
         public partial class LeaderboardRanking :  IEquatable<LeaderboardRanking>, IValidatableObject

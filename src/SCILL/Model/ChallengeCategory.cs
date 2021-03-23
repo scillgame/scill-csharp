@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// ChallengeCategory
+    /// Challenges are grouped into categories. You can exclude or include categories in queries. Per default all categories will be returned.
     /// </summary>
     [DataContract]
         public partial class ChallengeCategory :  IEquatable<ChallengeCategory>, IValidatableObject

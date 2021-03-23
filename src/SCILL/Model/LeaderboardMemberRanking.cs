@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// LeaderboardMemberRanking
+    /// You get these object if you query the leaderboard ranking for a specific user. Only the requested user will be returned.
     /// </summary>
     [DataContract]
         public partial class LeaderboardMemberRanking :  IEquatable<LeaderboardMemberRanking>, IValidatableObject

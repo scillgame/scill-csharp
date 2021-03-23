@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// Error
+    /// Errors are reported using this structure. Error messages are human readable and will be translated (if available) in the language provided by the language query parameter.
     /// </summary>
     [DataContract]
         public partial class Error :  IEquatable<Error>, IValidatableObject

@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// ActionResponse
+    /// Standard response for actions like update or delete. If anything went fine, you&#x27;ll receive a HTTP code of 200 and a OK message.
     /// </summary>
     [DataContract]
         public partial class ActionResponse :  IEquatable<ActionResponse>, IValidatableObject

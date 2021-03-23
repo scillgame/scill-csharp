@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// BattlePassLevelChallenge
+    /// Each level in battle passes contains one or more challenges that need to be fullfilled to unlock the next level. This structure holds challenge information and is based on the Challenge structure. However, as Battle Passes manage the lifecycle of challenges, this data structure is a bit simpler. The same principles apply mostly as for the personal challenges, i.e. you can share the exact same UI to render personal challenges and battle pass challenges.
     /// </summary>
     [DataContract]
         public partial class BattlePassLevelChallenge :  IEquatable<BattlePassLevelChallenge>, IValidatableObject

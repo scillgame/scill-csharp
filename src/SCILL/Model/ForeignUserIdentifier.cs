@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// ForeignUserIdentifier
+    /// Requesting an access token requires this object to be sent containing the user id of your user. The user id can be anything (we dont care) but it must be consistent for the lifetime of the user.
     /// </summary>
     [DataContract]
         public partial class ForeignUserIdentifier :  IEquatable<ForeignUserIdentifier>, IValidatableObject

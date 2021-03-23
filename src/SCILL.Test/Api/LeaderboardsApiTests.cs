@@ -88,7 +88,7 @@ namespace SCILL.Test
             //string leaderboardId = null;
             //string language = null;
             //var response = instance.GetLeaderboardRanking(memberType, memberId, leaderboardId, language);
-            //Assert.IsInstanceOf<List<LeaderboardMemberRanking>> (response, "response is List<LeaderboardMemberRanking>");
+            //Assert.IsInstanceOf<LeaderboardMemberRanking> (response, "response is LeaderboardMemberRanking");
         }
         /// <summary>
         /// Test GetLeaderboardRankings

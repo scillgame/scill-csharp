@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// Challenge
+    /// The challenge object holds all information about a users challenge. It contains information like the duration, the type, progress states like counter and the goal and various other info.
     /// </summary>
     [DataContract]
         public partial class Challenge :  IEquatable<Challenge>, IValidatableObject

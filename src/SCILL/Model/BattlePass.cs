@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// BattlePass
+    /// A Battle Pass is a structured layer above challenges and handles the lifecycle of challenges based on a level system. Users need to fullfil challenges to unlock the next level. Each level can have a reward that you can specify in the BattlePassLevel structure. Battle Passes need to be unlocked before they start tracking progress.
     /// </summary>
     [DataContract]
         public partial class BattlePass :  IEquatable<BattlePass>, IValidatableObject

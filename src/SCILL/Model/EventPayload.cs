@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// EventPayload
+    /// Events are the engine and driver for challenges, battle passes and leaderboards within the SCILL ecosystem. They are a simple, yet powerful data structure. The idea is, that you just send events for actions and things that happen in your game or application. SCILL leverages these info to update and progress challenges or to figure out the users score within a leaderboard. You don&#x27;t have to handle any state in your application or game, as everything is done by SCILL.
     /// </summary>
     [DataContract]
         public partial class EventPayload :  IEquatable<EventPayload>, IValidatableObject
