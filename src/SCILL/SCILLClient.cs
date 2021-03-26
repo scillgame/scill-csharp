@@ -21,11 +21,12 @@ namespace SCILL
         Staging,
         Development
     }
-    
+
     public class SCILLClient
     {
         public string AccessToken { get; private set; }
         public string AppId { get; private set; }
+        public string Language { get; private set; }
 
         public EventsApi EventsApi => _EventsApi.Value;
         public ChallengesApi ChallengesApi => _ChallengesApi.Value;
@@ -52,10 +53,11 @@ namespace SCILL
 
         public event BattlePassChangedNotificationHandler OnBattlePassChangedNotification;
 
-        public SCILLClient(string accessToken, string appId, Environment environment = Environment.Production)
+        public SCILLClient(string accessToken, string appId, string language = null, Environment environment = Environment.Production)
         {
             AccessToken = accessToken;
             AppId = appId;
+            Language = language;
 
             string hostSuffix = "";
             if (environment == Environment.Staging)
@@ -292,65 +294,65 @@ namespace SCILL
             return await ChallengesApi.ClaimPersonalChallengeRewardAsync(AppId, challengeId);
         }
 
-        public List<ChallengeCategory> GetPersonalChallenges()
+        public List<ChallengeCategory> GetPersonalChallenges (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return ChallengesApi.GetPersonalChallenges(AppId);
+            return ChallengesApi.GetPersonalChallenges(AppId, includeCategories, excludeCategories, Language);
         }
 
-        public async Task<List<ChallengeCategory>> GetPersonalChallengesAsync()
+        public async Task<List<ChallengeCategory>> GetPersonalChallengesAsync (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return await ChallengesApi.GetPersonalChallengesAsync(AppId);
+            return await ChallengesApi.GetPersonalChallengesAsync(AppId, includeCategories, excludeCategories, Language);
         }
         
-        public List<ChallengeCategory> GetAllPersonalChallenges()
+        public List<ChallengeCategory> GetAllPersonalChallenges (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return ChallengesApi.GetAllPersonalChallenges(AppId);
+            return ChallengesApi.GetAllPersonalChallenges(AppId, includeCategories, excludeCategories, Language);
         }
 
-        public async Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync()
+        public async Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return await ChallengesApi.GetAllPersonalChallengesAsync(AppId);
+            return await ChallengesApi.GetAllPersonalChallengesAsync(AppId, includeCategories, excludeCategories, Language);
         }        
         
         
-        public List<ChallengeCategory> GetUnresolvedPersonalChallenges()
+        public List<ChallengeCategory> GetUnresolvedPersonalChallenges (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return ChallengesApi.GetUnresolvedPersonalChallenges(AppId);
+            return ChallengesApi.GetUnresolvedPersonalChallenges(AppId, includeCategories, excludeCategories, Language);
         }
 
-        public async Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync()
+        public async Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync(List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return await ChallengesApi.GetUnresolvedPersonalChallengesAsync(AppId);
+            return await ChallengesApi.GetUnresolvedPersonalChallengesAsync(AppId, includeCategories, excludeCategories, Language);
         }               
         
         public Challenge GetPersonalChallengeById(string challengeId)
         {
-            return ChallengesApi.GetPersonalChallengeById(AppId, challengeId);
+            return ChallengesApi.GetPersonalChallengeById(AppId, challengeId, Language);
         }
 
         public async Task<Challenge> GetPersonalChallengeByIdAsync(string challengeId)
         {
-            return await ChallengesApi.GetPersonalChallengeByIdAsync(AppId, challengeId);
+            return await ChallengesApi.GetPersonalChallengeByIdAsync(AppId, challengeId, Language);
         }
 
         public List<ChallengeCategory> GetActivePersonalChallenges()
         {
-            return ChallengesApi.GetActivePersonalChallenges(AppId);
+            return ChallengesApi.GetActivePersonalChallenges(AppId, Language);
         }
 
         public async Task<List<ChallengeCategory>> GetActivePersonalChallengesAsync()
         {
-            return await ChallengesApi.GetActivePersonalChallengesAsync(AppId);
+            return await ChallengesApi.GetActivePersonalChallengesAsync(AppId, Language);
         }
 
         public ActionResponse UnlockPersonalChallenge(string challengeId)
         {
-            return ChallengesApi.UnlockPersonalChallenge(AppId, challengeId);
+            return ChallengesApi.UnlockPersonalChallenge(AppId, challengeId, Language);
         }
 
         public async Task<ActionResponse> UnlockPersonalChallengeAsync(string challengeId)
         {
-            return await ChallengesApi.UnlockPersonalChallengeAsync(AppId, challengeId);
+            return await ChallengesApi.UnlockPersonalChallengeAsync(AppId, challengeId, Language);
         }
 
         #endregion ChallengesApi
@@ -359,94 +361,94 @@ namespace SCILL
 
         public ActionResponse ActivateBattlePassLevel(string levelId)
         {
-            return BattlePassesApi.ActivateBattlePassLevel(AppId, levelId);
+            return BattlePassesApi.ActivateBattlePassLevel(AppId, levelId, Language);
         }
         
         public async Task<ActionResponse> ActivateBattlePassLevelAsync(string levelId)
         {
-            return await BattlePassesApi.ActivateBattlePassLevelAsync(AppId, levelId);
+            return await BattlePassesApi.ActivateBattlePassLevelAsync(AppId, levelId, Language);
         }
 
         public ActionResponse ClaimBattlePassLevelReward(string levelId)
         {
-            return BattlePassesApi.ClaimBattlePassLevelReward(AppId, levelId);
+            return BattlePassesApi.ClaimBattlePassLevelReward(AppId, levelId, Language);
         }
 
         public async Task<ActionResponse> ClaimBattlePassLevelRewardAsync(string levelId)
         {
-            return await BattlePassesApi.ClaimBattlePassLevelRewardAsync(AppId, levelId);
+            return await BattlePassesApi.ClaimBattlePassLevelRewardAsync(AppId, levelId, Language);
         }
 
         public List<BattlePass> GetActiveBattlePasses()
         {
-            return BattlePassesApi.GetActiveBattlePasses(AppId);
+            return BattlePassesApi.GetActiveBattlePasses(AppId, Language);
         }
 
         public async Task<List<BattlePass>> GetActiveBattlePassesAsync()
         {
-            return await BattlePassesApi.GetActiveBattlePassesAsync(AppId);
+            return await BattlePassesApi.GetActiveBattlePassesAsync(AppId, Language);
         }
 
         public List<BattlePassLevel> GetAllBattlePassLevels()
         {
-            return BattlePassesApi.GetAllBattlePassLevels(AppId);
+            return BattlePassesApi.GetAllBattlePassLevels(AppId, Language);
         }
         
         public async Task<List<BattlePassLevel>> GetAllBattlePassLevelsAsync()
         {
-            return await BattlePassesApi.GetAllBattlePassLevelsAsync(AppId);
+            return await BattlePassesApi.GetAllBattlePassLevelsAsync(AppId, Language);
         }
 
         public BattlePass GetBattlePass(string battlePassId)
         {
-            return BattlePassesApi.GetBattlePass(AppId, battlePassId);
+            return BattlePassesApi.GetBattlePass(AppId, battlePassId, Language);
         }
 
         public async Task<BattlePass> GetBattlePassAsync(string battlePassId)
         {
-            return await BattlePassesApi.GetBattlePassAsync(AppId, battlePassId);
+            return await BattlePassesApi.GetBattlePassAsync(AppId, battlePassId, Language);
         }
         
         public List<BattlePassLevel> GetBattlePassLevels(string battlePassId)
         {
-            return BattlePassesApi.GetBattlePassLevels(AppId, battlePassId);
+            return BattlePassesApi.GetBattlePassLevels(AppId, battlePassId, Language);
         }
         
         public async Task<List<BattlePassLevel>> GetBattlePassLevelsAsync(string battlePassId)
         {
-            return await BattlePassesApi.GetBattlePassLevelsAsync(AppId, battlePassId);
+            return await BattlePassesApi.GetBattlePassLevelsAsync(AppId, battlePassId, Language);
         }
 
         public List<BattlePass> GetBattlePasses()
         {
-            return BattlePassesApi.GetBattlePasses(AppId);
+            return BattlePassesApi.GetBattlePasses(AppId, Language);
         }
         
         public async Task<List<BattlePass>> GetBattlePassesAsync()
         {
-            return await BattlePassesApi.GetBattlePassesAsync(AppId);
+            return await BattlePassesApi.GetBattlePassesAsync(AppId, Language);
         }
 
         public List<BattlePass> GetUnlockedBattlePasses()
         {
-            return BattlePassesApi.GetUnlockedBattlePasses(AppId);
+            return BattlePassesApi.GetUnlockedBattlePasses(AppId, Language);
         }
         
         public async Task<List<BattlePass>> GetUnlockedBattlePassesAsync()
         {
-            return await BattlePassesApi.GetUnlockedBattlePassesAsync(AppId);
+            return await BattlePassesApi.GetUnlockedBattlePassesAsync(AppId, Language);
         }
 
         public BattlePassUnlockInfo UnlockBattlePass(string battlePassId,
             BattlePassUnlockPayload body = null)
         {
-            return BattlePassesApi.UnlockBattlePass(AppId, battlePassId, body);
+            return BattlePassesApi.UnlockBattlePass(AppId, battlePassId, body, Language);
         }
         
         public async Task<BattlePassUnlockInfo> UnlockBattlePassAsync(string battlePassId,
             BattlePassUnlockPayload body = null)
         {
-            return await BattlePassesApi.UnlockBattlePassAsync(AppId, battlePassId, body);
+            return await BattlePassesApi.UnlockBattlePassAsync(AppId, battlePassId, body, Language);
         }
         
         #endregion BattlePassesApi
