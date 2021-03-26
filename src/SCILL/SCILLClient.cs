@@ -32,11 +32,13 @@ namespace SCILL
         public ChallengesApi ChallengesApi => _ChallengesApi.Value;
         public BattlePassesApi BattlePassesApi => _BattlePassesApi.Value;
         public AuthApi AuthApi => _AuthApi.Value;
+        public LeaderboardsApi LeaderboardsApi => _LeaderboardsApi.Value;
 
         private Lazy<EventsApi> _EventsApi;
         private Lazy<ChallengesApi> _ChallengesApi;
         private Lazy<BattlePassesApi> _BattlePassesApi;
         private Lazy<AuthApi> _AuthApi;
+        private Lazy<LeaderboardsApi> _LeaderboardsApi;
 
         private static Configuration Config;
 
@@ -72,6 +74,7 @@ namespace SCILL
             _ChallengesApi = new Lazy<ChallengesApi>(() => GetApi<ChallengesApi>(AccessToken, "https://pcs" + hostSuffix + ".scillgame.com"), true);
             _BattlePassesApi = new Lazy<BattlePassesApi>(() => GetApi<BattlePassesApi>(AccessToken, "https://es" + hostSuffix + ".scillgame.com"), true);
             _AuthApi = new Lazy<AuthApi>(() => GetApi<AuthApi>(accessToken, "https://us" + hostSuffix + ".scillgame.com"), true);
+            _LeaderboardsApi = new Lazy<LeaderboardsApi>(() => GetApi<LeaderboardsApi>(accessToken, "https://ls" + hostSuffix + ".scillgame.com"), true);
 
             Config = Configuration.Default.Clone(string.Empty, Configuration.Default.BasePath);
             Config.ApiKey[this.ToString()] = AccessToken;
@@ -167,7 +170,8 @@ namespace SCILL
 
             // Connect to SCILLs MQTT server to receive real time notifications
             var options = new MqttClientOptionsBuilder()
-                .WithTcpServer("mqtt.scillgame.com", 1883)
+                .WithWebSocketServer("mqtt.scillgame.com:8083/mqtt")
+                .WithTls()
                 .Build();
 
             await _challengesMqttClient.ConnectAsync(options, CancellationToken.None);
@@ -452,6 +456,55 @@ namespace SCILL
         }
         
         #endregion BattlePassesApi
+        
+        #region LeaderboardsApi
+
+        public Leaderboard GetLeaderboard(string leaderboardId, int? currentPage = null, int? pageSize = null)
+        {
+            return LeaderboardsApi.GetLeaderboard(leaderboardId, currentPage, pageSize, Language);
+        }
+
+        public Task<Leaderboard> GetLeaderboardAsync(string leaderboardId, int? currentPage = null,
+            int? pageSize = null)
+        {
+            return LeaderboardsApi.GetLeaderboardAsync(leaderboardId, currentPage, pageSize, Language);
+        }
+
+        public LeaderboardMemberRanking GetLeaderboardRanking(string memberType, string memberId,
+            string leaderboardId)
+        {
+            return LeaderboardsApi.GetLeaderboardRanking(memberType, memberId, leaderboardId, Language);
+        }
+
+        public Task<LeaderboardMemberRanking> GetLeaderboardRankingAsync(string memberType,
+            string memberId, string leaderboardId)
+        {
+            return LeaderboardsApi.GetLeaderboardRankingAsync(memberType, memberId, leaderboardId, Language);
+        }
+
+        public List<LeaderboardMemberRanking> GetLeaderboardRankings(string memberType, string memberId)
+        {
+            return LeaderboardsApi.GetLeaderboardRankings(memberType, memberId, Language);
+        }
+
+        public Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync(
+            string memberType, string memberId, string language = null)
+        {
+            return LeaderboardsApi.GetLeaderboardRankingsAsync(memberType, memberId, language);
+        }
+
+        public List<Leaderboard> GetLeaderboards(int? currentPage = null, int? pageSize = null)
+        {
+            return LeaderboardsApi.GetLeaderboards(currentPage, pageSize, Language);
+        }
+
+        public Task<List<Leaderboard>> GetLeaderboardsAsync(int? currentPage = null,
+            int? pageSize = null)
+        {
+            return LeaderboardsApi.GetLeaderboardsAsync(currentPage, pageSize, Language);
+        }
+
+        #endregion
     }
 
     static class ConfigurationExtension
