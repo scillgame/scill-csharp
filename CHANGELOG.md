@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2021-03-26
+### Added
+- Added language parameter to `SCILLClient`
+- Added Leaderboards API
+
+### Changed
+- Changed to official MQTTnet library instead of a fork of it.
+- Switched to Websocket MQTT connection (as a preparation for WebGL support coming soon)
+
 ## [1.3.0] - 2021-02-10
 ### Added
 - Added `GetUnresolvedPersonalChallenges` function to the `ChallengesApi` which is a duplicate of getPersonalChallenges right now.
