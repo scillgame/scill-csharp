@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// BattlePassLevelChallenge
+    /// Each level in battle passes contains one or more challenges that need to be fullfilled to unlock the next level. This structure holds challenge information and is based on the Challenge structure. However, as Battle Passes manage the lifecycle of challenges, this data structure is a bit simpler. The same principles apply mostly as for the personal challenges, i.e. you can share the exact same UI to render personal challenges and battle pass challenges.
     /// </summary>
     [DataContract]
         public partial class BattlePassLevelChallenge :  IEquatable<BattlePassLevelChallenge>, IValidatableObject
@@ -37,16 +37,18 @@ namespace SCILL.Model
         /// <param name="challengeGoal">Indicates how many “tasks” must be completed or done to complete this challenge..</param>
         /// <param name="challengeGoalCondition">With this you can set the way how the SCILL system approaches the challenges state. 0 means, that the counter of the challenge must be brought above the goal. If this is 1, then the counter must be kept below the goal. This is often useful for challenges that include times, like: Manage the level in under 50 seconds..</param>
         /// <param name="userChallengeCurrentScore">Indicates how many tasks the user already has completed. Use this in combination with challenge_goal to render a nice progress bar..</param>
+        /// <param name="challengeXp">If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded..</param>
         /// <param name="challengeIcon">In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database..</param>
         /// <param name="challengeIconHd">This is the HD variant of the challenge icon image. If you have a game, that runs on multiple platforms that could come in handy. Otherwise just leave blank..</param>
         /// <param name="type">Indicates the status of the challenge. This can be one of the following unlock: Challenge does not track anything. in-progress: Challenge is active and tracking. overtime: User did not manage to finish the challenge in time. unclaimed: The challenge has been completed but the reward has not yet been claimed. finished: The challenge has been successfully be completed and the reward has been claimed.</param>
-        public BattlePassLevelChallenge(string challengeId = default(string), string challengeName = default(string), int? challengeGoal = default(int?), int? challengeGoalCondition = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), string type = default(string))
+        public BattlePassLevelChallenge(string challengeId = default(string), string challengeName = default(string), int? challengeGoal = default(int?), int? challengeGoalCondition = default(int?), int? userChallengeCurrentScore = default(int?), int? challengeXp = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), string type = default(string))
         {
             this.challenge_id = challengeId;
             this.challenge_name = challengeName;
             this.challenge_goal = challengeGoal;
             this.challenge_goal_condition = challengeGoalCondition;
             this.user_challenge_current_score = userChallengeCurrentScore;
+            this.challenge_xp = challengeXp;
             this.challenge_icon = challengeIcon;
             this.challenge_icon_hd = challengeIconHd;
             this.type = type;
@@ -88,6 +90,13 @@ namespace SCILL.Model
         public int? user_challenge_current_score { get; set; }
 
         /// <summary>
+        /// If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded.
+        /// </summary>
+        /// <value>If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded.</value>
+        [DataMember(Name="challenge_xp", EmitDefaultValue=false)]
+        public int? challenge_xp { get; set; }
+
+        /// <summary>
         /// In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database.
         /// </summary>
         /// <value>In the admin panel you can set a string representing an image. This can be a URL, but it can also be an image or texture that you have in your games asset database.</value>
@@ -121,6 +130,7 @@ namespace SCILL.Model
             sb.Append("  challenge_goal: ").Append(challenge_goal).Append("\n");
             sb.Append("  challenge_goal_condition: ").Append(challenge_goal_condition).Append("\n");
             sb.Append("  user_challenge_current_score: ").Append(user_challenge_current_score).Append("\n");
+            sb.Append("  challenge_xp: ").Append(challenge_xp).Append("\n");
             sb.Append("  challenge_icon: ").Append(challenge_icon).Append("\n");
             sb.Append("  challenge_icon_hd: ").Append(challenge_icon_hd).Append("\n");
             sb.Append("  type: ").Append(type).Append("\n");
@@ -184,6 +194,11 @@ namespace SCILL.Model
                     this.user_challenge_current_score.Equals(input.user_challenge_current_score))
                 ) && 
                 (
+                    this.challenge_xp == input.challenge_xp ||
+                    (this.challenge_xp != null &&
+                    this.challenge_xp.Equals(input.challenge_xp))
+                ) && 
+                (
                     this.challenge_icon == input.challenge_icon ||
                     (this.challenge_icon != null &&
                     this.challenge_icon.Equals(input.challenge_icon))
@@ -219,6 +234,8 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.challenge_goal_condition.GetHashCode();
                 if (this.user_challenge_current_score != null)
                     hashCode = hashCode * 59 + this.user_challenge_current_score.GetHashCode();
+                if (this.challenge_xp != null)
+                    hashCode = hashCode * 59 + this.challenge_xp.GetHashCode();
                 if (this.challenge_icon != null)
                     hashCode = hashCode * 59 + this.challenge_icon.GetHashCode();
                 if (this.challenge_icon_hd != null)

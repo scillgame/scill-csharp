@@ -106,6 +106,14 @@ namespace SCILL.Test
             // TODO unit test for the property 'user_challenge_current_score'
         }
         /// <summary>
+        /// Test the property 'challenge_xp'
+        /// </summary>
+        [Test]
+        public void challenge_xpTest()
+        {
+            // TODO unit test for the property 'challenge_xp'
+        }
+        /// <summary>
         /// Test the property 'challenge_icon'
         /// </summary>
         [Test]

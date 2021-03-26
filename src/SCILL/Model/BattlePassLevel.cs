@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// BattlePassLevel
+    /// Battle Passes are grouped into levels that contain challenges that must be achieved to unlock the next level. Only challenges for the current level are tracking progress.
     /// </summary>
     [DataContract]
         public partial class BattlePassLevel :  IEquatable<BattlePassLevel>, IValidatableObject

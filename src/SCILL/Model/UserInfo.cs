@@ -24,25 +24,35 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// As SCILL does not know anything about the users an access token is required to handle authentication. Requesting an access token in the backend returns this object that contains the token which needs to be set as the Authentication Bearer in subsequent requests to the SCILL backend.
+    /// Can be any object that is attached to the user. You can set these values in the user service. For example you can provide a user name and an avatar image url.
     /// </summary>
     [DataContract]
-        public partial class AccessToken :  IEquatable<AccessToken>, IValidatableObject
+        public partial class UserInfo :  IEquatable<UserInfo>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccessToken" /> class.
+        /// Initializes a new instance of the <see cref="UserInfo" /> class.
         /// </summary>
-        /// <param name="token">token.</param>
-        public AccessToken(string token = default(string))
+        /// <param name="username">The user name of the user.</param>
+        /// <param name="avatarImage">The name or URL of an avatar image for a user..</param>
+        public UserInfo(string username = default(string), string avatarImage = default(string))
         {
-            this.token = token;
+            this.username = username;
+            this.avatarImage = avatarImage;
         }
         
         /// <summary>
-        /// Gets or Sets token
+        /// The user name of the user
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=false)]
-        public string token { get; set; }
+        /// <value>The user name of the user</value>
+        [DataMember(Name="username", EmitDefaultValue=false)]
+        public string username { get; set; }
+
+        /// <summary>
+        /// The name or URL of an avatar image for a user.
+        /// </summary>
+        /// <value>The name or URL of an avatar image for a user.</value>
+        [DataMember(Name="avatarImage", EmitDefaultValue=false)]
+        public string avatarImage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -51,8 +61,9 @@ namespace SCILL.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AccessToken {\n");
-            sb.Append("  token: ").Append(token).Append("\n");
+            sb.Append("class UserInfo {\n");
+            sb.Append("  username: ").Append(username).Append("\n");
+            sb.Append("  avatarImage: ").Append(avatarImage).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -73,24 +84,29 @@ namespace SCILL.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AccessToken);
+            return this.Equals(input as UserInfo);
         }
 
         /// <summary>
-        /// Returns true if AccessToken instances are equal
+        /// Returns true if UserInfo instances are equal
         /// </summary>
-        /// <param name="input">Instance of AccessToken to be compared</param>
+        /// <param name="input">Instance of UserInfo to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AccessToken input)
+        public bool Equals(UserInfo input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.token == input.token ||
-                    (this.token != null &&
-                    this.token.Equals(input.token))
+                    this.username == input.username ||
+                    (this.username != null &&
+                    this.username.Equals(input.username))
+                ) && 
+                (
+                    this.avatarImage == input.avatarImage ||
+                    (this.avatarImage != null &&
+                    this.avatarImage.Equals(input.avatarImage))
                 );
         }
 
@@ -103,8 +119,10 @@ namespace SCILL.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.token != null)
-                    hashCode = hashCode * 59 + this.token.GetHashCode();
+                if (this.username != null)
+                    hashCode = hashCode * 59 + this.username.GetHashCode();
+                if (this.avatarImage != null)
+                    hashCode = hashCode * 59 + this.avatarImage.GetHashCode();
                 return hashCode;
             }
         }

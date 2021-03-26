@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// Challenge
+    /// The challenge object holds all information about a users challenge. It contains information like the duration, the type, progress states like counter and the goal and various other info.
     /// </summary>
     [DataContract]
         public partial class Challenge :  IEquatable<Challenge>, IValidatableObject
@@ -34,6 +34,7 @@ namespace SCILL.Model
         /// </summary>
         /// <param name="challengeId">The unique id of this challenge. Every challenge is linked to a product..</param>
         /// <param name="challengeName">The name of the challenge in the language set by the language parameter..</param>
+        /// <param name="challengeDescription">An optional multi-language description that can be set in the Admin Panel. Used to describe exactly what the user has to do..</param>
         /// <param name="challengeDurationTime">The duration of the challenge in seconds. Challenges auto lock after time-out and need to be unlocked again..</param>
         /// <param name="liveDate">The date this challenge should start. Use that field to create challenges that start in the future..</param>
         /// <param name="challengeGoal">Indicates how many “tasks” must be completed or done to complete this challenge..</param>
@@ -47,15 +48,17 @@ namespace SCILL.Model
         /// <param name="challengeXp">If you have experience, player rankings whatever, you can use this field to set the gain in that when this challenge is rewarded..</param>
         /// <param name="repeatable">If this challenge can be only activated once per user this will be false. Otherwise this challenge will always be added to list of available challenges (see personal or alliance challenges)..</param>
         /// <param name="type">Indicates the status of the challenge. This can be one of the following unlock: Challenge does not track anything. in-progress: Challenge is active and tracking. overtime: User did not manage to finish the challenge in time. unclaimed: The challenge has been completed but the reward has not yet been claimed. finished: The challenge has been successfully be completed and the reward has been claimed.</param>
+        /// <param name="challengeAutoActivated">Indicates if the challenges lifecycle is handled automatically by the SCILL backend. Use this flag to decide when to show action buttons for unlocking, activating, claiming or canceling challenges. Hide the buttons if this flag is true, and let the user manage challenges manually if this flag is false..</param>
         /// <param name="isClaimed">If the challenge reward has been claimed this is true otherwise its false..</param>
         /// <param name="userChallengeUnlockedAt">This is the timestamp the challenge has been unlocked..</param>
         /// <param name="userChallengeActivatedAt">This is the timestamp the challenge has been activated..</param>
         /// <param name="userChallengeIsClaimed">Indicates if this challenge has been claimed..</param>
         /// <param name="userChallengeStatus">Gives indication in what state the challenge is..</param>
-        public Challenge(string challengeId = default(string), string challengeName = default(string), decimal? challengeDurationTime = default(decimal?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), int? challengePrice = default(int?), string challengeReward = default(string), string challengeRewardType = default(string), int? challengeGoalCondition = default(int?), int? challengeXp = default(int?), bool? repeatable = default(bool?), string type = default(string), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string), bool? userChallengeIsClaimed = default(bool?), int? userChallengeStatus = default(int?))
+        public Challenge(string challengeId = default(string), string challengeName = default(string), string challengeDescription = default(string), decimal? challengeDurationTime = default(decimal?), string liveDate = default(string), int? challengeGoal = default(int?), int? userChallengeCurrentScore = default(int?), string challengeIcon = default(string), string challengeIconHd = default(string), int? challengePrice = default(int?), string challengeReward = default(string), string challengeRewardType = default(string), int? challengeGoalCondition = default(int?), int? challengeXp = default(int?), bool? repeatable = default(bool?), string type = default(string), bool? challengeAutoActivated = default(bool?), bool? isClaimed = default(bool?), string userChallengeUnlockedAt = default(string), string userChallengeActivatedAt = default(string), bool? userChallengeIsClaimed = default(bool?), int? userChallengeStatus = default(int?))
         {
             this.challenge_id = challengeId;
             this.challenge_name = challengeName;
+            this.challenge_description = challengeDescription;
             this.challenge_duration_time = challengeDurationTime;
             this.live_date = liveDate;
             this.challenge_goal = challengeGoal;
@@ -69,6 +72,7 @@ namespace SCILL.Model
             this.challenge_xp = challengeXp;
             this.repeatable = repeatable;
             this.type = type;
+            this.challenge_auto_activated = challengeAutoActivated;
             this.is_claimed = isClaimed;
             this.user_challenge_unlocked_at = userChallengeUnlockedAt;
             this.user_challenge_activated_at = userChallengeActivatedAt;
@@ -89,6 +93,13 @@ namespace SCILL.Model
         /// <value>The name of the challenge in the language set by the language parameter.</value>
         [DataMember(Name="challenge_name", EmitDefaultValue=false)]
         public string challenge_name { get; set; }
+
+        /// <summary>
+        /// An optional multi-language description that can be set in the Admin Panel. Used to describe exactly what the user has to do.
+        /// </summary>
+        /// <value>An optional multi-language description that can be set in the Admin Panel. Used to describe exactly what the user has to do.</value>
+        [DataMember(Name="challenge_description", EmitDefaultValue=false)]
+        public string challenge_description { get; set; }
 
         /// <summary>
         /// The duration of the challenge in seconds. Challenges auto lock after time-out and need to be unlocked again.
@@ -182,6 +193,13 @@ namespace SCILL.Model
         public string type { get; set; }
 
         /// <summary>
+        /// Indicates if the challenges lifecycle is handled automatically by the SCILL backend. Use this flag to decide when to show action buttons for unlocking, activating, claiming or canceling challenges. Hide the buttons if this flag is true, and let the user manage challenges manually if this flag is false.
+        /// </summary>
+        /// <value>Indicates if the challenges lifecycle is handled automatically by the SCILL backend. Use this flag to decide when to show action buttons for unlocking, activating, claiming or canceling challenges. Hide the buttons if this flag is true, and let the user manage challenges manually if this flag is false.</value>
+        [DataMember(Name="challenge_auto_activated", EmitDefaultValue=false)]
+        public bool? challenge_auto_activated { get; set; }
+
+        /// <summary>
         /// If the challenge reward has been claimed this is true otherwise its false.
         /// </summary>
         /// <value>If the challenge reward has been claimed this is true otherwise its false.</value>
@@ -226,6 +244,7 @@ namespace SCILL.Model
             sb.Append("class Challenge {\n");
             sb.Append("  challenge_id: ").Append(challenge_id).Append("\n");
             sb.Append("  challenge_name: ").Append(challenge_name).Append("\n");
+            sb.Append("  challenge_description: ").Append(challenge_description).Append("\n");
             sb.Append("  challenge_duration_time: ").Append(challenge_duration_time).Append("\n");
             sb.Append("  live_date: ").Append(live_date).Append("\n");
             sb.Append("  challenge_goal: ").Append(challenge_goal).Append("\n");
@@ -239,6 +258,7 @@ namespace SCILL.Model
             sb.Append("  challenge_xp: ").Append(challenge_xp).Append("\n");
             sb.Append("  repeatable: ").Append(repeatable).Append("\n");
             sb.Append("  type: ").Append(type).Append("\n");
+            sb.Append("  challenge_auto_activated: ").Append(challenge_auto_activated).Append("\n");
             sb.Append("  is_claimed: ").Append(is_claimed).Append("\n");
             sb.Append("  user_challenge_unlocked_at: ").Append(user_challenge_unlocked_at).Append("\n");
             sb.Append("  user_challenge_activated_at: ").Append(user_challenge_activated_at).Append("\n");
@@ -287,6 +307,11 @@ namespace SCILL.Model
                     this.challenge_name == input.challenge_name ||
                     (this.challenge_name != null &&
                     this.challenge_name.Equals(input.challenge_name))
+                ) && 
+                (
+                    this.challenge_description == input.challenge_description ||
+                    (this.challenge_description != null &&
+                    this.challenge_description.Equals(input.challenge_description))
                 ) && 
                 (
                     this.challenge_duration_time == input.challenge_duration_time ||
@@ -354,6 +379,11 @@ namespace SCILL.Model
                     this.type.Equals(input.type))
                 ) && 
                 (
+                    this.challenge_auto_activated == input.challenge_auto_activated ||
+                    (this.challenge_auto_activated != null &&
+                    this.challenge_auto_activated.Equals(input.challenge_auto_activated))
+                ) && 
+                (
                     this.is_claimed == input.is_claimed ||
                     (this.is_claimed != null &&
                     this.is_claimed.Equals(input.is_claimed))
@@ -393,6 +423,8 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.challenge_id.GetHashCode();
                 if (this.challenge_name != null)
                     hashCode = hashCode * 59 + this.challenge_name.GetHashCode();
+                if (this.challenge_description != null)
+                    hashCode = hashCode * 59 + this.challenge_description.GetHashCode();
                 if (this.challenge_duration_time != null)
                     hashCode = hashCode * 59 + this.challenge_duration_time.GetHashCode();
                 if (this.live_date != null)
@@ -419,6 +451,8 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.repeatable.GetHashCode();
                 if (this.type != null)
                     hashCode = hashCode * 59 + this.type.GetHashCode();
+                if (this.challenge_auto_activated != null)
+                    hashCode = hashCode * 59 + this.challenge_auto_activated.GetHashCode();
                 if (this.is_claimed != null)
                     hashCode = hashCode * 59 + this.is_claimed.GetHashCode();
                 if (this.user_challenge_unlocked_at != null)

@@ -21,21 +21,24 @@ namespace SCILL
         Staging,
         Development
     }
-    
+
     public class SCILLClient
     {
         public string AccessToken { get; private set; }
         public string AppId { get; private set; }
+        public string Language { get; private set; }
 
         public EventsApi EventsApi => _EventsApi.Value;
         public ChallengesApi ChallengesApi => _ChallengesApi.Value;
         public BattlePassesApi BattlePassesApi => _BattlePassesApi.Value;
         public AuthApi AuthApi => _AuthApi.Value;
+        public LeaderboardsApi LeaderboardsApi => _LeaderboardsApi.Value;
 
         private Lazy<EventsApi> _EventsApi;
         private Lazy<ChallengesApi> _ChallengesApi;
         private Lazy<BattlePassesApi> _BattlePassesApi;
         private Lazy<AuthApi> _AuthApi;
+        private Lazy<LeaderboardsApi> _LeaderboardsApi;
 
         private static Configuration Config;
 
@@ -52,10 +55,11 @@ namespace SCILL
 
         public event BattlePassChangedNotificationHandler OnBattlePassChangedNotification;
 
-        public SCILLClient(string accessToken, string appId, Environment environment = Environment.Production)
+        public SCILLClient(string accessToken, string appId, string language = null, Environment environment = Environment.Production)
         {
             AccessToken = accessToken;
             AppId = appId;
+            Language = language;
 
             string hostSuffix = "";
             if (environment == Environment.Staging)
@@ -70,6 +74,7 @@ namespace SCILL
             _ChallengesApi = new Lazy<ChallengesApi>(() => GetApi<ChallengesApi>(AccessToken, "https://pcs" + hostSuffix + ".scillgame.com"), true);
             _BattlePassesApi = new Lazy<BattlePassesApi>(() => GetApi<BattlePassesApi>(AccessToken, "https://es" + hostSuffix + ".scillgame.com"), true);
             _AuthApi = new Lazy<AuthApi>(() => GetApi<AuthApi>(accessToken, "https://us" + hostSuffix + ".scillgame.com"), true);
+            _LeaderboardsApi = new Lazy<LeaderboardsApi>(() => GetApi<LeaderboardsApi>(accessToken, "https://ls" + hostSuffix + ".scillgame.com"), true);
 
             Config = Configuration.Default.Clone(string.Empty, Configuration.Default.BasePath);
             Config.ApiKey[this.ToString()] = AccessToken;
@@ -165,7 +170,8 @@ namespace SCILL
 
             // Connect to SCILLs MQTT server to receive real time notifications
             var options = new MqttClientOptionsBuilder()
-                .WithTcpServer("mqtt.scillgame.com", 1883)
+                .WithWebSocketServer("mqtt.scillgame.com:8083/mqtt")
+                .WithTls()
                 .Build();
 
             await _challengesMqttClient.ConnectAsync(options, CancellationToken.None);
@@ -292,65 +298,65 @@ namespace SCILL
             return await ChallengesApi.ClaimPersonalChallengeRewardAsync(AppId, challengeId);
         }
 
-        public List<ChallengeCategory> GetPersonalChallenges()
+        public List<ChallengeCategory> GetPersonalChallenges (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return ChallengesApi.GetPersonalChallenges(AppId);
+            return ChallengesApi.GetPersonalChallenges(AppId, includeCategories, excludeCategories, Language);
         }
 
-        public async Task<List<ChallengeCategory>> GetPersonalChallengesAsync()
+        public async Task<List<ChallengeCategory>> GetPersonalChallengesAsync (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return await ChallengesApi.GetPersonalChallengesAsync(AppId);
+            return await ChallengesApi.GetPersonalChallengesAsync(AppId, includeCategories, excludeCategories, Language);
         }
         
-        public List<ChallengeCategory> GetAllPersonalChallenges()
+        public List<ChallengeCategory> GetAllPersonalChallenges (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return ChallengesApi.GetAllPersonalChallenges(AppId);
+            return ChallengesApi.GetAllPersonalChallenges(AppId, includeCategories, excludeCategories, Language);
         }
 
-        public async Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync()
+        public async Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return await ChallengesApi.GetAllPersonalChallengesAsync(AppId);
+            return await ChallengesApi.GetAllPersonalChallengesAsync(AppId, includeCategories, excludeCategories, Language);
         }        
         
         
-        public List<ChallengeCategory> GetUnresolvedPersonalChallenges()
+        public List<ChallengeCategory> GetUnresolvedPersonalChallenges (List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return ChallengesApi.GetUnresolvedPersonalChallenges(AppId);
+            return ChallengesApi.GetUnresolvedPersonalChallenges(AppId, includeCategories, excludeCategories, Language);
         }
 
-        public async Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync()
+        public async Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync(List<string> includeCategories = null, List<string> excludeCategories = null)
         {
-            return await ChallengesApi.GetUnresolvedPersonalChallengesAsync(AppId);
+            return await ChallengesApi.GetUnresolvedPersonalChallengesAsync(AppId, includeCategories, excludeCategories, Language);
         }               
         
         public Challenge GetPersonalChallengeById(string challengeId)
         {
-            return ChallengesApi.GetPersonalChallengeById(AppId, challengeId);
+            return ChallengesApi.GetPersonalChallengeById(AppId, challengeId, Language);
         }
 
         public async Task<Challenge> GetPersonalChallengeByIdAsync(string challengeId)
         {
-            return await ChallengesApi.GetPersonalChallengeByIdAsync(AppId, challengeId);
+            return await ChallengesApi.GetPersonalChallengeByIdAsync(AppId, challengeId, Language);
         }
 
         public List<ChallengeCategory> GetActivePersonalChallenges()
         {
-            return ChallengesApi.GetActivePersonalChallenges(AppId);
+            return ChallengesApi.GetActivePersonalChallenges(AppId, Language);
         }
 
         public async Task<List<ChallengeCategory>> GetActivePersonalChallengesAsync()
         {
-            return await ChallengesApi.GetActivePersonalChallengesAsync(AppId);
+            return await ChallengesApi.GetActivePersonalChallengesAsync(AppId, Language);
         }
 
         public ActionResponse UnlockPersonalChallenge(string challengeId)
         {
-            return ChallengesApi.UnlockPersonalChallenge(AppId, challengeId);
+            return ChallengesApi.UnlockPersonalChallenge(AppId, challengeId, Language);
         }
 
         public async Task<ActionResponse> UnlockPersonalChallengeAsync(string challengeId)
         {
-            return await ChallengesApi.UnlockPersonalChallengeAsync(AppId, challengeId);
+            return await ChallengesApi.UnlockPersonalChallengeAsync(AppId, challengeId, Language);
         }
 
         #endregion ChallengesApi
@@ -359,97 +365,146 @@ namespace SCILL
 
         public ActionResponse ActivateBattlePassLevel(string levelId)
         {
-            return BattlePassesApi.ActivateBattlePassLevel(AppId, levelId);
+            return BattlePassesApi.ActivateBattlePassLevel(AppId, levelId, Language);
         }
         
         public async Task<ActionResponse> ActivateBattlePassLevelAsync(string levelId)
         {
-            return await BattlePassesApi.ActivateBattlePassLevelAsync(AppId, levelId);
+            return await BattlePassesApi.ActivateBattlePassLevelAsync(AppId, levelId, Language);
         }
 
         public ActionResponse ClaimBattlePassLevelReward(string levelId)
         {
-            return BattlePassesApi.ClaimBattlePassLevelReward(AppId, levelId);
+            return BattlePassesApi.ClaimBattlePassLevelReward(AppId, levelId, Language);
         }
 
         public async Task<ActionResponse> ClaimBattlePassLevelRewardAsync(string levelId)
         {
-            return await BattlePassesApi.ClaimBattlePassLevelRewardAsync(AppId, levelId);
+            return await BattlePassesApi.ClaimBattlePassLevelRewardAsync(AppId, levelId, Language);
         }
 
         public List<BattlePass> GetActiveBattlePasses()
         {
-            return BattlePassesApi.GetActiveBattlePasses(AppId);
+            return BattlePassesApi.GetActiveBattlePasses(AppId, Language);
         }
 
         public async Task<List<BattlePass>> GetActiveBattlePassesAsync()
         {
-            return await BattlePassesApi.GetActiveBattlePassesAsync(AppId);
+            return await BattlePassesApi.GetActiveBattlePassesAsync(AppId, Language);
         }
 
         public List<BattlePassLevel> GetAllBattlePassLevels()
         {
-            return BattlePassesApi.GetAllBattlePassLevels(AppId);
+            return BattlePassesApi.GetAllBattlePassLevels(AppId, Language);
         }
         
         public async Task<List<BattlePassLevel>> GetAllBattlePassLevelsAsync()
         {
-            return await BattlePassesApi.GetAllBattlePassLevelsAsync(AppId);
+            return await BattlePassesApi.GetAllBattlePassLevelsAsync(AppId, Language);
         }
 
         public BattlePass GetBattlePass(string battlePassId)
         {
-            return BattlePassesApi.GetBattlePass(AppId, battlePassId);
+            return BattlePassesApi.GetBattlePass(AppId, battlePassId, Language);
         }
 
         public async Task<BattlePass> GetBattlePassAsync(string battlePassId)
         {
-            return await BattlePassesApi.GetBattlePassAsync(AppId, battlePassId);
+            return await BattlePassesApi.GetBattlePassAsync(AppId, battlePassId, Language);
         }
         
         public List<BattlePassLevel> GetBattlePassLevels(string battlePassId)
         {
-            return BattlePassesApi.GetBattlePassLevels(AppId, battlePassId);
+            return BattlePassesApi.GetBattlePassLevels(AppId, battlePassId, Language);
         }
         
         public async Task<List<BattlePassLevel>> GetBattlePassLevelsAsync(string battlePassId)
         {
-            return await BattlePassesApi.GetBattlePassLevelsAsync(AppId, battlePassId);
+            return await BattlePassesApi.GetBattlePassLevelsAsync(AppId, battlePassId, Language);
         }
 
         public List<BattlePass> GetBattlePasses()
         {
-            return BattlePassesApi.GetBattlePasses(AppId);
+            return BattlePassesApi.GetBattlePasses(AppId, Language);
         }
         
         public async Task<List<BattlePass>> GetBattlePassesAsync()
         {
-            return await BattlePassesApi.GetBattlePassesAsync(AppId);
+            return await BattlePassesApi.GetBattlePassesAsync(AppId, Language);
         }
 
         public List<BattlePass> GetUnlockedBattlePasses()
         {
-            return BattlePassesApi.GetUnlockedBattlePasses(AppId);
+            return BattlePassesApi.GetUnlockedBattlePasses(AppId, Language);
         }
         
         public async Task<List<BattlePass>> GetUnlockedBattlePassesAsync()
         {
-            return await BattlePassesApi.GetUnlockedBattlePassesAsync(AppId);
+            return await BattlePassesApi.GetUnlockedBattlePassesAsync(AppId, Language);
         }
 
         public BattlePassUnlockInfo UnlockBattlePass(string battlePassId,
             BattlePassUnlockPayload body = null)
         {
-            return BattlePassesApi.UnlockBattlePass(AppId, battlePassId, body);
+            return BattlePassesApi.UnlockBattlePass(AppId, battlePassId, body, Language);
         }
         
         public async Task<BattlePassUnlockInfo> UnlockBattlePassAsync(string battlePassId,
             BattlePassUnlockPayload body = null)
         {
-            return await BattlePassesApi.UnlockBattlePassAsync(AppId, battlePassId, body);
+            return await BattlePassesApi.UnlockBattlePassAsync(AppId, battlePassId, body, Language);
         }
         
         #endregion BattlePassesApi
+        
+        #region LeaderboardsApi
+
+        public Leaderboard GetLeaderboard(string leaderboardId, int? currentPage = null, int? pageSize = null)
+        {
+            return LeaderboardsApi.GetLeaderboard(leaderboardId, currentPage, pageSize, Language);
+        }
+
+        public Task<Leaderboard> GetLeaderboardAsync(string leaderboardId, int? currentPage = null,
+            int? pageSize = null)
+        {
+            return LeaderboardsApi.GetLeaderboardAsync(leaderboardId, currentPage, pageSize, Language);
+        }
+
+        public LeaderboardMemberRanking GetLeaderboardRanking(string memberType, string memberId,
+            string leaderboardId)
+        {
+            return LeaderboardsApi.GetLeaderboardRanking(memberType, memberId, leaderboardId, Language);
+        }
+
+        public Task<LeaderboardMemberRanking> GetLeaderboardRankingAsync(string memberType,
+            string memberId, string leaderboardId)
+        {
+            return LeaderboardsApi.GetLeaderboardRankingAsync(memberType, memberId, leaderboardId, Language);
+        }
+
+        public List<LeaderboardMemberRanking> GetLeaderboardRankings(string memberType, string memberId)
+        {
+            return LeaderboardsApi.GetLeaderboardRankings(memberType, memberId, Language);
+        }
+
+        public Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync(
+            string memberType, string memberId, string language = null)
+        {
+            return LeaderboardsApi.GetLeaderboardRankingsAsync(memberType, memberId, language);
+        }
+
+        public List<Leaderboard> GetLeaderboards(int? currentPage = null, int? pageSize = null)
+        {
+            return LeaderboardsApi.GetLeaderboards(currentPage, pageSize, Language);
+        }
+
+        public Task<List<Leaderboard>> GetLeaderboardsAsync(int? currentPage = null,
+            int? pageSize = null)
+        {
+            return LeaderboardsApi.GetLeaderboardsAsync(currentPage, pageSize, Language);
+        }
+
+        #endregion
     }
 
     static class ConfigurationExtension

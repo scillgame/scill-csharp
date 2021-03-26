@@ -105,6 +105,14 @@ namespace SCILL.Test
         {
             // TODO unit test for the property 'meta_data'
         }
+        /// <summary>
+        /// Test the property 'team_id'
+        /// </summary>
+        [Test]
+        public void team_idTest()
+        {
+            // TODO unit test for the property 'team_id'
+        }
 
     }
 

@@ -32,8 +32,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse ActivatePersonalChallenge (string appId, string challengeId);
+        ActionResponse ActivatePersonalChallenge (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Activate a personal challenges
@@ -44,8 +45,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> ActivatePersonalChallengeWithHttpInfo (string appId, string challengeId);
+        ApiResponse<ActionResponse> ActivatePersonalChallengeWithHttpInfo (string appId, string challengeId, string language = null);
         /// <summary>
         /// Cancel an active personal challenges
         /// </summary>
@@ -55,8 +57,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse CancelPersonalChallenge (string appId, string challengeId);
+        ActionResponse CancelPersonalChallenge (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Cancel an active personal challenges
@@ -67,8 +70,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> CancelPersonalChallengeWithHttpInfo (string appId, string challengeId);
+        ApiResponse<ActionResponse> CancelPersonalChallengeWithHttpInfo (string appId, string challengeId, string language = null);
         /// <summary>
         /// Claim the reward of a finished personal challenge
         /// </summary>
@@ -78,8 +82,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse ClaimPersonalChallengeReward (string appId, string challengeId);
+        ActionResponse ClaimPersonalChallengeReward (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Claim the reward of a finished personal challenge
@@ -90,8 +95,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> ClaimPersonalChallengeRewardWithHttpInfo (string appId, string challengeId);
+        ApiResponse<ActionResponse> ClaimPersonalChallengeRewardWithHttpInfo (string appId, string challengeId, string language = null);
         /// <summary>
         /// Get an access token for the Websockets server notifying of updates in real time
         /// </summary>
@@ -119,8 +125,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        List<ChallengeCategory> GetActivePersonalChallenges (string appId);
+        List<ChallengeCategory> GetActivePersonalChallenges (string appId, string language = null);
 
         /// <summary>
         /// Get active personal challenges
@@ -130,8 +137,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        ApiResponse<List<ChallengeCategory>> GetActivePersonalChallengesWithHttpInfo (string appId);
+        ApiResponse<List<ChallengeCategory>> GetActivePersonalChallengesWithHttpInfo (string appId, string language = null);
         /// <summary>
         /// Get all personal challenges available for your app. Also includes completed challenges.
         /// </summary>
@@ -140,8 +148,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        List<ChallengeCategory> GetAllPersonalChallenges (string appId);
+        List<ChallengeCategory> GetAllPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
 
         /// <summary>
         /// Get all personal challenges available for your app. Also includes completed challenges.
@@ -151,8 +162,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        ApiResponse<List<ChallengeCategory>> GetAllPersonalChallengesWithHttpInfo (string appId);
+        ApiResponse<List<ChallengeCategory>> GetAllPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
         /// <summary>
         /// Get personal challenge by id
         /// </summary>
@@ -162,8 +176,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Challenge</returns>
-        Challenge GetPersonalChallengeById (string appId, string challengeId);
+        Challenge GetPersonalChallengeById (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Get personal challenge by id
@@ -174,8 +189,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of Challenge</returns>
-        ApiResponse<Challenge> GetPersonalChallengeByIdWithHttpInfo (string appId, string challengeId);
+        ApiResponse<Challenge> GetPersonalChallengeByIdWithHttpInfo (string appId, string challengeId, string language = null);
         /// <summary>
         /// Get personal challenges that are not yet completed.
         /// </summary>
@@ -184,8 +200,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        List<ChallengeCategory> GetPersonalChallenges (string appId);
+        List<ChallengeCategory> GetPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
 
         /// <summary>
         /// Get personal challenges that are not yet completed.
@@ -195,8 +214,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        ApiResponse<List<ChallengeCategory>> GetPersonalChallengesWithHttpInfo (string appId);
+        ApiResponse<List<ChallengeCategory>> GetPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
         /// <summary>
         /// Get personal challenges that are not yet completed.
         /// </summary>
@@ -205,8 +227,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId);
+        List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
 
         /// <summary>
         /// Get personal challenges that are not yet completed.
@@ -216,8 +241,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        ApiResponse<List<ChallengeCategory>> GetUnresolvedPersonalChallengesWithHttpInfo (string appId);
+        ApiResponse<List<ChallengeCategory>> GetUnresolvedPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
         /// <summary>
         /// Unlock a personal challenges
         /// </summary>
@@ -227,8 +255,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse UnlockPersonalChallenge (string appId, string challengeId);
+        ActionResponse UnlockPersonalChallenge (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Unlock a personal challenges
@@ -239,8 +268,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> UnlockPersonalChallengeWithHttpInfo (string appId, string challengeId);
+        ApiResponse<ActionResponse> UnlockPersonalChallengeWithHttpInfo (string appId, string challengeId, string language = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -252,8 +282,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> ActivatePersonalChallengeAsync (string appId, string challengeId);
+        System.Threading.Tasks.Task<ActionResponse> ActivatePersonalChallengeAsync (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Activate a personal challenges
@@ -264,8 +295,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivatePersonalChallengeAsyncWithHttpInfo (string appId, string challengeId);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivatePersonalChallengeAsyncWithHttpInfo (string appId, string challengeId, string language = null);
         /// <summary>
         /// Cancel an active personal challenges
         /// </summary>
@@ -275,8 +307,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> CancelPersonalChallengeAsync (string appId, string challengeId);
+        System.Threading.Tasks.Task<ActionResponse> CancelPersonalChallengeAsync (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Cancel an active personal challenges
@@ -287,8 +320,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> CancelPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> CancelPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId, string language = null);
         /// <summary>
         /// Claim the reward of a finished personal challenge
         /// </summary>
@@ -298,8 +332,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> ClaimPersonalChallengeRewardAsync (string appId, string challengeId);
+        System.Threading.Tasks.Task<ActionResponse> ClaimPersonalChallengeRewardAsync (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Claim the reward of a finished personal challenge
@@ -310,8 +345,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimPersonalChallengeRewardAsyncWithHttpInfo (string appId, string challengeId);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimPersonalChallengeRewardAsyncWithHttpInfo (string appId, string challengeId, string language = null);
         /// <summary>
         /// Get an access token for the Websockets server notifying of updates in real time
         /// </summary>
@@ -339,8 +375,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        System.Threading.Tasks.Task<List<ChallengeCategory>> GetActivePersonalChallengesAsync (string appId);
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetActivePersonalChallengesAsync (string appId, string language = null);
 
         /// <summary>
         /// Get active personal challenges
@@ -350,8 +387,9 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetActivePersonalChallengesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetActivePersonalChallengesAsyncWithHttpInfo (string appId, string language = null);
         /// <summary>
         /// Get all personal challenges available for your app. Also includes completed challenges.
         /// </summary>
@@ -360,8 +398,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId);
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
 
         /// <summary>
         /// Get all personal challenges available for your app. Also includes completed challenges.
@@ -371,8 +412,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
         /// <summary>
         /// Get personal challenge by id
         /// </summary>
@@ -382,8 +426,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of Challenge</returns>
-        System.Threading.Tasks.Task<Challenge> GetPersonalChallengeByIdAsync (string appId, string challengeId);
+        System.Threading.Tasks.Task<Challenge> GetPersonalChallengeByIdAsync (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Get personal challenge by id
@@ -394,8 +439,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (Challenge)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Challenge>> GetPersonalChallengeByIdAsyncWithHttpInfo (string appId, string challengeId);
+        System.Threading.Tasks.Task<ApiResponse<Challenge>> GetPersonalChallengeByIdAsyncWithHttpInfo (string appId, string challengeId, string language = null);
         /// <summary>
         /// Get personal challenges that are not yet completed.
         /// </summary>
@@ -404,8 +450,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId);
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
 
         /// <summary>
         /// Get personal challenges that are not yet completed.
@@ -415,8 +464,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
         /// <summary>
         /// Get personal challenges that are not yet completed.
         /// </summary>
@@ -425,8 +477,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId);
+        System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
 
         /// <summary>
         /// Get personal challenges that are not yet completed.
@@ -436,8 +491,11 @@ namespace SCILL.Api
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId);
+        System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
         /// <summary>
         /// Unlock a personal challenges
         /// </summary>
@@ -447,8 +505,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> UnlockPersonalChallengeAsync (string appId, string challengeId);
+        System.Threading.Tasks.Task<ActionResponse> UnlockPersonalChallengeAsync (string appId, string challengeId, string language = null);
 
         /// <summary>
         /// Unlock a personal challenges
@@ -459,8 +518,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId, string language = null);
         #endregion Asynchronous Operations
     }
 
@@ -578,10 +638,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse ActivatePersonalChallenge (string appId, string challengeId)
+        public ActionResponse ActivatePersonalChallenge (string appId, string challengeId, string language = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = ActivatePersonalChallengeWithHttpInfo(appId, challengeId);
+             ApiResponse<ActionResponse> localVarResponse = ActivatePersonalChallengeWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
         }
 
@@ -591,8 +652,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > ActivatePersonalChallengeWithHttpInfo (string appId, string challengeId)
+        public ApiResponse< ActionResponse > ActivatePersonalChallengeWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -624,6 +686,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -661,10 +724,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> ActivatePersonalChallengeAsync (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ActionResponse> ActivatePersonalChallengeAsync (string appId, string challengeId, string language = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = await ActivatePersonalChallengeAsyncWithHttpInfo(appId, challengeId);
+             ApiResponse<ActionResponse> localVarResponse = await ActivatePersonalChallengeAsyncWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
 
         }
@@ -675,8 +739,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivatePersonalChallengeAsyncWithHttpInfo (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ActivatePersonalChallengeAsyncWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -708,6 +773,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -745,10 +811,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse CancelPersonalChallenge (string appId, string challengeId)
+        public ActionResponse CancelPersonalChallenge (string appId, string challengeId, string language = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = CancelPersonalChallengeWithHttpInfo(appId, challengeId);
+             ApiResponse<ActionResponse> localVarResponse = CancelPersonalChallengeWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
         }
 
@@ -758,8 +825,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > CancelPersonalChallengeWithHttpInfo (string appId, string challengeId)
+        public ApiResponse< ActionResponse > CancelPersonalChallengeWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -791,6 +859,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -828,10 +897,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> CancelPersonalChallengeAsync (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ActionResponse> CancelPersonalChallengeAsync (string appId, string challengeId, string language = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = await CancelPersonalChallengeAsyncWithHttpInfo(appId, challengeId);
+             ApiResponse<ActionResponse> localVarResponse = await CancelPersonalChallengeAsyncWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
 
         }
@@ -842,8 +912,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> CancelPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> CancelPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -875,6 +946,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -912,10 +984,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse ClaimPersonalChallengeReward (string appId, string challengeId)
+        public ActionResponse ClaimPersonalChallengeReward (string appId, string challengeId, string language = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = ClaimPersonalChallengeRewardWithHttpInfo(appId, challengeId);
+             ApiResponse<ActionResponse> localVarResponse = ClaimPersonalChallengeRewardWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
         }
 
@@ -925,8 +998,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > ClaimPersonalChallengeRewardWithHttpInfo (string appId, string challengeId)
+        public ApiResponse< ActionResponse > ClaimPersonalChallengeRewardWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -958,6 +1032,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -995,10 +1070,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> ClaimPersonalChallengeRewardAsync (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ActionResponse> ClaimPersonalChallengeRewardAsync (string appId, string challengeId, string language = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = await ClaimPersonalChallengeRewardAsyncWithHttpInfo(appId, challengeId);
+             ApiResponse<ActionResponse> localVarResponse = await ClaimPersonalChallengeRewardAsyncWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
 
         }
@@ -1009,8 +1085,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimPersonalChallengeRewardAsyncWithHttpInfo (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ClaimPersonalChallengeRewardAsyncWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1042,6 +1119,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1221,10 +1299,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        public List<ChallengeCategory> GetActivePersonalChallenges (string appId)
+        public List<ChallengeCategory> GetActivePersonalChallenges (string appId, string language = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = GetActivePersonalChallengesWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetActivePersonalChallengesWithHttpInfo(appId, language);
              return localVarResponse.Data;
         }
 
@@ -1233,8 +1312,9 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        public ApiResponse< List<ChallengeCategory> > GetActivePersonalChallengesWithHttpInfo (string appId)
+        public ApiResponse< List<ChallengeCategory> > GetActivePersonalChallengesWithHttpInfo (string appId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1262,6 +1342,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1298,10 +1379,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetActivePersonalChallengesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetActivePersonalChallengesAsync (string appId, string language = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetActivePersonalChallengesAsyncWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetActivePersonalChallengesAsyncWithHttpInfo(appId, language);
              return localVarResponse.Data;
 
         }
@@ -1311,8 +1393,9 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetActivePersonalChallengesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetActivePersonalChallengesAsyncWithHttpInfo (string appId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1340,6 +1423,7 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1376,10 +1460,13 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        public List<ChallengeCategory> GetAllPersonalChallenges (string appId)
+        public List<ChallengeCategory> GetAllPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = GetAllPersonalChallengesWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetAllPersonalChallengesWithHttpInfo(appId, includeCategories, excludeCategories, language);
              return localVarResponse.Data;
         }
 
@@ -1388,8 +1475,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        public ApiResponse< List<ChallengeCategory> > GetAllPersonalChallengesWithHttpInfo (string appId)
+        public ApiResponse< List<ChallengeCategory> > GetAllPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1417,6 +1507,9 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1453,10 +1546,13 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetAllPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetAllPersonalChallengesAsyncWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetAllPersonalChallengesAsyncWithHttpInfo(appId, includeCategories, excludeCategories, language);
              return localVarResponse.Data;
 
         }
@@ -1466,8 +1562,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetAllPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1495,6 +1594,9 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1532,10 +1634,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Challenge</returns>
-        public Challenge GetPersonalChallengeById (string appId, string challengeId)
+        public Challenge GetPersonalChallengeById (string appId, string challengeId, string language = null)
         {
-             ApiResponse<Challenge> localVarResponse = GetPersonalChallengeByIdWithHttpInfo(appId, challengeId);
+             ApiResponse<Challenge> localVarResponse = GetPersonalChallengeByIdWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
         }
 
@@ -1545,8 +1648,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of Challenge</returns>
-        public ApiResponse< Challenge > GetPersonalChallengeByIdWithHttpInfo (string appId, string challengeId)
+        public ApiResponse< Challenge > GetPersonalChallengeByIdWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1578,6 +1682,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1615,10 +1720,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of Challenge</returns>
-        public async System.Threading.Tasks.Task<Challenge> GetPersonalChallengeByIdAsync (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<Challenge> GetPersonalChallengeByIdAsync (string appId, string challengeId, string language = null)
         {
-             ApiResponse<Challenge> localVarResponse = await GetPersonalChallengeByIdAsyncWithHttpInfo(appId, challengeId);
+             ApiResponse<Challenge> localVarResponse = await GetPersonalChallengeByIdAsyncWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
 
         }
@@ -1629,8 +1735,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (Challenge)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Challenge>> GetPersonalChallengeByIdAsyncWithHttpInfo (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ApiResponse<Challenge>> GetPersonalChallengeByIdAsyncWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1662,6 +1769,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1698,10 +1806,13 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        public List<ChallengeCategory> GetPersonalChallenges (string appId)
+        public List<ChallengeCategory> GetPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = GetPersonalChallengesWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetPersonalChallengesWithHttpInfo(appId, includeCategories, excludeCategories, language);
              return localVarResponse.Data;
         }
 
@@ -1710,8 +1821,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        public ApiResponse< List<ChallengeCategory> > GetPersonalChallengesWithHttpInfo (string appId)
+        public ApiResponse< List<ChallengeCategory> > GetPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1739,6 +1853,9 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1775,10 +1892,13 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetPersonalChallengesAsyncWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetPersonalChallengesAsyncWithHttpInfo(appId, includeCategories, excludeCategories, language);
              return localVarResponse.Data;
 
         }
@@ -1788,8 +1908,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1817,6 +1940,9 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1853,10 +1979,13 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>List&lt;ChallengeCategory&gt;</returns>
-        public List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId)
+        public List<ChallengeCategory> GetUnresolvedPersonalChallenges (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = GetUnresolvedPersonalChallengesWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = GetUnresolvedPersonalChallengesWithHttpInfo(appId, includeCategories, excludeCategories, language);
              return localVarResponse.Data;
         }
 
@@ -1865,8 +1994,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
-        public ApiResponse< List<ChallengeCategory> > GetUnresolvedPersonalChallengesWithHttpInfo (string appId)
+        public ApiResponse< List<ChallengeCategory> > GetUnresolvedPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1894,6 +2026,9 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1930,10 +2065,13 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of List&lt;ChallengeCategory&gt;</returns>
-        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId)
+        public async System.Threading.Tasks.Task<List<ChallengeCategory>> GetUnresolvedPersonalChallengesAsync (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
-             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetUnresolvedPersonalChallengesAsyncWithHttpInfo(appId);
+             ApiResponse<List<ChallengeCategory>> localVarResponse = await GetUnresolvedPersonalChallengesAsyncWithHttpInfo(appId, includeCategories, excludeCategories, language);
              return localVarResponse.Data;
 
         }
@@ -1943,8 +2081,11 @@ namespace SCILL.Api
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
+        /// <param name="includeCategories">A list of categories that should be included in the response. Only the categories provided will be returned (optional)</param>
+        /// <param name="excludeCategories">A list of categories that should be excluded from the response. All  categories except those listed here will be returned (optional)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1972,6 +2113,9 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (includeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "include_categories", includeCategories)); // query parameter
+            if (excludeCategories != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "exclude_categories", excludeCategories)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -2009,10 +2153,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse UnlockPersonalChallenge (string appId, string challengeId)
+        public ActionResponse UnlockPersonalChallenge (string appId, string challengeId, string language = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = UnlockPersonalChallengeWithHttpInfo(appId, challengeId);
+             ApiResponse<ActionResponse> localVarResponse = UnlockPersonalChallengeWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
         }
 
@@ -2022,8 +2167,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > UnlockPersonalChallengeWithHttpInfo (string appId, string challengeId)
+        public ApiResponse< ActionResponse > UnlockPersonalChallengeWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -2055,6 +2201,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -2092,10 +2239,11 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> UnlockPersonalChallengeAsync (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ActionResponse> UnlockPersonalChallengeAsync (string appId, string challengeId, string language = null)
         {
-             ApiResponse<ActionResponse> localVarResponse = await UnlockPersonalChallengeAsyncWithHttpInfo(appId, challengeId);
+             ApiResponse<ActionResponse> localVarResponse = await UnlockPersonalChallengeAsyncWithHttpInfo(appId, challengeId, language);
              return localVarResponse.Data;
 
         }
@@ -2106,8 +2254,9 @@ namespace SCILL.Api
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The app id</param>
         /// <param name="challengeId">The challenge id (see challenge_id of Challenge object)</param>
+        /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> UnlockPersonalChallengeAsyncWithHttpInfo (string appId, string challengeId, string language = null)
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -2139,6 +2288,7 @@ namespace SCILL.Api
 
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
             if (challengeId != null) localVarPathParams.Add("challengeId", this.Configuration.ApiClient.ParameterToString(challengeId)); // path parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))

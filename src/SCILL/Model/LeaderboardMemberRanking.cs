@@ -24,41 +24,43 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// Errors are reported using this structure. Error messages are human readable and will be translated (if available) in the language provided by the language query parameter.
+    /// You get these object if you query the leaderboard ranking for a specific user. Only the requested user will be returned.
     /// </summary>
     [DataContract]
-        public partial class Error :  IEquatable<Error>, IValidatableObject
+        public partial class LeaderboardMemberRanking :  IEquatable<LeaderboardMemberRanking>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Error" /> class.
+        /// Initializes a new instance of the <see cref="LeaderboardMemberRanking" /> class.
         /// </summary>
-        /// <param name="code">code.</param>
-        /// <param name="message">message (required).</param>
-        public Error(string code = default(string), string message = default(string))
+        /// <param name="leaderboardId">The id of the leaderboard.</param>
+        /// <param name="name">The name of the leaderboard.</param>
+        /// <param name="member">member.</param>
+        public LeaderboardMemberRanking(string leaderboardId = default(string), string name = default(string), LeaderboardRanking member = default(LeaderboardRanking))
         {
-            // to ensure "message" is required (not null)
-            if (message == null)
-            {
-                throw new InvalidDataException("message is a required property for Error and cannot be null");
-            }
-            else
-            {
-                this.message = message;
-            }
-            this.code = code;
+            this.leaderboard_id = leaderboardId;
+            this.name = name;
+            this.member = member;
         }
         
         /// <summary>
-        /// Gets or Sets code
+        /// The id of the leaderboard
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=false)]
-        public string code { get; set; }
+        /// <value>The id of the leaderboard</value>
+        [DataMember(Name="leaderboard_id", EmitDefaultValue=false)]
+        public string leaderboard_id { get; set; }
 
         /// <summary>
-        /// Gets or Sets message
+        /// The name of the leaderboard
         /// </summary>
-        [DataMember(Name="message", EmitDefaultValue=false)]
-        public string message { get; set; }
+        /// <value>The name of the leaderboard</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets member
+        /// </summary>
+        [DataMember(Name="member", EmitDefaultValue=false)]
+        public LeaderboardRanking member { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,9 +69,10 @@ namespace SCILL.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Error {\n");
-            sb.Append("  code: ").Append(code).Append("\n");
-            sb.Append("  message: ").Append(message).Append("\n");
+            sb.Append("class LeaderboardMemberRanking {\n");
+            sb.Append("  leaderboard_id: ").Append(leaderboard_id).Append("\n");
+            sb.Append("  name: ").Append(name).Append("\n");
+            sb.Append("  member: ").Append(member).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -90,29 +93,34 @@ namespace SCILL.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Error);
+            return this.Equals(input as LeaderboardMemberRanking);
         }
 
         /// <summary>
-        /// Returns true if Error instances are equal
+        /// Returns true if LeaderboardMemberRanking instances are equal
         /// </summary>
-        /// <param name="input">Instance of Error to be compared</param>
+        /// <param name="input">Instance of LeaderboardMemberRanking to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Error input)
+        public bool Equals(LeaderboardMemberRanking input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.code == input.code ||
-                    (this.code != null &&
-                    this.code.Equals(input.code))
+                    this.leaderboard_id == input.leaderboard_id ||
+                    (this.leaderboard_id != null &&
+                    this.leaderboard_id.Equals(input.leaderboard_id))
                 ) && 
                 (
-                    this.message == input.message ||
-                    (this.message != null &&
-                    this.message.Equals(input.message))
+                    this.name == input.name ||
+                    (this.name != null &&
+                    this.name.Equals(input.name))
+                ) && 
+                (
+                    this.member == input.member ||
+                    (this.member != null &&
+                    this.member.Equals(input.member))
                 );
         }
 
@@ -125,10 +133,12 @@ namespace SCILL.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.code != null)
-                    hashCode = hashCode * 59 + this.code.GetHashCode();
-                if (this.message != null)
-                    hashCode = hashCode * 59 + this.message.GetHashCode();
+                if (this.leaderboard_id != null)
+                    hashCode = hashCode * 59 + this.leaderboard_id.GetHashCode();
+                if (this.name != null)
+                    hashCode = hashCode * 59 + this.name.GetHashCode();
+                if (this.member != null)
+                    hashCode = hashCode * 59 + this.member.GetHashCode();
                 return hashCode;
             }
         }

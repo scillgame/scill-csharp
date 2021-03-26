@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// NotificationTopic
+    /// Realtime updates are implemented via MQTT - a resource efficient real time message system. Each user has it&#x27;s own channel in our MQTT system that you need to request from the backend. This structure returns the topic for the user provided with the access token.
     /// </summary>
     [DataContract]
         public partial class NotificationTopic :  IEquatable<NotificationTopic>, IValidatableObject

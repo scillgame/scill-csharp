@@ -24,7 +24,7 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// BattlePassUnlockPayload
+    /// Unlocking a battle pass requires some info to be sent so we can validate everything is ok
     /// </summary>
     [DataContract]
         public partial class BattlePassUnlockPayload :  IEquatable<BattlePassUnlockPayload>, IValidatableObject

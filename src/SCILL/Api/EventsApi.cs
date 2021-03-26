@@ -49,7 +49,7 @@ namespace SCILL.Api
         /// Post an event to the SCILL backend
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>ActionResponse</returns>
         ActionResponse SendEvent (EventPayload body);
 
@@ -60,7 +60,7 @@ namespace SCILL.Api
         /// Post an event to the SCILL backend
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>ApiResponse of ActionResponse</returns>
         ApiResponse<ActionResponse> SendEventWithHttpInfo (EventPayload body);
         #endregion Synchronous Operations
@@ -91,7 +91,7 @@ namespace SCILL.Api
         /// Post an event to the SCILL backend
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>Task of ActionResponse</returns>
         System.Threading.Tasks.Task<ActionResponse> SendEventAsync (EventPayload body);
 
@@ -102,7 +102,7 @@ namespace SCILL.Api
         /// Post an event to the SCILL backend
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ActionResponse>> SendEventAsyncWithHttpInfo (EventPayload body);
         #endregion Asynchronous Operations
@@ -339,7 +339,7 @@ namespace SCILL.Api
         /// Post an event Post an event to the SCILL backend
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>ActionResponse</returns>
         public ActionResponse SendEvent (EventPayload body)
         {
@@ -351,7 +351,7 @@ namespace SCILL.Api
         /// Post an event Post an event to the SCILL backend
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>ApiResponse of ActionResponse</returns>
         public ApiResponse< ActionResponse > SendEventWithHttpInfo (EventPayload body)
         {
@@ -429,7 +429,7 @@ namespace SCILL.Api
         /// Post an event Post an event to the SCILL backend
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>Task of ActionResponse</returns>
         public async System.Threading.Tasks.Task<ActionResponse> SendEventAsync (EventPayload body)
         {
@@ -442,7 +442,7 @@ namespace SCILL.Api
         /// Post an event Post an event to the SCILL backend
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Event payload</param>
+        /// <param name="body">Event payload or team event payload</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> SendEventAsyncWithHttpInfo (EventPayload body)
         {
