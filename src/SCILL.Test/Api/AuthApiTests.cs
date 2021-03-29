@@ -74,6 +74,17 @@ namespace SCILL.Test
             //Assert.IsInstanceOf<AccessToken> (response, "response is AccessToken");
         }
         /// <summary>
+        /// Test GetLeaderboardNotificationTopic
+        /// </summary>
+        [Test]
+        public void GetLeaderboardNotificationTopicTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string leaderboardId = null;
+            //var response = instance.GetLeaderboardNotificationTopic(leaderboardId);
+            //Assert.IsInstanceOf<NotificationTopic> (response, "response is NotificationTopic");
+        }
+        /// <summary>
         /// Test GetUserBattlePassNotificationTopic
         /// </summary>
         [Test]

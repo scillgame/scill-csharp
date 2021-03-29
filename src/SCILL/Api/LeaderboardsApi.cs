@@ -81,7 +81,7 @@ namespace SCILL.Api
         /// Retrieve User Rankings
         /// </summary>
         /// <remarks>
-        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -94,7 +94,7 @@ namespace SCILL.Api
         /// Retrieve User Rankings
         /// </summary>
         /// <remarks>
-        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -187,7 +187,7 @@ namespace SCILL.Api
         /// Retrieve User Rankings
         /// </summary>
         /// <remarks>
-        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -200,7 +200,7 @@ namespace SCILL.Api
         /// Retrieve User Rankings
         /// </summary>
         /// <remarks>
-        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -703,7 +703,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -717,7 +717,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -789,7 +789,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -804,7 +804,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user.
+        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>

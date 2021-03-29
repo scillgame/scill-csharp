@@ -45,6 +45,27 @@ namespace SCILL.Api
         /// <returns>ApiResponse of AccessToken</returns>
         ApiResponse<AccessToken> GenerateAccessTokenWithHttpInfo (ForeignUserIdentifier body);
         /// <summary>
+        /// Get MQTT topic for leaderboard
+        /// </summary>
+        /// <remarks>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified leaderboard changes.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="leaderboardId">The id of the leaderboard you want to get notified</param>
+        /// <returns>NotificationTopic</returns>
+        NotificationTopic GetLeaderboardNotificationTopic (string leaderboardId);
+
+        /// <summary>
+        /// Get MQTT topic for leaderboard
+        /// </summary>
+        /// <remarks>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified leaderboard changes.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="leaderboardId">The id of the leaderboard you want to get notified</param>
+        /// <returns>ApiResponse of NotificationTopic</returns>
+        ApiResponse<NotificationTopic> GetLeaderboardNotificationTopicWithHttpInfo (string leaderboardId);
+        /// <summary>
         /// Get a topic to be used with an MQTT client to receive real time updates whenever a battle pass or challenges and levels within the battle pass change
         /// </summary>
         /// <remarks>
@@ -168,6 +189,27 @@ namespace SCILL.Api
         /// <param name="body">Foreign user identifier.</param>
         /// <returns>Task of ApiResponse (AccessToken)</returns>
         System.Threading.Tasks.Task<ApiResponse<AccessToken>> GenerateAccessTokenAsyncWithHttpInfo (ForeignUserIdentifier body);
+        /// <summary>
+        /// Get MQTT topic for leaderboard
+        /// </summary>
+        /// <remarks>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified leaderboard changes.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="leaderboardId">The id of the leaderboard you want to get notified</param>
+        /// <returns>Task of NotificationTopic</returns>
+        System.Threading.Tasks.Task<NotificationTopic> GetLeaderboardNotificationTopicAsync (string leaderboardId);
+
+        /// <summary>
+        /// Get MQTT topic for leaderboard
+        /// </summary>
+        /// <remarks>
+        /// Get a topic to be used with an MQTT client to receive real time updates whenever the specified leaderboard changes.
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="leaderboardId">The id of the leaderboard you want to get notified</param>
+        /// <returns>Task of ApiResponse (NotificationTopic)</returns>
+        System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetLeaderboardNotificationTopicAsyncWithHttpInfo (string leaderboardId);
         /// <summary>
         /// Get a topic to be used with an MQTT client to receive real time updates whenever a battle pass or challenges and levels within the battle pass change
         /// </summary>
@@ -549,6 +591,161 @@ namespace SCILL.Api
             return new ApiResponse<AccessToken>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (AccessToken) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccessToken)));
+        }
+
+        /// <summary>
+        /// Get MQTT topic for leaderboard Get a topic to be used with an MQTT client to receive real time updates whenever the specified leaderboard changes.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="leaderboardId">The id of the leaderboard you want to get notified</param>
+        /// <returns>NotificationTopic</returns>
+        public NotificationTopic GetLeaderboardNotificationTopic (string leaderboardId)
+        {
+             ApiResponse<NotificationTopic> localVarResponse = GetLeaderboardNotificationTopicWithHttpInfo(leaderboardId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get MQTT topic for leaderboard Get a topic to be used with an MQTT client to receive real time updates whenever the specified leaderboard changes.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="leaderboardId">The id of the leaderboard you want to get notified</param>
+        /// <returns>ApiResponse of NotificationTopic</returns>
+        public ApiResponse< NotificationTopic > GetLeaderboardNotificationTopicWithHttpInfo (string leaderboardId)
+        {
+            // verify the required parameter 'leaderboardId' is set
+            if (leaderboardId == null)
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling AuthApi->GetLeaderboardNotificationTopic");
+
+            var localVarPath = "/api/v1/auth/leaderboard-topic-link";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (leaderboardId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "leaderboard_id", leaderboardId)); // query parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLeaderboardNotificationTopic", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NotificationTopic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (NotificationTopic) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NotificationTopic)));
+        }
+
+        /// <summary>
+        /// Get MQTT topic for leaderboard Get a topic to be used with an MQTT client to receive real time updates whenever the specified leaderboard changes.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="leaderboardId">The id of the leaderboard you want to get notified</param>
+        /// <returns>Task of NotificationTopic</returns>
+        public async System.Threading.Tasks.Task<NotificationTopic> GetLeaderboardNotificationTopicAsync (string leaderboardId)
+        {
+             ApiResponse<NotificationTopic> localVarResponse = await GetLeaderboardNotificationTopicAsyncWithHttpInfo(leaderboardId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get MQTT topic for leaderboard Get a topic to be used with an MQTT client to receive real time updates whenever the specified leaderboard changes.
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="leaderboardId">The id of the leaderboard you want to get notified</param>
+        /// <returns>Task of ApiResponse (NotificationTopic)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<NotificationTopic>> GetLeaderboardNotificationTopicAsyncWithHttpInfo (string leaderboardId)
+        {
+            // verify the required parameter 'leaderboardId' is set
+            if (leaderboardId == null)
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling AuthApi->GetLeaderboardNotificationTopic");
+
+            var localVarPath = "/api/v1/auth/leaderboard-topic-link";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (leaderboardId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "leaderboard_id", leaderboardId)); // query parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetLeaderboardNotificationTopic", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<NotificationTopic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (NotificationTopic) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(NotificationTopic)));
         }
 
         /// <summary>
