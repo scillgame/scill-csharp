@@ -191,6 +191,12 @@ namespace SCILL
         
         private async void StartMonitorBattlePass(string battlePassId)
         {
+            // Check if we already listen to this leaderboard
+            if (_battlePassMqttClients.ContainsKey(battlePassId))
+            {
+                return;
+            }
+            
             var client = CreateMQTTClient();
             _battlePassMqttClients.Add(battlePassId, client);
 
