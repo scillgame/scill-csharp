@@ -47,6 +47,7 @@ namespace SCILL
 
         private IMqttClient _challengesMqttClient;
         private Dictionary<String, IMqttClient> _battlePassMqttClients = new Dictionary<string, IMqttClient>();
+        private Dictionary<String, IMqttClient> _leaderboardMqttClients = new Dictionary<string, IMqttClient>();
     
         public delegate void ChallengeChangedNotificationHandler(ChallengeWebhookPayload payload);
         public event ChallengeChangedNotificationHandler OnChallengeChangedNotification;
@@ -54,6 +55,10 @@ namespace SCILL
         public delegate void BattlePassChangedNotificationHandler(BattlePassChallengeChangedPayload payload);
 
         public event BattlePassChangedNotificationHandler OnBattlePassChangedNotification;
+        
+        public delegate void LeaderboardChangedNotificationHandler(LeaderboardUpdatePayload payload);
+
+        public event LeaderboardChangedNotificationHandler OnLeaderboardChangedNotification;
 
         public SCILLClient(string accessToken, string appId, string language = null, Environment environment = Environment.Production)
         {
@@ -139,6 +144,26 @@ namespace SCILL
             if (OnBattlePassChangedNotification == null || OnBattlePassChangedNotification?.GetInvocationList().Length <= 0)
             {
                 StopMonitorBattlePass(battlePassId);
+            }
+        }
+        
+        public void StartLeaderboardUpdateNotifications(string leaderboardId, LeaderboardChangedNotificationHandler handler)
+        {
+            OnLeaderboardChangedNotification += handler;
+
+            if (!_leaderboardMqttClients.ContainsKey(leaderboardId))
+            {
+                StartMonitorLeaderboard(leaderboardId);
+            }
+        }
+        
+        public void StopLeaderboardUpdateNotifications(string leaderboardId, LeaderboardChangedNotificationHandler handler)
+        {
+            OnLeaderboardChangedNotification -= handler;
+
+            if (OnLeaderboardChangedNotification == null || OnLeaderboardChangedNotification?.GetInvocationList().Length <= 0)
+            {
+                StartMonitorLeaderboard(leaderboardId);
             }
         }
 
@@ -236,6 +261,56 @@ namespace SCILL
             {
                 await _battlePassMqttClients[battlePassId].DisconnectAsync();
                 _battlePassMqttClients.Remove(battlePassId);
+            }
+        }
+        
+        private async void StartMonitorLeaderboard(string leaderboardId)
+        {
+            // Check if we already listen to this leaderboard
+            if (_leaderboardMqttClients.ContainsKey(leaderboardId))
+            {
+                return;
+            }
+            
+            var client = CreateMQTTClient();
+            _leaderboardMqttClients.Add(leaderboardId, client);
+
+            // Subscribe to that topic once the MQTT connection is established
+            client.UseConnectedHandler(async e =>
+            {
+                // Get the MQTT topic for listening on changes for the challenges
+                var notificationTopic = await AuthApi.GetLeaderboardNotificationTopicAsync(leaderboardId);
+
+                // Subscribe to the returned topic
+                await client.SubscribeAsync(new MqttTopicFilterBuilder()
+                    .WithTopic(notificationTopic.topic).Build());
+            });
+
+            // Handle incoming messages and send payloads to callback handler
+            client.UseApplicationMessageReceivedHandler(e =>
+            {
+                string jsonStr = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
+                var payload = JsonConvert.DeserializeObject<LeaderboardUpdatePayload>(jsonStr);
+                if (payload != null)
+                {
+                    OnLeaderboardChangedNotification?.Invoke(payload);
+                }
+            });
+
+            // Connect to SCILLs MQTT server to receive real time notifications
+            var options = new MqttClientOptionsBuilder()
+                .WithTcpServer("mqtt.scillgame.com", 1883)
+                .Build();
+
+            await client.ConnectAsync(options, CancellationToken.None);
+        }
+        
+        private async void StopMonitorLeaderboard(string leaderboardId)
+        {
+            if (_leaderboardMqttClients.ContainsKey(leaderboardId))
+            {
+                await _leaderboardMqttClients[leaderboardId].DisconnectAsync();
+                _leaderboardMqttClients.Remove(leaderboardId);
             }
         }
 
