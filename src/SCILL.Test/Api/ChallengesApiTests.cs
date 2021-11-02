@@ -179,6 +179,18 @@ namespace SCILL.Test
             //Assert.IsInstanceOf<List<ChallengeCategory>> (response, "response is List<ChallengeCategory>");
         }
         /// <summary>
+        /// Test ResetUserAppChallenges
+        /// </summary>
+        [Test]
+        public void ResetUserAppChallengesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string appId = null;
+            //string userId = null;
+            //var response = instance.ResetUserAppChallenges(appId, userId);
+            //Assert.IsInstanceOf<ActionResponse> (response, "response is ActionResponse");
+        }
+        /// <summary>
         /// Test UnlockPersonalChallenge
         /// </summary>
         [Test]

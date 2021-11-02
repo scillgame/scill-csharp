@@ -36,12 +36,16 @@ namespace SCILL.Model
         /// <param name="name">The name of the leaderboard.</param>
         /// <param name="groupedByUsers">An array of LeaderboardRanking Items for individual users.</param>
         /// <param name="groupedByTeams">An array of LeaderboardRanking Items for teams. Provide a team_id in the event payload to also create leaderboards for teams.</param>
-        public Leaderboard(string leaderboardId = default(string), string name = default(string), List<LeaderboardRanking> groupedByUsers = default(List<LeaderboardRanking>), List<LeaderboardRanking> groupedByTeams = default(List<LeaderboardRanking>))
+        /// <param name="numTeams">The total number of team rankings available in the leaderboard.</param>
+        /// <param name="numUsers">The total number of user rankings available in the leaderboard.</param>
+        public Leaderboard(string leaderboardId = default(string), string name = default(string), List<LeaderboardRanking> groupedByUsers = default(List<LeaderboardRanking>), List<LeaderboardRanking> groupedByTeams = default(List<LeaderboardRanking>), decimal? numTeams = default(decimal?), decimal? numUsers = default(decimal?))
         {
             this.leaderboard_id = leaderboardId;
             this.name = name;
             this.grouped_by_users = groupedByUsers;
             this.grouped_by_teams = groupedByTeams;
+            this.num_teams = numTeams;
+            this.num_users = numUsers;
         }
         
         /// <summary>
@@ -73,6 +77,20 @@ namespace SCILL.Model
         public List<LeaderboardRanking> grouped_by_teams { get; set; }
 
         /// <summary>
+        /// The total number of team rankings available in the leaderboard
+        /// </summary>
+        /// <value>The total number of team rankings available in the leaderboard</value>
+        [DataMember(Name="num_teams", EmitDefaultValue=false)]
+        public decimal? num_teams { get; set; }
+
+        /// <summary>
+        /// The total number of user rankings available in the leaderboard
+        /// </summary>
+        /// <value>The total number of user rankings available in the leaderboard</value>
+        [DataMember(Name="num_users", EmitDefaultValue=false)]
+        public decimal? num_users { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -84,6 +102,8 @@ namespace SCILL.Model
             sb.Append("  name: ").Append(name).Append("\n");
             sb.Append("  grouped_by_users: ").Append(grouped_by_users).Append("\n");
             sb.Append("  grouped_by_teams: ").Append(grouped_by_teams).Append("\n");
+            sb.Append("  num_teams: ").Append(num_teams).Append("\n");
+            sb.Append("  num_users: ").Append(num_users).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -139,6 +159,16 @@ namespace SCILL.Model
                     this.grouped_by_teams != null &&
                     input.grouped_by_teams != null &&
                     this.grouped_by_teams.SequenceEqual(input.grouped_by_teams)
+                ) && 
+                (
+                    this.num_teams == input.num_teams ||
+                    (this.num_teams != null &&
+                    this.num_teams.Equals(input.num_teams))
+                ) && 
+                (
+                    this.num_users == input.num_users ||
+                    (this.num_users != null &&
+                    this.num_users.Equals(input.num_users))
                 );
         }
 
@@ -159,6 +189,10 @@ namespace SCILL.Model
                     hashCode = hashCode * 59 + this.grouped_by_users.GetHashCode();
                 if (this.grouped_by_teams != null)
                     hashCode = hashCode * 59 + this.grouped_by_teams.GetHashCode();
+                if (this.num_teams != null)
+                    hashCode = hashCode * 59 + this.num_teams.GetHashCode();
+                if (this.num_users != null)
+                    hashCode = hashCode * 59 + this.num_users.GetHashCode();
                 return hashCode;
             }
         }

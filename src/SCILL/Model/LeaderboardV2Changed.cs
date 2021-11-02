@@ -24,42 +24,42 @@ using SwaggerDateConverter = SCILL.Client.SwaggerDateConverter;
 namespace SCILL.Model
 {
     /// <summary>
-    /// This object is sent via Webhook or notifications of type battlepass-expired.
+    /// This object is sent via Webhook or notifications of type leaderboard-changed.
     /// </summary>
     [DataContract]
-        public partial class BattlePassExpiredPayload :  IEquatable<BattlePassExpiredPayload>, IValidatableObject
+        public partial class LeaderboardV2Changed :  IEquatable<LeaderboardV2Changed>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BattlePassExpiredPayload" /> class.
+        /// Initializes a new instance of the <see cref="LeaderboardV2Changed" /> class.
         /// </summary>
-        /// <param name="webhookType">The type of the notification. If you receive this payload, it&#x27;s most likely battlepass-expired.</param>
-        /// <param name="oldBattlePass">oldBattlePass.</param>
-        /// <param name="newBattlePass">newBattlePass.</param>
-        public BattlePassExpiredPayload(string webhookType = default(string), BattlePassState oldBattlePass = default(BattlePassState), BattlePassState newBattlePass = default(BattlePassState))
+        /// <param name="webhookType">The type of the notification. If you receive this payload, it&#x27;s most likely leaderboard-changed..</param>
+        /// <param name="oldLeaderboard">oldLeaderboard.</param>
+        /// <param name="newLeaderboard">newLeaderboard.</param>
+        public LeaderboardV2Changed(string webhookType = default(string), LeaderboardV2Info oldLeaderboard = default(LeaderboardV2Info), LeaderboardV2Info newLeaderboard = default(LeaderboardV2Info))
         {
             this.webhook_type = webhookType;
-            this.old_battle_pass = oldBattlePass;
-            this.new_battle_pass = newBattlePass;
+            this.old_leaderboard = oldLeaderboard;
+            this.new_leaderboard = newLeaderboard;
         }
         
         /// <summary>
-        /// The type of the notification. If you receive this payload, it&#x27;s most likely battlepass-expired
+        /// The type of the notification. If you receive this payload, it&#x27;s most likely leaderboard-changed.
         /// </summary>
-        /// <value>The type of the notification. If you receive this payload, it&#x27;s most likely battlepass-expired</value>
+        /// <value>The type of the notification. If you receive this payload, it&#x27;s most likely leaderboard-changed.</value>
         [DataMember(Name="webhook_type", EmitDefaultValue=false)]
         public string webhook_type { get; set; }
 
         /// <summary>
-        /// Gets or Sets old_battle_pass
+        /// Gets or Sets old_leaderboard
         /// </summary>
-        [DataMember(Name="old_battle_pass", EmitDefaultValue=false)]
-        public BattlePassState old_battle_pass { get; set; }
+        [DataMember(Name="old_leaderboard", EmitDefaultValue=false)]
+        public LeaderboardV2Info old_leaderboard { get; set; }
 
         /// <summary>
-        /// Gets or Sets new_battle_pass
+        /// Gets or Sets new_leaderboard
         /// </summary>
-        [DataMember(Name="new_battle_pass", EmitDefaultValue=false)]
-        public BattlePassState new_battle_pass { get; set; }
+        [DataMember(Name="new_leaderboard", EmitDefaultValue=false)]
+        public LeaderboardV2Info new_leaderboard { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -68,10 +68,10 @@ namespace SCILL.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class BattlePassExpiredPayload {\n");
+            sb.Append("class LeaderboardV2Changed {\n");
             sb.Append("  webhook_type: ").Append(webhook_type).Append("\n");
-            sb.Append("  old_battle_pass: ").Append(old_battle_pass).Append("\n");
-            sb.Append("  new_battle_pass: ").Append(new_battle_pass).Append("\n");
+            sb.Append("  old_leaderboard: ").Append(old_leaderboard).Append("\n");
+            sb.Append("  new_leaderboard: ").Append(new_leaderboard).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,15 +92,15 @@ namespace SCILL.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as BattlePassExpiredPayload);
+            return this.Equals(input as LeaderboardV2Changed);
         }
 
         /// <summary>
-        /// Returns true if BattlePassExpiredPayload instances are equal
+        /// Returns true if LeaderboardV2Changed instances are equal
         /// </summary>
-        /// <param name="input">Instance of BattlePassExpiredPayload to be compared</param>
+        /// <param name="input">Instance of LeaderboardV2Changed to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BattlePassExpiredPayload input)
+        public bool Equals(LeaderboardV2Changed input)
         {
             if (input == null)
                 return false;
@@ -112,14 +112,14 @@ namespace SCILL.Model
                     this.webhook_type.Equals(input.webhook_type))
                 ) && 
                 (
-                    this.old_battle_pass == input.old_battle_pass ||
-                    (this.old_battle_pass != null &&
-                    this.old_battle_pass.Equals(input.old_battle_pass))
+                    this.old_leaderboard == input.old_leaderboard ||
+                    (this.old_leaderboard != null &&
+                    this.old_leaderboard.Equals(input.old_leaderboard))
                 ) && 
                 (
-                    this.new_battle_pass == input.new_battle_pass ||
-                    (this.new_battle_pass != null &&
-                    this.new_battle_pass.Equals(input.new_battle_pass))
+                    this.new_leaderboard == input.new_leaderboard ||
+                    (this.new_leaderboard != null &&
+                    this.new_leaderboard.Equals(input.new_leaderboard))
                 );
         }
 
@@ -134,10 +134,10 @@ namespace SCILL.Model
                 int hashCode = 41;
                 if (this.webhook_type != null)
                     hashCode = hashCode * 59 + this.webhook_type.GetHashCode();
-                if (this.old_battle_pass != null)
-                    hashCode = hashCode * 59 + this.old_battle_pass.GetHashCode();
-                if (this.new_battle_pass != null)
-                    hashCode = hashCode * 59 + this.new_battle_pass.GetHashCode();
+                if (this.old_leaderboard != null)
+                    hashCode = hashCode * 59 + this.old_leaderboard.GetHashCode();
+                if (this.new_leaderboard != null)
+                    hashCode = hashCode * 59 + this.new_leaderboard.GetHashCode();
                 return hashCode;
             }
         }

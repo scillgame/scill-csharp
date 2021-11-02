@@ -247,6 +247,29 @@ namespace SCILL.Api
         /// <returns>ApiResponse of List&lt;ChallengeCategory&gt;</returns>
         ApiResponse<List<ChallengeCategory>> GetUnresolvedPersonalChallengesWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
         /// <summary>
+        /// Resets all challenges for the given app ID and user ID
+        /// </summary>
+        /// <remarks>
+        /// Resets all challenges for the given app ID and user ID
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="userId">The user id (</param>
+        /// <returns>ActionResponse</returns>
+        ActionResponse ResetUserAppChallenges (string appId, string userId);
+
+        /// <summary>
+        /// Resets all challenges for the given app ID and user ID
+        /// </summary>
+        /// <remarks>
+        /// Resets all challenges for the given app ID and user ID
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="userId">The user id (</param>
+        /// <returns>ApiResponse of ActionResponse</returns>
+        ApiResponse<ActionResponse> ResetUserAppChallengesWithHttpInfo (string appId, string userId);
+        /// <summary>
         /// Unlock a personal challenges
         /// </summary>
         /// <remarks>
@@ -496,6 +519,29 @@ namespace SCILL.Api
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChallengeCategory&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<ChallengeCategory>>> GetUnresolvedPersonalChallengesAsyncWithHttpInfo (string appId, List<string> includeCategories = null, List<string> excludeCategories = null, string language = null);
+        /// <summary>
+        /// Resets all challenges for the given app ID and user ID
+        /// </summary>
+        /// <remarks>
+        /// Resets all challenges for the given app ID and user ID
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="userId">The user id (</param>
+        /// <returns>Task of ActionResponse</returns>
+        System.Threading.Tasks.Task<ActionResponse> ResetUserAppChallengesAsync (string appId, string userId);
+
+        /// <summary>
+        /// Resets all challenges for the given app ID and user ID
+        /// </summary>
+        /// <remarks>
+        /// Resets all challenges for the given app ID and user ID
+        /// </remarks>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="userId">The user id (</param>
+        /// <returns>Task of ApiResponse (ActionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ResetUserAppChallengesAsyncWithHttpInfo (string appId, string userId);
         /// <summary>
         /// Unlock a personal challenges
         /// </summary>
@@ -2145,6 +2191,173 @@ namespace SCILL.Api
             return new ApiResponse<List<ChallengeCategory>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (List<ChallengeCategory>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ChallengeCategory>)));
+        }
+
+        /// <summary>
+        /// Resets all challenges for the given app ID and user ID Resets all challenges for the given app ID and user ID
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="userId">The user id (</param>
+        /// <returns>ActionResponse</returns>
+        public ActionResponse ResetUserAppChallenges (string appId, string userId)
+        {
+             ApiResponse<ActionResponse> localVarResponse = ResetUserAppChallengesWithHttpInfo(appId, userId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Resets all challenges for the given app ID and user ID Resets all challenges for the given app ID and user ID
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="userId">The user id (</param>
+        /// <returns>ApiResponse of ActionResponse</returns>
+        public ApiResponse< ActionResponse > ResetUserAppChallengesWithHttpInfo (string appId, string userId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->ResetUserAppChallenges");
+            // verify the required parameter 'userId' is set
+            if (userId == null)
+                throw new ApiException(400, "Missing required parameter 'userId' when calling ChallengesApi->ResetUserAppChallenges");
+
+            var localVarPath = "/api/v1/reset-challenges/{appId}/{userId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (userId != null) localVarPathParams.Add("userId", this.Configuration.ApiClient.ParameterToString(userId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ResetUserAppChallenges", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ActionResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ActionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ActionResponse)));
+        }
+
+        /// <summary>
+        /// Resets all challenges for the given app ID and user ID Resets all challenges for the given app ID and user ID
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="userId">The user id (</param>
+        /// <returns>Task of ActionResponse</returns>
+        public async System.Threading.Tasks.Task<ActionResponse> ResetUserAppChallengesAsync (string appId, string userId)
+        {
+             ApiResponse<ActionResponse> localVarResponse = await ResetUserAppChallengesAsyncWithHttpInfo(appId, userId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Resets all challenges for the given app ID and user ID Resets all challenges for the given app ID and user ID
+        /// </summary>
+        /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId">The app id</param>
+        /// <param name="userId">The user id (</param>
+        /// <returns>Task of ApiResponse (ActionResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ResetUserAppChallengesAsyncWithHttpInfo (string appId, string userId)
+        {
+            // verify the required parameter 'appId' is set
+            if (appId == null)
+                throw new ApiException(400, "Missing required parameter 'appId' when calling ChallengesApi->ResetUserAppChallenges");
+            // verify the required parameter 'userId' is set
+            if (userId == null)
+                throw new ApiException(400, "Missing required parameter 'userId' when calling ChallengesApi->ResetUserAppChallenges");
+
+            var localVarPath = "/api/v1/reset-challenges/{appId}/{userId}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
+            if (userId != null) localVarPathParams.Add("userId", this.Configuration.ApiClient.ParameterToString(userId)); // path parameter
+            // authentication (BearerAuth) required
+            // bearer required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+            // authentication (oAuthNoScopes) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ResetUserAppChallenges", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ActionResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ActionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ActionResponse)));
         }
 
         /// <summary>

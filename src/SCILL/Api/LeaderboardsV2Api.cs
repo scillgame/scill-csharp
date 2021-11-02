@@ -20,45 +20,49 @@ namespace SCILL.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public interface ILeaderboardsApi : IApiAccessor
+        public interface ILeaderboardsV2Api : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
         /// Retrieve Leaderboard
         /// </summary>
         /// <remarks>
-        /// Provides the current leaderboard rankings for a specific leaderboard.
+        /// Provides the selected leaderboard V2 rankings for a specific leaderboard.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Leaderboard</returns>
-        Leaderboard GetLeaderboard (string leaderboardId, int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
+        /// <returns>LeaderboardV2Results</returns>
+        LeaderboardV2Results GetLeaderboardV2 (string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
 
         /// <summary>
         /// Retrieve Leaderboard
         /// </summary>
         /// <remarks>
-        /// Provides the current leaderboard rankings for a specific leaderboard.
+        /// Provides the selected leaderboard V2 rankings for a specific leaderboard.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="startDate">The starting date for fetching results. (optional)</param>
+        /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
-        /// <param name="startDate">The starting date for fetching results. (optional)</param>
-        /// <param name="endDate">The ending date for fetching results. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>ApiResponse of Leaderboard</returns>
-        ApiResponse<Leaderboard> GetLeaderboardWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
+        /// <returns>ApiResponse of LeaderboardV2Results</returns>
+        ApiResponse<LeaderboardV2Results> GetLeaderboardV2WithHttpInfo (string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
         /// <summary>
-        /// Retrieve User Ranking
+        /// Retrieve user ranking for a single leaderboard V2
         /// </summary>
         /// <remarks>
-        /// Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// Returns a LeaderboardV2MemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -66,15 +70,16 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>LeaderboardMemberRanking</returns>
-        LeaderboardMemberRanking GetLeaderboardRanking (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string language = null);
+        /// <returns>LeaderboardV2MemberRanking</returns>
+        LeaderboardV2MemberRanking GetLeaderboardV2Ranking (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, string language = null);
 
         /// <summary>
-        /// Retrieve User Ranking
+        /// Retrieve user ranking for a single leaderboard V2
         /// </summary>
         /// <remarks>
-        /// Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// Returns a LeaderboardV2MemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -82,130 +87,139 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>ApiResponse of LeaderboardMemberRanking</returns>
-        ApiResponse<LeaderboardMemberRanking> GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string language = null);
+        /// <returns>ApiResponse of LeaderboardV2MemberRanking</returns>
+        ApiResponse<LeaderboardV2MemberRanking> GetLeaderboardV2RankingWithHttpInfo (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, string language = null);
         /// <summary>
-        /// Retrieve User Rankings
+        /// Retrieve user rankings across all leaderboards
         /// </summary>
         /// <remarks>
-        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
+        /// Returns an array of LeaderboardV2MemberRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId, string startDate = null, string endDate = null, string language = null);
+        /// <returns>List&lt;LeaderboardV2MemberRanking&gt;</returns>
+        List<LeaderboardV2MemberRanking> GetLeaderboardV2Rankings (string memberType, string memberId, string startDate = null, string endDate = null, string aggregate = null, string language = null);
 
         /// <summary>
-        /// Retrieve User Rankings
+        /// Retrieve user rankings across all leaderboards
         /// </summary>
         /// <remarks>
-        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
+        /// Returns an array of LeaderboardV2MemberRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        ApiResponse<List<LeaderboardMemberRanking>> GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId, string startDate = null, string endDate = null, string language = null);
+        /// <returns>ApiResponse of List&lt;LeaderboardV2MemberRanking&gt;</returns>
+        ApiResponse<List<LeaderboardV2MemberRanking>> GetLeaderboardV2RankingsWithHttpInfo (string memberType, string memberId, string startDate = null, string endDate = null, string aggregate = null, string language = null);
         /// <summary>
         /// Retrieve Leaderboards
         /// </summary>
         /// <remarks>
-        /// Returns an array of Leaderboard items defined for the application.
+        /// Returns an array of LeaderboardV2Results items defined for the application.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>List&lt;Leaderboard&gt;</returns>
-        List<Leaderboard> GetLeaderboards (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
+        /// <returns>List&lt;LeaderboardV2Results&gt;</returns>
+        List<LeaderboardV2Results> GetLeaderboardsV2 (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
 
         /// <summary>
         /// Retrieve Leaderboards
         /// </summary>
         /// <remarks>
-        /// Returns an array of Leaderboard items defined for the application.
+        /// Returns an array of LeaderboardV2Results items defined for the application.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>ApiResponse of List&lt;Leaderboard&gt;</returns>
-        ApiResponse<List<Leaderboard>> GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
+        /// <returns>ApiResponse of List&lt;LeaderboardV2Results&gt;</returns>
+        ApiResponse<List<LeaderboardV2Results>> GetLeaderboardsV2WithHttpInfo (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <remarks>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="appId">The application ID</param>
-        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The leaderboard ID</param>
         /// <returns>ActionResponse</returns>
-        ActionResponse ResetLeaderboardRankings (string memberType, string appId, string memberId);
+        ActionResponse ResetLeaderboardV2Rankings (string appId, string leaderboardId);
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <remarks>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="appId">The application ID</param>
-        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The leaderboard ID</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        ApiResponse<ActionResponse> ResetLeaderboardRankingsWithHttpInfo (string memberType, string appId, string memberId);
+        ApiResponse<ActionResponse> ResetLeaderboardV2RankingsWithHttpInfo (string appId, string leaderboardId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
         /// Retrieve Leaderboard
         /// </summary>
         /// <remarks>
-        /// Provides the current leaderboard rankings for a specific leaderboard.
+        /// Provides the selected leaderboard V2 rankings for a specific leaderboard.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of Leaderboard</returns>
-        System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
+        /// <returns>Task of LeaderboardV2Results</returns>
+        System.Threading.Tasks.Task<LeaderboardV2Results> GetLeaderboardV2Async (string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
 
         /// <summary>
         /// Retrieve Leaderboard
         /// </summary>
         /// <remarks>
-        /// Provides the current leaderboard rankings for a specific leaderboard.
+        /// Provides the selected leaderboard V2 rankings for a specific leaderboard.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="leaderboardId">The id of the leaderboard</param>
+        /// <param name="startDate">The starting date for fetching results. (optional)</param>
+        /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
         /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
-        /// <param name="startDate">The starting date for fetching results. (optional)</param>
-        /// <param name="endDate">The ending date for fetching results. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of ApiResponse (Leaderboard)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
+        /// <returns>Task of ApiResponse (LeaderboardV2Results)</returns>
+        System.Threading.Tasks.Task<ApiResponse<LeaderboardV2Results>> GetLeaderboardV2AsyncWithHttpInfo (string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
         /// <summary>
-        /// Retrieve User Ranking
+        /// Retrieve user ranking for a single leaderboard V2
         /// </summary>
         /// <remarks>
-        /// Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// Returns a LeaderboardV2MemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -213,15 +227,16 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of LeaderboardMemberRanking</returns>
-        System.Threading.Tasks.Task<LeaderboardMemberRanking> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string language = null);
+        /// <returns>Task of LeaderboardV2MemberRanking</returns>
+        System.Threading.Tasks.Task<LeaderboardV2MemberRanking> GetLeaderboardV2RankingAsync (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, string language = null);
 
         /// <summary>
-        /// Retrieve User Ranking
+        /// Retrieve user ranking for a single leaderboard V2
         /// </summary>
         /// <remarks>
-        /// Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// Returns a LeaderboardV2MemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -229,107 +244,112 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of ApiResponse (LeaderboardMemberRanking)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LeaderboardMemberRanking>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string language = null);
+        /// <returns>Task of ApiResponse (LeaderboardV2MemberRanking)</returns>
+        System.Threading.Tasks.Task<ApiResponse<LeaderboardV2MemberRanking>> GetLeaderboardV2RankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, string language = null);
         /// <summary>
-        /// Retrieve User Rankings
+        /// Retrieve user rankings across all leaderboards
         /// </summary>
         /// <remarks>
-        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
+        /// Returns an array of LeaderboardV2MemberRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId, string startDate = null, string endDate = null, string language = null);
+        /// <returns>Task of List&lt;LeaderboardV2MemberRanking&gt;</returns>
+        System.Threading.Tasks.Task<List<LeaderboardV2MemberRanking>> GetLeaderboardV2RankingsAsync (string memberType, string memberId, string startDate = null, string endDate = null, string aggregate = null, string language = null);
 
         /// <summary>
-        /// Retrieve User Rankings
+        /// Retrieve user rankings across all leaderboards
         /// </summary>
         /// <remarks>
-        /// Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
+        /// Returns an array of LeaderboardV2MemberRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId, string startDate = null, string endDate = null, string language = null);
+        /// <returns>Task of ApiResponse (List&lt;LeaderboardV2MemberRanking&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardV2MemberRanking>>> GetLeaderboardV2RankingsAsyncWithHttpInfo (string memberType, string memberId, string startDate = null, string endDate = null, string aggregate = null, string language = null);
         /// <summary>
         /// Retrieve Leaderboards
         /// </summary>
         /// <remarks>
-        /// Returns an array of Leaderboard items defined for the application.
+        /// Returns an array of LeaderboardV2Results items defined for the application.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of List&lt;Leaderboard&gt;</returns>
-        System.Threading.Tasks.Task<List<Leaderboard>> GetLeaderboardsAsync (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
+        /// <returns>Task of List&lt;LeaderboardV2Results&gt;</returns>
+        System.Threading.Tasks.Task<List<LeaderboardV2Results>> GetLeaderboardsV2Async (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
 
         /// <summary>
         /// Retrieve Leaderboards
         /// </summary>
         /// <remarks>
-        /// Returns an array of Leaderboard items defined for the application.
+        /// Returns an array of LeaderboardV2Results items defined for the application.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;Leaderboard&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
+        /// <returns>Task of ApiResponse (List&lt;LeaderboardV2Results&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<LeaderboardV2Results>>> GetLeaderboardsV2AsyncWithHttpInfo (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <remarks>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="appId">The application ID</param>
-        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The leaderboard ID</param>
         /// <returns>Task of ActionResponse</returns>
-        System.Threading.Tasks.Task<ActionResponse> ResetLeaderboardRankingsAsync (string memberType, string appId, string memberId);
+        System.Threading.Tasks.Task<ActionResponse> ResetLeaderboardV2RankingsAsync (string appId, string leaderboardId);
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <remarks>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </remarks>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="appId">The application ID</param>
-        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The leaderboard ID</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ResetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string appId, string memberId);
+        System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ResetLeaderboardV2RankingsAsyncWithHttpInfo (string appId, string leaderboardId);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-        public partial class LeaderboardsApi : ILeaderboardsApi
+        public partial class LeaderboardsV2Api : ILeaderboardsV2Api
     {
         private SCILL.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LeaderboardsApi"/> class.
+        /// Initializes a new instance of the <see cref="LeaderboardsV2Api"/> class.
         /// </summary>
         /// <returns></returns>
-        public LeaderboardsApi(String basePath)
+        public LeaderboardsV2Api(String basePath)
         {
             this.Configuration = new SCILL.Client.Configuration { BasePath = basePath };
 
@@ -337,10 +357,10 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LeaderboardsApi"/> class
+        /// Initializes a new instance of the <see cref="LeaderboardsV2Api"/> class
         /// </summary>
         /// <returns></returns>
-        public LeaderboardsApi()
+        public LeaderboardsV2Api()
         {
             this.Configuration = SCILL.Client.Configuration.Default;
 
@@ -348,12 +368,12 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LeaderboardsApi"/> class
+        /// Initializes a new instance of the <see cref="LeaderboardsV2Api"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public LeaderboardsApi(SCILL.Client.Configuration configuration = null)
+        public LeaderboardsV2Api(SCILL.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = SCILL.Client.Configuration.Default;
@@ -427,40 +447,44 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Retrieve Leaderboard Provides the current leaderboard rankings for a specific leaderboard.
+        /// Retrieve Leaderboard Provides the selected leaderboard V2 rankings for a specific leaderboard.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Leaderboard</returns>
-        public Leaderboard GetLeaderboard (string leaderboardId, int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null)
+        /// <returns>LeaderboardV2Results</returns>
+        public LeaderboardV2Results GetLeaderboardV2 (string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null)
         {
-             ApiResponse<Leaderboard> localVarResponse = GetLeaderboardWithHttpInfo(leaderboardId, currentPage, pageSize, startDate, endDate, language);
+             ApiResponse<LeaderboardV2Results> localVarResponse = GetLeaderboardV2WithHttpInfo(leaderboardId, startDate, endDate, aggregate, currentPage, currentPosition, pageSize, language);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Retrieve Leaderboard Provides the current leaderboard rankings for a specific leaderboard.
+        /// Retrieve Leaderboard Provides the selected leaderboard V2 rankings for a specific leaderboard.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>ApiResponse of Leaderboard</returns>
-        public ApiResponse< Leaderboard > GetLeaderboardWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null)
+        /// <returns>ApiResponse of LeaderboardV2Results</returns>
+        public ApiResponse< LeaderboardV2Results > GetLeaderboardV2WithHttpInfo (string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null)
         {
             // verify the required parameter 'leaderboardId' is set
             if (leaderboardId == null)
-                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsApi->GetLeaderboard");
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsV2Api->GetLeaderboardV2");
 
-            var localVarPath = "/api/v1/leaderboards/{leaderboardId}";
+            var localVarPath = "/api/v2/leaderboards/{leaderboardId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -482,10 +506,12 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
-            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
-            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (aggregate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aggregate", aggregate)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (currentPosition != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPosition", currentPosition)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
@@ -509,51 +535,55 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLeaderboard", localVarResponse);
+                Exception exception = ExceptionFactory("GetLeaderboardV2", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Leaderboard>(localVarStatusCode,
+            return new ApiResponse<LeaderboardV2Results>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Leaderboard) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Leaderboard)));
+                (LeaderboardV2Results) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LeaderboardV2Results)));
         }
 
         /// <summary>
-        /// Retrieve Leaderboard Provides the current leaderboard rankings for a specific leaderboard.
+        /// Retrieve Leaderboard Provides the selected leaderboard V2 rankings for a specific leaderboard.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of Leaderboard</returns>
-        public async System.Threading.Tasks.Task<Leaderboard> GetLeaderboardAsync (string leaderboardId, int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null)
+        /// <returns>Task of LeaderboardV2Results</returns>
+        public async System.Threading.Tasks.Task<LeaderboardV2Results> GetLeaderboardV2Async (string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null)
         {
-             ApiResponse<Leaderboard> localVarResponse = await GetLeaderboardAsyncWithHttpInfo(leaderboardId, currentPage, pageSize, startDate, endDate, language);
+             ApiResponse<LeaderboardV2Results> localVarResponse = await GetLeaderboardV2AsyncWithHttpInfo(leaderboardId, startDate, endDate, aggregate, currentPage, currentPosition, pageSize, language);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Retrieve Leaderboard Provides the current leaderboard rankings for a specific leaderboard.
+        /// Retrieve Leaderboard Provides the selected leaderboard V2 rankings for a specific leaderboard.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="leaderboardId">The id of the leaderboard</param>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of ApiResponse (Leaderboard)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Leaderboard>> GetLeaderboardAsyncWithHttpInfo (string leaderboardId, int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null)
+        /// <returns>Task of ApiResponse (LeaderboardV2Results)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<LeaderboardV2Results>> GetLeaderboardV2AsyncWithHttpInfo (string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null)
         {
             // verify the required parameter 'leaderboardId' is set
             if (leaderboardId == null)
-                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsApi->GetLeaderboard");
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsV2Api->GetLeaderboardV2");
 
-            var localVarPath = "/api/v1/leaderboards/{leaderboardId}";
+            var localVarPath = "/api/v2/leaderboards/{leaderboardId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -575,10 +605,12 @@ namespace SCILL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
-            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
-            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (aggregate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aggregate", aggregate)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (currentPosition != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPosition", currentPosition)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
@@ -602,17 +634,17 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLeaderboard", localVarResponse);
+                Exception exception = ExceptionFactory("GetLeaderboardV2", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Leaderboard>(localVarStatusCode,
+            return new ApiResponse<LeaderboardV2Results>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (Leaderboard) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Leaderboard)));
+                (LeaderboardV2Results) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LeaderboardV2Results)));
         }
 
         /// <summary>
-        /// Retrieve User Ranking Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// Retrieve user ranking for a single leaderboard V2 Returns a LeaderboardV2MemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -620,16 +652,17 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>LeaderboardMemberRanking</returns>
-        public LeaderboardMemberRanking GetLeaderboardRanking (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string language = null)
+        /// <returns>LeaderboardV2MemberRanking</returns>
+        public LeaderboardV2MemberRanking GetLeaderboardV2Ranking (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, string language = null)
         {
-             ApiResponse<LeaderboardMemberRanking> localVarResponse = GetLeaderboardRankingWithHttpInfo(memberType, memberId, leaderboardId, startDate, endDate, language);
+             ApiResponse<LeaderboardV2MemberRanking> localVarResponse = GetLeaderboardV2RankingWithHttpInfo(memberType, memberId, leaderboardId, startDate, endDate, aggregate, language);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Retrieve User Ranking Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// Retrieve user ranking for a single leaderboard V2 Returns a LeaderboardV2MemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -637,21 +670,22 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>ApiResponse of LeaderboardMemberRanking</returns>
-        public ApiResponse< LeaderboardMemberRanking > GetLeaderboardRankingWithHttpInfo (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string language = null)
+        /// <returns>ApiResponse of LeaderboardV2MemberRanking</returns>
+        public ApiResponse< LeaderboardV2MemberRanking > GetLeaderboardV2RankingWithHttpInfo (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, string language = null)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
-                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->GetLeaderboardRanking");
+                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsV2Api->GetLeaderboardV2Ranking");
             // verify the required parameter 'memberId' is set
             if (memberId == null)
-                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->GetLeaderboardRanking");
+                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsV2Api->GetLeaderboardV2Ranking");
             // verify the required parameter 'leaderboardId' is set
             if (leaderboardId == null)
-                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsApi->GetLeaderboardRanking");
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsV2Api->GetLeaderboardV2Ranking");
 
-            var localVarPath = "/api/v1/leaderboards-members/{memberType}/{memberId}/{leaderboardId}";
+            var localVarPath = "/api/v2/leaderboards-members/{memberType}/{memberId}/{leaderboardId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -677,6 +711,7 @@ namespace SCILL.Api
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (aggregate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aggregate", aggregate)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
@@ -700,17 +735,17 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLeaderboardRanking", localVarResponse);
+                Exception exception = ExceptionFactory("GetLeaderboardV2Ranking", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<LeaderboardMemberRanking>(localVarStatusCode,
+            return new ApiResponse<LeaderboardV2MemberRanking>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (LeaderboardMemberRanking) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LeaderboardMemberRanking)));
+                (LeaderboardV2MemberRanking) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LeaderboardV2MemberRanking)));
         }
 
         /// <summary>
-        /// Retrieve User Ranking Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// Retrieve user ranking for a single leaderboard V2 Returns a LeaderboardV2MemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -718,17 +753,18 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of LeaderboardMemberRanking</returns>
-        public async System.Threading.Tasks.Task<LeaderboardMemberRanking> GetLeaderboardRankingAsync (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string language = null)
+        /// <returns>Task of LeaderboardV2MemberRanking</returns>
+        public async System.Threading.Tasks.Task<LeaderboardV2MemberRanking> GetLeaderboardV2RankingAsync (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, string language = null)
         {
-             ApiResponse<LeaderboardMemberRanking> localVarResponse = await GetLeaderboardRankingAsyncWithHttpInfo(memberType, memberId, leaderboardId, startDate, endDate, language);
+             ApiResponse<LeaderboardV2MemberRanking> localVarResponse = await GetLeaderboardV2RankingAsyncWithHttpInfo(memberType, memberId, leaderboardId, startDate, endDate, aggregate, language);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Retrieve User Ranking Returns a LeaderboardMemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
+        /// Retrieve user ranking for a single leaderboard V2 Returns a LeaderboardV2MemberRanking item for the specified leaderboard. Use this route to get the position of a user of team in a specified leaderboard.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -736,21 +772,22 @@ namespace SCILL.Api
         /// <param name="leaderboardId">The id of the leaderboard</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of ApiResponse (LeaderboardMemberRanking)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<LeaderboardMemberRanking>> GetLeaderboardRankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string language = null)
+        /// <returns>Task of ApiResponse (LeaderboardV2MemberRanking)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<LeaderboardV2MemberRanking>> GetLeaderboardV2RankingAsyncWithHttpInfo (string memberType, string memberId, string leaderboardId, string startDate = null, string endDate = null, string aggregate = null, string language = null)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
-                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->GetLeaderboardRanking");
+                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsV2Api->GetLeaderboardV2Ranking");
             // verify the required parameter 'memberId' is set
             if (memberId == null)
-                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->GetLeaderboardRanking");
+                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsV2Api->GetLeaderboardV2Ranking");
             // verify the required parameter 'leaderboardId' is set
             if (leaderboardId == null)
-                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsApi->GetLeaderboardRanking");
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsV2Api->GetLeaderboardV2Ranking");
 
-            var localVarPath = "/api/v1/leaderboards-members/{memberType}/{memberId}/{leaderboardId}";
+            var localVarPath = "/api/v2/leaderboards-members/{memberType}/{memberId}/{leaderboardId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -776,6 +813,7 @@ namespace SCILL.Api
             if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (aggregate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aggregate", aggregate)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
@@ -799,51 +837,53 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLeaderboardRanking", localVarResponse);
+                Exception exception = ExceptionFactory("GetLeaderboardV2Ranking", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<LeaderboardMemberRanking>(localVarStatusCode,
+            return new ApiResponse<LeaderboardV2MemberRanking>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (LeaderboardMemberRanking) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LeaderboardMemberRanking)));
+                (LeaderboardV2MemberRanking) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LeaderboardV2MemberRanking)));
         }
 
         /// <summary>
-        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
+        /// Retrieve user rankings across all leaderboards Returns an array of LeaderboardV2MemberRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>List&lt;LeaderboardMemberRanking&gt;</returns>
-        public List<LeaderboardMemberRanking> GetLeaderboardRankings (string memberType, string memberId, string startDate = null, string endDate = null, string language = null)
+        /// <returns>List&lt;LeaderboardV2MemberRanking&gt;</returns>
+        public List<LeaderboardV2MemberRanking> GetLeaderboardV2Rankings (string memberType, string memberId, string startDate = null, string endDate = null, string aggregate = null, string language = null)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = GetLeaderboardRankingsWithHttpInfo(memberType, memberId, startDate, endDate, language);
+             ApiResponse<List<LeaderboardV2MemberRanking>> localVarResponse = GetLeaderboardV2RankingsWithHttpInfo(memberType, memberId, startDate, endDate, aggregate, language);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
+        /// Retrieve user rankings across all leaderboards Returns an array of LeaderboardV2MemberRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>ApiResponse of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public ApiResponse< List<LeaderboardMemberRanking> > GetLeaderboardRankingsWithHttpInfo (string memberType, string memberId, string startDate = null, string endDate = null, string language = null)
+        /// <returns>ApiResponse of List&lt;LeaderboardV2MemberRanking&gt;</returns>
+        public ApiResponse< List<LeaderboardV2MemberRanking> > GetLeaderboardV2RankingsWithHttpInfo (string memberType, string memberId, string startDate = null, string endDate = null, string aggregate = null, string language = null)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
-                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->GetLeaderboardRankings");
+                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsV2Api->GetLeaderboardV2Rankings");
             // verify the required parameter 'memberId' is set
             if (memberId == null)
-                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->GetLeaderboardRankings");
+                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsV2Api->GetLeaderboardV2Rankings");
 
-            var localVarPath = "/api/v1/leaderboards-members/{memberType}/{memberId}";
+            var localVarPath = "/api/v2/leaderboards-members/{memberType}/{memberId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -868,6 +908,7 @@ namespace SCILL.Api
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (aggregate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aggregate", aggregate)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
@@ -891,52 +932,54 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLeaderboardRankings", localVarResponse);
+                Exception exception = ExceptionFactory("GetLeaderboardV2Rankings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<LeaderboardMemberRanking>>(localVarStatusCode,
+            return new ApiResponse<List<LeaderboardV2MemberRanking>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<LeaderboardMemberRanking>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardMemberRanking>)));
+                (List<LeaderboardV2MemberRanking>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardV2MemberRanking>)));
         }
 
         /// <summary>
-        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
+        /// Retrieve user rankings across all leaderboards Returns an array of LeaderboardV2MemberRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of List&lt;LeaderboardMemberRanking&gt;</returns>
-        public async System.Threading.Tasks.Task<List<LeaderboardMemberRanking>> GetLeaderboardRankingsAsync (string memberType, string memberId, string startDate = null, string endDate = null, string language = null)
+        /// <returns>Task of List&lt;LeaderboardV2MemberRanking&gt;</returns>
+        public async System.Threading.Tasks.Task<List<LeaderboardV2MemberRanking>> GetLeaderboardV2RankingsAsync (string memberType, string memberId, string startDate = null, string endDate = null, string aggregate = null, string language = null)
         {
-             ApiResponse<List<LeaderboardMemberRanking>> localVarResponse = await GetLeaderboardRankingsAsyncWithHttpInfo(memberType, memberId, startDate, endDate, language);
+             ApiResponse<List<LeaderboardV2MemberRanking>> localVarResponse = await GetLeaderboardV2RankingsAsyncWithHttpInfo(memberType, memberId, startDate, endDate, aggregate, language);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Retrieve User Rankings Returns an array of LeaderboardRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
+        /// Retrieve user rankings across all leaderboards Returns an array of LeaderboardV2MemberRanking items defined for all leaderboards in the application specified for the user. If the member is not in the leaderboard, the rank will be -1 in the LeaderboardRanking object.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;LeaderboardMemberRanking&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardMemberRanking>>> GetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string memberId, string startDate = null, string endDate = null, string language = null)
+        /// <returns>Task of ApiResponse (List&lt;LeaderboardV2MemberRanking&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardV2MemberRanking>>> GetLeaderboardV2RankingsAsyncWithHttpInfo (string memberType, string memberId, string startDate = null, string endDate = null, string aggregate = null, string language = null)
         {
             // verify the required parameter 'memberType' is set
             if (memberType == null)
-                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->GetLeaderboardRankings");
+                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsV2Api->GetLeaderboardV2Rankings");
             // verify the required parameter 'memberId' is set
             if (memberId == null)
-                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->GetLeaderboardRankings");
+                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsV2Api->GetLeaderboardV2Rankings");
 
-            var localVarPath = "/api/v1/leaderboards-members/{memberType}/{memberId}";
+            var localVarPath = "/api/v2/leaderboards-members/{memberType}/{memberId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -961,6 +1004,7 @@ namespace SCILL.Api
             if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (aggregate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aggregate", aggregate)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
@@ -984,45 +1028,49 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLeaderboardRankings", localVarResponse);
+                Exception exception = ExceptionFactory("GetLeaderboardV2Rankings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<LeaderboardMemberRanking>>(localVarStatusCode,
+            return new ApiResponse<List<LeaderboardV2MemberRanking>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<LeaderboardMemberRanking>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardMemberRanking>)));
+                (List<LeaderboardV2MemberRanking>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardV2MemberRanking>)));
         }
 
         /// <summary>
-        /// Retrieve Leaderboards Returns an array of Leaderboard items defined for the application.
+        /// Retrieve Leaderboards Returns an array of LeaderboardV2Results items defined for the application.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>List&lt;Leaderboard&gt;</returns>
-        public List<Leaderboard> GetLeaderboards (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null)
+        /// <returns>List&lt;LeaderboardV2Results&gt;</returns>
+        public List<LeaderboardV2Results> GetLeaderboardsV2 (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null)
         {
-             ApiResponse<List<Leaderboard>> localVarResponse = GetLeaderboardsWithHttpInfo(currentPage, pageSize, startDate, endDate, language);
+             ApiResponse<List<LeaderboardV2Results>> localVarResponse = GetLeaderboardsV2WithHttpInfo(startDate, endDate, aggregate, currentPage, currentPosition, pageSize, language);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Retrieve Leaderboards Returns an array of Leaderboard items defined for the application.
+        /// Retrieve Leaderboards Returns an array of LeaderboardV2Results items defined for the application.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>ApiResponse of List&lt;Leaderboard&gt;</returns>
-        public ApiResponse< List<Leaderboard> > GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null)
+        /// <returns>ApiResponse of List&lt;LeaderboardV2Results&gt;</returns>
+        public ApiResponse< List<LeaderboardV2Results> > GetLeaderboardsV2WithHttpInfo (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null)
         {
 
-            var localVarPath = "/api/v1/leaderboards";
+            var localVarPath = "/api/v2/leaderboards";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1043,10 +1091,12 @@ namespace SCILL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
-            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (aggregate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aggregate", aggregate)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (currentPosition != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPosition", currentPosition)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
@@ -1070,46 +1120,50 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLeaderboards", localVarResponse);
+                Exception exception = ExceptionFactory("GetLeaderboardsV2", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Leaderboard>>(localVarStatusCode,
+            return new ApiResponse<List<LeaderboardV2Results>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Leaderboard>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Leaderboard>)));
+                (List<LeaderboardV2Results>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardV2Results>)));
         }
 
         /// <summary>
-        /// Retrieve Leaderboards Returns an array of Leaderboard items defined for the application.
+        /// Retrieve Leaderboards Returns an array of LeaderboardV2Results items defined for the application.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of List&lt;Leaderboard&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Leaderboard>> GetLeaderboardsAsync (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null)
+        /// <returns>Task of List&lt;LeaderboardV2Results&gt;</returns>
+        public async System.Threading.Tasks.Task<List<LeaderboardV2Results>> GetLeaderboardsV2Async (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null)
         {
-             ApiResponse<List<Leaderboard>> localVarResponse = await GetLeaderboardsAsyncWithHttpInfo(currentPage, pageSize, startDate, endDate, language);
+             ApiResponse<List<LeaderboardV2Results>> localVarResponse = await GetLeaderboardsV2AsyncWithHttpInfo(startDate, endDate, aggregate, currentPage, currentPosition, pageSize, language);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Retrieve Leaderboards Returns an array of Leaderboard items defined for the application.
+        /// Retrieve Leaderboards Returns an array of LeaderboardV2Results items defined for the application.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
-        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="startDate">The starting date for fetching results. (optional)</param>
         /// <param name="endDate">The ending date for fetching results. (optional)</param>
+        /// <param name="aggregate">The aggregate function for the calculation of the results - can be BEST (returns a single score - either the lowest if ASC sorting is used, or the highest if DESC is used) or SUM (default value - increments (sums up) the scores). (optional)</param>
+        /// <param name="currentPage">The page index starting at 1. The number of pageSize elements are returned for each page. Default value is 1 (optional)</param>
+        /// <param name="currentPosition">The starting leaderboard position from which the results should be loaded. The number of results is controlled via the pageSize variable. This parameter overrides the currentPage parameter. (optional)</param>
+        /// <param name="pageSize">The number of elements per page. Default is 25. (optional)</param>
         /// <param name="language">Set the language. Content can be translated in the Admin Panel. Values can be international language codes like de, en, fr, it, ... (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;Leaderboard&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null)
+        /// <returns>Task of ApiResponse (List&lt;LeaderboardV2Results&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<LeaderboardV2Results>>> GetLeaderboardsV2AsyncWithHttpInfo (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null)
         {
 
-            var localVarPath = "/api/v1/leaderboards";
+            var localVarPath = "/api/v2/leaderboards";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1130,10 +1184,12 @@ namespace SCILL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
-            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (startDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "startDate", startDate)); // query parameter
             if (endDate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "endDate", endDate)); // query parameter
+            if (aggregate != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "aggregate", aggregate)); // query parameter
+            if (currentPage != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPage", currentPage)); // query parameter
+            if (currentPosition != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "currentPosition", currentPosition)); // query parameter
+            if (pageSize != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pageSize", pageSize)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
             // authentication (BearerAuth) required
             // bearer required
@@ -1157,50 +1213,45 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLeaderboards", localVarResponse);
+                Exception exception = ExceptionFactory("GetLeaderboardsV2", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Leaderboard>>(localVarStatusCode,
+            return new ApiResponse<List<LeaderboardV2Results>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<Leaderboard>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Leaderboard>)));
+                (List<LeaderboardV2Results>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LeaderboardV2Results>)));
         }
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member. Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2. Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="appId">The application ID</param>
-        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The leaderboard ID</param>
         /// <returns>ActionResponse</returns>
-        public ActionResponse ResetLeaderboardRankings (string memberType, string appId, string memberId)
+        public ActionResponse ResetLeaderboardV2Rankings (string appId, string leaderboardId)
         {
-             ApiResponse<ActionResponse> localVarResponse = ResetLeaderboardRankingsWithHttpInfo(memberType, appId, memberId);
+             ApiResponse<ActionResponse> localVarResponse = ResetLeaderboardV2RankingsWithHttpInfo(appId, leaderboardId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member. Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2. Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="appId">The application ID</param>
-        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The leaderboard ID</param>
         /// <returns>ApiResponse of ActionResponse</returns>
-        public ApiResponse< ActionResponse > ResetLeaderboardRankingsWithHttpInfo (string memberType, string appId, string memberId)
+        public ApiResponse< ActionResponse > ResetLeaderboardV2RankingsWithHttpInfo (string appId, string leaderboardId)
         {
-            // verify the required parameter 'memberType' is set
-            if (memberType == null)
-                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->ResetLeaderboardRankings");
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new ApiException(400, "Missing required parameter 'appId' when calling LeaderboardsApi->ResetLeaderboardRankings");
-            // verify the required parameter 'memberId' is set
-            if (memberId == null)
-                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->ResetLeaderboardRankings");
+                throw new ApiException(400, "Missing required parameter 'appId' when calling LeaderboardsV2Api->ResetLeaderboardV2Rankings");
+            // verify the required parameter 'leaderboardId' is set
+            if (leaderboardId == null)
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsV2Api->ResetLeaderboardV2Rankings");
 
-            var localVarPath = "/api/v1/reset-leaderboard/{memberType}/{appId}/{memberId}";
+            var localVarPath = "/api/v2/leaderboards-reset/{appId}/{leaderboardId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1221,9 +1272,8 @@ namespace SCILL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
+            if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1246,7 +1296,7 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ResetLeaderboardRankings", localVarResponse);
+                Exception exception = ExceptionFactory("ResetLeaderboardV2Rankings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1256,41 +1306,36 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member. Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2. Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="appId">The application ID</param>
-        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The leaderboard ID</param>
         /// <returns>Task of ActionResponse</returns>
-        public async System.Threading.Tasks.Task<ActionResponse> ResetLeaderboardRankingsAsync (string memberType, string appId, string memberId)
+        public async System.Threading.Tasks.Task<ActionResponse> ResetLeaderboardV2RankingsAsync (string appId, string leaderboardId)
         {
-             ApiResponse<ActionResponse> localVarResponse = await ResetLeaderboardRankingsAsyncWithHttpInfo(memberType, appId, memberId);
+             ApiResponse<ActionResponse> localVarResponse = await ResetLeaderboardV2RankingsAsyncWithHttpInfo(appId, leaderboardId);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member. Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2. Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
         /// <param name="appId">The application ID</param>
-        /// <param name="memberId">Either the user_id or team_id you used when sending the events. The memberType flag identifies which one is used.</param>
+        /// <param name="leaderboardId">The leaderboard ID</param>
         /// <returns>Task of ApiResponse (ActionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ResetLeaderboardRankingsAsyncWithHttpInfo (string memberType, string appId, string memberId)
+        public async System.Threading.Tasks.Task<ApiResponse<ActionResponse>> ResetLeaderboardV2RankingsAsyncWithHttpInfo (string appId, string leaderboardId)
         {
-            // verify the required parameter 'memberType' is set
-            if (memberType == null)
-                throw new ApiException(400, "Missing required parameter 'memberType' when calling LeaderboardsApi->ResetLeaderboardRankings");
             // verify the required parameter 'appId' is set
             if (appId == null)
-                throw new ApiException(400, "Missing required parameter 'appId' when calling LeaderboardsApi->ResetLeaderboardRankings");
-            // verify the required parameter 'memberId' is set
-            if (memberId == null)
-                throw new ApiException(400, "Missing required parameter 'memberId' when calling LeaderboardsApi->ResetLeaderboardRankings");
+                throw new ApiException(400, "Missing required parameter 'appId' when calling LeaderboardsV2Api->ResetLeaderboardV2Rankings");
+            // verify the required parameter 'leaderboardId' is set
+            if (leaderboardId == null)
+                throw new ApiException(400, "Missing required parameter 'leaderboardId' when calling LeaderboardsV2Api->ResetLeaderboardV2Rankings");
 
-            var localVarPath = "/api/v1/reset-leaderboard/{memberType}/{appId}/{memberId}";
+            var localVarPath = "/api/v2/leaderboards-reset/{appId}/{leaderboardId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1311,9 +1356,8 @@ namespace SCILL.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (memberType != null) localVarPathParams.Add("memberType", this.Configuration.ApiClient.ParameterToString(memberType)); // path parameter
             if (appId != null) localVarPathParams.Add("appId", this.Configuration.ApiClient.ParameterToString(appId)); // path parameter
-            if (memberId != null) localVarPathParams.Add("memberId", this.Configuration.ApiClient.ParameterToString(memberId)); // path parameter
+            if (leaderboardId != null) localVarPathParams.Add("leaderboardId", this.Configuration.ApiClient.ParameterToString(leaderboardId)); // path parameter
             // authentication (BearerAuth) required
             // bearer required
             if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
@@ -1336,7 +1380,7 @@ namespace SCILL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("ResetLeaderboardRankings", localVarResponse);
+                Exception exception = ExceptionFactory("ResetLeaderboardV2Rankings", localVarResponse);
                 if (exception != null) throw exception;
             }
 
