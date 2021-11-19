@@ -156,7 +156,7 @@ namespace SCILL.Api
         /// <returns>ApiResponse of List&lt;LeaderboardV2Results&gt;</returns>
         ApiResponse<List<LeaderboardV2Results>> GetLeaderboardsV2WithHttpInfo (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
         /// <summary>
-        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
+        /// Reset user leaderboard data
         /// </summary>
         /// <remarks>
         /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
@@ -168,7 +168,7 @@ namespace SCILL.Api
         ActionResponse ResetLeaderboardV2Rankings (string appId, string leaderboardId);
 
         /// <summary>
-        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
+        /// Reset user leaderboard data
         /// </summary>
         /// <remarks>
         /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
@@ -313,7 +313,7 @@ namespace SCILL.Api
         /// <returns>Task of ApiResponse (List&lt;LeaderboardV2Results&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<LeaderboardV2Results>>> GetLeaderboardsV2AsyncWithHttpInfo (string startDate = null, string endDate = null, string aggregate = null, int? currentPage = null, int? currentPosition = null, int? pageSize = null, string language = null);
         /// <summary>
-        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
+        /// Reset user leaderboard data
         /// </summary>
         /// <remarks>
         /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
@@ -325,7 +325,7 @@ namespace SCILL.Api
         System.Threading.Tasks.Task<ActionResponse> ResetLeaderboardV2RankingsAsync (string appId, string leaderboardId);
 
         /// <summary>
-        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
+        /// Reset user leaderboard data
         /// </summary>
         /// <remarks>
         /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
@@ -1223,7 +1223,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2. Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
+        /// Reset user leaderboard data Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The application ID</param>
@@ -1236,7 +1236,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2. Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
+        /// Reset user leaderboard data Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The application ID</param>
@@ -1306,7 +1306,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2. Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
+        /// Reset user leaderboard data Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The application ID</param>
@@ -1320,7 +1320,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Deletes all leaderboard V2 data, i.e. reset the leaderboard V2. Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
+        /// Reset user leaderboard data Deletes all leaderboard V2 data, i.e. reset the leaderboard V2.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">The application ID</param>

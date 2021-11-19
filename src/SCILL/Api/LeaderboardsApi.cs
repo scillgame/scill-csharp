@@ -144,7 +144,7 @@ namespace SCILL.Api
         /// <returns>ApiResponse of List&lt;Leaderboard&gt;</returns>
         ApiResponse<List<Leaderboard>> GetLeaderboardsWithHttpInfo (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Reset user leaderboard data
         /// </summary>
         /// <remarks>
         /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
@@ -157,7 +157,7 @@ namespace SCILL.Api
         ActionResponse ResetLeaderboardRankings (string memberType, string appId, string memberId);
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Reset user leaderboard data
         /// </summary>
         /// <remarks>
         /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
@@ -291,7 +291,7 @@ namespace SCILL.Api
         /// <returns>Task of ApiResponse (List&lt;Leaderboard&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Leaderboard>>> GetLeaderboardsAsyncWithHttpInfo (int? currentPage = null, int? pageSize = null, string startDate = null, string endDate = null, string language = null);
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Reset user leaderboard data
         /// </summary>
         /// <remarks>
         /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
@@ -304,7 +304,7 @@ namespace SCILL.Api
         System.Threading.Tasks.Task<ActionResponse> ResetLeaderboardRankingsAsync (string memberType, string appId, string memberId);
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Reset user leaderboard data
         /// </summary>
         /// <remarks>
         /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
@@ -1167,7 +1167,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member. Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Reset user leaderboard data Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -1181,7 +1181,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member. Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Reset user leaderboard data Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -1256,7 +1256,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member. Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Reset user leaderboard data Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
@@ -1271,7 +1271,7 @@ namespace SCILL.Api
         }
 
         /// <summary>
-        /// Delete all leaderboard data, i.e. reset the leaderboard for the specified member. Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
+        /// Reset user leaderboard data Delete all leaderboard data, i.e. reset the leaderboard for the specified member.
         /// </summary>
         /// <exception cref="SCILL.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberType">The member type, can be user or team (right now) and sets which leaderboards should be selected.</param>
