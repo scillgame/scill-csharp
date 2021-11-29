@@ -81,7 +81,7 @@ Contact: support@scillgame.com
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\SCILL\SCILL.csproj">
-          <Project>{52DE24E3-4B9C-4CA1-B5CC-10D43BA51E3D}</Project>
+          <Project>{25377CC2-C273-4117-BDA7-614EA732EB74}</Project>
           <Name>SCILL</Name>
       </ProjectReference>
   </ItemGroup>

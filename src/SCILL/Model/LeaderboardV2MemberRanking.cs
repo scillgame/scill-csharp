@@ -35,8 +35,8 @@ namespace SCILL.Model
         /// <param name="leaderboardId">The id of the leaderboard.</param>
         /// <param name="leaderboardName">The name of the leaderboard.</param>
         /// <param name="leaderboardSortOrderAscending">Determines the results sort order. If true, the order is ascending, otherwise, it&#x27;s descending..</param>
-        /// <param name="leaderboardMember">Returns the LeaderboardMember object containing user ranking information.</param>
-        public LeaderboardV2MemberRanking(string leaderboardId = default(string), string leaderboardName = default(string), bool? leaderboardSortOrderAscending = default(bool?), List<LeaderboardV2Member> leaderboardMember = default(List<LeaderboardV2Member>))
+        /// <param name="leaderboardMember">leaderboardMember.</param>
+        public LeaderboardV2MemberRanking(string leaderboardId = default(string), string leaderboardName = default(string), bool? leaderboardSortOrderAscending = default(bool?), LeaderboardV2Member leaderboardMember = default(LeaderboardV2Member))
         {
             this.leaderboard_id = leaderboardId;
             this.leaderboard_name = leaderboardName;
@@ -66,11 +66,10 @@ namespace SCILL.Model
         public bool? leaderboard_sort_order_ascending { get; set; }
 
         /// <summary>
-        /// Returns the LeaderboardMember object containing user ranking information
+        /// Gets or Sets leaderboard_member
         /// </summary>
-        /// <value>Returns the LeaderboardMember object containing user ranking information</value>
         [DataMember(Name="leaderboard_member", EmitDefaultValue=false)]
-        public List<LeaderboardV2Member> leaderboard_member { get; set; }
+        public LeaderboardV2Member leaderboard_member { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,9 +134,8 @@ namespace SCILL.Model
                 ) && 
                 (
                     this.leaderboard_member == input.leaderboard_member ||
-                    this.leaderboard_member != null &&
-                    input.leaderboard_member != null &&
-                    this.leaderboard_member.SequenceEqual(input.leaderboard_member)
+                    (this.leaderboard_member != null &&
+                    this.leaderboard_member.Equals(input.leaderboard_member))
                 );
         }
 
